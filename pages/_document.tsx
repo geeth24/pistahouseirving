@@ -18,16 +18,7 @@ export default class Document extends NextDocument {
                         href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
                         rel="stylesheet"
                     />
-                    <meta
-                        name="theme-color"
-                        content="fff"
-                        media="(prefers-color-scheme: light)"
-                    />
-                    <meta
-                        name="theme-color"
-                        content="000"
-                        media="(prefers-color-scheme: dark)"
-                    />
+
                     <link rel="apple-touch-icon" href="/pistahouselogo.png" />
 
                     <link rel="manifest" href="/manifest.json" />
