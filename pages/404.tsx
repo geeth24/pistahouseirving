@@ -1,9 +1,8 @@
 import { Flex, Image } from "@chakra-ui/react"
-import { time } from "console"
 import Head from "next/head"
 import React, { useEffect } from "react"
 
-const fourofour = () => {
+const Four = () => {
     useEffect(() => {
         //redirect to home page after 5 seconds
         setTimeout(() => {
@@ -22,4 +21,4 @@ const fourofour = () => {
     )
 }
 
-export default fourofour
+export default Four
