@@ -109,11 +109,11 @@ export default function CHero() {
                             align="center"
                             w={"100%"}
                             h={"100%"}
-                            src="/Pista.mov"
+                            src="/Pista.mp4"
                             autoPlay={true}
                             loop={true}
                             muted={true}
-                            type={"video/mov"}
+                            type={"video/mp4"}
                         />
                     </Box>
                 </Flex>
