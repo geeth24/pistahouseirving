@@ -8,6 +8,7 @@ import {
     useColorMode,
     useColorModeValue,
     VisuallyHidden,
+    VStack,
 } from "@chakra-ui/react"
 import { FaFacebook, FaInstagram } from "react-icons/fa"
 import { ReactNode } from "react"
@@ -82,6 +83,24 @@ export default function SmallCentered() {
                 </Stack>
 
                 <Text>© 2022 Pista House Texas. All rights reserved</Text>
+
+                <Stack
+                    spacing={4}
+                    direction="row"
+                    align={{ base: "center", md: "center" }}
+                 
+                >
+                    <Link href="tel:+1 (972) 635-5657" color="#047f69">
+                        +1 (972) 635-5657
+                    </Link>
+                    <Link
+                        href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving"
+                        color="#047f69"
+                        isExternal
+                    >
+                        901 W Royal Ln, Irving, TX 75039.
+                    </Link>
+                </Stack>
             </Container>
 
             <Box
@@ -100,23 +119,18 @@ export default function SmallCentered() {
                     align={{ base: "center", md: "center" }}
                     color="#6ba644"
                 >
-                    <Text> Designed by Geeth Gunnampalli </Text>
-                    <Stack
-                        spacing={4}
-                        direction={{ base: "column", md: "row" }}
-                        align={{ base: "center", md: "center" }}
-                    >
-                        <Link href="tel:+1 (972) 635-5657" color="#047f69">
-                            +1 (972) 635-5657
+                    <VStack spacing={0} align="center">
+                        <Link href="https://geethg.com">
+                            <Text textDecoration="underline">
+                                Designed by Geeth Gunnampalli
+                            </Text>
                         </Link>
-                        <Link
-                            href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving"
-                            color="#047f69"
-                            isExternal
-                        >
-                            901 W Royal Ln, Irving, TX 75039.
-                        </Link>
-                    </Stack>
+                        <Text fontSize="xs">
+                            Created with Next.js, Chakra UI, and Styled
+                            Components
+                        </Text>
+                    </VStack>
+                    
                     <Stack direction={"row"} spacing={6}>
                         <SocialButton
                             label={"Facbook"}
