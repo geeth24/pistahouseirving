@@ -1,7 +1,13 @@
-import { Button, useColorMode } from "@chakra-ui/react"
+import { Button, HStack, useColorMode } from "@chakra-ui/react"
 import Link from "next/link"
 import React from "react"
-import { FaBars } from "react-icons/fa"
+import {
+    FaBars,
+    FaBookOpen,
+    FaBuilding,
+    FaHome,
+    FaUtensilSpoon,
+} from "react-icons/fa"
 import { IconContext } from "react-icons/lib"
 import {
     Nav,
@@ -42,22 +48,42 @@ const Navbar = ({ toggle }: NavbarProps) => {
                         <NavMenu>
                             <NavItem>
                                 <Link href="/">
-                                    <NavLinks>Home</NavLinks>
+                                    <NavLinks>
+                                        <HStack>
+                                            <FaHome />
+                                            <span>Home</span>
+                                        </HStack>
+                                    </NavLinks>
                                 </Link>
                             </NavItem>
                             <NavItem>
                                 <Link href="/menu">
-                                    <NavLinks>Menu</NavLinks>
+                                    <NavLinks>
+                                        <HStack>
+                                            <FaBookOpen />
+                                            <span>Menu</span>
+                                        </HStack>
+                                    </NavLinks>
                                 </Link>
                             </NavItem>
                             <NavItem>
                                 <Link href="/catering">
-                                    <NavLinks>Catering</NavLinks>
+                                    <NavLinks>
+                                        <HStack>
+                                            <FaUtensilSpoon />
+                                            <span>Catering</span>
+                                        </HStack>
+                                    </NavLinks>
                                 </Link>
                             </NavItem>
                             <NavItem>
                                 <Link href="/aboutus">
-                                    <NavLinks>About Us</NavLinks>
+                                    <NavLinks>
+                                        <HStack>
+                                            <FaBuilding />
+                                            <span>About Us</span>
+                                        </HStack>
+                                    </NavLinks>
                                 </Link>
                             </NavItem>
                         </NavMenu>
