@@ -15,7 +15,65 @@ import {
     useDisclosure,
     Button,
 } from "@chakra-ui/react"
-import {
+import MenuCards from "../../components/Menu Cards/MenuCards"
+import styled from "styled-components"
+import { Link } from "react-scroll"
+import Head from "next/head"
+import { GetStaticProps } from "next"
+import { collection, getDocs } from "firebase/firestore"
+import { db } from "../../components/Firebase"
+
+export const getStaticProps: GetStaticProps = async () => {
+    const veggieAppetizersRef = collection(db, "veggieAppetizers")
+    const meatAppetizersRef = collection(db, "meatAppetizers")
+    const veggieKebabsRef = collection(db, "veggieKebabs")
+    const meatKebabsRef = collection(db, "meatKebabs")
+    const veggieEntreesRef = collection(db, "veggieEntrees")
+    const meatEntreesRef = collection(db, "meatEntrees")
+    const naanBreadRef = collection(db, "naanBreads")
+    const riceRef = collection(db, "rice")
+    const drinksRef = collection(db, "drinks")
+    const dessertsRef = collection(db, "desserts")
+
+    const veggieAppetizers = await getDocs(veggieAppetizersRef)
+    const meatAppetizers = await getDocs(meatAppetizersRef)
+    const veggieKebabs = await getDocs(veggieKebabsRef)
+    const meatKebabs = await getDocs(meatKebabsRef)
+    const veggieEntrees = await getDocs(veggieEntreesRef)
+    const meatEntrees = await getDocs(meatEntreesRef)
+    const naanBread = await getDocs(naanBreadRef)
+    const rice = await getDocs(riceRef)
+    const drinks = await getDocs(drinksRef)
+    const desserts = await getDocs(dessertsRef)
+
+    return {
+        props: {
+            VeggieAppetizers: veggieAppetizers.docs.map((doc) => doc.data()),
+            MeatAppetizers: meatAppetizers.docs.map((doc) => doc.data()),
+            VeggieKebabs: veggieKebabs.docs.map((doc) => doc.data()),
+            MeatKebabs: meatKebabs.docs.map((doc) => doc.data()),
+            VeggieEntrees: veggieEntrees.docs.map((doc) => doc.data()),
+            MeatEntrees: meatEntrees.docs.map((doc) => doc.data()),
+            NaanBread: naanBread.docs.map((doc) => doc.data()),
+            Rice: rice.docs.map((doc) => doc.data()),
+            Drinks: drinks.docs.map((doc) => doc.data()),
+            Desserts: desserts.docs.map((doc) => doc.data()),
+        },
+    }
+}
+interface MenuProps {
+    VeggieAppetizers: any
+    MeatAppetizers: any
+    VeggieKebabs: any
+    MeatKebabs: any
+    VeggieEntrees: any
+    MeatEntrees: any
+    NaanBread: any
+    Rice: any
+    Drinks: any
+    Desserts: any
+}
+const Menu = ({
     VeggieAppetizers,
     MeatAppetizers,
     VeggieKebabs,
@@ -26,13 +84,7 @@ import {
     Rice,
     Drinks,
     Desserts,
-} from "../../components/menu"
-import MenuCards from "../../components/Menu Cards/MenuCards"
-import styled from "styled-components"
-import { Link } from "react-scroll"
-import Head from "next/head"
-
-const Menu = () => {
+}: MenuProps) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
 
