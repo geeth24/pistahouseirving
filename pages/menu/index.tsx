@@ -19,11 +19,11 @@ import MenuCards from "../../components/Menu Cards/MenuCards"
 import styled from "styled-components"
 import { Link } from "react-scroll"
 import Head from "next/head"
-import { GetStaticProps } from "next"
+import { GetServerSideProps } from "next"
 import { collection, getDocs } from "firebase/firestore"
 import { db } from "../../components/Firebase"
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     const veggieAppetizersRef = collection(db, "veggieAppetizers")
     const meatAppetizersRef = collection(db, "meatAppetizers")
     const veggieKebabsRef = collection(db, "veggieKebabs")
