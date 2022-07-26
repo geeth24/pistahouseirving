@@ -1,5 +1,5 @@
 import React from "react"
-import { chakra, Box, useColorModeValue, Badge } from "@chakra-ui/react"
+import { chakra, Box, useColorModeValue } from "@chakra-ui/react"
 
 type MenuCardsProps = {
     title: string
@@ -7,7 +7,7 @@ type MenuCardsProps = {
     price: string
 }
 
-const MenuCards = ({ title, description, price }: MenuCardsProps) => {
+const MenuCards = ({ title, description }: MenuCardsProps) => {
     return (
         <Box
             w={["xs", "sm", "md"]}

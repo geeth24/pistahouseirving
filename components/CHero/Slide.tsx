@@ -19,8 +19,9 @@ const slides = [
 interface SlideProps {
     url: string
     duration: number
+    alt: string
 }
-const Image = ({ url, duration }: SlideProps) => {
+const Image = ({ url, duration, alt }: SlideProps) => {
     const props = useSpring({
         from: {
             transform: "scale(1) translateX(0%)",
@@ -62,7 +63,7 @@ export const Slide = () => {
         <>
             {transitions.map(({ item, props, key }) => (
                 <animated.div key={key} style={{ ...props }}>
-                    <Image url={item.url} duration={duration} />
+                    <Image url={item.url} duration={duration} alt={item.url} />
                 </animated.div>
             ))}
         </>

@@ -2,10 +2,6 @@ import { Box, Flex, SlideFade, Text } from "@chakra-ui/react"
 import Head from "next/head"
 import PhotoAlbum, { RenderPhoto } from "react-photo-album"
 import styled from "styled-components"
-import Hero from "../../components/Hero/Hero"
-import Services from "../../components/Services/Services"
-import Testimonials from "../../components/Testimonials/Testimonials"
-
 export const RenderDiv = styled.div``
 
 const renderPhoto: RenderPhoto = ({
