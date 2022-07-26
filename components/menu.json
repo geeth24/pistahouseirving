@@ -1,0 +1,44 @@
+{
+    "Desserts": [
+        {
+            "title": "Carrot Halwa",
+            "description": "Grated carrots cooked in milk and butter, garnished with raisins.",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Lychee Malai",
+            "description": "Luscious dessert made from Lychee fruit & malai",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Double Ka Meetha",
+            "description": "Indian bread pudding made with fried bread slices and socaked in creamy rich milk mixture and topped with nuts.",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Gulab Jamoon",
+            "description": "Fried dumplings that are traditionally made of thickened milk and soaked in flavored sugar syrup.",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Junnu",
+            "description": "Caramelized milk pudding",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Qurbani Ka Meetha",
+            "description": "Qurbani Ka Meetha is a loved and most savoured, Hyderabadi Dessert made from dried apricots & sugar.",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Rasmalai",
+            "description": "Milk-based dessert made with cheese dumplings soaked in sweetened & thickened milk.",
+            "price": "$ 4.00"
+        },
+        {
+            "title": "Rabdi",
+            "description": "Rich creamy thickened milk, garnished with pistachios.",
+            "price": "$ 4.00"
+        }
+    ]
+}
