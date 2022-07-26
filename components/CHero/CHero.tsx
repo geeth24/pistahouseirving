@@ -109,7 +109,7 @@ export default function CHero() {
                             align="center"
                             w={"100%"}
                             h={"100%"}
-                            src="/Pista.mp4"
+                            src="https://photos.smugmug.com/photos/i-7h6J4v9/0/640/i-7h6J4v9-640.mp4"
                             autoPlay={true}
                             loop={true}
                             muted={true}

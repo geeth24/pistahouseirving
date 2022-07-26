@@ -7,7 +7,7 @@ import {
     Text,
     VStack,
 } from "@chakra-ui/react"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 import { motion, useViewportScroll, Variants } from "framer-motion"
 import CHero from "../components/CHero/CHero"
@@ -89,11 +89,12 @@ const Catering = () => {
             </svg>
         )
     }
+
     return (
         <>
             {" "}
             <Head>
-                <title>Catering | Pista House Texas</title>
+                <title>Home | Pista House Texas</title>
             </Head>
             <CHero />
             <Flex justify={"center"} align={"center"}>

@@ -27,9 +27,9 @@ const MenuCards = ({ title, description, price }: MenuCardsProps) => {
                 <chakra.p mt={1} fontSize="md" color="#047f69">
                     {description}
                 </chakra.p>
-                <Badge colorScheme="green" fontSize="sm" rounded={50}>
+                {/* <Badge colorScheme="green" fontSize="sm" rounded={50}>
                     {price}
-                </Badge>
+                </Badge> */}
             </Box>
         </Box>
     )

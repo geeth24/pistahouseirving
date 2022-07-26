@@ -1,6 +1,7 @@
 import React from "react"
 import { SimpleGrid, Image, Box, chakra, Flex } from "@chakra-ui/react"
 import Head from "next/head"
+import Testimonials from "../../components/Testimonials/Testimonials"
 
 const Aboutus = () => {
     return (
@@ -130,6 +131,7 @@ const Aboutus = () => {
                     </Box>
                 </Flex>
             </SimpleGrid>
+            <Testimonials />
         </>
     )
 }

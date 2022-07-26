@@ -9,6 +9,7 @@ const Layout = dynamic(() => import("../components/Layout"), {
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
+
     return (
         <ChakraProvider theme={theme}>
             <Layout>
