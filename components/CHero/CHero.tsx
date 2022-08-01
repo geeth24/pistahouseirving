@@ -40,7 +40,7 @@ export default function CHero() {
                                 zIndex: -1,
                             }}
                         >
-                            Finest Indian
+                            Authentic Hyderabadi
                         </Text>
                         <br />
                         <Text as={"span"} color={"#047f69"}>
@@ -113,6 +113,7 @@ export default function CHero() {
                             autoPlay={true}
                             loop={true}
                             muted={true}
+                            playsinline={true}
                             type={"video/mp4"}
                         />
                     </Box>

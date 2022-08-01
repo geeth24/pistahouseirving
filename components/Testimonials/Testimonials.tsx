@@ -11,7 +11,7 @@ const testimonials = [
     {
         name: "Rajya Gunnampalli",
         content:
-            "We have asked Pista House to cater 4 of our events and they have done a great job. The food is delicious and the service is great. We wil definetly refer them to our friends and family.",
+            "Pista house food is very delicious  for veg and non veg& service great as well.  Ordered food for multiple events for our home and community.",
         avatar: "/reviewer.jpeg",
     },
     {
