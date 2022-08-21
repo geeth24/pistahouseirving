@@ -1,5 +1,5 @@
 import React from "react"
-import { chakra, Box, useColorModeValue } from "@chakra-ui/react"
+import { chakra, Box, useColorModeValue, Text } from "@chakra-ui/react"
 
 type MenuCardsProps = {
     title: string
@@ -11,22 +11,22 @@ const MenuCards = ({ title, description }: MenuCardsProps) => {
     return (
         <Box
             w={["xs", "sm", "md"]}
-            bg={useColorModeValue("white", "#2D3748")}
+            bg={useColorModeValue("gray.50", "#2D3748")}
             shadow="lg"
             rounded="lg"
         >
             <Box px={4} py={2}>
-                <chakra.h1
+                <Text
                     color={useColorModeValue("#6ba644", "#beeca0")}
-                    fontWeight="bold"
-                    fontSize="2xl"
+                    fontWeight="700"
+                    fontSize="xl"
                     textTransform="uppercase"
                 >
                     {title}
-                </chakra.h1>
-                <chakra.p mt={1} fontSize="md" color="#047f69">
+                </Text>
+                <Text mt={1} fontSize="md" color="#047f69">
                     {description}
-                </chakra.p>
+                </Text>
                 {/* <Badge colorScheme="green" fontSize="sm" rounded={50}>
                     {price}
                 </Badge> */}

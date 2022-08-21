@@ -26,9 +26,11 @@ import {
     MeatKebabs,
     VeggieEntrees,
     MeatEntrees,
-    NaanBread,
+    Chat,
     Rice,
     Desserts,
+    IndianSandwich,
+    Drinks,
 } from "../../components/cmenu"
 import MenuCards from "../../components/Menu Cards/MenuCards"
 import { Link } from "react-scroll"
@@ -182,7 +184,7 @@ const Home = () => {
                 />
                 <VStack spacing={10}>
                     <Text
-                        fontSize="4xl"
+                        fontSize={{ base: "4xl", md: "6xl" }}
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                     >
@@ -252,6 +254,24 @@ const Home = () => {
                                         Meat Appetizers
                                     </Link>
                                     <Link
+                                        to="indiansandwiches"
+                                        smooth={true}
+                                        duration={700}
+                                        spy={true}
+                                        offset={-170}
+                                        style={{
+                                            textDecoration: "none",
+                                            color: useColorModeValue(
+                                                "#6ba644",
+                                                "#beeca0"
+                                            ),
+                                            cursor: "pointer",
+                                        }}
+                                        onClick={onClose}
+                                    >
+                                        Indian Sandwiches
+                                    </Link>
+                                    <Link
                                         to="veggiekebabs"
                                         smooth={true}
                                         duration={700}
@@ -287,6 +307,7 @@ const Home = () => {
                                     >
                                         Meat Kebabs
                                     </Link>
+
                                     <Link
                                         to="veggieentrees"
                                         smooth={true}
@@ -324,7 +345,7 @@ const Home = () => {
                                         Meat Entrees
                                     </Link>
                                     <Link
-                                        to="naanbread"
+                                        to="chat"
                                         smooth={true}
                                         duration={700}
                                         spy={true}
@@ -339,7 +360,7 @@ const Home = () => {
                                         }}
                                         onClick={onClose}
                                     >
-                                        Naan Bread
+                                        Chat
                                     </Link>
                                     <Link
                                         to="rice"
@@ -357,7 +378,7 @@ const Home = () => {
                                         }}
                                         onClick={onClose}
                                     >
-                                        Rice
+                                        Rice/Biryani
                                     </Link>
 
                                     <Link
@@ -378,6 +399,24 @@ const Home = () => {
                                     >
                                         Desserts
                                     </Link>
+                                    <Link
+                                        to="drinks"
+                                        smooth={true}
+                                        duration={700}
+                                        spy={true}
+                                        offset={-170}
+                                        style={{
+                                            textDecoration: "none",
+                                            color: useColorModeValue(
+                                                "#6ba644",
+                                                "#beeca0"
+                                            ),
+                                            cursor: "pointer",
+                                        }}
+                                        onClick={onClose}
+                                    >
+                                        Drinks
+                                    </Link>
                                 </VStack>
                             </DrawerBody>
 
@@ -394,7 +433,7 @@ const Home = () => {
                     </Drawer>
 
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="veggieappetizers"
@@ -421,7 +460,7 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="meatappetizers"
@@ -448,7 +487,34 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
+                        fontWeight="bold"
+                        color={useColorModeValue("#6ba644", "#beeca0")}
+                        id="indiansandwiches"
+                    >
+                        Indian Sandwiches
+                    </Text>
+                    <Grid>
+                        {IndianSandwich.map(
+                            (
+                                de: {
+                                    title: any
+                                    description: any
+                                    price: any
+                                },
+                                index: React.Key | null | undefined
+                            ) => (
+                                <MenuCards
+                                    key={index}
+                                    title={de.title}
+                                    description={de.description}
+                                    price={de.price}
+                                />
+                            )
+                        )}
+                    </Grid>
+                    <Text
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="veggiekebabs"
@@ -475,7 +541,7 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="meatkebabs"
@@ -502,7 +568,7 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="veggieentrees"
@@ -529,7 +595,7 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="meatentrees"
@@ -556,15 +622,15 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
-                        id="naanbread"
+                        id="chat"
                     >
-                        Naan Bread
+                        Chat
                     </Text>
                     <Grid>
-                        {NaanBread.map(
+                        {Chat.map(
                             (
                                 nb: {
                                     title: any
@@ -583,12 +649,12 @@ const Home = () => {
                         )}
                     </Grid>
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="rice"
                     >
-                        Rice
+                        Rice/Biryani
                     </Text>
                     <Grid>
                         {Rice.map(
@@ -611,7 +677,7 @@ const Home = () => {
                     </Grid>
 
                     <Text
-                        fontSize="xl"
+                        fontSize="2xl"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="desserts"
@@ -620,6 +686,33 @@ const Home = () => {
                     </Text>
                     <Grid>
                         {Desserts.map(
+                            (
+                                de: {
+                                    title: any
+                                    description: any
+                                    price: any
+                                },
+                                index: React.Key | null | undefined
+                            ) => (
+                                <MenuCards
+                                    key={index}
+                                    title={de.title}
+                                    description={de.description}
+                                    price={de.price}
+                                />
+                            )
+                        )}
+                    </Grid>
+                    <Text
+                        fontSize="2xl"
+                        fontWeight="bold"
+                        color={useColorModeValue("#6ba644", "#beeca0")}
+                        id="drinks"
+                    >
+                        Drinks
+                    </Text>
+                    <Grid>
+                        {Drinks.map(
                             (
                                 de: {
                                     title: any
