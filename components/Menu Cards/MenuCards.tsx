@@ -1,5 +1,5 @@
 import React from "react"
-import { chakra, Box, useColorModeValue, Text } from "@chakra-ui/react"
+import { Box, useColorModeValue, Text } from "@chakra-ui/react"
 
 type MenuCardsProps = {
     title: string
