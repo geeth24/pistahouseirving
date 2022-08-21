@@ -2,6 +2,7 @@ import {
     Box,
     chakra,
     Container,
+    HStack,
     Link,
     Stack,
     Text,
@@ -11,6 +12,12 @@ import {
     VStack,
 } from "@chakra-ui/react"
 import { FaFacebook, FaInstagram } from "react-icons/fa"
+import {
+    SiChakraui,
+    SiNextdotjs,
+    SiStyledcomponents
+} from "react-icons/si"
+
 import { ReactNode } from "react"
 import Image from "next/image"
 
@@ -88,7 +95,6 @@ export default function SmallCentered() {
                     spacing={4}
                     direction="row"
                     align={{ base: "center", md: "center" }}
-                 
                 >
                     <Link href="tel:+1 (972) 635-5657" color="#047f69">
                         +1 (972) 635-5657
@@ -119,18 +125,25 @@ export default function SmallCentered() {
                     align={{ base: "center", md: "center" }}
                     color="#6ba644"
                 >
-                    <VStack spacing={0} align="center">
-                        <Link href="https://geethg.com">
-                            <Text textDecoration="underline">
-                                Designed by Geeth Gunnampalli
-                            </Text>
-                        </Link>
-                        <Text fontSize="xs">
-                            Created with Next.js, Chakra UI, and Styled
-                            Components
-                        </Text>
+                    <VStack spacing={4}>
+                        <HStack>
+                            <Text>Built with</Text>{" "}
+                            <Link isExternal href="https://nextjs.org">
+                                <SiNextdotjs />
+                            </Link>
+                            <Link isExternal href="https://chakra-ui.com">
+                                <SiChakraui />
+                            </Link>
+                            <Link isExternal href="https://styled-components.com">
+                                <SiStyledcomponents />
+                            </Link>
+                            <Text>by</Text>
+                            <Link href="https://geethg.com">
+                                <Text>Geeth Gunnampalli</Text>
+                            </Link>
+                        </HStack>
                     </VStack>
-                    
+
                     <Stack direction={"row"} spacing={6}>
                         <SocialButton
                             label={"Facbook"}
