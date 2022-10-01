@@ -26,10 +26,14 @@ export default function ContactUs() {
                             base: "xl",
                             md: "2xl",
                         }}
+                        alignItems="center"
                     >
-                        Please call us at:{" "}
-                        <Link href="tel:+1 (972) 635-5657" color="#047f69">
-                            +1 (972) 635-5657
+                        Please text us at{" "}
+                        <Link
+                            href="https://api.whatsapp.com/send?phone=12143042304"
+                            color="#047f69"
+                        >
+                            +1 (214) 304‑2304
                         </Link>
                     </Heading>
                     <Heading

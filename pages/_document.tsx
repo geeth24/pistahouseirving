@@ -37,6 +37,10 @@ export default class Document extends NextDocument {
                         property="og:url"
                         content="https://pistahousetexas.com"
                     />
+                    <script
+                        type="text/javascript"
+                        src="/static/script.js"
+                    ></script>
                 </Head>
                 <body>
                     {/* 👇 Here's the script */}
