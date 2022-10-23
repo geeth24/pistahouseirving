@@ -33,7 +33,8 @@ import {
     Drinks,
 } from "../../components/cmenu"
 import MenuCards from "../../components/Menu Cards/MenuCards"
-import { Link } from "react-scroll"
+import { animateScroll, Link } from "react-scroll"
+import { useRouter } from "next/router"
 export const RenderDiv = styled.div``
 
 const renderPhoto: RenderPhoto = ({
@@ -160,6 +161,17 @@ const images = [
 const Home = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    const router = useRouter()
+   
+
+    const { order } = router.query
+
+    if (order === "true") {
+        console.log("order is true")
+        animateScroll.scrollTo(1100, { duration: 1000 })
+    }
+         
+
     return (
         <>
             <Head>

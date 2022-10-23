@@ -17,6 +17,7 @@ import {
 import { FaWhatsapp } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { removeFromOrder, addToOrder } from "../redux/order"
+import { useRouter } from "next/router"
 
 type LayoutProps = {
     children: React.ReactNode
@@ -48,7 +49,7 @@ const Layout = ({ children }: LayoutProps) => {
 
     const [isAdded, setIsAdded] = React.useState(false)
     const toast = useToast()
-
+    const router = useRouter()
     var item = null
 
     //
@@ -105,7 +106,7 @@ const Layout = ({ children }: LayoutProps) => {
                     {children}
                     <Footer />
                 </div>
-                <Box position="fixed" bottom="5" right="5">
+                <Box position="fixed" bottom="50px" right="50px">
                     <Menu>
                         <MenuButton
                             as={IconButton}
@@ -115,6 +116,11 @@ const Layout = ({ children }: LayoutProps) => {
                             zIndex="1000"
                             rounded="full"
                             icon={<FaWhatsapp />}
+                            onClick={() => {
+                                if (router.pathname !== "/catering") {
+                                    router.push("/catering?order=true")
+                                }
+                            }}
                         >
                             Order
                         </MenuButton>
@@ -156,11 +162,9 @@ const Layout = ({ children }: LayoutProps) => {
                                     var orderString = orderArray2.join("%0A")
                                     var orderString2 = orderString
                                         .toLowerCase()
-                                        .replace(
-                                            /\b[a-z]/g,
-                                            (letter) => letter.toUpperCase()
+                                        .replace(/\b[a-z]/g, (letter) =>
+                                            letter.toUpperCase()
                                         )
-
 
                                     return (window.location.href =
                                         "https://api.whatsapp.com/send?phone=12143042304&text=" +
