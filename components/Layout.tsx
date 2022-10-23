@@ -17,7 +17,6 @@ import {
 import { FaWhatsapp } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { removeFromOrder, addToOrder } from "../redux/order"
-import Link from "next/link"
 
 type LayoutProps = {
     children: React.ReactNode
