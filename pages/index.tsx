@@ -95,6 +95,7 @@ const Catering = () => {
             {" "}
             <Head>
                 <title>Home | Pista House Texas</title>
+                <meta property="og:title" content="Pista House Texas" />
             </Head>
             <CHero />
             <Flex justify={"center"} align={"center"}>

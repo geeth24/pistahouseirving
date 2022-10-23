@@ -8,7 +8,7 @@ export default class Document extends NextDocument {
             <Html lang="en">
                 <Head>
                     <meta charSet="utf-8" />
-                    <link rel="icon" href="/pistahouselogo.png" />
+                    <link rel="icon" href="/PistaLogo.jpeg" />
                     <link
                         rel="preconnect"
                         href="https://fonts.googleapis.com"
@@ -19,14 +19,13 @@ export default class Document extends NextDocument {
                         rel="stylesheet"
                     />
 
-                    <link rel="apple-touch-icon" href="/pistahouselogo.png" />
+                    <link rel="apple-touch-icon" href="/PistaLogo.jpeg" />
 
-                    <link rel="manifest" href="/manifest.json" />
-                    <meta property="og:title" content="Pista House Texas" />
+                  
                     <meta
                         name="image"
                         property="og:image"
-                        content="/pistahouselogo.png"
+                        content="/PistaLogo.jpeg"
                     />
                     <meta name="author" content="Geeth Gunnampalli" />
                     <meta
@@ -35,12 +34,12 @@ export default class Document extends NextDocument {
                     />
                     <meta
                         property="og:url"
-                        content="https://pistahousetexas.com"
+                        content="https://pistahouseirving.com"
                     />
-                    <script
+                    {/* <script
                         type="text/javascript"
                         src="/static/script.js"
-                    ></script>
+                    ></script> */}
                 </Head>
                 <body>
                     {/* 👇 Here's the script */}

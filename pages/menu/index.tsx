@@ -31,6 +31,22 @@ import {
 import styled from "styled-components"
 import { Link } from "react-scroll"
 import Head from "next/head"
+import type { NextPage } from "next"
+const Grid = styled.div`
+    display: grid;
+    justify-content: center;
+
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 0 2rem;
+    @media screen and (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+`
+
+
 // import { GetStaticProps } from "next"
 // import { collection, getDocs } from "firebase/firestore"
 // import { db } from "../../components/Firebase"
@@ -85,7 +101,7 @@ import Head from "next/head"
 //     Drinks: any
 //     Desserts: any
 // }
-const Menu = () =>
+const Menu: NextPage = () => {
     //     {
     // VeggieAppetizers,
     // MeatAppetizers,
@@ -107,6 +123,10 @@ const Menu = () =>
                 {" "}
                 <Head>
                     <title>Menu | Pista House Texas</title>
+                    <meta
+                        property="og:title"
+                        content="Menu"
+                    />
                 </Head>
                 <div
                     id="menu"
@@ -631,19 +651,6 @@ const Menu = () =>
             </>
         )
     }
+}
 
 export default Menu
-
-const Grid = styled.div`
-    display: grid;
-    justify-content: center;
-
-    grid-template-columns: 2fr 1fr;
-    grid-gap: 1rem;
-    margin: 0 auto;
-    max-width: 500px;
-    padding: 0 2rem;
-    @media screen and (max-width: 900px) {
-        grid-template-columns: 1fr;
-    }
-`
