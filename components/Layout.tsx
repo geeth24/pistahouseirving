@@ -137,7 +137,7 @@ const Layout = ({ children }: LayoutProps) => {
                 >
                     <ModalOverlay />
                     <ModalContent>
-                        <ModalHeader>Order Details</ModalHeader>
+                        <ModalHeader>Get a Quote</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
                             <VStack spacing={4} align="flex-start">
@@ -272,21 +272,6 @@ const Layout = ({ children }: LayoutProps) => {
                                 if (router.pathname !== "/catering") {
                                     router.push("/catering?order=true")
                                 }
-                                var orderArray = order.split(", ")
-                                var orderArray2 = []
-                                for (var i = 1; i < orderArray.length; i++) {
-                                    if (
-                                        orderArray[i] !== " " ||
-                                        orderArray[i] !== "" ||
-                                         orderArray[i] !== ","
-                                    ) {
-                                        console.log(orderArray[i])
-                                        orderArray2.push(
-                                            `${i}. ${orderArray[i]}`
-                                        )
-                                    }
-                                }
-                                console.log(order)
                             }}
                         >
                             Order
