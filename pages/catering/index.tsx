@@ -32,7 +32,7 @@ import {
     IndianSandwich,
     Drinks,
 } from "../../components/cmenu"
-import MenuCards from "../../components/Menu Cards/MenuCards"
+import CaterCards from "../../components/Menu Cards/CaterCards"
 import { animateScroll, Link } from "react-scroll"
 import { useRouter } from "next/router"
 export const RenderDiv = styled.div``
@@ -462,7 +462,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={va.title}
                                     description={va.description}
@@ -489,7 +489,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={ma.title}
                                     description={ma.description}
@@ -516,7 +516,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={de.title}
                                     description={de.description}
@@ -543,7 +543,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={vk.title}
                                     description={vk.description}
@@ -570,7 +570,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={mk.title}
                                     description={mk.description}
@@ -597,7 +597,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={ve.title}
                                     description={ve.description}
@@ -624,7 +624,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={me.title}
                                     description={me.description}
@@ -651,7 +651,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={nb.title}
                                     description={nb.description}
@@ -678,7 +678,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={r.title}
                                     description={r.description}
@@ -706,7 +706,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={de.title}
                                     description={de.description}
@@ -733,7 +733,7 @@ const Home = () => {
                                 },
                                 index: React.Key | null | undefined
                             ) => (
-                                <MenuCards
+                                <CaterCards
                                     key={index}
                                     title={de.title}
                                     description={de.description}

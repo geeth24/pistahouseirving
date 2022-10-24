@@ -7,12 +7,24 @@ import {
     Box,
     Button,
     IconButton,
+    Input,
     Menu,
     MenuButton,
     MenuItem,
     MenuList,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
+    ModalOverlay,
     useColorModeValue,
+    useDisclosure,
     useToast,
+    Text,
+    VStack,
+    HStack,
 } from "@chakra-ui/react"
 import { FaWhatsapp } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
@@ -50,6 +62,16 @@ const Layout = ({ children }: LayoutProps) => {
     const [isAdded, setIsAdded] = React.useState(false)
     const toast = useToast()
     const router = useRouter()
+
+    const [name, setName] = useState("")
+    const [partySize, setPartySize] = useState(0)
+    const [date, setDate] = useState("")
+
+    const {
+        isOpen: isModelOpen,
+        onOpen: onModelOpen,
+        onClose: onModelClose,
+    } = useDisclosure()
     var item = null
 
     //
@@ -106,6 +128,122 @@ const Layout = ({ children }: LayoutProps) => {
                     {children}
                     <Footer />
                 </div>
+                <Modal
+                    onClose={onModelClose}
+                    isOpen={isModelOpen}
+                    isCentered
+                    motionPreset="slideInBottom"
+                    scrollBehavior="inside"
+                >
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Order Details</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <VStack spacing={4}>
+                                <Text fontSize="md">
+                                    Please fill out the form below to place your
+                                    order.
+                                </Text>
+                                <Input
+                                    placeholder="Name"
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                                <Input
+                                    placeholder="Party Size"
+                                    onChange={(e) =>
+                                        setPartySize(parseInt(e.target.value))
+                                    }
+                                />
+                                <Input
+                                    placeholder="Date"
+                                    type="date"
+                                    date-format="MM/DD/YYYY"
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
+                            </VStack>
+                        </ModalBody>
+                        <ModalFooter>
+                            <HStack spacing={4}>
+                                <Button
+                                    onClick={onModelClose}
+                                    colorScheme="red"
+                                >
+                                    Close
+                                </Button>
+
+                                <Button
+                                    isDisabled={
+                                        name === "" ||
+                                        partySize === 0 ||
+                                        date === ""
+                                    }
+                                    colorScheme="whatsapp"
+                                    mr={3}
+                                    onClick={() => {
+                                        //change format to MM/DD/YYYY
+                                        var dateArray = date.split("-")
+                                        var newDate =
+                                            dateArray[1] +
+                                            "/" +
+                                            dateArray[2] +
+                                            "/" +
+                                            dateArray[0]
+                                        setDate(newDate)
+
+                                        //loop through order and add index 1. to each item
+                                        var orderArray = order.split(", ")
+                                        var orderArray2 = []
+                                        for (
+                                            var i = 1;
+                                            i < orderArray.length;
+                                            i++
+                                        ) {
+                                            if (orderArray[i] !== "") {
+                                                orderArray2.push(
+                                                    `${i}. ${orderArray[i]}`
+                                                )
+                                            }
+                                        }
+                                        var orderString =
+                                            orderArray2.join("%0A")
+                                        var orderString2 = orderString
+                                            .toLowerCase()
+                                            .replace(/\b[a-z]/g, (letter) =>
+                                                letter.toUpperCase()
+                                            )
+
+                                        return (window.location.href =
+                                            "https://api.whatsapp.com/send?phone=12143042304&text=" +
+                                            "Hello, I would like to place an order" +
+                                            "%0A" +
+                                            "Name: " +
+                                            name +
+                                            "%0A" +
+                                            "Party Size: " +
+                                            partySize +
+                                            "%0A" +
+                                            "Date: " +
+                                            date +
+                                            "%0A" +
+                                            "%0A" +
+                                            "Items: " +
+                                            "%0A" +
+                                            orderString2
+                                                .replace(
+                                                    "Your Selections:,",
+                                                    ""
+                                                )
+                                                .replace(/,/g, "%0A"))
+                                    }}
+                                    leftIcon={<FaWhatsapp />}
+                                >
+                                    Place Order
+                                </Button>
+                            </HStack>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
                 <Box position="fixed" bottom="50px" right="50px">
                     <Menu>
                         <MenuButton
@@ -146,33 +284,7 @@ const Layout = ({ children }: LayoutProps) => {
                                         "#047f69"
                                     ),
                                 }}
-                                onClick={() => {
-                                    //loop through order and add index 1. to each item
-                                    var orderArray = order.split(", ")
-                                    var orderArray2 = []
-                                    for (
-                                        var i = 1;
-                                        i < orderArray.length;
-                                        i++
-                                    ) {
-                                        orderArray2.push(
-                                            i + ". " + orderArray[i]
-                                        )
-                                    }
-                                    var orderString = orderArray2.join("%0A")
-                                    var orderString2 = orderString
-                                        .toLowerCase()
-                                        .replace(/\b[a-z]/g, (letter) =>
-                                            letter.toUpperCase()
-                                        )
-
-                                    return (window.location.href =
-                                        "https://api.whatsapp.com/send?phone=12143042304&text=" +
-                                        "Hello, I would like to order the following: %0A" +
-                                        orderString2
-                                            .replace("Your Selections:,", "")
-                                            .replace(/,/g, "%0A"))
-                                }}
+                                onClick={onModelOpen}
                             >
                                 Order
                             </MenuItem>
