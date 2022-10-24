@@ -140,26 +140,36 @@ const Layout = ({ children }: LayoutProps) => {
                         <ModalHeader>Order Details</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
-                            <VStack spacing={4}>
+                            <VStack spacing={4} align="flex-start">
                                 <Text fontSize="md">
                                     Please fill out the form below to place your
                                     order.
                                 </Text>
+                                <Text fontSize="sm">Name</Text>
                                 <Input
                                     placeholder="Name"
                                     onChange={(e) => setName(e.target.value)}
                                 />
+                                <Text fontSize="sm">Party Size</Text>
                                 <Input
                                     placeholder="Party Size"
+                                    inputMode="numeric"
                                     onChange={(e) =>
                                         setPartySize(parseInt(e.target.value))
                                     }
                                 />
+                                <Text fontSize="sm">Date</Text>
                                 <Input
                                     placeholder="Date"
                                     type="date"
-                                    date-format="MM/DD/YYYY"
                                     onChange={(e) => setDate(e.target.value)}
+                                    sx={{
+                                        ":after": {
+                                            color: "whatsapp",
+                                            content: " attr(placeholder)",
+                                            alignItems: "center",
+                                        },
+                                    }}
                                 />
                             </VStack>
                         </ModalBody>
