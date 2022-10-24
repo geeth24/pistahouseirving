@@ -274,7 +274,7 @@ const Layout = ({ children }: LayoutProps) => {
                                 }
                             }}
                         >
-                            Order
+                            Get a Quote
                         </MenuButton>
                         <MenuList>
                             {item}
@@ -300,7 +300,7 @@ const Layout = ({ children }: LayoutProps) => {
                                 }}
                                 onClick={onModelOpen}
                             >
-                                Order
+                                Get a Quote
                             </MenuItem>
                         </MenuList>
                     </Menu>
