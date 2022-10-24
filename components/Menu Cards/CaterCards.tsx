@@ -42,7 +42,7 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
             onClick={() => {
                 //if the order string has the title, remove it from the order
                 if (order.includes(title)) {
-                    dispatch(removeFromOrder(title))
+                    dispatch(removeFromOrder(title+", "))
                     setIsAdded(false)
                     toast({
                         title: "Removed from Order",

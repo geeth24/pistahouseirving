@@ -8,7 +8,6 @@ type MenuCardsProps = {
 }
 
 const MenuCards = ({ title, description }: MenuCardsProps) => {
-    const [isAdded, setIsAdded] = React.useState(false)
 
     return (
         <Box
@@ -16,6 +15,7 @@ const MenuCards = ({ title, description }: MenuCardsProps) => {
             bg={useColorModeValue("gray.50", "#2D3748")}
             color={useColorModeValue("#047f69", "#beeca0")}
             shadow="lg"
+            rounded="lg"
         >
             <Box px={4} py={2}>
                 <Text fontWeight="700" fontSize="xl" textTransform="uppercase">

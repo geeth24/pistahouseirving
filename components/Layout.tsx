@@ -142,8 +142,8 @@ const Layout = ({ children }: LayoutProps) => {
                         <ModalBody>
                             <VStack spacing={4} align="flex-start">
                                 <Text fontSize="md">
-                                    Please fill out the form below to place your
-                                    order.
+                                    Please fill out the form to get in touch
+                                    with Pista House
                                 </Text>
                                 <Text fontSize="sm">Name</Text>
                                 <Input
@@ -209,7 +209,11 @@ const Layout = ({ children }: LayoutProps) => {
                                             i < orderArray.length;
                                             i++
                                         ) {
-                                            if (orderArray[i] !== "") {
+                                            if (
+                                                orderArray[i] !== " " ||
+                                                orderArray[i] !== ""
+                                            ) {
+                                                console.log(orderArray[i])
                                                 orderArray2.push(
                                                     `${i}. ${orderArray[i]}`
                                                 )
@@ -225,7 +229,16 @@ const Layout = ({ children }: LayoutProps) => {
 
                                         return (window.location.href =
                                             "https://api.whatsapp.com/send?phone=12143042304&text=" +
-                                            "Hello, I would like to place an order" +
+                                            "Hello, I would like to get a quote for these items: " +
+                                            "%0A" +
+                                            "Items: " +
+                                            "%0A" +
+                                            orderString2
+                                                .replace(
+                                                    "Your Selections:,",
+                                                    ""
+                                                )
+                                                .replace(/,/g, "%0A") +
                                             "%0A" +
                                             "Name: " +
                                             name +
@@ -235,20 +248,11 @@ const Layout = ({ children }: LayoutProps) => {
                                             "%0A" +
                                             "Date: " +
                                             date +
-                                            "%0A" +
-                                            "%0A" +
-                                            "Items: " +
-                                            "%0A" +
-                                            orderString2
-                                                .replace(
-                                                    "Your Selections:,",
-                                                    ""
-                                                )
-                                                .replace(/,/g, "%0A"))
+                                            "%0A")
                                     }}
                                     leftIcon={<FaWhatsapp />}
                                 >
-                                    Place Order
+                                    Open WhatsApp
                                 </Button>
                             </HStack>
                         </ModalFooter>
@@ -268,6 +272,21 @@ const Layout = ({ children }: LayoutProps) => {
                                 if (router.pathname !== "/catering") {
                                     router.push("/catering?order=true")
                                 }
+                                var orderArray = order.split(", ")
+                                var orderArray2 = []
+                                for (var i = 1; i < orderArray.length; i++) {
+                                    if (
+                                        orderArray[i] !== " " ||
+                                        orderArray[i] !== "" ||
+                                         orderArray[i] !== ","
+                                    ) {
+                                        console.log(orderArray[i])
+                                        orderArray2.push(
+                                            `${i}. ${orderArray[i]}`
+                                        )
+                                    }
+                                }
+                                console.log(order)
                             }}
                         >
                             Order
