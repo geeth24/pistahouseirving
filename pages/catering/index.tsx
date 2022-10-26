@@ -9,7 +9,6 @@ import {
     DrawerHeader,
     DrawerOverlay,
     Flex,
-    SlideFade,
     Text,
     useColorModeValue,
     useDisclosure,
