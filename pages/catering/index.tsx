@@ -171,7 +171,7 @@ const Home = () => {
 
     if (order === "true") {
         console.log("order is true")
-        animateScroll.scrollTo(1100, { duration: 1000 })
+        animateScroll.scrollTo(900, { duration: 1000 })
     }
 
     return (

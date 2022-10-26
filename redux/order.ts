@@ -9,7 +9,7 @@ interface OrderState {
 
 // Define the initial state using that type
 const initialState: OrderState = {
-    order: "Your Selections:",
+    order: "Your Selections:, ",
 }
 
 export const orderSlice = createSlice({
@@ -18,10 +18,12 @@ export const orderSlice = createSlice({
     initialState,
     reducers: {
         addToOrder: (state, action: PayloadAction<string>) => {
-            state.order = state.order + ", " + "\n" + action.payload
+            state.order = state.order + "\n" + action.payload
+            console.log(state.order)
         },
         removeFromOrder: (state, action: PayloadAction<string>) => {
             state.order = state.order.replace(action.payload, "")
+            console.log(state.order)
         },
 
         clearOrder: (state) => {

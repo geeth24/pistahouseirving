@@ -16,8 +16,6 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
     const [isAdded, setIsAdded] = React.useState(false)
     const toast = useToast()
 
-    
-
     return (
         <Box
             w={["xs", "sm", "md"]}
@@ -43,8 +41,9 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
             // transition="all 0.2s ease-in-out"
             onClick={() => {
                 //if the order string has the title, remove it from the order
-                if (order.includes(title)) {
+                if (order.includes(title) && title !== "") {
                     dispatch(removeFromOrder(title + ", "))
+
                     setIsAdded(false)
                     toast({
                         title: "Removed from Order",
@@ -56,8 +55,9 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
 
                         size: "sm",
                     })
-                } else {
-                    dispatch(addToOrder(title))
+                } else if (title !== "") {
+                    dispatch(addToOrder(title + ", "))
+
                     setIsAdded(true)
                     toast({
                         title: "Added to Order",

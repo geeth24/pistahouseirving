@@ -26,7 +26,7 @@ import {
     VStack,
     HStack,
 } from "@chakra-ui/react"
-import { FaWhatsapp } from "react-icons/fa"
+import { FaWhatsapp, FaTimes } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { removeFromOrder, addToOrder } from "../redux/order"
 import { useRouter } from "next/router"
@@ -76,7 +76,11 @@ const Layout = ({ children }: LayoutProps) => {
 
     //
     item = order.split(", ").map((title: any) => {
-        if (order.includes(title) && title !== "") {
+        if (
+            order.includes(title) &&
+            title !== "" &&
+            title !== "Your Selections:"
+        ) {
             return (
                 <MenuItem
                     key={title}
@@ -85,22 +89,13 @@ const Layout = ({ children }: LayoutProps) => {
                             order.includes(title) &&
                             title !== "Your Selections:"
                         ) {
-                            dispatch(removeFromOrder(title))
+                            console.log("title", title)
+                            dispatch(removeFromOrder(title + ", "))
                             setIsAdded(false)
                             toast({
                                 title: "Removed from Order",
                                 description: `${title} has been removed from your order`,
                                 status: "error",
-                                duration: 3000,
-                                isClosable: true,
-                            })
-                        } else if (title !== "Your Selections:") {
-                            dispatch(addToOrder(title))
-                            setIsAdded(true)
-                            toast({
-                                title: "Added to Order",
-                                description: `${title} has been added to your order`,
-                                status: "success",
                                 duration: 3000,
                                 isClosable: true,
                             })
@@ -210,8 +205,9 @@ const Layout = ({ children }: LayoutProps) => {
                                             i++
                                         ) {
                                             if (
-                                                orderArray[i] !== " " ||
-                                                orderArray[i] !== ""
+                                                orderArray[i] !== " " &&
+                                                orderArray[i] !== "" &&
+                                                orderArray[i] !== "\n"
                                             ) {
                                                 console.log(orderArray[i])
                                                 orderArray2.push(
@@ -227,6 +223,30 @@ const Layout = ({ children }: LayoutProps) => {
                                                 letter.toUpperCase()
                                             )
 
+                                        console.log(orderString2)
+                                        console.log(
+                                            "https://api.whatsapp.com/send?phone=12143042304&text=" +
+                                                "Hello, I would like to get a quote for these items: " +
+                                                "%0A" +
+                                                "Items: " +
+                                                "%0A" +
+                                                orderString2
+                                                    .replace(
+                                                        "Your Selections:,",
+                                                        ""
+                                                    )
+                                                    .replace(/,/g, "%0A") +
+                                                "%0A" +
+                                                "Name: " +
+                                                name +
+                                                "%0A" +
+                                                "Party Size: " +
+                                                partySize +
+                                                "%0A" +
+                                                "Date: " +
+                                                date +
+                                                "%0A"
+                                        )
                                         return (window.location.href =
                                             "https://api.whatsapp.com/send?phone=12143042304&text=" +
                                             "Hello, I would like to get a quote for these items: " +
@@ -277,6 +297,10 @@ const Layout = ({ children }: LayoutProps) => {
                             Get a Quote
                         </MenuButton>
                         <MenuList>
+                            <MenuItem>
+                                <Text>Your Selections:</Text>
+                            </MenuItem>
+
                             {item}
                             <MenuItem
                                 as={Button}
