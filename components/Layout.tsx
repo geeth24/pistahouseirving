@@ -26,9 +26,9 @@ import {
     VStack,
     HStack,
 } from "@chakra-ui/react"
-import { FaWhatsapp, FaTimes } from "react-icons/fa"
+import { FaWhatsapp } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
-import { removeFromOrder, addToOrder } from "../redux/order"
+import { removeFromOrder } from "../redux/order"
 import { useRouter } from "next/router"
 
 type LayoutProps = {
