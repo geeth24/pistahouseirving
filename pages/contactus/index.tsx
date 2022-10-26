@@ -1,6 +1,7 @@
 import { Flex, Heading, Link, VStack } from "@chakra-ui/react"
 import Head from "next/head"
 import React from "react"
+import { FaWhatsapp } from "react-icons/fa"
 
 export default function ContactUs() {
     return (
@@ -21,21 +22,20 @@ export default function ContactUs() {
                     >
                         To Contact Us
                     </Heading>
-                    <Heading
-                        fontSize={{
-                            base: "xl",
-                            md: "2xl",
-                        }}
-                        alignItems="center"
+                    <Link
+                        href="https://api.whatsapp.com/send?phone=12143042304"
+                        color="#047f69"
                     >
-                        Please text us at{" "}
-                        <Link
-                            href="https://api.whatsapp.com/send?phone=12143042304"
-                            color="#047f69"
+                        <FaWhatsapp size="15rem" /> <br />
+                        <Heading
+                            fontSize={{
+                                base: "2xl",
+                                md: "3xl",
+                            }}
                         >
-                            +1 (214) 304‑2304
-                        </Link>
-                    </Heading>
+                            Please Click Here
+                        </Heading>
+                    </Link>
                     <Heading
                         fontSize={{
                             base: "xl",

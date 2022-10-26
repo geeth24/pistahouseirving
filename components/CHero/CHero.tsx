@@ -10,15 +10,32 @@ import {
     IconProps,
 } from "@chakra-ui/react"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 export default function CHero() {
     return (
-        <Container maxW={"7xl"}>
+        <Flex
+            as="section"
+            w="full"
+            bgImage="url('/slides/1.jpg')"
+            bgPosition="center"
+            bgRepeat="no-repeat"
+            bgSize="cover"
+            bgAttachment="fixed"
+            boxShadow="inset 0 0 0 2000px rgba(0, 0, 0, 0.637)"
+            align="center"
+            justify="center"
+            py="12"
+            px="6"
+            pos="relative"
+            zIndex="0"
+        >
             <Stack
                 align={"center"}
                 spacing={{ base: 8, md: 10 }}
                 py={{ base: 20, md: 28 }}
                 direction={{ base: "column", md: "row" }}
+                maxW={"7xl"}
             >
                 <Stack flex={1} spacing={{ base: 5, md: 10 }}>
                     <Heading
@@ -26,6 +43,13 @@ export default function CHero() {
                         fontWeight={600}
                         fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}
                         fontFamily="Philosopher"
+                        as={motion.div}
+                        whileInView={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        initial={{ opacity: 0, y: 100 }}
+                        transition="0.5s linear"
                     >
                         <Text
                             as={"span"}
@@ -37,9 +61,11 @@ export default function CHero() {
                                 position: "absolute",
                                 bottom: 1,
                                 left: 0,
-                                bg: "#047f69",
+                                bg: "#beeca03e",
                                 zIndex: -1,
                             }}
+                            zIndex={1}
+                            color="#beeca0"
                         >
                             Authentic Hyderabadi
                         </Text>
@@ -48,7 +74,18 @@ export default function CHero() {
                             Food and Service
                         </Text>
                     </Heading>
-                    <Text color={"gray.500"}>
+                    <Text
+                        color={"gray.50"}
+                        fontFamily="Philosopher"
+                        fontSize={{ base: "md", lg: "lg" }}
+                        as={motion.div}
+                        whileInView={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        initial={{ opacity: 0, y: 100 }}
+                        transition="0.7s linear"
+                    >
                         We are dedicated to providing you with the finest Indian
                         food and service available. <br />
                         Browse our{" "}
@@ -71,6 +108,13 @@ export default function CHero() {
                     <Stack
                         spacing={{ base: 4, sm: 6 }}
                         direction={{ base: "column", sm: "row" }}
+                        as={motion.div}
+                        whileInView={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        initial={{ opacity: 0, y: 100 }}
+                        transition="0.9s linear"
                     >
                         <Link href="/contactus">
                             <Button
@@ -99,9 +143,16 @@ export default function CHero() {
                         position={"relative"}
                         height={"fit-content"}
                         rounded={"2xl"}
-                        boxShadow={"2xl"}
+                        boxShadow="2xl"
                         width={"full"}
                         overflow={"hidden"}
+                        as={motion.div}
+                        whileInView={{
+                            opacity: 1,
+                            y: 0,
+                        }}
+                        initial={{ opacity: 0, y: 100 }}
+                        transition="1.1s linear"
                     >
                         <video
                             // @ts-ignore
@@ -120,7 +171,7 @@ export default function CHero() {
                     </Box>
                 </Flex>
             </Stack>
-        </Container>
+        </Flex>
     )
 }
 

@@ -6,10 +6,11 @@ import {
     Image,
     Text,
     VStack,
+    keyframes,
 } from "@chakra-ui/react"
 import React, { useEffect } from "react"
 
-import { motion, useViewportScroll, Variants } from "framer-motion"
+import { motion, useViewportScroll } from "framer-motion"
 import CHero from "../components/CHero/CHero"
 import { FaAngleDown } from "react-icons/fa"
 import Head from "next/head"
@@ -28,27 +29,6 @@ const Catering = () => {
             console.log(window.innerWidth)
         }
     }, [windowWidth])
-
-    const cardVariants: Variants = {
-        offscreen: {
-            opacity: 0,
-            scale: "0.5",
-
-            transition: {
-                duration: "0.5",
-                ease: "easeInOut",
-            },
-        },
-        onscreen: {
-            opacity: 1,
-            scale: 2.2,
-
-            transition: {
-                duration: "0.5",
-                ease: "easeInOut",
-            },
-        },
-    }
     var svg = <svg></svg>
     if (windowWidth < 768) {
         svg = (
@@ -90,6 +70,8 @@ const Catering = () => {
         )
     }
 
+    //spring
+
     return (
         <>
             {" "}
@@ -102,22 +84,12 @@ const Catering = () => {
                 <VStack
                     as={motion.div}
                     //spring animations
-                    initial={{
-                        opacity: 0,
-
-                        scale: "0.5",
-                    }}
-                    animate={{
+                    whileInView={{
                         opacity: 1,
-
-                        scale: 1,
-                        transition: {
-                            type: "spring",
-                            bounce: 0.4,
-                            duration: 0.8,
-                            repeat: 5,
-                        },
+                        y: 0,
                     }}
+                    initial={{ opacity: 0, y: 50 }}
+                    transition="0.7s linear"
                 >
                     <Text
                         fontSize="2xl"
@@ -154,127 +126,129 @@ const Catering = () => {
                             colStart={3}
                             colEnd={3}
                             rowStart={1}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/sweet1.png"
                                 alt="Gulab Jamun"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
+
+                                // variants={cardVariants}
                             />
                         </GridItem>
                         <GridItem
                             colStart={3}
                             rowStart={3}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/sweet2.png"
                                 alt="Double Ka Meetha"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                         <GridItem
                             rowStart={2}
                             colStart={1}
                             colEnd={1}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/IraniSamosa.png"
                                 alt="samosa"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                         <GridItem
                             rowStart={5}
                             colStart={1}
                             colEnd={1}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/biryani.png"
                                 alt="biryani"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                         <GridItem
                             rowStart={5}
                             colStart={3}
                             colEnd={3}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/haleem.png"
                                 alt="haleem"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                         <GridItem
                             rowStart={7}
                             colStart={1}
                             colEnd={1}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/ckebabs.png"
                                 alt="chicken kebabs"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                         <GridItem
                             rowStart={8}
                             colStart={3}
                             colEnd={3}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/pkebabs.png"
                                 alt="paneer kebabs"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                         <GridItem
                             rowStart={10}
                             colStart={2}
                             colEnd={2}
-                            as={motion.div}
-                            initial="offscreen"
-                            whileInView="onscreen"
-                            viewport={{ once: true, amount: 0.8 }}
+
+                            // viewport={{ once: true, amount: 0.8 }}
                         >
                             <Image
                                 src="/sign.png"
                                 alt="sign of pista house texas"
                                 as={motion.img}
-                                variants={cardVariants}
+                                initial={{ opacity: 0, scale: 0.5 }}
+                                whileInView={{ opacity: 1, scale: 2.2 }}
+                                transition="0.8s linear"
                             />
                         </GridItem>
                     </Grid>

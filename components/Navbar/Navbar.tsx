@@ -27,10 +27,26 @@ type NavbarProps = {
 const Navbar = ({ toggle }: NavbarProps) => {
     const { colorMode } = useColorMode()
 
+    //if scroll is at the top of the page, the navbar will be transparent
+    //if scroll is not at the top of the page, the navbar will be solid
+    const [scrollNav, setScrollNav] = React.useState(false)
+
+    const changeNav = () => {
+        if (window.scrollY >= 80) {
+            setScrollNav(true)
+        } else {
+            setScrollNav(false)
+        }
+    }
+
+    React.useEffect(() => {
+        window.addEventListener("scroll", changeNav)
+    }, [])
+
     return (
         <>
             <IconContext.Provider value={{ color: "#6ba644" }}>
-                <Nav theme={colorMode}>
+                <Nav theme={colorMode} scrollNav={scrollNav}>
                     <Link href="/">
                         <NavLogo>
                             <NavLogoImage

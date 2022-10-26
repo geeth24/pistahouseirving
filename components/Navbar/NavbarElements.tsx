@@ -1,12 +1,14 @@
 import Image from "next/image"
 import styled from "styled-components"
 
-export const Nav = styled.nav`
-    background: ${({ theme }) =>
-        theme === "light" ? "#ffffffc4" : "#1a202cc4"};
-
-    backdrop-filter: saturate(180%) blur(20px);
-    height: 80px;
+export const Nav = styled.nav<{ scrollNav: boolean }>`
+    background: ${({ theme, scrollNav }) =>
+        theme === "light" && scrollNav === true ? "#fffffcc4" : "transparent"};
+    background: ${({ theme, scrollNav }) =>
+        theme === "dark" && scrollNav === true ? "#1a202cc4" : "transparent"};
+    backdrop-filter: ${({ scrollNav }) =>
+        scrollNav === true ? "saturate(180%) blur(20px)" : "none"};
+    /* height: 80px; */
     margin-top: -80px;
     display: flex;
     justify-content: center;
@@ -41,6 +43,7 @@ export const NavLogo = styled.div`
     margin-left: 24px;
     font-weight: bold;
     text-decoration: none;
+    filter: drop-shadow(0 0 0.5rem green);
 `
 
 export const NavLogoImage = styled(Image)`
@@ -72,7 +75,6 @@ export const NavMenu = styled.ul`
     text-align: center;
     margin-right: -22px;
     padding: 0 2rem;
-    
 
     @media screen and (max-width: 900px) {
         display: none;

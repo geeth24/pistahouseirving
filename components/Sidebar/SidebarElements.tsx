@@ -18,7 +18,7 @@ export const SidebarContainer = styled.aside<SidebarProps>`
     align-items: center;
     top: 0;
     left: 0;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.5s ease-in-out;
     opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
     top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
 `
@@ -46,6 +46,7 @@ export const SideMenu = styled.ul`
     grid-template-columns: 1fr;
     grid-template-rows: repeat(6, 80px);
     text-align: center;
+    gap: 1rem;
 
     @media screen and (max-width: 768px) {
         grid-template-rows: repeat(6, 60px);
@@ -56,7 +57,7 @@ export const SidebarLink = styled.a`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     text-decoration: none;
     list-style: none;
     transition: 0.2s ease-in-out;

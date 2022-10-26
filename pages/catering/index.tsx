@@ -35,6 +35,7 @@ import {
 import CaterCards from "../../components/Menu Cards/CaterCards"
 import { animateScroll, Link } from "react-scroll"
 import { useRouter } from "next/router"
+import { motion } from "framer-motion"
 export const RenderDiv = styled.div``
 
 const renderPhoto: RenderPhoto = ({
@@ -42,27 +43,31 @@ const renderPhoto: RenderPhoto = ({
     layoutOptions,
     imageProps: { alt, style, ...restImageProps },
 }) => (
-    <SlideFade in={true}>
-        <RenderDiv className="render-div">
-            <Text
-                fontSize={{ base: "xs", md: "sm" }}
-                fontWeight="bold"
-                color="#047f69"
-            >
-                {alt}
-            </Text>
-            <img
-                alt={alt}
-                style={{
-                    ...style,
-                    width: "100%",
-                    padding: 0,
-                    transition: "all 1s",
-                }}
-                {...restImageProps}
-            />
-        </RenderDiv>
-    </SlideFade>
+    <RenderDiv
+        className="render-div"
+        as={motion.div}
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: "1" }}
+    >
+        <Text
+            fontSize={{ base: "xs", md: "sm" }}
+            fontWeight="bold"
+            color="#047f69"
+        >
+            {alt}
+        </Text>
+        <img
+            alt={alt}
+            style={{
+                ...style,
+                width: "100%",
+                padding: 0,
+                transition: "all 1s",
+            }}
+            {...restImageProps}
+        />
+    </RenderDiv>
 )
 const images = [
     {
@@ -162,7 +167,6 @@ const Home = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
     const router = useRouter()
-   
 
     const { order } = router.query
 
@@ -170,7 +174,6 @@ const Home = () => {
         console.log("order is true")
         animateScroll.scrollTo(1100, { duration: 1000 })
     }
-         
 
     return (
         <>
@@ -446,6 +449,11 @@ const Home = () => {
 
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="veggieappetizers"
@@ -473,6 +481,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="meatappetizers"
@@ -500,6 +513,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="indiansandwiches"
@@ -527,6 +545,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="veggiekebabs"
@@ -554,6 +577,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="meatkebabs"
@@ -581,6 +609,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="veggieentrees"
@@ -608,6 +641,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="meatentrees"
@@ -635,6 +673,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="chat"
@@ -662,6 +705,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="rice"
@@ -690,6 +738,11 @@ const Home = () => {
 
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="desserts"
@@ -717,6 +770,11 @@ const Home = () => {
                     </Grid>
                     <Text
                         fontSize="2xl"
+                        as={motion.div}
+                        initial={{ y: 10, opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        whileHover={{ scale: 1.05 }}
+                        transition="0.5s ease-in-out"
                         fontWeight="bold"
                         color={useColorModeValue("#6ba644", "#beeca0")}
                         id="drinks"

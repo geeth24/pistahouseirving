@@ -2,7 +2,7 @@ import React from "react"
 import { Box, useColorModeValue, Text, useToast } from "@chakra-ui/react"
 import { useDispatch, useSelector } from "react-redux"
 import { addToOrder, removeFromOrder } from "../../redux/order"
-
+import { motion } from "framer-motion"
 type CaterCardsProps = {
     title: string
     description: string
@@ -15,6 +15,8 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
 
     const [isAdded, setIsAdded] = React.useState(false)
     const toast = useToast()
+
+    
 
     return (
         <Box
@@ -34,15 +36,15 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
                 cursor: "pointer",
                 opacity: 0.8,
                 transform: "scale(1.05)",
-                transition: "all 0.2s ease-in-out",
+                transition: "0.5 linear",
                 backgroundColor: useColorModeValue("#047f69", "#beeca0"),
                 color: useColorModeValue("#beeca0", "#047f69"),
             }}
-            transition="all 0.2s ease-in-out"
+            // transition="all 0.2s ease-in-out"
             onClick={() => {
                 //if the order string has the title, remove it from the order
                 if (order.includes(title)) {
-                    dispatch(removeFromOrder(title+", "))
+                    dispatch(removeFromOrder(title + ", "))
                     setIsAdded(false)
                     toast({
                         title: "Removed from Order",
@@ -69,6 +71,11 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
                     })
                 }
             }}
+            as={motion.div}
+            initial={{ y: 10, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            whileHover={{ scale: 1.05 }}
+            transition="0.5s linear"
         >
             <Box px={4} py={2}>
                 <Text fontWeight="700" fontSize="xl" textTransform="uppercase">
