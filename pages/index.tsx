@@ -10,10 +10,14 @@ import {
 import React, { useEffect } from "react"
 
 import { motion, useViewportScroll } from "framer-motion"
-import CHero from "../components/CHero/CHero"
+// import CHero from "../components/CHero/CHero"
+
 import { FaAngleDown } from "react-icons/fa"
 import Head from "next/head"
-
+import dynamic from "next/dynamic"
+const CHero = dynamic(() => import("../components/CHero/CHero"), {
+    suspense: true,
+})
 const Catering = () => {
     var { scrollYProgress } = useViewportScroll()
     const [windowWidth, setWindowWidth] = React.useState(0)
@@ -79,7 +83,7 @@ const Catering = () => {
                 <meta property="og:title" content="Pista House Texas" />
             </Head>
             <CHero />
-            <Flex justify={"center"} align={"center"}>
+            {/* <Flex justify={"center"} align={"center"}>
                 <VStack
                     as={motion.div}
                     //spring animations
@@ -256,7 +260,7 @@ const Catering = () => {
                         <Box>{svg}</Box>
                     </Flex>
                 </Flex>
-            </div>
+            </div> */}
         </>
     )
 }
