@@ -1,18 +1,18 @@
-import {
-    Box,
-    Flex,
-    Grid,
-    GridItem,
-    Image,
-    Text,
-    VStack,
-} from "@chakra-ui/react"
+// import {
+//     Box,
+//     Flex,
+//     Grid,
+//     GridItem,
+//     Image,
+//     Text,
+//     VStack,
+// } from "@chakra-ui/react"
 import React, { useEffect } from "react"
 
 import { motion, useViewportScroll } from "framer-motion"
 // import CHero from "../components/CHero/CHero"
 
-import { FaAngleDown } from "react-icons/fa"
+// import { FaAngleDown } from "react-icons/fa"
 import Head from "next/head"
 import dynamic from "next/dynamic"
 const CHero = dynamic(() => import("../components/CHero/CHero"), {
