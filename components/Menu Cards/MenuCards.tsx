@@ -8,12 +8,11 @@ type MenuCardsProps = {
 }
 
 const MenuCards = ({ title, description }: MenuCardsProps) => {
-
     return (
         <Box
             w={["xs", "sm", "md"]}
             bg={useColorModeValue("gray.50", "#2D3748")}
-            color={useColorModeValue("#047f69", "#beeca0")}
+            color={useColorModeValue("#06bd9c", "#beeca0")}
             shadow="lg"
             rounded="lg"
         >
@@ -21,7 +20,7 @@ const MenuCards = ({ title, description }: MenuCardsProps) => {
                 <Text fontWeight="700" fontSize="xl" textTransform="uppercase">
                     {title}
                 </Text>
-                <Text mt={1} fontSize="md" color="#047f69">
+                <Text mt={1} fontSize="md" color="#06bd9c">
                     {description}
                 </Text>
                 {/* <Badge colorScheme="green" fontSize="sm" rounded={50}>

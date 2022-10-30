@@ -69,8 +69,8 @@ export default function CHero() {
                             Authentic Hyderabadi
                         </Text>
                         <br />
-                        <Text as={"span"} color={"#047f69"}>
-                            Food and Service
+                        <Text as={"span"} color={"#06bd9c"}>
+                            Food and Catering
                         </Text>
                     </Heading>
                     <Text
@@ -86,12 +86,12 @@ export default function CHero() {
                         transition="0.7s linear"
                     >
                         We are dedicated to providing you with the finest Indian
-                        food and service available. <br />
+                        food and catering. <br />
                         Browse our{" "}
                         <Link href="/menu">
                             <Text
                                 as={"span"}
-                                color="#047f69"
+                                color="#06bd9c"
                                 fontWeight="bold"
                                 textDecoration="underline"
                                 cursor="pointer"
@@ -99,10 +99,9 @@ export default function CHero() {
                                 menu
                             </Text>
                         </Link>{" "}
-                        and call to order in advance. If you don&apos;t mind a
-                        short wait, just pop in and order in person. You can
-                        also order online for collection or home delivery at
-                        Just Eat.
+                        and call to order in advance. <br />
+                        We are specialized in Live Kebabs, Chat, Dosa and all of
+                        your favorite Indian dishes.
                     </Text>
                     <Stack
                         spacing={{ base: 4, sm: 6 }}
@@ -121,8 +120,8 @@ export default function CHero() {
                                 variant="ghost"
                                 mt={5}
                                 color="white"
-                                bg="#047f69"
-                                _hover={{ color: "#047f69", bg: "#beeca0" }}
+                                bg="#06bd9c"
+                                _hover={{ color: "#06bd9c", bg: "#beeca0" }}
                                 cursor="pointer"
                             >
                                 Contact Us

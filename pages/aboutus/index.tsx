@@ -43,7 +43,7 @@ const Aboutus = () => {
                     zIndex={3}
                 >
                     <chakra.span
-                        color="#047f69"
+                        color="#06bd9c"
                         _dark={{
                             color: "gray.300",
                         }}
@@ -61,7 +61,7 @@ const Aboutus = () => {
                             lg: "5xl",
                         }}
                         fontWeight="bold"
-                        color="#047f69"
+                        color="#06bd9c"
                         _dark={{
                             color: "gray.300",
                         }}
@@ -77,9 +77,9 @@ const Aboutus = () => {
                         }}
                         mb={4}
                         fontSize="lg"
-                        color="#047f69"
+                        color="#06bd9c"
                         _dark={{
-                            color: "#047f69",
+                            color: "#06bd9c",
                         }}
                         letterSpacing="wider"
                     >
@@ -114,14 +114,14 @@ const Aboutus = () => {
                             _light={{
                                 color: "white",
                             }}
-                            bg="#047f69"
+                            bg="#06bd9c"
                             _dark={{
-                                bg: "#047f69",
+                                bg: "#06bd9c",
                             }}
                             _hover={{
-                                bg: "#047f69",
+                                bg: "#06bd9c",
                                 _dark: {
-                                    bg: "#047f69",
+                                    bg: "#06bd9c",
                                 },
                             }}
                             href="/contactus"

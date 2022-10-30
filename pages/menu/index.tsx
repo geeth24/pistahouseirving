@@ -46,7 +46,6 @@ const Grid = styled.div`
     }
 `
 
-
 // import { GetStaticProps } from "next"
 // import { collection, getDocs } from "firebase/firestore"
 // import { db } from "../../components/Firebase"
@@ -123,10 +122,7 @@ const Menu: NextPage = () => {
                 {" "}
                 <Head>
                     <title>Menu | Pista House Texas</title>
-                    <meta
-                        property="og:title"
-                        content="Menu"
-                    />
+                    <meta property="og:title" content="Menu" />
                 </Head>
                 <div
                     id="menu"
@@ -147,7 +143,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="4xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                             >
                                 Our Menu
                             </Text>
@@ -160,7 +156,7 @@ const Menu: NextPage = () => {
                                 zIndex="10"
                                 variant="ghost"
                                 color="#ffffff"
-                                bg="#047f69"
+                                bg="#06bd9c"
                             >
                                 Open Menu
                             </Button>
@@ -189,7 +185,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -207,7 +203,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -225,7 +221,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -243,7 +239,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -261,7 +257,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -279,7 +275,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -297,7 +293,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -315,7 +311,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -333,7 +329,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -351,7 +347,7 @@ const Menu: NextPage = () => {
                                                 style={{
                                                     textDecoration: "none",
                                                     color: useColorModeValue(
-                                                        "#6ba644",
+                                                        "#10c60f",
                                                         "#beeca0"
                                                     ),
                                                     cursor: "pointer",
@@ -378,7 +374,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="veggieappetizers"
                             >
                                 Veggie Appetizers
@@ -405,7 +401,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="meatappetizers"
                             >
                                 Meat Appetizers
@@ -432,7 +428,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="veggiekebabs"
                             >
                                 Veggie Kebabs
@@ -459,7 +455,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="meatkebabs"
                             >
                                 Meat Kebabs
@@ -486,7 +482,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="veggieentrees"
                             >
                                 Veggie Entrees
@@ -513,7 +509,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="meatentrees"
                             >
                                 Meat Entrees
@@ -540,7 +536,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="naanbread"
                             >
                                 Naan Bread
@@ -567,7 +563,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="rice"
                             >
                                 Rice
@@ -594,7 +590,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="drinks"
                             >
                                 Drinks
@@ -621,7 +617,7 @@ const Menu: NextPage = () => {
                             <Text
                                 fontSize="xl"
                                 fontWeight="bold"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                                 id="desserts"
                             >
                                 Desserts

@@ -53,7 +53,7 @@ const Layout = ({ children }: LayoutProps) => {
     }
     const renderLoader = () => (
         <Flex justifyContent="center" alignItems="center" height="100vh">
-            <Spinner size="xl" thickness="4px" speed="0.65s" color="#047f69" />
+            <Spinner size="xl" thickness="4px" speed="0.65s" color="#06bd9c" />
         </Flex>
     )
     const { order } = useSelector((state: any) => state.order)
@@ -306,20 +306,20 @@ const Layout = ({ children }: LayoutProps) => {
                                 as={Button}
                                 variant="solid"
                                 size="sm"
-                                color={useColorModeValue("#047f69", "#beeca0")}
-                                bg={useColorModeValue("#beeca0", "#047f69")}
+                                color={useColorModeValue("#06bd9c", "#beeca0")}
+                                bg={useColorModeValue("#beeca0", "#06bd9c")}
                                 _hover={{
-                                    bg: useColorModeValue("#047f69", "#beeca0"),
+                                    bg: useColorModeValue("#06bd9c", "#beeca0"),
                                     color: useColorModeValue(
                                         "#beeca0",
-                                        "#047f69"
+                                        "#06bd9c"
                                     ),
                                 }}
                                 _active={{
-                                    bg: useColorModeValue("#047f69", "#beeca0"),
+                                    bg: useColorModeValue("#06bd9c", "#beeca0"),
                                     color: useColorModeValue(
                                         "#beeca0",
-                                        "#047f69"
+                                        "#06bd9c"
                                     ),
                                 }}
                                 onClick={onModelOpen}

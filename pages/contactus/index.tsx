@@ -24,7 +24,7 @@ export default function ContactUs() {
                     </Heading>
                     <Link
                         href="https://api.whatsapp.com/send?phone=12143042304"
-                        color="#047f69"
+                        color="#06bd9c"
                     >
                         <FaWhatsapp size="15rem" /> <br />
                         <Heading
@@ -45,7 +45,7 @@ export default function ContactUs() {
                         Or walk in to our restaurant at: <br />
                         <Link
                             href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving"
-                            color="#047f69"
+                            color="#06bd9c"
                             isExternal
                         >
                             901 W Royal Ln, Irving, TX 75039.

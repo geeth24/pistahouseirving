@@ -12,11 +12,7 @@ import {
     VStack,
 } from "@chakra-ui/react"
 import { FaFacebook, FaInstagram } from "react-icons/fa"
-import {
-    SiChakraui,
-    SiNextdotjs,
-    SiStyledcomponents
-} from "react-icons/si"
+import { SiChakraui, SiNextdotjs, SiStyledcomponents } from "react-icons/si"
 
 import { ReactNode } from "react"
 import Image from "next/image"
@@ -76,7 +72,7 @@ export default function SmallCentered() {
                 spacing={4}
                 justify={"center"}
                 align={"center"}
-                color="#6ba644"
+                color="#10c60f"
                 bg={useColorModeValue("white", "rgb(26 32 44)")}
                 fontSize={"xs"}
             >
@@ -96,12 +92,12 @@ export default function SmallCentered() {
                     direction="row"
                     align={{ base: "center", md: "center" }}
                 >
-                    <Link href="tel:+1 (972) 635-5657" color="#047f69">
+                    <Link href="tel:+1 (972) 635-5657" color="#06bd9c">
                         +1 (972) 635-5657
                     </Link>
                     <Link
                         href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving"
-                        color="#047f69"
+                        color="#06bd9c"
                         isExternal
                     >
                         901 W Royal Ln, Irving, TX 75039.
@@ -112,7 +108,7 @@ export default function SmallCentered() {
             <Box
                 borderTopWidth={1}
                 borderStyle={"solid"}
-                borderColor="#6ba644"
+                borderColor="#10c60f"
                 bg={useColorModeValue("white", "rgb(26 32 44)")}
             >
                 <Container
@@ -123,7 +119,7 @@ export default function SmallCentered() {
                     spacing={4}
                     justify={{ base: "center", md: "space-between" }}
                     align={{ base: "center", md: "center" }}
-                    color="#6ba644"
+                    color="#10c60f"
                 >
                     <VStack spacing={4}>
                         <HStack>
@@ -134,7 +130,10 @@ export default function SmallCentered() {
                             <Link isExternal href="https://chakra-ui.com">
                                 <SiChakraui />
                             </Link>
-                            <Link isExternal href="https://styled-components.com">
+                            <Link
+                                isExternal
+                                href="https://styled-components.com"
+                            >
                                 <SiStyledcomponents />
                             </Link>
                             <Text>by</Text>

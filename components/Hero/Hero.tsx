@@ -76,8 +76,8 @@ const Hero = () => {
                             variant="ghost"
                             mt={5}
                             color="white"
-                            bg="#047f69"
-                            _hover={{ color: "#047f69", bg: "#beeca0" }}
+                            bg="#06bd9c"
+                            _hover={{ color: "#06bd9c", bg: "#beeca0" }}
                             cursor="pointer"
                         >
                             Contact Us

@@ -56,7 +56,7 @@ export const MobileIcon = styled.div`
     display: none;
 
     @media screen and (max-width: 900px) {
-        color: #6ba644;
+        color: #10c60f;
         display: block;
         position: absolute;
         top: 2;
@@ -88,7 +88,7 @@ export const NavItem = styled.li`
 `
 
 export const NavLinks = styled.a`
-    color: #6ba644;
+    color: #10c60f;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -98,10 +98,10 @@ export const NavLinks = styled.a`
     position: relative;
 
     &.active {
-        color: #047f69;
+        color: #06bd9c;
     }
     &:hover {
-        color: #047f69;
+        color: #06bd9c;
     }
     &::after {
         content: "";
@@ -110,7 +110,7 @@ export const NavLinks = styled.a`
         bottom: 0;
         width: 100%;
         height: 2px;
-        background: #047f69;
+        background: #06bd9c;
         transform: scaleX(0);
         transform-origin: right;
         transition: transform 0.5s;
@@ -131,7 +131,7 @@ export const NavBtn = styled.nav`
     }
 `
 export const NavBtnLinkN = styled.div`
-    background-color: #047f69;
+    background-color: #06bd9c;
     white-space: nowrap;
     padding: 10px 22px;
     color: #fff;
@@ -145,7 +145,7 @@ export const NavBtnLinkN = styled.div`
     &:hover {
         transition: all 0.2s ease-in-out;
         background-color: #beeca0;
-        color: #047f69;
+        color: #06bd9c;
     }
     @media screen and (max-width: 900px) {
         display: none;
@@ -153,7 +153,7 @@ export const NavBtnLinkN = styled.div`
 `
 
 export const NavBtnLink = styled.div`
-    background-color: #047f69;
+    background-color: #06bd9c;
     white-space: nowrap;
     padding: 10px 22px;
     color: #fff;
@@ -167,6 +167,6 @@ export const NavBtnLink = styled.div`
     &:hover {
         transition: all 0.2s ease-in-out;
         background-color: #beeca0;
-        color: #047f69;
+        color: #06bd9c;
     }
 `

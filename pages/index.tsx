@@ -45,7 +45,7 @@ const Catering = () => {
             >
                 <motion.path
                     d="M146.5 1C146.5 1 473.875 368.57 146.5 800C-180.875 1231.43 146.5 1599 146.5 1599C146.5 1599 473.875 1966.57 146.5 2398C-180.875 2829.43 146.5 3197 146.5 3197"
-                    stroke="#6ba644"
+                    stroke="#10c60f"
                     strokeWidth="10"
                     style={{ pathLength: scrollYProgress }}
                     display="block"
@@ -64,7 +64,7 @@ const Catering = () => {
             >
                 <motion.path
                     d="M146.5 1C146.5 1 473.875 368.57 146.5 800C-180.875 1231.43 146.5 1599 146.5 1599C146.5 1599 473.875 1966.57 146.5 2398C-180.875 2829.43 146.5 3197 146.5 3197"
-                    stroke="#6ba644"
+                    stroke="#10c60f"
                     strokeWidth="10"
                     style={{ pathLength: scrollYProgress }}
                     display="block"
@@ -98,18 +98,18 @@ const Catering = () => {
                         fontSize="2xl"
                         fontWeight="bold"
                         mt={5}
-                        color="#047f69"
+                        color="#06bd9c"
                     >
                         SCROLL DOWN
                     </Text>
-                    <FaAngleDown color="#047f69" />
+                    <FaAngleDown color="#06bd9c" />
                 </VStack>
             </Flex>
             <div
                 style={{
                     overflow: "hidden",
                     // backgroundImage:
-                    //     "linear-gradient(to bottom right, #beeca0, #6ba644)",
+                    //     "linear-gradient(to bottom right, #beeca0, #10c60f)",
                 }}
             >
                 <Flex

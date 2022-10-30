@@ -45,15 +45,15 @@ const Navbar = ({ toggle }: NavbarProps) => {
 
     return (
         <>
-            <IconContext.Provider value={{ color: "#6ba644" }}>
+            <IconContext.Provider value={{ color: "#10c60f" }}>
                 <Nav theme={colorMode} scrollNav={scrollNav}>
                     <Link href="/">
                         <NavLogo>
                             <NavLogoImage
                                 src="/pistahouselogo.png"
                                 alt="logo"
-                                width="100px"
-                                height="40px"
+                                width="150px"
+                                height="60px"
                             />
                         </NavLogo>
                     </Link>
@@ -109,8 +109,8 @@ const Navbar = ({ toggle }: NavbarProps) => {
                             as="a"
                             variant="ghost"
                             color="white"
-                            bg="#047f69"
-                            _hover={{ color: "#047f69", bg: "#beeca0" }}
+                            bg="#06bd9c"
+                            _hover={{ color: "#06bd9c", bg: "#beeca0" }}
                             cursor="pointer"
                             sx={{
                                 "@media screen and (max-width: 900px)": {

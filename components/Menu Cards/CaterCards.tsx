@@ -20,12 +20,12 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
         <Box
             w={["xs", "sm", "md"]}
             bg={useColorModeValue(
-                isAdded ? "#047f69" : "gray.50",
+                isAdded ? "#06bd9c" : "gray.50",
                 isAdded ? "#beeca0" : "#2D3748"
             )}
             color={useColorModeValue(
-                isAdded ? "#beeca0" : "#047f69",
-                isAdded ? "#047f69" : "#beeca0"
+                isAdded ? "#beeca0" : "#06bd9c",
+                isAdded ? "#06bd9c" : "#beeca0"
             )}
             shadow="lg"
             rounded="lg"
@@ -35,8 +35,8 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
                 opacity: 0.8,
                 transform: "scale(1.05)",
                 transition: "0.5 linear",
-                backgroundColor: useColorModeValue("#047f69", "#beeca0"),
-                color: useColorModeValue("#beeca0", "#047f69"),
+                backgroundColor: useColorModeValue("#06bd9c", "#beeca0"),
+                color: useColorModeValue("#beeca0", "#06bd9c"),
             }}
             // transition="all 0.2s ease-in-out"
             onClick={() => {
@@ -81,7 +81,7 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
                 <Text fontWeight="700" fontSize="xl" textTransform="uppercase">
                     {title}
                 </Text>
-                <Text mt={1} fontSize="md" color="#047f69">
+                <Text mt={1} fontSize="md" color="#06bd9c">
                     {description}
                 </Text>
                 {/* <Badge colorScheme="green" fontSize="sm" rounded={50}>

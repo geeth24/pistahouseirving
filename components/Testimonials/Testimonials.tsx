@@ -141,7 +141,7 @@ export default function Testimonials() {
                     py={5}
                     fontSize={48}
                     fontWeight={"bold"}
-                    color={useColorModeValue("#6ba644", "#beeca0")}
+                    color={useColorModeValue("#10c60f", "#beeca0")}
                 >
                     People love us
                 </chakra.h1>

@@ -22,7 +22,7 @@ var options = {
             "https://pps.whatsapp.net/v/t61.24694-24/297194525_588901916069868_6363221106254855593_n.jpg?ccb=11-4&oh=01_AVxgCpcqUhD8ZoSyF0Y63ccT_jZCF1zBni1fb1H-iEQaOw&oe=633C7A16",
         welcomeText: "Hi there!\nTo start an order:\nPlease Click Start Chat",
         messageText: "",
-        backgroundColor: "#047f69",
+        backgroundColor: "#06bd9c",
         ctaText: "Start Chat",
         borderRadius: "25",
         autoShow: false,

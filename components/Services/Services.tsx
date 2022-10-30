@@ -34,12 +34,12 @@ const Services = () => {
                         fontSize={{ base: "5xl", sm: "6xl" }}
                         fontWeight="extrabold"
                         lineHeight="shorter"
-                        color={useColorModeValue("#6ba644", "#beeca0")}
+                        color={useColorModeValue("#10c60f", "#beeca0")}
                         mb={6}
                     >
                         <chakra.span
                             display="block"
-                            color={useColorModeValue("#6ba644", "#beeca0")}
+                            color={useColorModeValue("#10c60f", "#beeca0")}
                         >
                             Dine In / Take Out
                         </chakra.span>
@@ -93,12 +93,12 @@ const Services = () => {
                             fontSize={{ base: "5xl", sm: "6xl" }}
                             fontWeight="extrabold"
                             lineHeight="shorter"
-                            color={useColorModeValue("#6ba644", "#beeca0")}
+                            color={useColorModeValue("#10c60f", "#beeca0")}
                             mb={6}
                         >
                             <chakra.span
                                 display="block"
-                                color={useColorModeValue("#6ba644", "#beeca0")}
+                                color={useColorModeValue("#10c60f", "#beeca0")}
                             >
                                 Catering
                             </chakra.span>
@@ -115,8 +115,8 @@ const Services = () => {
                                     variant="ghost"
                                     mt={5}
                                     color="white"
-                                    bg="#047f69"
-                                    _hover={{ color: "#047f69", bg: "#beeca0" }}
+                                    bg="#06bd9c"
+                                    _hover={{ color: "#06bd9c", bg: "#beeca0" }}
                                     cursor="pointer"
                                 >
                                     Learn More
