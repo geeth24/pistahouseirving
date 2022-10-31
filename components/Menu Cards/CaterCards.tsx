@@ -75,7 +75,7 @@ const CaterCards = ({ title, description }: CaterCardsProps) => {
             initial={{ y: 10, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             whileHover={{ scale: 1.05 }}
-            transition="0.5s linear"
+            transition="0.2s linear"
         >
             <Box px={4} py={2}>
                 <Text fontWeight="700" fontSize="xl" textTransform="uppercase">
