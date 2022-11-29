@@ -1,5 +1,5 @@
 import { Flex, Heading, Link, VStack } from "@chakra-ui/react"
-import { getAnalytics, logEvent } from "firebase/analytics"
+import {  logEvent } from "firebase/analytics"
 import Head from "next/head"
 import React from "react"
 import { FaWhatsapp } from "react-icons/fa"

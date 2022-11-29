@@ -4,7 +4,6 @@ import {
     //     Grid,
     //     GridItem,
     //     Image,
-    Text,
     //     VStack,
 } from "@chakra-ui/react"
 import React, { useEffect } from "react"
