@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, Suspense } from "react"
 import ScrollToTop from "./ScrollToTop"
 import dynamic from "next/dynamic"
