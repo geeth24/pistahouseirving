@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, useEffect } from "react"
 import { useTransition, animated, config, useSpring } from "react-spring"
 
@@ -47,18 +48,26 @@ const Image = ({ url, duration, alt }: SlideProps) => {
 export const Slide = () => {
     const duration = 5000
     const [index, set] = useState(0)
-    const transitions = useTransition(slides[index], (item) => item.id, {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
-        config: config.molasses,
-    })
+    const transitions = useTransition(
+        slides[index],
+        (item: { id: any }) => item.id,
+        {
+            from: { opacity: 0 },
+            enter: { opacity: 1 },
+            leave: { opacity: 0 },
+            config: config.molasses,
+        }
+    )
     useEffect(
-        () => void setInterval(() => set((state) => (state + 1) % slides.length), duration),
+        () =>
+            void setInterval(
+                () => set((state) => (state + 1) % slides.length),
+                duration
+            ),
 
         []
     )
-    
+
     return (
         <>
             {transitions.map(({ item, props, key }) => (
