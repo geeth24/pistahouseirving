@@ -36,7 +36,7 @@ import { animateScroll, Link } from "react-scroll"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
 // import { Environment, Html, OrbitControls } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
+// import { Canvas } from "@react-three/fiber"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "../../components/Firebase"
 
