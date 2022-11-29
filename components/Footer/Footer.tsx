@@ -1,3 +1,4 @@
+//@ts-nocheck
 import {
     Box,
     chakra,
@@ -17,7 +18,7 @@ import { SiChakraui, SiNextdotjs, SiStyledcomponents } from "react-icons/si"
 import { ReactNode } from "react"
 import Image from "next/image"
 
-const Footer = () => {
+const F = () => {
     return (
         <Image
             src="/pistahouselogo.png"
@@ -60,7 +61,7 @@ const SocialButton = ({
     )
 }
 
-export default function SmallCentered() {
+export default function Footer() {
     const { colorMode, toggleColorMode } = useColorMode()
 
     return (
@@ -76,7 +77,7 @@ export default function SmallCentered() {
                 bg={useColorModeValue("white", "rgb(26 32 44)")}
                 fontSize={"xs"}
             >
-                <Footer />
+                <F />
                 <Stack direction={"row"} spacing={6}>
                     <Link href={"/"}>Home</Link>
                     <Link href={"/menu"}>Menu</Link>
