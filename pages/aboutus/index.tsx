@@ -2,8 +2,28 @@ import React from "react"
 import { SimpleGrid, Image, Box, chakra, Flex } from "@chakra-ui/react"
 import Head from "next/head"
 import Testimonials from "../../components/Testimonials/Testimonials"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "../../components/Firebase"
 
 const Aboutus = () => {
+    const [logged, setLogged] = React.useState(false)
+
+    if (process.env.ENVIRONMENT === "production") {
+        if (!logged) {
+            logEvent(analytics, "page_view", {
+                page_title: "About Us",
+                page_location: "https://www.pistahouseirving.com/aboutus",
+                page_path: "/aboutus",
+            })
+            setLogged(true)
+        }
+    } else {
+        if (!logged) {
+            console.log("development")
+            setLogged(true)
+        }
+    }
+
     return (
         <>
             <Head>

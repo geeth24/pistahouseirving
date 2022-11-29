@@ -1,12 +1,12 @@
-// import {
-//     Box,
-//     Flex,
-//     Grid,
-//     GridItem,
-//     Image,
-//     Text,
-//     VStack,
-// } from "@chakra-ui/react"
+import {
+    //     Box,
+    //     Flex,
+    //     Grid,
+    //     GridItem,
+    //     Image,
+    Text,
+    //     VStack,
+} from "@chakra-ui/react"
 import React, { useEffect } from "react"
 
 import { motion, useViewportScroll } from "framer-motion"
@@ -15,10 +15,12 @@ import { motion, useViewportScroll } from "framer-motion"
 // import { FaAngleDown } from "react-icons/fa"
 import Head from "next/head"
 import dynamic from "next/dynamic"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "../components/Firebase"
 const CHero = dynamic(() => import("../components/CHero/CHero"), {
     suspense: true,
 })
-const Catering = () => {
+const Home = () => {
     var { scrollYProgress } = useViewportScroll()
     const [windowWidth, setWindowWidth] = React.useState(0)
 
@@ -74,6 +76,23 @@ const Catering = () => {
     }
 
     //spring
+    const [logged, setLogged] = React.useState(false)
+
+    if (process.env.ENVIRONMENT === "production") {
+        if (!logged) {
+            logEvent(analytics, "page_view", {
+                page_title: "Home",
+                page_location: "https://www.pistahouseirving.com/",
+                page_path: "/",
+            })
+            setLogged(true)
+        }
+    } else {
+        if (!logged) {
+            console.log("development")
+            setLogged(true)
+        }
+    }
 
     return (
         <>
@@ -265,4 +284,4 @@ const Catering = () => {
     )
 }
 
-export default Catering
+export default Home

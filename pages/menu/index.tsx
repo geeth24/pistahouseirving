@@ -32,6 +32,9 @@ import styled from "styled-components"
 import { Link } from "react-scroll"
 import Head from "next/head"
 import type { NextPage } from "next"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "../../components/Firebase"
+
 const Grid = styled.div`
     display: grid;
     justify-content: center;
@@ -116,6 +119,24 @@ const Menu: NextPage = () => {
     {
         const { isOpen, onOpen, onClose } = useDisclosure()
         const btnRef = React.useRef()
+
+        const [logged, setLogged] = React.useState(false)
+
+        if (process.env.ENVIRONMENT === "production") {
+            if (!logged) {
+                logEvent(analytics, "page_view", {
+                    page_title: "Menu",
+                    page_location: "https://www.pistahouseirving.com/menu",
+                    page_path: "/menu",
+                })
+                setLogged(true)
+            }
+        } else {
+            if (!logged) {
+                console.log("development")
+                setLogged(true)
+            }
+        }
 
         return (
             <>

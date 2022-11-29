@@ -30,6 +30,8 @@ import { FaWhatsapp } from "react-icons/fa"
 import { useDispatch, useSelector } from "react-redux"
 import { removeFromOrder } from "../redux/order"
 import { useRouter } from "next/router"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "./Firebase"
 
 type LayoutProps = {
     children: React.ReactNode
@@ -224,6 +226,18 @@ const Layout = ({ children }: LayoutProps) => {
                                             )
 
                                         console.log(orderString2)
+                                        if (
+                                            process.env.ENVIRONMENT ===
+                                            "production"
+                                        ) {
+                                            logEvent(analytics, "quote", {
+                                                name: name,
+                                                partySize: partySize,
+                                                date: date,
+                                                order: orderString2,
+                                            })
+                                        }
+
                                         console.log(
                                             "https://api.whatsapp.com/send?phone=12143042304&text=" +
                                                 "Hello, I would like to get a quote for these items: " +

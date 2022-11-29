@@ -1,9 +1,30 @@
 import { Flex, Heading, Link, VStack } from "@chakra-ui/react"
+import { getAnalytics, logEvent } from "firebase/analytics"
 import Head from "next/head"
 import React from "react"
 import { FaWhatsapp } from "react-icons/fa"
+import { analytics } from "../../components/Firebase"
 
 export default function ContactUs() {
+    const [logged, setLogged] = React.useState(false)
+
+    if (process.env.ENVIRONMENT === "production") {
+        if (!logged) {
+            logEvent(analytics, "page_view", {
+                page_title: "Contact Us",
+                page_location: "https://www.pistahouseirving.com/contactus",
+                page_path: "/contactus",
+            })
+            setLogged(true)
+        }
+    } else {
+        if (!logged) {
+            console.log("development")
+            setLogged(true)
+        }
+    }
+
+
     return (
         <>
             <Head>

@@ -13,9 +13,10 @@ import {
     useColorModeValue,
     useDisclosure,
     VStack,
+    Spinner,
 } from "@chakra-ui/react"
 import Head from "next/head"
-import React from "react"
+import React, { lazy, Suspense } from "react"
 import PhotoAlbum, { RenderPhoto } from "react-photo-album"
 import styled from "styled-components"
 import {
@@ -35,6 +36,13 @@ import CaterCards from "../../components/Menu Cards/CaterCards"
 import { animateScroll, Link } from "react-scroll"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
+import { Environment, Html, OrbitControls } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "../../components/Firebase"
+
+const ModelComponent = lazy(() => import("../../components/Model"))
+
 export const RenderDiv = styled.div``
 
 const renderPhoto: RenderPhoto = ({
@@ -174,6 +182,36 @@ const Home = () => {
         animateScroll.scrollTo(900, { duration: 1000 })
     }
 
+    const renderLoader = () => (
+        <Html center>
+            <Flex justifyContent="center" alignItems="center" height="100%">
+                <Spinner
+                    size="xl"
+                    thickness="4px"
+                    speed="0.65s"
+                    color="#06bd9c"
+                />
+            </Flex>
+        </Html>
+    )
+
+    const [logged, setLogged] = React.useState(false)
+
+    if (process.env.ENVIRONMENT === "production") {
+        if (!logged) {
+            logEvent(analytics, "page_view", {
+                page_title: "Catering",
+                page_location: "https://www.pistahouseirving.com/catering",
+                page_path: "/catering",
+            })
+            setLogged(true)
+        }
+    } else {
+        if (!logged) {
+            console.log("development")
+            setLogged(true)
+        }
+    }
     return (
         <>
             <Head>
@@ -190,12 +228,38 @@ const Home = () => {
                         Catering
                     </Text>
                 </Flex>
+
                 <PhotoAlbum
                     layout="masonry"
                     photos={images}
                     //@ts-ignore
                     renderPhoto={renderPhoto}
                 />
+                <div
+                    style={{
+                        height: "calc(70vh - 100px)",
+                        width: "100%",
+                        position: "relative",
+                        overflow: "hidden",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        marginBottom: "50px",
+                    }}
+                >
+                    <Canvas
+                        //set camera position in the middle of the screen
+                        camera={{ position: [10, 10, 10] }}
+
+                        //add rotation to the canvas
+                    >
+                        <Suspense fallback={renderLoader()}>
+                            <ModelComponent />
+                            <OrbitControls />
+                            <Environment preset="sunset" />
+                        </Suspense>
+                    </Canvas>
+                </div>
                 <VStack spacing={10}>
                     <Text
                         fontSize={{ base: "4xl", md: "6xl" }}

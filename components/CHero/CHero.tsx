@@ -163,7 +163,7 @@ export default function CHero() {
                             autoPlay={true}
                             loop={true}
                             muted={true}
-                            playsinline={true}
+                            playsInline={true}
                             type={"video/mp4"}
                         />
                     </Box>
