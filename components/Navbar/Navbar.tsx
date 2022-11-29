@@ -53,8 +53,8 @@ const Navbar = ({ toggle }: NavbarProps) => {
                             <NavLogoImage
                                 src="/pistahouselogo.png"
                                 alt="logo"
-                                width="150px"
-                                height="60px"
+                                width={150}
+                                height={60}
                             />
                         </NavLogo>
                     </Link>
