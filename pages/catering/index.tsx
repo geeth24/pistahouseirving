@@ -13,10 +13,9 @@ import {
     useColorModeValue,
     useDisclosure,
     VStack,
-    Spinner,
 } from "@chakra-ui/react"
 import Head from "next/head"
-import React, { lazy, Suspense } from "react"
+import React from "react"
 import PhotoAlbum, { RenderPhoto } from "react-photo-album"
 import styled from "styled-components"
 import {
@@ -36,12 +35,12 @@ import CaterCards from "../../components/Menu Cards/CaterCards"
 import { animateScroll, Link } from "react-scroll"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
-import { Environment, Html, OrbitControls } from "@react-three/drei"
+// import { Environment, Html, OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "../../components/Firebase"
 
-const ModelComponent = lazy(() => import("../../components/Model"))
+// const ModelComponent = lazy(() => import("../../components/Model"))
 
 export const RenderDiv = styled.div``
 
@@ -182,18 +181,18 @@ const Home = () => {
         animateScroll.scrollTo(900, { duration: 1000 })
     }
 
-    const renderLoader = () => (
-        <Html center>
-            <Flex justifyContent="center" alignItems="center" height="100%">
-                <Spinner
-                    size="xl"
-                    thickness="4px"
-                    speed="0.65s"
-                    color="#06bd9c"
-                />
-            </Flex>
-        </Html>
-    )
+    // const renderLoader = () => (
+    //     <Html center>
+    //         <Flex justifyContent="center" alignItems="center" height="100%">
+    //             <Spinner
+    //                 size="xl"
+    //                 thickness="4px"
+    //                 speed="0.65s"
+    //                 color="#06bd9c"
+    //             />
+    //         </Flex>
+    //     </Html>
+    // )
 
     const [logged, setLogged] = React.useState(false)
 
@@ -247,7 +246,7 @@ const Home = () => {
                         marginBottom: "50px",
                     }}
                 >
-                    <Canvas
+                    {/* <Canvas
                         //set camera position in the middle of the screen
                         camera={{ position: [10, 10, 10] }}
 
@@ -258,7 +257,7 @@ const Home = () => {
                             <OrbitControls />
                             <Environment preset="sunset" />
                         </Suspense>
-                    </Canvas>
+                    </Canvas> */}
                 </div>
                 <VStack spacing={10}>
                     <Text

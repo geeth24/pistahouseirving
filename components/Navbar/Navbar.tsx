@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Button, HStack, useColorMode } from "@chakra-ui/react"
 import Link from "next/link"
 import React from "react"
