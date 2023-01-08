@@ -97,8 +97,8 @@ const Home = () => {
         <>
             {" "}
             <Head>
-                <title>Home | Pista House Texas</title>
-                <meta property="og:title" content="Pista House Texas" />
+                <title>Home | Pista House Irving</title>
+                <meta property="og:title" content="Pista House Irving" />
             </Head>
             <CHero />
             {/* <Flex justify={"center"} align={"center"}>
@@ -265,7 +265,7 @@ const Home = () => {
                         >
                             <Image
                                 src="/sign.png"
-                                alt="sign of pista house texas"
+                                alt="sign of pista House Irving"
                                 as={motion.img}
                                 initial={{ opacity: 0, scale: 0.5 }}
                                 whileInView={{ opacity: 1, scale: 2.2 }}

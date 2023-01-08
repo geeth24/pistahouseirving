@@ -28,6 +28,7 @@ export default function CHero() {
             px="6"
             pos="relative"
             zIndex="0"
+            h="90vh"
         >
             <Stack
                 align={"center"}
@@ -114,19 +115,18 @@ export default function CHero() {
                         initial={{ opacity: 0, y: 100 }}
                         transition="0.9s linear"
                     >
-                        <Link href="/contactus">
-                            <Button
-                                as="a"
-                                variant="ghost"
-                                mt={5}
-                                color="white"
-                                bg="#06bd9c"
-                                _hover={{ color: "#06bd9c", bg: "#beeca0" }}
-                                cursor="pointer"
-                            >
-                                Contact Us
-                            </Button>
-                        </Link>
+                        <Button
+                            as={Link}
+                            href="/contactus"
+                            variant="ghost"
+                            mt={5}
+                            color="white"
+                            bg="#06bd9c"
+                            _hover={{ color: "#06bd9c", bg: "#beeca0" }}
+                            cursor="pointer"
+                        >
+                            Contact Us
+                        </Button>
                     </Stack>
                 </Stack>
 

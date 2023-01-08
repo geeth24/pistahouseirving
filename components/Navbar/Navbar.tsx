@@ -1,5 +1,4 @@
-//@ts-nocheck
-import { Button, HStack, useColorMode } from "@chakra-ui/react"
+import { HStack, useColorMode } from "@chakra-ui/react"
 import Link from "next/link"
 import React from "react"
 import {
@@ -19,6 +18,8 @@ import {
     NavItem,
     NavLinks,
     NavLogoImage,
+    NavBtn,
+    NavBtnLinkN,
 } from "./NavbarElements"
 
 type NavbarProps = {
@@ -106,8 +107,8 @@ const Navbar = ({ toggle }: NavbarProps) => {
                         </NavMenu>
                     </NavbarContainer>
                     <Link href="/contactus">
-                        <Button
-                            as="a"
+                        {/* <Button
+                            // as="a"
                             variant="ghost"
                             color="white"
                             bg="#06bd9c"
@@ -120,7 +121,11 @@ const Navbar = ({ toggle }: NavbarProps) => {
                             }}
                         >
                             Contact Us
-                        </Button>
+                        </Button> */}
+
+                        <NavBtn>
+                            <NavBtnLinkN>Contact Us</NavBtnLinkN>
+                        </NavBtn>
                     </Link>
                 </Nav>
             </IconContext.Provider>

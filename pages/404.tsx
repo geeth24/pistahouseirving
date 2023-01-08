@@ -12,7 +12,7 @@ const Four = () => {
     return (
         <>
             <Head>
-                <title>404 | Pista House Texas</title>
+                <title>404 | Pista House Irving</title>
             </Head>
             <Flex justifyContent="center" alignItems="center" height="80vh">
                 <Image src="/404.svg" alt="404" />

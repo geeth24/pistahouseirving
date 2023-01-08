@@ -27,7 +27,7 @@ const Aboutus = () => {
     return (
         <>
             <Head>
-                <title>About Us | Pista House Texas</title>
+                <title>About Us | Pista House Irving</title>
             </Head>
             <SimpleGrid
                 columns={{
@@ -103,13 +103,13 @@ const Aboutus = () => {
                         }}
                         letterSpacing="wider"
                     >
-                        PistaHouse Texas is a celebration of Indian culture,
+                        PistaHouse Irving is a celebration of Indian culture,
                         flavours and hospitality. Immerse yourself in a sensory
                         spice experience and awaken your tastebuds with our
                         modern Indian menu, showcasing the very best of Indias
                         exotic flavours. <br />
                         <br />
-                        PistaHouse Texas food is inspired by traditional Indian
+                        PistaHouse Irving food is inspired by traditional Indian
                         dishes, served with a modern twist, and we pride
                         ourselves on using the freshest, most seasonal produce.{" "}
                         <br />
@@ -117,7 +117,7 @@ const Aboutus = () => {
                         We believe that the best form of hospitality is that
                         found in the home, and it is our aim to bring that
                         welcoming, relaxed environment to our guests at
-                        PistaHouse Texas Cuisine.
+                        PistaHouse Irving Cuisine.
                     </chakra.p>
                     <Box display="inline-flex" rounded="md" shadow="md">
                         <chakra.a

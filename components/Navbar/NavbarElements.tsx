@@ -87,7 +87,7 @@ export const NavItem = styled.li`
     font-weight: bold;
 `
 
-export const NavLinks = styled.a`
+export const NavLinks = styled.div`
     color: #10c60f;
     display: flex;
     align-items: center;
@@ -133,7 +133,7 @@ export const NavBtn = styled.nav`
 export const NavBtnLinkN = styled.div`
     background-color: #06bd9c;
     white-space: nowrap;
-    padding: 10px 22px;
+    padding: 8px 16px;
     color: #fff;
     font-size: 16px;
     outline: none;
@@ -142,6 +142,7 @@ export const NavBtnLinkN = styled.div`
     transition: all 0.2 ease-in-out;
     text-decoration: none;
     margin-right: 24px;
+    border-radius: 8px;
     &:hover {
         transition: all 0.2s ease-in-out;
         background-color: #beeca0;

@@ -21,7 +21,6 @@ export default class Document extends NextDocument {
 
                     <link rel="apple-touch-icon" href="/PistaLogo.jpeg" />
 
-                  
                     <meta
                         name="image"
                         property="og:image"
@@ -30,7 +29,7 @@ export default class Document extends NextDocument {
                     <meta name="author" content="Geeth Gunnampalli" />
                     <meta
                         property="og:description"
-                        content="PistaHouse Texas is a celebration of Indian culture, flavours and hospitality. Immerse yourself in a sensory spice experience and awaken your tastebuds with our modern Indian menu, showcasing the very best of Indias exotic flavours."
+                        content="PistaHouse Irving is a celebration of Indian culture, flavours and hospitality. Immerse yourself in a sensory spice experience and awaken your tastebuds with our modern Indian menu, showcasing the very best of Indias exotic flavours."
                     />
                     <meta
                         property="og:url"

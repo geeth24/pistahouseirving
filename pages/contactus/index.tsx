@@ -28,7 +28,7 @@ export default function ContactUs() {
     return (
         <>
             <Head>
-                <title>Contact Us | Pista House Texas</title>
+                <title>Contact Us | Pista House Irving</title>
             </Head>
             <Flex justifyContent="center" alignItems="center" height="60vh">
                 <VStack

@@ -214,7 +214,7 @@ const Home = () => {
     return (
         <>
             <Head>
-                <title>Catering | Pista House Texas</title>
+                <title>Catering | Pista House Irving</title>
             </Head>
             <Box mt={20} p={5}>
                 <Flex justifyContent="center" alignItems="center">

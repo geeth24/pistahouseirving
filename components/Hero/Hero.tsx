@@ -64,7 +64,7 @@ const Hero = () => {
                         fontWeight="bold"
                         color="#ffffff"
                     >
-                        Pista House Texas
+                        Pista House Irving
                     </Text>
 
                     <Text fontSize="xl" color="#eeeeee">

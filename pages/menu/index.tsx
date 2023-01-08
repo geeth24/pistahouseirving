@@ -142,7 +142,7 @@ const Menu: NextPage = () => {
             <>
                 {" "}
                 <Head>
-                    <title>Menu | Pista House Texas</title>
+                    <title>Menu | Pista House Irving</title>
                     <meta property="og:title" content="Menu" />
                 </Head>
                 <div

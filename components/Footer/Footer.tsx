@@ -1,4 +1,3 @@
-//@ts-nocheck
 import {
     Box,
     chakra,
@@ -81,7 +80,7 @@ export default function Footer() {
                     <Link href={"/contactus"}>Contact Us</Link>
                 </Stack>
 
-                <Text>© 2022 Pista House Texas. All rights reserved</Text>
+                <Text>© 2022 Pista House Irving. All rights reserved</Text>
 
                 <Stack
                     spacing={4}
