@@ -77,7 +77,7 @@ const Home = () => {
     //spring
     const [logged, setLogged] = React.useState(false)
 
-    if (process.env.ENVIRONMENT === "production") {
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
         if (!logged) {
             logEvent(analytics, "page_view", {
                 page_title: "Home",

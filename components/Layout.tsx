@@ -224,7 +224,8 @@ const Layout = ({ children }: LayoutProps) => {
 
                                     console.log(orderString2)
                                     if (
-                                        process.env.ENVIRONMENT === "production"
+                                        process.env.NEXT_PUBLIC_ENVIRONMENT ===
+                                        "production"
                                     ) {
                                         logEvent(analytics, "quote", {
                                             name: name,

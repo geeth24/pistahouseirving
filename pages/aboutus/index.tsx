@@ -8,7 +8,7 @@ import { analytics } from "../../components/Firebase"
 const Aboutus = () => {
     const [logged, setLogged] = React.useState(false)
 
-    if (process.env.ENVIRONMENT === "production") {
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
         if (!logged) {
             logEvent(analytics, "page_view", {
                 page_title: "About Us",
@@ -116,8 +116,8 @@ const Aboutus = () => {
                         <br />
                         We believe that the best form of hospitality is that
                         found in the home, and it is our aim to bring that
-                        welcoming, relaxed environment to our guests at
-                        PistaHouse Irving Cuisine.
+                        welcoming, relaxed NEXT_PUBLIC_ENVIRONMENT to our guests
+                        at PistaHouse Irving Cuisine.
                     </chakra.p>
                     <Box display="inline-flex" rounded="md" shadow="md">
                         <chakra.a
