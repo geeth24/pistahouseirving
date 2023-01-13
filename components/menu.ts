@@ -78,6 +78,11 @@ export const Drinks = [
         description: "",
         price: "$ 3.00",
     },
+    {
+        title: "Limca",
+        description: "",
+        price: "$ 3.00",
+    },
 ]
 
 export const VeggieAppetizers = [
@@ -311,11 +316,11 @@ export const MeatEntrees = [
             "Spicy & sour tasting goat curry cooked with gongura (sour spinach), onions, chilli & herbs.",
         price: "$ 15.00",
     },
-    {
-        title: "Lamb Rogan Gosh",
-        description: "Tender lamb cooked with yogurt, onion and mild spices",
-        price: "$ 16.00",
-    },
+    // {
+    //     title: "Lamb Rogan Gosh",
+    //     description: "Tender lamb cooked with yogurt, onion and mild spices",
+    //     price: "$ 16.00",
+    // },
     {
         title: "Kheema Masala",
         description:
@@ -361,12 +366,12 @@ export const VeggieKebabs = [
             "Cottage cheese marinated in a creamy sauce with herbs and grilled in clay oven.",
         price: "$ 12.00",
     },
-    {
-        title: "Paneer Achari",
-        description:
-            "Cottage cheese marinated with tangy sauce and grilled in clay oven.",
-        price: "$ 12.00",
-    },
+    // {
+    //     title: "Paneer Achari",
+    //     description:
+    //         "Cottage cheese marinated with tangy sauce and grilled in clay oven.",
+    //     price: "$ 12.00",
+    // },
 ]
 export const MeatKebabs = [
     {
