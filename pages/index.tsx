@@ -20,7 +20,7 @@ function Home() {
                                 We are dedicated to providing you with the
                                 finest Indian food and catering. Browse our{" "}
                                 <Link href="/menu">
-                                    <span className="cursor-pointer text-green-500">
+                                    <span className="cursor-pointer text-green-300 underline">
                                         menu
                                     </span>
                                 </Link>{" "}
