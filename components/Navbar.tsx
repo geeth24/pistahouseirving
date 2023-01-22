@@ -84,9 +84,8 @@ function Navbar() {
                             <FaHome className="text-2xl text-green-300 " />
                             <Link
                                 href="/"
-                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300  md:bg-transparent  md:p-0 md:hover:text-green-700"
-                                aria-current="page"
-                            >
+                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+ onClick={() => setIsOpen(!isOpen)}                            >
                                 Home
                             </Link>
                         </li>
@@ -94,8 +93,8 @@ function Navbar() {
                             <FaUtensilSpoon className="text-2xl text-green-300 " />
                             <Link
                                 href="/menu"
-                                className="block rounded py-2 pl-3 pr-4 text-xl  text-green-300  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                            >
+                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+ onClick={() => setIsOpen(!isOpen)}                            >
                                 Menu
                             </Link>
                         </li>
@@ -103,8 +102,8 @@ function Navbar() {
                             <FaBookOpen className="text-2xl text-green-300" />
                             <Link
                                 href="/catering"
-                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                            >
+                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+ onClick={() => setIsOpen(!isOpen)}                            >
                                 Catering
                             </Link>
                         </li>
@@ -112,8 +111,8 @@ function Navbar() {
                             <FaBuilding className="text-2xl text-green-300" />
                             <Link
                                 href="/about"
-                                className="block rounded py-2 pl-3 pr-4 text-xl  text-green-300  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
-                            >
+                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
+ onClick={() => setIsOpen(!isOpen)}                            >
                                 About
                             </Link>
                         </li>
