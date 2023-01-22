@@ -1,5 +1,5 @@
 //@ts-nocheck
-import React, { useState } from "react"
+import React, { Suspense, useState } from "react"
 import ScrollToTop from "./ScrollToTop"
 import { Flex } from "@chakra-ui/layout"
 import { Spinner } from "@chakra-ui/spinner"
@@ -32,21 +32,23 @@ import { removeFromOrder } from "../redux/order"
 import { useRouter } from "next/router"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "./Firebase"
-import Navbar from "./Navbar/Navbar"
+// import Navbar from "./Navbar/Navbar"
 import Footer from "./Footer/Footer"
+// import Sidebar from "./Sidebar/Sidebar"
+import dynamic from "next/dynamic"
 type LayoutProps = {
     children: React.ReactNode
 }
 
-// const Navbar = dynamic(() => import("./Navbar/Navbar"), {
-//     suspense: true,
-// })
+const Navbar = dynamic(() => import("./Navbar/Navbar"), {
+    suspense: true,
+})
 // const Footer = dynamic(() => import("./Footer/Footer"), {
 //     suspense: true,
 // })
-// const Sidebar = dynamic(() => import("./Sidebar/Sidebar"), {
-//     suspense: true,
-// })
+const Sidebar = dynamic(() => import("./Sidebar/Sidebar"), {
+    suspense: true,
+})
 
 const Layout = ({ children }: LayoutProps) => {
     const colorMode = useColorModeValue("white", "rgb(26 32 44)")
@@ -114,128 +116,157 @@ const Layout = ({ children }: LayoutProps) => {
     })
     return (
         <>
-            {/* <Suspense fallback={renderLoader()}> */}
-            <div
-                style={{
-                    backgroundColor: colorMode,
-                }}
-            >
-                <ScrollToTop />
-                {/* <Sidebar isOpen={isOpen} toggle={toggle} /> */}
-                <Navbar toggle={toggle} />
-                {children}
-                <Footer />
-            </div>
-            <Modal
-                onClose={onModelClose}
-                isOpen={isModelOpen}
-                isCentered
-                motionPreset="slideInBottom"
-                scrollBehavior="inside"
-            >
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Get a Quote</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <VStack spacing={4} align="flex-start">
-                            <Text fontSize="md">
-                                Please fill out the form to get in touch with
-                                Pista House
-                            </Text>
-                            <Text fontSize="sm">Name</Text>
-                            <Input
-                                placeholder="Name"
-                                onChange={(e) => setName(e.target.value)}
-                            />
-                            <Text fontSize="sm">Party Size</Text>
-                            <Input
-                                placeholder="Party Size"
-                                inputMode="numeric"
-                                onChange={(e) =>
-                                    setPartySize(parseInt(e.target.value))
-                                }
-                            />
-                            <Text fontSize="sm">Date</Text>
-                            <Input
-                                placeholder="Date"
-                                type="date"
-                                onChange={(e) => setDate(e.target.value)}
-                                sx={{
-                                    ":after": {
-                                        color: "whatsapp",
-                                        content: " attr(placeholder)",
-                                        alignItems: "center",
-                                    },
-                                }}
-                            />
-                        </VStack>
-                    </ModalBody>
-                    <ModalFooter>
-                        <HStack spacing={4}>
-                            <Button onClick={onModelClose} colorScheme="red">
-                                Close
-                            </Button>
+            <Suspense fallback={renderLoader()}>
+                <div
+                    style={{
+                        backgroundColor: colorMode,
+                    }}
+                >
+                    <ScrollToTop />
+                    <Sidebar isOpen={isOpen} toggle={toggle} />
+                    <Navbar toggle={toggle} />
+                    {children}
+                    <Footer />
+                </div>
+                <Modal
+                    onClose={onModelClose}
+                    isOpen={isModelOpen}
+                    isCentered
+                    motionPreset="slideInBottom"
+                    scrollBehavior="inside"
+                >
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>Get a Quote</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <VStack spacing={4} align="flex-start">
+                                <Text fontSize="md">
+                                    Please fill out the form to get in touch
+                                    with Pista House
+                                </Text>
+                                <Text fontSize="sm">Name</Text>
+                                <Input
+                                    placeholder="Name"
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                                <Text fontSize="sm">Party Size</Text>
+                                <Input
+                                    placeholder="Party Size"
+                                    inputMode="numeric"
+                                    onChange={(e) =>
+                                        setPartySize(parseInt(e.target.value))
+                                    }
+                                />
+                                <Text fontSize="sm">Date</Text>
+                                <Input
+                                    placeholder="Date"
+                                    type="date"
+                                    onChange={(e) => setDate(e.target.value)}
+                                    sx={{
+                                        ":after": {
+                                            color: "whatsapp",
+                                            content: " attr(placeholder)",
+                                            alignItems: "center",
+                                        },
+                                    }}
+                                />
+                            </VStack>
+                        </ModalBody>
+                        <ModalFooter>
+                            <HStack spacing={4}>
+                                <Button
+                                    onClick={onModelClose}
+                                    colorScheme="red"
+                                >
+                                    Close
+                                </Button>
 
-                            <Button
-                                isDisabled={
-                                    name === "" ||
-                                    partySize === 0 ||
-                                    date === ""
-                                }
-                                colorScheme="whatsapp"
-                                mr={3}
-                                onClick={() => {
-                                    //change format to MM/DD/YYYY
-                                    var dateArray = date.split("-")
-                                    var newDate =
-                                        dateArray[1] +
-                                        "/" +
-                                        dateArray[2] +
-                                        "/" +
-                                        dateArray[0]
-                                    setDate(newDate)
+                                <Button
+                                    isDisabled={
+                                        name === "" ||
+                                        partySize === 0 ||
+                                        date === ""
+                                    }
+                                    colorScheme="whatsapp"
+                                    mr={3}
+                                    onClick={() => {
+                                        //change format to MM/DD/YYYY
+                                        var dateArray = date.split("-")
+                                        var newDate =
+                                            dateArray[1] +
+                                            "/" +
+                                            dateArray[2] +
+                                            "/" +
+                                            dateArray[0]
+                                        setDate(newDate)
 
-                                    //loop through order and add index 1. to each item
-                                    var orderArray = order.split(", ")
-                                    var orderArray2 = []
-                                    for (
-                                        var i = 1;
-                                        i < orderArray.length;
-                                        i++
-                                    ) {
-                                        if (
-                                            orderArray[i] !== " " &&
-                                            orderArray[i] !== "" &&
-                                            orderArray[i] !== "\n"
+                                        //loop through order and add index 1. to each item
+                                        var orderArray = order.split(", ")
+                                        var orderArray2 = []
+                                        for (
+                                            var i = 1;
+                                            i < orderArray.length;
+                                            i++
                                         ) {
-                                            console.log(orderArray[i])
-                                            orderArray2.push(
-                                                `${i}. ${orderArray[i]}`
-                                            )
+                                            if (
+                                                orderArray[i] !== " " &&
+                                                orderArray[i] !== "" &&
+                                                orderArray[i] !== "\n"
+                                            ) {
+                                                console.log(orderArray[i])
+                                                orderArray2.push(
+                                                    `${i}. ${orderArray[i]}`
+                                                )
+                                            }
                                         }
-                                    }
-                                    var orderString = orderArray2.join("%0A")
-                                    var orderString2 = orderString
-                                        .toLowerCase()
-                                        .replace(/\b[a-z]/g, (letter) =>
-                                            letter.toUpperCase()
+                                        var orderString =
+                                            orderArray2.join("%0A")
+                                        var orderString2 = orderString
+                                            .toLowerCase()
+                                            .replace(/\b[a-z]/g, (letter) =>
+                                                letter.toUpperCase()
+                                            )
+
+                                        console.log(orderString2)
+                                        if (
+                                            process.env
+                                                .NEXT_PUBLIC_ENVIRONMENT ===
+                                            "production"
+                                        ) {
+                                            logEvent(analytics, "quote", {
+                                                name: name,
+                                                partySize: partySize,
+                                                date: date,
+                                                order: orderString2,
+                                            })
+                                        }
+
+                                        console.log(
+                                            "https://api.whatsapp.com/send?phone=12143042304&text=" +
+                                                "Hello, I would like to get a quote for these items: " +
+                                                "%0A" +
+                                                "Items: " +
+                                                "%0A" +
+                                                orderString2
+                                                    .replace(
+                                                        "Your Selections:,",
+                                                        ""
+                                                    )
+                                                    .replace(/,/g, "%0A") +
+                                                "%0A" +
+                                                "Name: " +
+                                                name +
+                                                "%0A" +
+                                                "Party Size: " +
+                                                partySize +
+                                                "%0A" +
+                                                "Date: " +
+                                                date +
+                                                "%0A"
                                         )
-
-                                    console.log(orderString2)
-                                    if (
-                                        process.env.ENVIRONMENT === "production"
-                                    ) {
-                                        logEvent(analytics, "quote", {
-                                            name: name,
-                                            partySize: partySize,
-                                            date: date,
-                                            order: orderString2,
-                                        })
-                                    }
-
-                                    console.log(
-                                        "https://api.whatsapp.com/send?phone=12143042304&text=" +
+                                        return (window.location.href =
+                                            "https://api.whatsapp.com/send?phone=12143042304&text=" +
                                             "Hello, I would like to get a quote for these items: " +
                                             "%0A" +
                                             "Items: " +
@@ -255,82 +286,68 @@ const Layout = ({ children }: LayoutProps) => {
                                             "%0A" +
                                             "Date: " +
                                             date +
-                                            "%0A"
-                                    )
-                                    return (window.location.href =
-                                        "https://api.whatsapp.com/send?phone=12143042304&text=" +
-                                        "Hello, I would like to get a quote for these items: " +
-                                        "%0A" +
-                                        "Items: " +
-                                        "%0A" +
-                                        orderString2
-                                            .replace("Your Selections:,", "")
-                                            .replace(/,/g, "%0A") +
-                                        "%0A" +
-                                        "Name: " +
-                                        name +
-                                        "%0A" +
-                                        "Party Size: " +
-                                        partySize +
-                                        "%0A" +
-                                        "Date: " +
-                                        date +
-                                        "%0A")
-                                }}
-                                leftIcon={<FaWhatsapp />}
-                            >
-                                Open WhatsApp
-                            </Button>
-                        </HStack>
-                    </ModalFooter>
-                </ModalContent>
-            </Modal>
-            <Box position="fixed" bottom="50px" right="50px">
-                <Menu>
-                    <MenuButton
-                        as={IconButton}
-                        colorScheme="whatsapp"
-                        variant="solid"
-                        size="lg"
-                        zIndex="1000"
-                        rounded="full"
-                        icon={<FaWhatsapp />}
-                        onClick={() => {
-                            if (router.pathname !== "/catering") {
-                                router.push("/catering?order=true")
-                            }
-                        }}
-                    >
-                        Get a Quote
-                    </MenuButton>
-                    <MenuList>
-                        <MenuItem>
-                            <Text>Your Selections:</Text>
-                        </MenuItem>
-
-                        {item}
-                        <MenuItem
-                            as={Button}
+                                            "%0A")
+                                    }}
+                                    leftIcon={<FaWhatsapp />}
+                                >
+                                    Open WhatsApp
+                                </Button>
+                            </HStack>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
+                <Box position="fixed" bottom="50px" right="50px">
+                    <Menu>
+                        <MenuButton
+                            as={IconButton}
+                            colorScheme="whatsapp"
                             variant="solid"
-                            size="sm"
-                            color={useColorModeValue("#06bd9c", "#beeca0")}
-                            bg={useColorModeValue("#beeca0", "#06bd9c")}
-                            _hover={{
-                                bg: useColorModeValue("#06bd9c", "#beeca0"),
-                                color: useColorModeValue("#beeca0", "#06bd9c"),
+                            size="lg"
+                            zIndex="1000"
+                            rounded="full"
+                            icon={<FaWhatsapp />}
+                            onClick={() => {
+                                if (router.pathname !== "/catering") {
+                                    router.push("/catering?order=true")
+                                }
                             }}
-                            _active={{
-                                bg: useColorModeValue("#06bd9c", "#beeca0"),
-                                color: useColorModeValue("#beeca0", "#06bd9c"),
-                            }}
-                            onClick={onModelOpen}
                         >
                             Get a Quote
-                        </MenuItem>
-                    </MenuList>
-                </Menu>
-            </Box>
-            {/* </Suspense> */}
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem>
+                                <Text>Your Selections:</Text>
+                            </MenuItem>
+
+                            {item}
+                            <MenuItem
+                                as={Button}
+                                variant="solid"
+                                size="sm"
+                                color={useColorModeValue("#06bd9c", "#beeca0")}
+                                bg={useColorModeValue("#beeca0", "#06bd9c")}
+                                _hover={{
+                                    bg: useColorModeValue("#06bd9c", "#beeca0"),
+                                    color: useColorModeValue(
+                                        "#beeca0",
+                                        "#06bd9c"
+                                    ),
+                                }}
+                                _active={{
+                                    bg: useColorModeValue("#06bd9c", "#beeca0"),
+                                    color: useColorModeValue(
+                                        "#beeca0",
+                                        "#06bd9c"
+                                    ),
+                                }}
+                                onClick={onModelOpen}
+                            >
+                                Get a Quote
+                            </MenuItem>
+                        </MenuList>
+                    </Menu>
+                </Box>
+            </Suspense>
         </>
     )
 }

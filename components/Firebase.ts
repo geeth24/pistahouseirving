@@ -15,16 +15,17 @@ const firebaseConfig = {
     appId: "1:1066360221558:web:7b8c4753c57f235b1ad457",
     measurementId: "G-9RX6PZQD91",
 }
-let analytics: any
+
+
+let analytics: any = null;
 if (firebaseConfig?.projectId) {
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig)
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
 
-    if (app.name && typeof window !== "undefined") {
-        analytics = getAnalytics(app)
-    }
+  if (app.name && typeof window !== 'undefined') {
+    analytics = getAnalytics(app);
+  }
 
-    // Access Firebase services using shorthand notation
 }
 
-export { analytics }
+export {analytics};

@@ -4,11 +4,12 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { theme } from "../components/theme"
 import { Provider } from "react-redux"
 import store from "../redux/store"
-import Layout from "../components/Layout"
+// import Layout from "../components/Layout"
+import dynamic from "next/dynamic"
 
-// const Layout = dynamic(() => import("../components/Layout"), {
-//     ssr: false,
-// })
+const Layout = dynamic(() => import("../components/Layout"), {
+    ssr: false,
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (

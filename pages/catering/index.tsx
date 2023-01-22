@@ -35,7 +35,7 @@ import CaterCards from "../../components/Menu Cards/CaterCards"
 import { animateScroll, Link } from "react-scroll"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
-// import { Environment, Html, OrbitControls } from "@react-three/drei"
+// import { NEXT_PUBLIC_ENVIRONMENT, Html, OrbitControls } from "@react-three/drei"
 // import { Canvas } from "@react-three/fiber"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "../../components/Firebase"
@@ -196,7 +196,7 @@ const Home = () => {
 
     const [logged, setLogged] = React.useState(false)
 
-    if (process.env.ENVIRONMENT === "production") {
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
         if (!logged) {
             logEvent(analytics, "page_view", {
                 page_title: "Catering",
@@ -255,7 +255,7 @@ const Home = () => {
                         <Suspense fallback={renderLoader()}>
                             <ModelComponent />
                             <OrbitControls />
-                            <Environment preset="sunset" />
+                            <NEXT_PUBLIC_ENVIRONMENT preset="sunset" />
                         </Suspense>
                     </Canvas> */}
                 </div>
