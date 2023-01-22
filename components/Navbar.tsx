@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { FaBookOpen, FaBuilding, FaHome, FaUtensilSpoon } from "react-icons/fa"
 function Navbar() {
-    const [isOpen, setIsOpen] = React.useState(true)
+    const [isOpen, setIsOpen] = React.useState(false)
     const [scrollNav, setScrollNav] = React.useState(false)
 
     const changeNav = () => {
