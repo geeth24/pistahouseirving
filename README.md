@@ -17,5 +17,5 @@ https://pistahouseirving.com
 
 ## Tech Stack
 
-**Client:** Next.js, Chakra UI, Styled Components, Framer Motion
+**Client:** Next.js, Tailwind CSS, Framer Motion
 
