@@ -2,6 +2,8 @@ import React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { FaBookOpen, FaBuilding, FaHome, FaUtensilSpoon } from "react-icons/fa"
+import { motion } from "framer-motion"
+
 function Navbar() {
     const [isOpen, setIsOpen] = React.useState(false)
     const [scrollNav, setScrollNav] = React.useState(false)
@@ -70,7 +72,8 @@ function Navbar() {
                         </svg>
                     </button>
                 </div>
-                <div
+
+                <motion.div
                     className={` w-full items-center justify-between md:order-1 md:flex md:w-auto ${
                         isOpen ? "block" : "hidden"
                     }`}
@@ -115,7 +118,7 @@ function Navbar() {
                             </Link>
                         </li>
                     </ul>
-                </div>
+                </motion.div>
             </div>
         </nav>
     )
