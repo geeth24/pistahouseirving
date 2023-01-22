@@ -1,284 +1,64 @@
-import {
-    //     Box,
-    //     Flex,
-    //     Grid,
-    //     GridItem,
-    //     Image,
-    //     VStack,
-} from "@chakra-ui/react"
-import React, { useEffect } from "react"
+import Link from "next/link"
+import React from "react"
+import { motion } from "framer-motion"
 
-import { motion, useViewportScroll } from "framer-motion"
-// import CHero from "../components/CHero/CHero"
-
-// import { FaAngleDown } from "react-icons/fa"
-import Head from "next/head"
-import dynamic from "next/dynamic"
-import { logEvent } from "firebase/analytics"
-import { analytics } from "../components/Firebase"
-const CHero = dynamic(() => import("../components/CHero/CHero"), {
-    suspense: true,
-})
-const Home = () => {
-    var { scrollYProgress } = useViewportScroll()
-    const [windowWidth, setWindowWidth] = React.useState(0)
-
-    useEffect(() => {
-        setWindowWidth(window.innerWidth)
-        console.log(window.innerWidth)
-        window.onresize = resize
-
-        function resize() {
-            setWindowWidth(window.innerWidth)
-            console.log(window.innerWidth)
-        }
-    }, [windowWidth])
-    var svg = <svg></svg>
-    if (windowWidth < 768) {
-        svg = (
-            <svg
-                width="100%"
-                height="1399px"
-                viewBox="0 0 291 3198"
-                // enableBackground="new 0 0 291 3198"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <motion.path
-                    d="M146.5 1C146.5 1 473.875 368.57 146.5 800C-180.875 1231.43 146.5 1599 146.5 1599C146.5 1599 473.875 1966.57 146.5 2398C-180.875 2829.43 146.5 3197 146.5 3197"
-                    stroke="#10c60f"
-                    strokeWidth="10"
-                    style={{ pathLength: scrollYProgress }}
-                    display="block"
-                />
-            </svg>
-        )
-    } else {
-        svg = (
-            <svg
-                width="100%"
-                height="3198px"
-                viewBox="0 0 291 3198"
-                // enableBackground="new 0 0 291 3198"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <motion.path
-                    d="M146.5 1C146.5 1 473.875 368.57 146.5 800C-180.875 1231.43 146.5 1599 146.5 1599C146.5 1599 473.875 1966.57 146.5 2398C-180.875 2829.43 146.5 3197 146.5 3197"
-                    stroke="#10c60f"
-                    strokeWidth="10"
-                    style={{ pathLength: scrollYProgress }}
-                    display="block"
-                />
-            </svg>
-        )
-    }
-
-    //spring
-    const [logged, setLogged] = React.useState(false)
-
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
-        if (!logged) {
-            logEvent(analytics, "page_view", {
-                page_title: "Home",
-                page_location: "https://www.pistahouseirving.com/",
-                page_path: "/",
-            })
-            setLogged(true)
-        }
-    } else {
-        if (!logged) {
-            console.log("development")
-            setLogged(true)
-        }
-    }
-
+function Home() {
     return (
         <>
-            {" "}
-            <Head>
-                <title>Home | Pista House Irving</title>
-                <meta property="og:title" content="Pista House Irving" />
-            </Head>
-            <CHero />
-            {/* <Flex justify={"center"} align={"center"}>
-                <VStack
-                    as={motion.div}
-                    //spring animations
-                    whileInView={{
-                        opacity: 1,
-                        y: 0,
-                    }}
-                    initial={{ opacity: 0, y: 50 }}
-                    transition="0.7s linear"
-                >
-                    <Text
-                        fontSize="2xl"
-                        fontWeight="bold"
-                        mt={5}
-                        color="#06bd9c"
-                    >
-                        SCROLL DOWN
-                    </Text>
-                    <FaAngleDown color="#06bd9c" />
-                </VStack>
-            </Flex>
-            <div
-                style={{
-                    overflow: "hidden",
-                    // backgroundImage:
-                    //     "linear-gradient(to bottom right, #beeca0, #10c60f)",
-                }}
-            >
-                <Flex
-                    position="relative"
-                    maxWidth={1200}
-                    mx="auto"
-                    justifyContent="center"
-                >
-                    <Grid
-                        templateRows="repeat(10, 1fr)"
-                        templateColumns="repeat(3, 1fr)"
-                        gap={8}
-                        position="absolute"
-                        marginTop={100}
-                    >
-                        <GridItem
-                            colStart={3}
-                            colEnd={3}
-                            rowStart={1}
+            <section className=" h-full bg-opacity-10 bg-[url('/slides/1.jpg')] bg-cover bg-center bg-no-repeat">
+                <div className="h-full bg-black bg-opacity-70">
+                    <div className="mx-auto grid max-w-screen-xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 lg:py-32">
+                        <div className="mr-auto place-self-center lg:col-span-6">
+                            <h1 className="mb-4 w-full max-w-4xl text-4xl font-bold  text-green-300 md:text-5xl xl:text-6xl">
+                                Authentic Hyderabadi <br />
+                                <span className="text-green-500">
+                                    {" "}
+                                    Food and Catering
+                                </span>
+                            </h1>
+                            <p className="mb-6 max-w-2xl font-light text-gray-300 md:text-lg lg:mb-8 lg:text-lg">
+                                We are dedicated to providing you with the
+                                finest Indian food and catering. Browse our{" "}
+                                <Link href="/menu">
+                                    <span className="cursor-pointer text-green-500">
+                                        menu
+                                    </span>
+                                </Link>{" "}
+                                and call to order in advance. <br />
+                                We are specialized in Live Kebabs, Chat, Dosa
+                                and all of your favorite Indian dishes.
+                            </p>
 
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/sweet1.png"
-                                alt="Gulab Jamun"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-
-                                // variants={cardVariants}
-                            />
-                        </GridItem>
-                        <GridItem
-                            colStart={3}
-                            rowStart={3}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/sweet2.png"
-                                alt="Double Ka Meetha"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                        <GridItem
-                            rowStart={2}
-                            colStart={1}
-                            colEnd={1}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/IraniSamosa.png"
-                                alt="samosa"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                        <GridItem
-                            rowStart={5}
-                            colStart={1}
-                            colEnd={1}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/biryani.png"
-                                alt="biryani"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                        <GridItem
-                            rowStart={5}
-                            colStart={3}
-                            colEnd={3}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/haleem.png"
-                                alt="haleem"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                        <GridItem
-                            rowStart={7}
-                            colStart={1}
-                            colEnd={1}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/ckebabs.png"
-                                alt="chicken kebabs"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                        <GridItem
-                            rowStart={8}
-                            colStart={3}
-                            colEnd={3}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/pkebabs.png"
-                                alt="paneer kebabs"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                        <GridItem
-                            rowStart={10}
-                            colStart={2}
-                            colEnd={2}
-
-                            // viewport={{ once: true, amount: 0.8 }}
-                        >
-                            <Image
-                                src="/sign.png"
-                                alt="sign of pista House Irving"
-                                as={motion.img}
-                                initial={{ opacity: 0, scale: 0.5 }}
-                                whileInView={{ opacity: 1, scale: 2.2 }}
-                                transition="0.8s linear"
-                            />
-                        </GridItem>
-                    </Grid>
-                    <Flex>
-                        {" "}
-                        <Box>{svg}</Box>
-                    </Flex>
-                </Flex>
-            </div> */}
+                            <Link
+                                href="/menu"
+                                className="inline-flex items-center justify-center rounded-full border border-transparent bg-green-700 px-16 py-2 text-base font-medium text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-green-800 active:scale-95 "
+                            >
+                                Menu
+                            </Link>
+                        </div>
+                        <div className=" lg:col-span-6 lg:mt-0 lg:flex">
+                            <div className="flex h-fit w-fit flex-col justify-center">
+                                <motion.video
+                                    // @ts-ignore
+                                    alt="Catering"
+                                    w={"100%"}
+                                    h={"100%"}
+                                    src="https://photos.smugmug.com/photos/i-7h6J4v9/0/640/i-7h6J4v9-640.mp4"
+                                    autoPlay={true}
+                                    loop={true}
+                                    muted={true}
+                                    playsInline={true}
+                                    type={"video/mp4"}
+                                    className="mt-5 h-full w-full rounded-lg object-cover shadow-2xl lg:mt-0"
+                                    initial={{ opacity: 0, x: 100 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ duration: 1 }}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
