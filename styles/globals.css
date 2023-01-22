@@ -17,11 +17,11 @@ body {
 {
   width: 8px;
   height: 8px;
-  background-color: #000000;
+  background-color: #065f46;
 }
 
 ::-webkit-scrollbar-thumb
 {
   border-radius: 4px;
-  background-color: #065f46;
+  background-color: #03261c;
 }
