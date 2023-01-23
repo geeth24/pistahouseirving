@@ -23,7 +23,7 @@ function Navbar() {
         <nav
             className={`fixed z-20 w-full  px-2 py-2.5 sm:px-4 ${
                 scrollNav
-                    ? `bg-green-800/70 backdrop-blur-lg`
+                    ? `bg-pistaGray/70 backdrop-blur-lg`
                     : "bg-transparent"
             }`}
         >
@@ -43,7 +43,7 @@ function Navbar() {
                 <div className="flex md:order-2">
                     <Link
                         href="/contact"
-                        className="mr-3 rounded-full bg-green-700 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 md:mr-0"
+                        className="mr-3 rounded-full bg-pistaGreen px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-pistaGreen focus:outline-none focus:ring-4 focus:ring-pistaMidGreen dark:bg-green-600 dark:hover:bg-pistaGreen dark:focus:ring-pistaGreen md:mr-0"
                     >
                         Contact Us
                     </Link>
@@ -51,7 +51,7 @@ function Navbar() {
                     <button
                         data-collapse-toggle="navbar-cta"
                         type="button"
-                        className="inline-flex items-center rounded-full bg-green-700 p-2 text-sm text-white focus:outline-none  md:hidden"
+                        className="inline-flex items-center rounded-full bg-pistaGreen p-2 text-sm text-white focus:outline-none  md:hidden"
                         aria-controls="navbar-cta"
                         aria-expanded="false"
                         onClick={() => setIsOpen(!isOpen)}
@@ -79,43 +79,47 @@ function Navbar() {
                     }`}
                     id="navbar-cta"
                 >
-                    <ul className="mt-4 flex flex-col rounded-lg bg-green-800/70 p-4 backdrop-blur-xl  md:mt-0  md:flex-row md:space-x-8 md:bg-transparent md:text-sm md:font-medium md:backdrop-blur-none lg:space-x-12">
-                        <li className="flex flex-row items-center space-x-2 ">
-                            <FaHome className="text-2xl text-green-300 " />
-                            <Link
-                                href="/"
-                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
- onClick={() => setIsOpen(!isOpen)}                            >
+                    <ul className="mt-4 flex flex-col rounded-lg bg-pistaGray/70 p-4 backdrop-blur-xl  md:mt-0  md:flex-row md:space-x-8 md:bg-transparent md:text-sm md:font-medium md:backdrop-blur-none lg:space-x-12">
+                        <Link
+                            href="/"
+                            className="relative mb-3 mt-1 md:mt-0 flex flex-row items-center space-x-2 after:absolute after:left-0  after:bottom-0 after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-['']  hover:after:origin-left hover:after:scale-x-100 md:mb-0"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            <FaHome className="text-2xl text-pistaMidGreen " />
+                            <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
                                 Home
-                            </Link>
-                        </li>
-                        <li className="flex flex-row items-center space-x-2">
-                            <FaUtensilSpoon className="text-2xl text-green-300 " />
-                            <Link
-                                href="/menu"
-                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
- onClick={() => setIsOpen(!isOpen)}                            >
+                            </div>
+                        </Link>
+                        <Link
+                            href="/menu"
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="relative mb-3 mt-1 md:mt-0 flex flex-row items-center space-x-2 after:absolute after:left-0  after:bottom-0 after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-['']  hover:after:origin-left hover:after:scale-x-100 md:mb-0"
+                        >
+                            <FaUtensilSpoon className="text-2xl text-pistaMidGreen " />
+                            <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
                                 Menu
-                            </Link>
-                        </li>
-                        <li className="flex flex-row items-center space-x-2">
-                            <FaBookOpen className="text-2xl text-green-300" />
-                            <Link
-                                href="/catering"
-                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
- onClick={() => setIsOpen(!isOpen)}                            >
+                            </div>
+                        </Link>
+                        <Link
+                            href="/catering"
+                            className="relative mb-3 mt-1 md:mt-0 flex flex-row items-center space-x-2 after:absolute after:left-0  after:bottom-0 after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-['']  hover:after:origin-left hover:after:scale-x-100 md:mb-0"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            <FaBookOpen className="text-2xl text-pistaMidGreen" />
+                            <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
                                 Catering
-                            </Link>
-                        </li>
-                        <li className="flex flex-row items-center space-x-2">
-                            <FaBuilding className="text-2xl text-green-300" />
-                            <Link
-                                href="/about"
-                                className="block rounded py-2 pl-3 pr-4 text-xl text-green-300 hover:text-green-500  dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-green-700 md:dark:hover:bg-transparent md:dark:hover:text-white"
- onClick={() => setIsOpen(!isOpen)}                            >
+                            </div>
+                        </Link>
+                        <Link
+                            href="/about"
+                            className="relative mb-3 mt-1 md:mt-0 flex flex-row items-center space-x-2 after:absolute after:left-0  after:bottom-0 after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-['']  hover:after:origin-left hover:after:scale-x-100 md:mb-0"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            <FaBuilding className="text-2xl text-pistaMidGreen" />
+                            <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
                                 About
-                            </Link>
-                        </li>
+                            </div>
+                        </Link>
                     </ul>
                 </motion.div>
             </div>

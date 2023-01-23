@@ -4,7 +4,7 @@ import Image from "next/image"
 import { SiNextdotjs, SiTailwindcss, SiFramer } from "react-icons/si"
 function Footer() {
     return (
-        <footer className="bg-black p-4  py-[13px] px-[16px] md:px-[4vw] lg:pt-[35px]">
+        <footer className="p-4  py-[13px] px-[16px] md:px-[4vw] lg:pt-[35px]">
             <div className="sm:flex sm:items-center sm:justify-between">
                 <Link href="/" className=" flex items-center ">
                     <Image
@@ -15,7 +15,7 @@ function Footer() {
                     />
                 </Link>
 
-                <ul className="flex  flex-wrap items-center text-sm text-green-300 ">
+                <ul className="flex  flex-wrap items-center text-sm text-pistaMidGreen ">
                     <li>
                         <Link
                             href="/"
@@ -48,8 +48,8 @@ function Footer() {
                 </ul>
             </div>
 
-            <hr className="my-3 border-green-700 sm:mx-auto lg:my-4" />
-            <p className="mt-2  text-sm text-green-300 sm:text-center">
+            <hr className="my-3 border-pistaGreen sm:mx-auto lg:my-4" />
+            <p className="mt-2  text-sm text-pistaMidGreen sm:text-center">
                 <Link href="tel:+1 (972) 635-5657" className="underline">
                     +1 (972) 635-5657{" "}
                 </Link>{" "}
@@ -61,11 +61,11 @@ function Footer() {
                     901 W Royal Ln, Irving, TX 75039.
                 </Link>
             </p>
-            <span className="block  text-sm text-green-300 sm:text-center">
+            <span className="block  text-sm text-pistaMidGreen sm:text-center">
                 © {new Date().getFullYear()} Pista House Irving. All rights
                 reserved.
             </span>
-            <span className="block  text-sm text-green-300 sm:text-center">
+            <span className="block  text-sm text-pistaMidGreen sm:text-center">
                 Built with{" "}
                 <Link href="https://nextjs.org/" className="hover:underline">
                     <SiNextdotjs className="inline-block h-4 w-4" />

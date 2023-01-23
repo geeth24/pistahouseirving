@@ -7,20 +7,20 @@ function Home() {
         <>
             <section className=" h-screen bg-opacity-10 bg-[url('/slides/1.jpg')] bg-cover bg-center bg-no-repeat">
                 <div className="flex h-full flex-col items-center justify-center bg-black bg-opacity-70">
-                    <div className="mx-auto grid max-w-screen-xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 lg:py-32">
+                    <div className="mx-auto grid max-w-screen-2xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 lg:py-32">
                         <div className="mr-auto place-self-center lg:col-span-6">
-                            <h1 className="mb-4 w-full max-w-4xl text-4xl font-bold  text-green-300 md:text-5xl xl:text-6xl">
+                            <span className="relative w-full max-w-4xl after:overflow-hidden text-4xl font-bold text-pistaLightGreen after:absolute after:bottom-1 after:left-0 after:z-0 after:h-5 after:w-full after:bg-[#beeca03e] after:content-[''] md:text-5xl xl:text-6xl">
                                 Authentic Hyderabadi <br />
-                                <span className="text-green-500">
-                                    {" "}
-                                    Food and Catering
-                                </span>
-                            </h1>
+                            </span>
+                            <h2 className="mb-6 w-full max-w-4xl text-4xl font-bold text-green-500 md:text-5xl xl:text-6xl">
+                                {" "}
+                                Food and Catering
+                            </h2>
                             <p className="mb-6 max-w-2xl font-light text-gray-300 md:text-lg lg:mb-8 lg:text-lg">
                                 We are dedicated to providing you with the
                                 finest Indian food and catering. Browse our{" "}
                                 <Link href="/menu">
-                                    <span className="cursor-pointer text-green-300 underline">
+                                    <span className="cursor-pointer text-pistaLightGreen underline">
                                         menu
                                     </span>
                                 </Link>{" "}
@@ -31,7 +31,7 @@ function Home() {
 
                             <Link
                                 href="/menu"
-                                className="inline-flex items-center justify-center rounded-full border border-transparent bg-green-700 px-16 py-2 text-base font-medium text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-green-800 active:scale-95 "
+                                className="inline-flex items-center justify-center rounded-full border border-transparent bg-pistaGreen px-16 py-2 text-base font-medium text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-pistaGreen active:scale-95 "
                             >
                                 Menu
                             </Link>
