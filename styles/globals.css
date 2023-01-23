@@ -10,18 +10,18 @@
 }
 
 body {
-  background-color: rgb(0, 0, 0);
+  background-color: #1A202C;
 }
 
   ::-webkit-scrollbar
 {
   width: 8px;
   height: 8px;
-  background-color: #065f46;
+  background-color: #2D3748;
 }
 
 ::-webkit-scrollbar-thumb
 {
   border-radius: 4px;
-  background-color: #03261c;
+  background-color: #06bd9c;
 }
