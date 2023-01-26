@@ -325,7 +325,7 @@ const Layout = ({ children }: LayoutProps) => {
             <Navbar />
             {children}
             <Footer />
-            <div className="fixed bottom-0 right-0 m-20 ">
+            <div className="fixed bottom-0 right-0 m-10 md:m-20 ">
                 <button
                     className="rounded-full bg-pistaGreen p-2 px-4 py-4 text-pistaLightGreen shadow-lg"
                     onClick={() => {
