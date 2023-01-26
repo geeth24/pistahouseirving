@@ -63,9 +63,9 @@ function Navbar() {
                             xmlns="http://www.w3.org/2000/svg"
                         >
                             <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                             ></path>
                         </svg>
                     </button>
@@ -81,7 +81,11 @@ function Navbar() {
                         <Link
                             href="/"
                             className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                            onClick={() => setIsOpen(!isOpen)}
+                            onClick={() => {
+                                if (window.innerWidth >= 600) {
+                                    setIsOpen(!isOpen)
+                                }
+                            }}
                         >
                             <FaHome className="text-2xl text-pistaMidGreen " />
                             <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
@@ -90,8 +94,12 @@ function Navbar() {
                         </Link>
                         <Link
                             href="/menu"
-                            onClick={() => setIsOpen(!isOpen)}
                             className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
+                            onClick={() => {
+                                if (window.innerWidth >= 600) {
+                                    setIsOpen(!isOpen)
+                                }
+                            }}
                         >
                             <FaUtensilSpoon className="text-2xl text-pistaMidGreen " />
                             <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
@@ -101,7 +109,11 @@ function Navbar() {
                         <Link
                             href="/catering"
                             className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                            onClick={() => setIsOpen(!isOpen)}
+                            onClick={() => {
+                                if (window.innerWidth >= 600) {
+                                    setIsOpen(!isOpen)
+                                }
+                            }}
                         >
                             <FaBookOpen className="text-2xl text-pistaMidGreen" />
                             <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
@@ -111,7 +123,11 @@ function Navbar() {
                         <Link
                             href="/aboutus"
                             className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                            onClick={() => setIsOpen(!isOpen)}
+                            onClick={() => {
+                                if (window.innerWidth >= 600) {
+                                    setIsOpen(!isOpen)
+                                }
+                            }}
                         >
                             <FaBuilding className="text-2xl text-pistaMidGreen" />
                             <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">

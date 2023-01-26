@@ -329,7 +329,13 @@ const Layout = ({ children }: LayoutProps) => {
                 <button
                     className="rounded-full bg-pistaGreen p-2 px-4 py-4 text-pistaLightGreen shadow-lg"
                     onClick={() => {
-                        setOpen(true)
+                        if (router.pathname !== "/catering") {
+                            console.log(router.pathname)
+                            router.push("/catering?order=true")
+                        } else {
+                           setOpen(true)
+                        }
+                       
                     }}
                 >
                     <FaWhatsapp className="h-6 w-6" />

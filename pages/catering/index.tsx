@@ -14,10 +14,11 @@ import {
 import CaterCard from "@/components/CaterCard"
 import React from "react"
 import PhotoAlbum, { RenderPhoto } from "react-photo-album"
-import { Link } from "react-scroll"
+import { animateScroll, Link } from "react-scroll"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "@/components/Firebase"
 import Head from "next/head"
+import { useRouter } from "next/router"
 
 const renderPhoto: RenderPhoto = ({
     layout,
@@ -135,6 +136,20 @@ const images = [
 ]
 function Catering() {
      const [logged, setLogged] = React.useState(false)
+     const router = useRouter()
+     const { order } = router.query
+
+     if (order === "true") {
+         console.log("order is true")
+         //if media query is 600px or less
+         if (window.innerWidth <= 600) {
+             animateScroll.scrollTo(1100)
+         }
+         //if media query is 600px or more
+         else {
+             animateScroll.scrollTo(1500)
+         }
+     }
 
      if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
          if (!logged) {
