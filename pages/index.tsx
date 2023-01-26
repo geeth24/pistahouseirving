@@ -1,15 +1,40 @@
 import Link from "next/link"
 import React from "react"
 import { motion } from "framer-motion"
+import { analytics } from "@/components/Firebase"
+import { logEvent } from "firebase/analytics"
+import Head from "next/head"
 
 function Home() {
+    //spring
+    const [logged, setLogged] = React.useState(false)
+
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
+        if (!logged) {
+            logEvent(analytics, "page_view", {
+                page_title: "Home",
+                page_location: "https://www.pistahouseirving.com/",
+                page_path: "/",
+            })
+            setLogged(true)
+        }
+    } else {
+        if (!logged) {
+            console.log("development")
+            setLogged(true)
+        }
+    }
     return (
         <>
+            <Head>
+                <title>Home | Pista House Irving</title>
+                <meta property="og:title" content="Pista House Irving" />
+            </Head>
             <section className=" h-screen bg-opacity-10 bg-[url('/slides/1.jpg')] bg-cover bg-center bg-no-repeat">
                 <div className="flex h-full flex-col items-center justify-center bg-black bg-opacity-70">
                     <div className="mx-auto grid max-w-screen-2xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 lg:py-32">
                         <div className="mr-auto place-self-center lg:col-span-6">
-                            <span className="relative w-full max-w-4xl after:overflow-hidden text-4xl font-bold text-pistaLightGreen after:absolute after:bottom-1 after:left-0 after:z-0 after:h-5 after:w-full after:bg-[#beeca03e] after:content-[''] md:text-5xl xl:text-6xl">
+                            <span className="relative w-full max-w-4xl text-4xl font-bold text-pistaLightGreen after:absolute after:bottom-1 after:left-0 after:z-0 after:h-5 after:w-full after:overflow-hidden after:bg-[#beeca03e] after:content-[''] md:text-5xl xl:text-6xl">
                                 Authentic Hyderabadi <br />
                             </span>
                             <h2 className="mb-6 w-full max-w-4xl text-4xl font-bold text-green-500 md:text-5xl xl:text-6xl">

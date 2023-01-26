@@ -13,10 +13,36 @@ import {
     Drinks,
     Desserts,
 } from "../../components/menu"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "../../components/Firebase"
+import React from "react"
+import Head from "next/head"
 
 function Menu() {
+    const [logged, setLogged] = React.useState(false)
+
+    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
+        if (!logged) {
+            logEvent(analytics, "page_view", {
+                page_title: "Menu",
+                page_location: "https://www.pistahouseirving.com/menu",
+                page_path: "/menu",
+            })
+            setLogged(true)
+        }
+    } else {
+        if (!logged) {
+            console.log("development")
+            setLogged(true)
+        }
+    }
+
     return (
         <>
+            <Head>
+                <title>Menu | Pista House Irving</title>
+                <meta property="og:title" content="Menu" />
+            </Head>
             <section className="h-full bg-opacity-10 bg-[url('/bg/menu.png')] bg-cover bg-center bg-no-repeat">
                 <div className="fixed top-0  flex w-full flex-row items-center space-x-5 overflow-hidden overflow-x-scroll bg-pistaGray/70 pb-5 pr-5 pl-5 pt-20 backdrop-blur-lg md:pt-24  xl:justify-center">
                     <Link
