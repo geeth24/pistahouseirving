@@ -32,7 +32,7 @@ function Home() {
             </Head>
             <section className=" h-screen bg-opacity-10 bg-[url('/slides/1.jpg')] bg-cover bg-center bg-no-repeat">
                 <div className="flex h-full flex-col items-center justify-center bg-black bg-opacity-70">
-                    <div className="mx-auto grid max-w-screen-2xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 lg:py-32">
+                    <div className="mx-auto grid max-w-screen-2xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 md:py-32">
                         <div className="mr-auto place-self-center lg:col-span-6">
                             <span className="relative w-full max-w-4xl text-4xl font-bold text-pistaLightGreen after:absolute after:bottom-1 after:left-0 after:z-0 after:h-5 after:w-full after:overflow-hidden after:bg-[#beeca03e] after:content-[''] md:text-5xl xl:text-6xl">
                                 Authentic Hyderabadi <br />
