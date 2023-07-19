@@ -295,7 +295,6 @@ const Layout = ({ children }: LayoutProps) => {
                                                     ? "cursor-not-allowed opacity-50"
                                                     : ""
                                             }`}
-
                                             onClick={() => {
                                                 handleQuote()
                                                 setOpen(false)
@@ -327,15 +326,14 @@ const Layout = ({ children }: LayoutProps) => {
             <Footer />
             <div className="fixed bottom-0 right-0 m-10 md:m-20 ">
                 <button
-                    className="rounded-full bg-pistaGreen p-2 px-4 py-4 text-pistaLightGreen shadow-lg"
+                    className="rounded-full border-[1px] border-pistaLightGreen p-2 px-4 py-4 text-pistaLightGreen shadow-lg"
                     onClick={() => {
                         if (router.pathname !== "/catering") {
                             console.log(router.pathname)
                             router.push("/catering?order=true")
                         } else {
-                           setOpen(true)
+                            setOpen(true)
                         }
-                       
                     }}
                 >
                     <FaWhatsapp className="h-6 w-6" />
