@@ -32,7 +32,7 @@ function Home() {
                 <meta property="og:title" content="Pista House Irving" />
             </Head>
             <section className="h-screen bg-opacity-10 bg-[url('/Biryani.jpeg')] bg-cover bg-center bg-no-repeat">
-                <div className="h-full w-full bg-[url('/back.svg')] bg-cover bg-center bg-no-repeat">
+                <div className="h-screen w-full bg-[url('/back.svg')] bg-cover bg-center bg-no-repeat">
                     <motion.video
                         // @ts-ignore
                         alt="Catering"
@@ -44,12 +44,12 @@ function Home() {
                         muted={true}
                         playsInline={true}
                         type={"video/mp4"}
-                        className="absolute mt-5 h-full w-full rounded-lg object-cover shadow-2xl lg:mt-0"
+                        className="absolute h-screen w-full rounded-lg object-cover shadow-2xl lg:mt-0"
                         // initial={{ opacity: 0, x: 100 }}
                         // animate={{ opacity: 1, x: 0 }}
                         // transition={{ duration: 1 }}
                     />
-                    <div className="relative mx-auto flex h-full flex-col items-center justify-center bg-black bg-opacity-80">
+                    <div className="relative mx-auto flex h-screen flex-col items-center justify-center bg-black bg-opacity-80">
                         <div className="flex max-w-screen-2xl flex-col space-x-6 overflow-hidden px-8 py-24 md:flex-row">
                             <div className="">
                                 <div className="mb-6 flex flex-row items-start justify-start">
@@ -60,7 +60,7 @@ function Home() {
                                 </div>
                                 <h1 className="mb-4 text-left text-5xl font-thin tracking-tight text-white md:text-6xl lg:text-7xl xl:text-8xl">
                                     Indulge in{" "}
-                                    <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-pistaLightGreen to-pistaGreen">
+                                    <span className="bg-gradient-to-r from-pistaLightGreen to-pistaGreen bg-clip-text font-bold text-transparent">
                                         Authentic Hyderabadi <br />
                                     </span>{" "}
                                     Cuisine at Pista House Irving
@@ -85,7 +85,7 @@ function Home() {
                                 <div className="flex flex-row items-end justify-end">
                                     <Link
                                         href="/menu"
-                                        className="inline-flex w-[65%] items-center justify-center rounded-full border border-transparent bg-pistaLightGreen hover:bg-transparent hover:border-[1px] hover:border-pistaLightGreen hover:text-pistaLightGreen px-16 py-2 text-base font-medium text-black shadow-sm transition-all duration-300 ease-in-out active:scale-95 "
+                                        className="inline-flex w-[65%] items-center justify-center rounded-full border border-transparent bg-pistaLightGreen px-16 py-2 text-base font-medium text-black shadow-sm transition-all duration-300 ease-in-out hover:border-[1px] hover:border-pistaLightGreen hover:bg-transparent hover:text-pistaLightGreen active:scale-95 "
                                     >
                                         Menu
                                     </Link>
