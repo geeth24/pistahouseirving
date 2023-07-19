@@ -31,8 +31,8 @@ function Home() {
                 <title>Home | Pista House Irving</title>
                 <meta property="og:title" content="Pista House Irving" />
             </Head>
-            <section className="h-screen bg-opacity-10 bg-[url('/Biryani.jpeg')] bg-cover bg-center bg-no-repeat">
-                <div className="h-screen w-full bg-[url('/back.svg')] bg-cover bg-center bg-no-repeat">
+            <section className="h-fit bg-opacity-10  bg-[url('/Biryani.jpeg')] bg-cover bg-center bg-no-repeat md:h-screen">
+                <div className="h-fit w-full  bg-[url('/back.svg')] bg-cover bg-center bg-no-repeat md:h-screen">
                     <motion.video
                         // @ts-ignore
                         alt="Catering"
@@ -44,7 +44,7 @@ function Home() {
                         muted={true}
                         playsInline={true}
                         type={"video/mp4"}
-                        className="absolute h-screen w-full rounded-lg object-cover shadow-2xl lg:mt-0"
+                        className="absolute h-fit w-full  rounded-lg object-cover shadow-2xl md:h-screen lg:mt-0"
                         // initial={{ opacity: 0, x: 100 }}
                         // animate={{ opacity: 1, x: 0 }}
                         // transition={{ duration: 1 }}

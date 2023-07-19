@@ -36,7 +36,7 @@ function Navbar() {
                         alt="Pista House Logo"
                         width={150}
                         height={50}
-                        className="h-auto w-auto cursor-pointer"
+                        className="cursor-pointer"
                     />
                 </Link>
 
