@@ -12,6 +12,7 @@ import {
     Rice,
     Drinks,
     Desserts,
+    HyderabadiBiryani,
 } from "../../components/menu"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "../../components/Firebase"
@@ -123,6 +124,16 @@ function Menu() {
                         Naan Bread
                     </Link>
                     <hr className="mb-6 border-pistaGreen/10" />
+                    <Link
+                        to="HyderabadiBiryani"
+                        smooth={true}
+                        duration={800}
+                        spy={true}
+                        offset={-180}
+                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
+                    >
+                        Hyderabadi Biryani
+                    </Link>
                     <Link
                         to="Rice"
                         smooth={true}
@@ -258,6 +269,21 @@ function Menu() {
                         </h6>
                         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                             {NaanBread.map((item, index) => (
+                                <MenuCard
+                                    key={index}
+                                    title={item.title}
+                                    description={item.description}
+                                    price={item.price}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                    <div id="HyderabadiBiryani" className="mb-8">
+                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
+                            Hyderabadi Biryani
+                        </h6>
+                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                            {HyderabadiBiryani.map((item, index) => (
                                 <MenuCard
                                     key={index}
                                     title={item.title}
