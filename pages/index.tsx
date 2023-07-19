@@ -85,7 +85,7 @@ function Home() {
                                 <div className="flex flex-row items-end justify-end">
                                     <Link
                                         href="/menu"
-                                        className="inline-flex w-[65%] items-center justify-center rounded-full border border-transparent bg-pistaLightGreen hover:bg-transparent hover:border-[1px] hover:border-pistaLightGreen hover:text-pistaLightGreen px-16 py-2 text-base font-medium text-black shadow-sm transition-all duration-300 ease-in-out hover:bg-pistaGreen active:scale-95 "
+                                        className="inline-flex w-[65%] items-center justify-center rounded-full border border-transparent bg-pistaLightGreen hover:bg-transparent hover:border-[1px] hover:border-pistaLightGreen px-16 py-2 text-base font-medium text-black shadow-sm transition-all duration-300 ease-in-out active:scale-95 "
                                     >
                                         Menu
                                     </Link>
