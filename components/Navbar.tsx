@@ -43,7 +43,7 @@ function Navbar() {
                 <div className="flex md:order-1 lg:order-2">
                     <Link
                         href="/contactus"
-                        className="mr-3 rounded-full border-2 border-pistaMidGreen bg-transparent px-8 py-2 text-center text-base font-bold text-pistaMidGreen md:px-16 md:text-lg lg:mr-0"
+                        className="mr-3 rounded-full border-2 border-pistaMidGreen bg-transparent px-4 py-2 text-center text-sm font-bold text-pistaMidGreen md:px-16 md:text-lg lg:mr-0"
                     >
                         Contact Us
                     </Link>
@@ -62,14 +62,14 @@ function Navbar() {
                             }`}
                         >
                             <div
-                                className={`h-[2px] w-8 rounded-full bg-pistaMidGreen transition-all duration-300 lg:group-hover:bg-transparent ${
+                                className={`h-[2px] w-6 rounded-full bg-pistaMidGreen transition-all duration-300 md:w-8 lg:group-hover:bg-transparent ${
                                     isOpen &&
                                     "translate-y-[4.5px] -rotate-45 bg-pistaMidGreen"
                                 }`}
                             />
 
                             <div
-                                className={`h-[2px] w-8 rounded-full bg-pistaMidGreen transition-all duration-300 lg:group-hover:bg-transparent ${
+                                className={`h-[2px] w-6 rounded-full bg-pistaMidGreen transition-all duration-300 md:w-8 lg:group-hover:bg-transparent ${
                                     isOpen &&
                                     "-translate-y-[6px] rotate-45 bg-pistaMidGreen"
                                 }`}
