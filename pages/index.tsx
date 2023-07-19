@@ -70,16 +70,15 @@ function Home() {
                                 </div>{" "}
                                 <div className="flex flex-row items-end justify-end">
                                     <p className="mb-6 w-[65%] font-light text-white/70 md:text-lg lg:mb-8 lg:text-lg">
-                                        Embark on an Epicurean Adventure with
-                                        Us: Experience the Finest Indian Cuisine
-                                        and Unforgettable Catering Services.
-                                        Explore our Exquisite Menu, Overflowing
-                                        with Live Kebabs, Flavorful Chats,
-                                        Irresistible Dosas, and All Your Beloved
-                                        Indian Delicacies. Indulge your Senses
-                                        and Call in Advance to Savor the
-                                        Authentic Flavors of India, Crafted with
-                                        Passion and Expertise.
+                                        Embark on a culinary journey with us and
+                                        savor the best of Indian cuisine. Enjoy
+                                        our exquisite menu filled with live
+                                        kebabs, flavorful chats, irresistible
+                                        dosas, and beloved Indian delicacies.
+                                        <br />
+                                        Call ahead to experience the authentic
+                                        flavors of India, crafted with passion
+                                        and expertise.
                                     </p>
                                 </div>{" "}
                                 <div className="flex flex-row items-end justify-end">
