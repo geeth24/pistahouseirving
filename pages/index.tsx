@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { analytics } from "@/components/Firebase"
 import { logEvent } from "firebase/analytics"
 import Head from "next/head"
+import Image from "next/image"
 
 function Home() {
     //spring
@@ -30,55 +31,65 @@ function Home() {
                 <title>Home | Pista House Irving</title>
                 <meta property="og:title" content="Pista House Irving" />
             </Head>
-            <section className=" h-screen bg-opacity-10 bg-[url('/slides/1.jpg')] bg-cover bg-center bg-no-repeat">
-                <div className="flex h-full flex-col items-center justify-center bg-black bg-opacity-70">
-                    <div className="mx-auto grid max-w-screen-2xl overflow-hidden px-8 py-24 md:px-16 lg:grid-cols-12 lg:gap-8 md:py-32">
-                        <div className="mr-auto place-self-center lg:col-span-6">
-                            <span className="relative w-full max-w-4xl text-4xl font-bold text-pistaLightGreen after:absolute after:bottom-1 after:left-0 after:z-0 after:h-5 after:w-full after:overflow-hidden after:bg-[#beeca03e] after:content-[''] md:text-5xl xl:text-6xl">
-                                Authentic Hyderabadi <br />
-                            </span>
-                            <h2 className="mb-6 w-full max-w-4xl text-4xl font-bold text-green-500 md:text-5xl xl:text-6xl">
-                                {" "}
-                                Food and Catering
-                            </h2>
-                            <p className="mb-6 max-w-2xl font-light text-gray-300 md:text-lg lg:mb-8 lg:text-lg">
-                                We are dedicated to providing you with the
-                                finest Indian food and catering. Browse our{" "}
-                                <Link href="/menu">
-                                    <span className="cursor-pointer text-pistaLightGreen underline">
-                                        menu
-                                    </span>
-                                </Link>{" "}
-                                and call to order in advance. <br />
-                                We are specialized in Live Kebabs, Chat, Dosa
-                                and all of your favorite Indian dishes.
-                            </p>
-
-                            <Link
-                                href="/menu"
-                                className="inline-flex items-center justify-center rounded-full border border-transparent bg-pistaGreen px-16 py-2 text-base font-medium text-white shadow-sm transition-all duration-300 ease-in-out hover:bg-pistaGreen active:scale-95 "
-                            >
-                                Menu
-                            </Link>
-                        </div>
-                        <div className=" lg:col-span-6 lg:mt-0 lg:flex">
-                            <div className="flex h-fit w-fit flex-col justify-center">
-                                <motion.video
-                                    // @ts-ignore
-                                    alt="Catering"
-                                    w={"100%"}
-                                    h={"100%"}
-                                    src="https://photos.smugmug.com/photos/i-7h6J4v9/0/640/i-7h6J4v9-640.mp4"
-                                    autoPlay={true}
-                                    loop={true}
-                                    muted={true}
-                                    playsInline={true}
-                                    type={"video/mp4"}
-                                    className="mt-5 h-full w-full rounded-lg object-cover shadow-2xl lg:mt-0"
-                                    initial={{ opacity: 0, x: 100 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 1 }}
-                                />
+            <section className="h-screen bg-opacity-10 bg-[url('/Biryani.jpeg')] bg-cover bg-center bg-no-repeat">
+                <div className="h-full w-full bg-[url('/back.svg')] bg-cover bg-center bg-no-repeat">
+                    <motion.video
+                        // @ts-ignore
+                        alt="Catering"
+                        w={"100%"}
+                        h={"100%"}
+                        src="https://photos.smugmug.com/photos/i-7h6J4v9/0/1080/i-7h6J4v9-1080.mp4"
+                        autoPlay={true}
+                        loop={true}
+                        muted={true}
+                        playsInline={true}
+                        type={"video/mp4"}
+                        className="absolute mt-5 h-full w-full rounded-lg object-cover shadow-2xl lg:mt-0"
+                        // initial={{ opacity: 0, x: 100 }}
+                        // animate={{ opacity: 1, x: 0 }}
+                        // transition={{ duration: 1 }}
+                    />
+                    <div className="relative mx-auto flex h-full flex-col items-center justify-center bg-black bg-opacity-80">
+                        <div className="flex max-w-screen-2xl flex-col space-x-6 overflow-hidden px-8 py-24 md:flex-row">
+                            <div className="">
+                                <div className="mb-6 flex flex-row items-start justify-start">
+                                    <div className="flex h-fit w-fit flex-col justify-center"></div>
+                                </div>
+                                <div className="flex flex-row items-start justify-start">
+                                    <div className="mb-4 h-0.5 w-[75%] rounded bg-gradient-to-tr from-pistaLightGreen to-transparent" />
+                                </div>
+                                <h1 className="mb-4 text-left text-5xl font-thin tracking-tight text-white md:text-6xl lg:text-7xl xl:text-8xl">
+                                    Indulge in{" "}
+                                    <span className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-pistaLightGreen to-pistaGreen">
+                                        Authentic Hyderabadi <br />
+                                    </span>{" "}
+                                    Cuisine at Pista House Irving
+                                </h1>
+                                <div className="flex flex-row items-end justify-end">
+                                    <div className="mb-4 h-0.5 w-[65%] rounded bg-gradient-to-tr from-transparent to-pistaLightGreen" />
+                                </div>{" "}
+                                <div className="flex flex-row items-end justify-end">
+                                    <p className="mb-6 w-[65%] font-light text-white/70 md:text-lg lg:mb-8 lg:text-lg">
+                                        Embark on an Epicurean Adventure with
+                                        Us: Experience the Finest Indian Cuisine
+                                        and Unforgettable Catering Services.
+                                        Explore our Exquisite Menu, Overflowing
+                                        with Live Kebabs, Flavorful Chats,
+                                        Irresistible Dosas, and All Your Beloved
+                                        Indian Delicacies. Indulge your Senses
+                                        and Call in Advance to Savor the
+                                        Authentic Flavors of India, Crafted with
+                                        Passion and Expertise.
+                                    </p>
+                                </div>{" "}
+                                <div className="flex flex-row items-end justify-end">
+                                    <Link
+                                        href="/menu"
+                                        className="inline-flex w-[65%] items-center justify-center rounded-full border border-transparent bg-pistaLightGreen hover:bg-transparent hover:border-[1px] hover:border-pistaLightGreen hover:text-pistaLightGreen px-16 py-2 text-base font-medium text-black shadow-sm transition-all duration-300 ease-in-out hover:bg-pistaGreen active:scale-95 "
+                                    >
+                                        Menu
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>
