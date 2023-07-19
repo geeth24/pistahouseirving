@@ -43,7 +43,7 @@ function Navbar() {
                 <div className="flex md:order-1 lg:order-2">
                     <Link
                         href="/contactus"
-                        className="mr-3 rounded-full border-2 border-pistaMidGreen bg-transparent px-16 py-2 text-center text-lg font-bold text-pistaMidGreen lg:mr-0"
+                        className="mr-3 rounded-full border-2 border-pistaMidGreen bg-transparent px-8 py-2 text-center text-base font-bold text-pistaMidGreen md:px-16 md:text-lg lg:mr-0"
                     >
                         Contact Us
                     </Link>
