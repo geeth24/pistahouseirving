@@ -49,7 +49,7 @@ function Home() {
                         // animate={{ opacity: 1, x: 0 }}
                         // transition={{ duration: 1 }}
                     />
-                    <div className="relative mx-auto flex h-screen flex-col items-center justify-center bg-black bg-opacity-80">
+                    <div className="relative mx-auto flex h-fit flex-col  items-center justify-center bg-black bg-opacity-80 md:h-screen">
                         <div className="flex max-w-screen-2xl flex-col space-x-6 overflow-hidden px-8 py-24 md:flex-row">
                             <div className="">
                                 <div className="mb-6 flex flex-row items-start justify-start">
