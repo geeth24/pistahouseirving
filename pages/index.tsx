@@ -58,7 +58,7 @@ function Home() {
                                 <div className="flex flex-row items-start justify-start">
                                     <div className="mb-4 h-0.5 w-[75%] rounded bg-gradient-to-tr from-pistaLightGreen to-transparent" />
                                 </div>
-                                <h1 className="mb-4 text-left text-5xl font-thin tracking-tight text-white md:text-6xl lg:text-7xl xl:text-8xl">
+                                <h1 className="mb-4 text-left text-3xl font-thin tracking-tight text-white sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl">
                                     Indulge in{" "}
                                     <span className="bg-gradient-to-r from-pistaLightGreen to-pistaGreen bg-clip-text font-bold text-transparent">
                                         Authentic Hyderabadi <br />
