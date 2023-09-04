@@ -36,20 +36,20 @@ function Navbar() {
                         alt="Pista House Logo"
                         width={150}
                         height={50}
-                        className="h-auto w-auto cursor-pointer"
+                        className="cursor-pointer"
                     />
                 </Link>
 
                 <div className="flex md:order-1 lg:order-2">
                     <Link
                         href="/contactus"
-                        className="mr-3 rounded-full bg-pistaGreen px-5 py-2.5 text-center text-sm font-medium text-white lg:mr-0"
+                        className="mr-3 rounded-full border-2 border-pistaMidGreen bg-transparent px-4 py-2 text-center text-sm font-bold text-pistaMidGreen md:px-16 md:text-lg lg:mr-0"
                     >
                         Contact Us
                     </Link>
 
                     <div
-                        className={`flex items-center rounded-full bg-pistaGreen p-2 text-sm text-white focus:outline-none md:hidden  justify-center${
+                        className={`flex items-center rounded-full p-2 text-sm text-white focus:outline-none md:hidden  justify-center${
                             isOpen && ""
                         }`}
                         onClick={() => {
@@ -57,25 +57,21 @@ function Navbar() {
                         }}
                     >
                         <div
-                            className={`text-darkred group  z-50 flex cursor-pointer flex-col items-center justify-center  gap-[3px] rounded-full  bg-transparent px-1.5 py-0.5 transition-all duration-300 active:bg-transparent lg:hidden lg:hover:bg-transparent ${
+                            className={`text-darkred group  z-50 flex cursor-pointer flex-col items-center justify-center  gap-[9px] rounded-full  bg-transparent px-1.5 py-0.5 transition-all duration-300 active:bg-transparent lg:hidden lg:hover:bg-transparent ${
                                 isOpen && " bg-white"
                             }`}
                         >
                             <div
-                                className={`h-[2px] w-[13.81px] rounded-full bg-white transition-all duration-300 lg:group-hover:bg-transparent ${
+                                className={`h-[2px] w-6 rounded-full bg-pistaMidGreen transition-all duration-300 md:w-8 lg:group-hover:bg-transparent ${
                                     isOpen &&
-                                    "translate-y-[4.5px] -rotate-45 bg-white"
+                                    "translate-y-[4.5px] -rotate-45 bg-pistaMidGreen"
                                 }`}
                             />
+
                             <div
-                                className={`h-[2px] w-[13.81px] rounded-full bg-white transition-all duration-300 lg:group-hover:bg-transparent ${
-                                    isOpen && "rotate-45 bg-white"
-                                }`}
-                            />
-                            <div
-                                className={`h-[2px] w-[13.81px] rounded-full bg-white transition-all duration-300 lg:group-hover:bg-transparent ${
+                                className={`h-[2px] w-6 rounded-full bg-pistaMidGreen transition-all duration-300 md:w-8 lg:group-hover:bg-transparent ${
                                     isOpen &&
-                                    "-translate-y-[6px] rotate-45 bg-white"
+                                    "-translate-y-[6px] rotate-45 bg-pistaMidGreen"
                                 }`}
                             />
                         </div>

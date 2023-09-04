@@ -14,8 +14,8 @@ function CaterCard({ title }: CaterCardProps) {
     const [isAdded, setIsAdded] = React.useState(false)
     return (
         <div
-            className={`flex cursor-pointer flex-col justify-between rounded-lg bg-pistaLightGray p-6 shadow-lg ${
-                isAdded ? "bg-pistaLightGreen" : ""
+            className={`flex cursor-pointer flex-col justify-between rounded-lg p-6 shadow-lg transition-all duration-300 ease-in-out ${
+                isAdded ? "bg-pistaLightGreen" : "bg-pistaLightGray"
             }`}
             onClick={() => {
                 //if the order string has the title, remove it from the order
@@ -30,8 +30,8 @@ function CaterCard({ title }: CaterCardProps) {
             }}
         >
             <h1
-                className={`text-lg font-bold text-pistaLightGreen md:text-xl ${
-                    isAdded ? "text-pistaLightGray" : ""
+                className={`text-lg font-bold transition-all duration-300 ease-in-out md:text-xl ${
+                    isAdded ? "text-pistaLightGray" : "text-pistaLightGreen"
                 }`}
             >
                 {title}

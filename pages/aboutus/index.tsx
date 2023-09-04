@@ -3,7 +3,6 @@ import { logEvent } from "firebase/analytics"
 import { analytics } from "../../components/Firebase"
 import Head from "next/head"
 
-
 function AboutUs() {
     const [logged, setLogged] = React.useState(false)
 
@@ -28,7 +27,7 @@ function AboutUs() {
             <Head>
                 <title>About Us | Pista House Irving</title>
             </Head>
-            <div className="bg-pisataGreen relative flex items-center justify-center">
+            <div className="bg-pisataGreen relative flex h-screen items-center justify-center">
                 <div className="absolute inset-0 blur">
                     <img
                         className="h-full w-full object-cover"
