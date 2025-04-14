@@ -1,12 +1,12 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { FaBookOpen, FaBuilding, FaHome, FaUtensilSpoon } from "react-icons/fa"
-import { AnimatePresence, motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { FaUtensilSpoon, FaBuilding, FaHome, FaBookOpen, FaPhone } from "react-icons/fa"
 
 function Navbar() {
-    const [isOpen, setIsOpen] = React.useState(false)
-    const [scrollNav, setScrollNav] = React.useState(false)
+    const [isOpen, setIsOpen] = useState(false)
+    const [scrollNav, setScrollNav] = useState(false)
 
     const changeNav = () => {
         if (window.scrollY >= 80) {
@@ -16,20 +16,30 @@ function Navbar() {
         }
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         window.addEventListener("scroll", changeNav)
+        return () => {
+            window.removeEventListener("scroll", changeNav)
+        }
     }, [])
+
+    const navLinks = [
+        { name: "Home", href: "/", icon: <FaHome /> },
+        { name: "Menu", href: "/menu", icon: <FaUtensilSpoon /> },
+        { name: "Catering", href: "/catering", icon: <FaBookOpen /> },
+        { name: "About Us", href: "/aboutus", icon: <FaBuilding /> },
+        { name: "Contact", href: "/contactus", icon: <FaPhone /> },
+    ]
+
     return (
         <nav
-            className={`fixed z-20 w-full  px-2 py-2.5 sm:px-4 ${
+            className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
                 scrollNav || isOpen
-                    ? `bg-pistaGray/70 backdrop-blur-lg ${
-                          isOpen ? "h-screen" : ""
-                      }`
+                    ? "bg-background-dark/90 backdrop-blur-md shadow-lg"
                     : "bg-transparent"
             }`}
         >
-            <div className="container mx-auto flex flex-wrap items-center justify-between">
+            <div className="container-padding mx-auto flex h-20 items-center justify-between">
                 <Link href="/" className="flex items-center">
                     <Image
                         src="/pistahouselogo.png"
@@ -40,204 +50,84 @@ function Navbar() {
                     />
                 </Link>
 
-                <div className="flex md:order-1 lg:order-2">
+                {/* Desktop Menu */}
+                <div className="hidden items-center space-x-8 md:flex">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className="group relative flex items-center space-x-1 text-primary-light transition-colors hover:text-white"
+                        >
+                            <span className="text-sm">{link.icon}</span>
+                            <span className="text-base font-medium">{link.name}</span>
+                            <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary-light transition-all duration-300 group-hover:w-full"></span>
+                        </Link>
+                    ))}
                     <Link
                         href="/contactus"
-                        className="mr-3 rounded-full border-2 border-pistaMidGreen bg-transparent px-4 py-2 text-center text-sm font-bold text-pistaMidGreen md:px-16 md:text-lg lg:mr-0"
+                        className="primary-button ml-4"
                     >
                         Contact Us
                     </Link>
-
-                    <div
-                        className={`flex items-center rounded-full p-2 text-sm text-white focus:outline-none md:hidden  justify-center${
-                            isOpen && ""
-                        }`}
-                        onClick={() => {
-                            setIsOpen(!isOpen)
-                        }}
-                    >
-                        <div
-                            className={`text-darkred group  z-50 flex cursor-pointer flex-col items-center justify-center  gap-[9px] rounded-full  bg-transparent px-1.5 py-0.5 transition-all duration-300 active:bg-transparent lg:hidden lg:hover:bg-transparent ${
-                                isOpen && " bg-white"
-                            }`}
-                        >
-                            <div
-                                className={`h-[2px] w-6 rounded-full bg-pistaMidGreen transition-all duration-300 md:w-8 lg:group-hover:bg-transparent ${
-                                    isOpen &&
-                                    "translate-y-[4.5px] -rotate-45 bg-pistaMidGreen"
-                                }`}
-                            />
-
-                            <div
-                                className={`h-[2px] w-6 rounded-full bg-pistaMidGreen transition-all duration-300 md:w-8 lg:group-hover:bg-transparent ${
-                                    isOpen &&
-                                    "-translate-y-[6px] rotate-45 bg-pistaMidGreen"
-                                }`}
-                            />
-                        </div>
-                    </div>
                 </div>
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            className={` w-full items-center justify-between md:order-1 md:flex md:w-auto ${
-                                isOpen ? "block" : "hidden"
-                            }`}
-                            id="navbar-cta"
-                            initial={{ opacity: 0, y: -20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            exit={{ opacity: 0, y: -20 }}
-                        >
-                            <ul className="mt-4 flex flex-col rounded-lg  p-4   md:mt-0  md:flex-row md:space-x-8 md:bg-transparent md:text-sm md:font-medium md:backdrop-blur-none lg:space-x-12">
-                                <Link
-                                    href="/"
-                                    className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                    onClick={() => {
-                                        if (window.innerWidth >= 600) {
-                                            setIsOpen(false)
-                                        } else {
-                                            setIsOpen(!isOpen)
-                                        }
-                                    }}
-                                >
-                                    <FaHome className="text-2xl text-pistaMidGreen " />
-                                    <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                        Home
-                                    </div>
-                                </Link>
-                                <Link
-                                    href="/menu"
-                                    className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                    onClick={() => {
-                                        if (window.innerWidth >= 600) {
-                                            setIsOpen(false)
-                                        } else {
-                                            setIsOpen(!isOpen)
-                                        }
-                                    }}
-                                >
-                                    <FaUtensilSpoon className="text-2xl text-pistaMidGreen " />
-                                    <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                        Menu
-                                    </div>
-                                </Link>
-                                <Link
-                                    href="/catering"
-                                    className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                    onClick={() => {
-                                        if (window.innerWidth >= 600) {
-                                            setIsOpen(false)
-                                        } else {
-                                            setIsOpen(!isOpen)
-                                        }
-                                    }}
-                                >
-                                    <FaBookOpen className="text-2xl text-pistaMidGreen" />
-                                    <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                        Catering
-                                    </div>
-                                </Link>
-                                <Link
-                                    href="/aboutus"
-                                    className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                    onClick={() => {
-                                        if (window.innerWidth >= 600) {
-                                            setIsOpen(false)
-                                        } else {
-                                            setIsOpen(!isOpen)
-                                        }
-                                    }}
-                                >
-                                    <FaBuilding className="text-2xl text-pistaMidGreen" />
-                                    <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                        About Us
-                                    </div>
-                                </Link>
-                            </ul>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
-                {!isOpen && (
-                    <motion.div
-                        className={` w-full items-center justify-between md:order-1 md:flex md:w-auto ${
-                            isOpen ? "block" : "hidden"
+
+                {/* Mobile Menu Toggle */}
+                <button
+                    className="group flex flex-col items-center justify-center space-y-1.5 md:hidden"
+                    onClick={() => setIsOpen(!isOpen)}
+                    aria-label="Toggle menu"
+                >
+                    <span
+                        className={`block h-0.5 w-6 rounded-full bg-primary-light transition-all duration-300 ${
+                            isOpen ? "translate-y-2 rotate-45" : ""
                         }`}
-                        id="navbar-cta"
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        exit={{ opacity: 0, y: -20 }}
+                    ></span>
+                    <span
+                        className={`block h-0.5 w-6 rounded-full bg-primary-light transition-all duration-300 ${
+                            isOpen ? "opacity-0" : ""
+                        }`}
+                    ></span>
+                    <span
+                        className={`block h-0.5 w-6 rounded-full bg-primary-light transition-all duration-300 ${
+                            isOpen ? "-translate-y-2 -rotate-45" : ""
+                        }`}
+                    ></span>
+                </button>
+            </div>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="container-padding md:hidden"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
                     >
-                        <ul className="mt-4 flex flex-col rounded-lg bg-pistaGray/70 p-4 backdrop-blur-xl  md:mt-0  md:flex-row md:space-x-8 md:bg-transparent md:text-sm md:font-medium md:backdrop-blur-none lg:space-x-12">
+                        <div className="flex flex-col space-y-6 py-8">
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.name}
+                                    href={link.href}
+                                    className="flex items-center space-x-3 text-primary-light"
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    <span className="text-xl">{link.icon}</span>
+                                    <span className="text-lg font-medium">{link.name}</span>
+                                </Link>
+                            ))}
                             <Link
-                                href="/"
-                                className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                onClick={() => {
-                                    if (window.innerWidth >= 600) {
-                                        setIsOpen(false)
-                                    } else {
-                                        setIsOpen(!isOpen)
-                                    }
-                                }}
+                                href="/contactus"
+                                className="primary-button mt-4 w-full text-center"
+                                onClick={() => setIsOpen(false)}
                             >
-                                <FaHome className="text-2xl text-pistaMidGreen " />
-                                <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                    Home
-                                </div>
+                                Contact Us
                             </Link>
-                            <Link
-                                href="/menu"
-                                className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                onClick={() => {
-                                    if (window.innerWidth >= 600) {
-                                        setIsOpen(false)
-                                    } else {
-                                        setIsOpen(!isOpen)
-                                    }
-                                }}
-                            >
-                                <FaUtensilSpoon className="text-2xl text-pistaMidGreen " />
-                                <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                    Menu
-                                </div>
-                            </Link>
-                            <Link
-                                href="/catering"
-                                className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                onClick={() => {
-                                    if (window.innerWidth >= 600) {
-                                        setIsOpen(false)
-                                    } else {
-                                        setIsOpen(!isOpen)
-                                    }
-                                }}
-                            >
-                                <FaBookOpen className="text-2xl text-pistaMidGreen" />
-                                <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                    Catering
-                                </div>
-                            </Link>
-                            <Link
-                                href="/aboutus"
-                                className="relative mb-3 mt-1 flex flex-row items-center space-x-2 after:absolute after:left-0 after:bottom-0  after:-mb-3 after:h-0.5 after:w-full after:origin-right after:scale-x-0 after:bg-pistaGreen after:transition-transform after:duration-500 after:content-[''] hover:after:origin-left  hover:after:scale-x-100 md:mt-0 md:mb-0"
-                                onClick={() => {
-                                    if (window.innerWidth >= 600) {
-                                        setIsOpen(false)
-                                    } else {
-                                        setIsOpen(!isOpen)
-                                    }
-                                }}
-                            >
-                                <FaBuilding className="text-2xl text-pistaMidGreen" />
-                                <div className="block rounded py-2 pl-3 pr-4 text-xl text-pistaMidGreen hover:text-green-500  dark:hover:bg-gray-700 dark:hover:text-white md:p-0 md:hover:bg-transparent md:hover:text-pistaGreen md:dark:hover:bg-transparent md:dark:hover:text-white">
-                                    About Us
-                                </div>
-                            </Link>
-                        </ul>
+                        </div>
                     </motion.div>
                 )}
-            </div>
+            </AnimatePresence>
         </nav>
     )
 }

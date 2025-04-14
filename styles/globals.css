@@ -9,19 +9,98 @@
   font-family: "Philosopher", sans-serif;
 }
 
-body {
-  background-color: #000000;
+:root {
+  /* Primary brand colors */
+  --color-primary: #06bd9c;
+  --color-primary-light: #beeca0;
+  --color-primary-dark: #04967c;
+  
+  /* Background colors */
+  --color-background: #000000;
+  --color-background-dark: #000000;
+  --color-background-card: #0E0E0E;
+  
+  /* Text colors */
+  --color-text: #f8f9fa;
+  --color-text-light: #cccccc;
+  --color-text-dark: #ffffff;
+  --color-text-inverse: #f8f9fa;
+  
+  /* Accent colors */
+  --color-accent: #f58634;
+  --color-accent-light: #ffab70;
+  
+  /* UI feedback colors */
+  --color-success: #2ecc71;
+  --color-error: #e74c3c;
+  
+  /* Font sizes */
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-size-4xl: 3rem;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+  
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --border-radius-full: 9999px;
 }
 
-  ::-webkit-scrollbar
+body {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: var(--color-text-dark);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+::-webkit-scrollbar
 {
   width: 8px;
   height: 8px;
-  background-color: #0A0A0A;
+  background-color: var(--color-background-dark);
 }
 
 ::-webkit-scrollbar-thumb
 {
   border-radius: 4px;
-  background-color: #beeca0;
+  background-color: var(--color-primary-light);
+}
+
+@layer components {
+  .container-padding {
+    @apply px-4 md:px-8 lg:px-12 xl:px-16;
+  }
+  
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-24;
+  }
+  
+  .primary-button {
+    @apply rounded-full bg-primary px-6 py-2 font-medium text-white transition-all duration-300 hover:bg-primary-dark active:scale-95;
+  }
+  
+  .outline-button {
+    @apply rounded-full border border-primary bg-transparent px-6 py-2 font-medium text-primary transition-all duration-300 hover:bg-opacity-10 hover:bg-primary active:scale-95;
+  }
 }

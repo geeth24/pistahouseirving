@@ -12,36 +12,29 @@ import {
     Chat,
 } from "@/components/cmenu"
 import CaterCard from "@/components/CaterCard"
-import React from "react"
-import PhotoAlbum, { RenderPhoto } from "react-photo-album"
+import React, { useState, useEffect } from "react"
 import { animateScroll, Link } from "react-scroll"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "@/components/Firebase"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
-const renderPhoto: RenderPhoto = ({
-    layout,
-    layoutOptions,
-    imageProps: { alt, style, ...restImageProps },
-}) => (
-    <div className="render-div">
-        <p className="text-left text-sm font-bold text-pistaLightGreen">
-            {alt}
-        </p>
-        <img
-            alt={alt}
-            style={{
-                ...style,
-                width: "100%",
-                padding: 0,
-                transition: "all 1s",
-            }}
-            {...restImageProps}
-        />
-    </div>
-)
+const menuCategories = [
+    { id: "VeggieAppetizers", name: "Veggie Appetizers" },
+    { id: "MeatAppetizers", name: "Meat Appetizers" },
+    { id: "IndianSandwiches", name: "Indian Sandwiches" },
+    { id: "VeggieKebabs", name: "Veggie Kebabs" },
+    { id: "MeatKebabs", name: "Meat Kebabs" },
+    { id: "VeggieEntrees", name: "Veggie Entrees" },
+    { id: "MeatEntrees", name: "Meat Entrees" },
+    { id: "Chats", name: "Chats" },
+    { id: "Rice", name: "Rice" },
+    { id: "Drinks", name: "Drinks" },
+    { id: "Desserts", name: "Desserts" },
+]
+
 const images = [
     {
         src: "/slides/1.jpg",
@@ -91,7 +84,6 @@ const images = [
         height: 125,
         alt: "Dessert Table Setup",
     },
-
     {
         src: "/slides/9.jpg",
         width: 175,
@@ -135,372 +127,276 @@ const images = [
         alt: "Food Table Setup",
     },
 ]
+
 function Catering() {
-    const [logged, setLogged] = React.useState(false)
+    const [logged, setLogged] = useState(false)
+    const [activeCategory, setActiveCategory] = useState(menuCategories[0].id)
     const router = useRouter()
     const { order } = router.query
+    const [selectedItems, setSelectedItems] = useState<string[]>([])
 
-    if (order === "true") {
-        console.log("order is true")
-        //if media query is 600px or less
-        if (window.innerWidth <= 600) {
-            animateScroll.scrollTo(1100)
+    useEffect(() => {
+        if (order === "true") {
+            if (window.innerWidth <= 600) {
+                animateScroll.scrollTo(900)
+            } else {
+                animateScroll.scrollTo(1200)
+            }
         }
-        //if media query is 600px or more
-        else {
-            animateScroll.scrollTo(1500)
-        }
-    }
+    }, [order])
 
-    if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production") {
-        if (!logged) {
+    // Update active category on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            let currentCategory = menuCategories[0].id
+            
+            menuCategories.forEach(({ id }) => {
+                const element = document.getElementById(id)
+                if (element) {
+                    const rect = element.getBoundingClientRect()
+                    if (rect.top <= 300) {
+                        currentCategory = id
+                    }
+                }
+            })
+            
+            setActiveCategory(currentCategory)
+        }
+        
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
+
+    // Handle analytics
+    useEffect(() => {
+        if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && !logged) {
             logEvent(analytics, "page_view", {
                 page_title: "Catering",
                 page_location: "https://www.pistahouseirving.com/catering",
                 page_path: "/catering",
             })
             setLogged(true)
-        }
-    } else {
-        if (!logged) {
+        } else if (!logged) {
             console.log("development")
             setLogged(true)
         }
+    }, [logged])
+
+    const handleItemSelect = (title: string) => {
+        setSelectedItems(prev => 
+            prev.includes(title) 
+                ? prev.filter(item => item !== title)
+                : [...prev, title]
+        )
     }
+
+    const scrollToMenuSection = () => {
+        animateScroll.scrollTo(document.getElementById('menu')?.offsetTop || 0)
+    }
+
     return (
         <>
             <Head>
                 <title>Catering | Pista House Irving</title>
+                <meta name="description" content="Delicious catering services for all your events by Pista House Irving. Offering authentic Indian cuisine with a wide variety of vegetarian and non-vegetarian options." />
             </Head>
-            <section className="h-full">
-                <div className="fixed top-0 z-10  flex w-full flex-row items-center space-x-5 overflow-hidden overflow-x-scroll bg-pistaGray/70 pb-5 pr-5 pl-5 pt-20 backdrop-blur-lg md:pt-24   xl:justify-center">
-                    <Link
-                        to="VeggieAppetizers"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Veggie Appetizers
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
 
-                    <Link
-                        to="MeatAppetizers"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Meat Appetizers
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="IndianSandwiches"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Indian Sandwiches
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="VeggieKebabs"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Veggie Kebabs
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="MeatKebabs"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Meat Kebabs
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="VeggieEntrees"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Veggie Entrees
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="MeatEntrees"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Meat Entrees
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="Chats"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Chats
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="Rice"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Rice
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="Drinks"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Drinks
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
-                    <Link
-                        to="Desserts"
-                        smooth={true}
-                        duration={800}
-                        spy={true}
-                        offset={-180}
-                        className="text-md nowrap cursor-pointer font-medium text-pistaMidGreen hover:text-pistaLightGreen"
-                    >
-                        Desserts
-                    </Link>
-                    <hr className="mb-6 border-pistaGreen/10" />
+            {/* Hero Section */}
+            <section className="relative h-[70vh] w-full overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <Image 
+                        src="/slides/1.jpg" 
+                        alt="Catering Service" 
+                        fill 
+                        className="object-cover brightness-[0.3]" 
+                        priority
+                    />
                 </div>
-                <div className="mx-auto  max-w-screen-xl py-52 px-8 md:px-16">
-                    <h1 className=" mt-8 max-w-2xl text-4xl font-black  text-pistaGreen md:text-5xl xl:text-6xl">
-                        Catering
-                    </h1>
-                    {/* <div>
-                        <PhotoAlbum
-                            layout="masonry"
-                            photos={images}
-                            //@ts-ignore
-                            renderPhoto={renderPhoto}
-                        />
-                    </div> */}
+                <div className="container-padding relative z-10 flex h-full flex-col items-center justify-center text-center">
+                    <motion.h1 
+                        className="text-6xl font-black text-primary md:text-7xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        Catering Services
+                    </motion.h1>
+                    <motion.p 
+                        className="mt-4 max-w-2xl text-xl text-text-light md:text-2xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        Elevate your events with authentic Indian cuisine
+                    </motion.p>
+                    <motion.button 
+                        className="mt-8 primary-button text-lg"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        onClick={scrollToMenuSection}
+                    >
+                        View Our Menu
+                    </motion.button>
+                </div>
+            </section>
 
-                    <div className="z-0 mt-6 columns-2 gap-8 p-2 md:columns-4">
-                        {images.map((image, i) => (
-                            <div key={i} className="relative z-0">
+            {/* Gallery Section */}
+            <section className="section-padding bg-background-dark">
+                <div className="container-padding">
+                    <h2 className="mb-12 text-center text-4xl font-black text-primary">Our Catering Gallery</h2>
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                        {images.slice(0, 10).map((image, i) => (
+                            <motion.div 
+                                key={i} 
+                                className="group relative aspect-square overflow-hidden rounded-lg"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5, delay: i * 0.05 }}
+                                viewport={{ once: true }}
+                            >
                                 <Image
                                     src={image.src}
                                     alt={image.alt}
-                                    width={500}
-                                    height={500}
-                                    className="mb-6 rounded-lg object-cover"
+                                    fill
+                                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 flex items-center justify-center bg-black/70 opacity-0 transition-opacity duration-300 hover:opacity-100">
-                                    <p className="text-xl font-bold text-white">
+                                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 to-transparent opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                                    <p className="text-center text-lg font-bold text-white">
                                         {image.alt}
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
+            </section>
 
-                <div
-                    id="menu"
-                    className="mx-auto  max-w-screen-xl  px-8  md:px-16"
-                >
-                    <h1 className="mb-8  max-w-2xl text-4xl font-black  text-pistaGreen md:text-5xl xl:text-6xl">
-                        Catering Menu
-                    </h1>
+            {/* Menu Navigation */}
+            <div className="sticky top-20 z-30 w-full bg-background-dark/95 shadow-md backdrop-blur-md">
+                <div className="container-padding mx-auto py-4 overflow-x-auto">
+                    <div className="flex space-x-6">
+                        {menuCategories.map((category) => (
+                            <Link
+                                key={category.id}
+                                to={category.id}
+                                smooth={true}
+                                duration={500}
+                                spy={true}
+                                offset={-100}
+                                className={`whitespace-nowrap cursor-pointer text-sm font-medium transition-colors hover:text-primary ${
+                                    activeCategory === category.id 
+                                        ? "text-primary" 
+                                        : "text-text-light/70"
+                                }`}
+                            >
+                                {category.name}
+                                {activeCategory === category.id && (
+                                    <motion.div 
+                                        className="mt-2 h-0.5 bg-primary" 
+                                        layoutId="activeCategory"
+                                        transition={{ type: "spring", duration: 0.5 }}
+                                    />
+                                )}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </div>
 
-                    <div id="VeggieAppetizers" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Veggie Appetizers
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {VeggieAppetizers.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
+            {/* Menu Section */}
+            <section id="menu" className="section-padding bg-background">
+                <div className="container-padding">
+                    <div className="mb-16 text-center">
+                        <h2 className="mb-4 text-4xl font-black text-primary md:text-5xl">Catering Menu</h2>
+                        <p className="mx-auto max-w-2xl text-text-light">
+                            Select your favorite dishes for your next event. Click on items to add them to your selection.
+                        </p>
                     </div>
-                    <div id="MeatAppetizers" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Meat Appetizers
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {MeatAppetizers.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
+
+                    {menuCategories.map((category, categoryIndex) => {
+                        const id = category.id;
+                        let items: any[] = [];
+                        
+                        switch(id) {
+                            case "VeggieAppetizers": items = VeggieAppetizers; break;
+                            case "MeatAppetizers": items = MeatAppetizers; break;
+                            case "IndianSandwiches": items = IndianSandwich; break;
+                            case "VeggieKebabs": items = VeggieKebabs; break;
+                            case "MeatKebabs": items = MeatKebabs; break;
+                            case "VeggieEntrees": items = VeggieEntrees; break;
+                            case "MeatEntrees": items = MeatEntrees; break;
+                            case "Chats": items = Chat; break;
+                            case "Rice": items = Rice; break;
+                            case "Drinks": items = Drinks; break;
+                            case "Desserts": items = Desserts; break;
+                            default: items = [];
+                        }
+                        
+                        return (
+                            <motion.div 
+                                key={id} 
+                                id={id}
+                                className="mb-16"
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                            >
+                                <h3 className="mb-8 text-3xl font-bold text-primary-light">{category.name}</h3>
+                                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                                    {items.map((item, index) => (
+                                        <CaterCard
+                                            key={index}
+                                            title={item.title}
+                                            description={item.description}
+                                            price={item.price}
+                                        />
+                                    ))}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+
+                    {selectedItems.length > 0 && (
+                        <div className="mt-16">
+                            <h3 className="mb-6 text-2xl font-bold text-primary">Your Selected Items</h3>
+                            <div className="rounded-lg bg-background-card p-6 shadow-lg">
+                                <ul className="space-y-2">
+                                    {selectedItems.map((item, index) => (
+                                        <li key={index} className="flex items-center">
+                                            <span className="mr-2 rounded-full bg-primary px-2 py-1 text-xs text-white">{index + 1}</span>
+                                            <span className="text-text">{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div id="IndianSandwiches" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Indian Sandwiches
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {IndianSandwich.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="VeggieKebabs" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Veggie Kebabs
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {VeggieKebabs.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="MeatKebabs" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Meat Kebabs
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {MeatKebabs.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="VeggieEntrees" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Veggie Entrees
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {VeggieEntrees.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="MeatEntrees" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Meat Entrees
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {MeatEntrees.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="Chats" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Chats
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {Chat.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="Rice" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Rice
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {Rice.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="Drinks" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Drinks
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {Drinks.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <div id="Desserts" className="mb-8">
-                        <h6 className="mb-8 max-w-2xl text-xl font-bold text-pistaLightGreen md:text-3xl xl:text-4xl">
-                            Desserts
-                        </h6>
-                        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                            {Desserts.map((item, index) => (
-                                <CaterCard
-                                    key={index}
-                                    title={item.title}
-                                    description={item.description}
-                                    price={item.price}
-                                />
-                            ))}
+                    )}
+                </div>
+            </section>
+
+            {/* CTA Section */}
+            <section className="section-padding bg-gradient-to-br from-primary-dark/20 to-background-dark">
+                <div className="container-padding">
+                    <div className="mx-auto max-w-4xl rounded-2xl bg-background-card p-8 shadow-xl">
+                        <h2 className="mb-6 text-center text-3xl font-bold text-primary">Ready to Book Your Catering?</h2>
+                        <p className="mb-8 text-center text-text-light">
+                            Contact us to discuss your event requirements and get a personalized quote.
+                        </p>
+                        <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0">
+                            <a href="tel:9726355657" className="primary-button flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="mr-2 h-5 w-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                </svg>
+                                Call Us at +1 (972) 635-5657
+                            </a>
+                            <a href="mailto:info@pistahouseirving.com" className="outline-button flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="mr-2 h-5 w-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                </svg>
+                                Email Us
+                            </a>
                         </div>
                     </div>
                 </div>
