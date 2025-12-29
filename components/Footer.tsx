@@ -1,134 +1,153 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { SiNextdotjs, SiTailwindcss, SiFramer } from "react-icons/si"
-import { FaInstagram, FaFacebook, FaTwitter, FaYelp } from "react-icons/fa"
+import { FaInstagram, FaFacebook, FaTwitter, FaYelp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaArrowRight } from "react-icons/fa"
 
 function Footer() {
     const currentYear = new Date().getFullYear()
     
     return (
-        <footer className="relative bg-background-dark text-primary-light">
-            <div className="container-padding mx-auto pt-16 pb-8">
+        <footer className="relative bg-background-dark overflow-hidden">
+            {/* decorative elements */}
+            <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+            
+            <div className="container-padding mx-auto pt-20 pb-8 relative">
                 <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
-                    {/* Logo and About */}
-                    <div className="flex flex-col space-y-4">
-                        <Link href="/" className="flex items-center">
+                    {/* brand */}
+                    <div className="lg:col-span-1">
+                        <Link href="/" className="inline-block mb-6">
                             <Image
                                 src="/pistahouselogo.png"
                                 alt="Pista House Logo"
-                                width={150}
-                                height={50}
-                                className="mb-4"
+                                width={160}
+                                height={53}
                             />
                         </Link>
-                        <p className="text-sm leading-relaxed text-text-inverse">
+                        <p className="text-text-light leading-relaxed mb-6">
                             Authentic Hyderabadi cuisine in Irving, TX. From flavorful biryanis 
                             to delicious kebabs, we bring you the taste of India.
                         </p>
-                        <div className="flex space-x-4 pt-2">
-                            <Link href="https://instagram.com" className="text-primary hover:text-primary-light transition-colors">
-                                <FaInstagram className="h-5 w-5" />
-                            </Link>
-                            <Link href="https://facebook.com" className="text-primary hover:text-primary-light transition-colors">
-                                <FaFacebook className="h-5 w-5" />
-                            </Link>
-                            <Link href="https://twitter.com" className="text-primary hover:text-primary-light transition-colors">
-                                <FaTwitter className="h-5 w-5" />
-                            </Link>
-                            <Link href="https://yelp.com" className="text-primary hover:text-primary-light transition-colors">
-                                <FaYelp className="h-5 w-5" />
-                            </Link>
+                        <div className="flex gap-3">
+                            {[
+                                { icon: <FaInstagram />, href: "https://www.instagram.com/pistahousedallas/", label: "Instagram" },
+                                { icon: <FaFacebook />, href: "https://www.facebook.com/pistahouseirving/", label: "Facebook" },
+                                { icon: <FaYelp />, href: "https://www.yelp.com/biz/pista-house-irving", label: "Yelp" },
+                            ].map((social) => (
+                                <Link 
+                                    key={social.label}
+                                    href={social.href} 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-white/5 hover:bg-primary rounded-xl flex items-center justify-center text-text-light hover:text-white transition-all duration-300"
+                                    aria-label={social.label}
+                                >
+                                    {social.icon}
+                                </Link>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="flex flex-col space-y-4">
-                        <h3 className="text-lg font-bold text-white">Quick Links</h3>
-                        <div className="h-1 w-12 bg-primary"></div>
-                        <ul className="flex flex-col space-y-2">
-                            <li>
-                                <Link href="/" className="text-sm hover:text-white transition-colors">
-                                    Home
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/menu" className="text-sm hover:text-white transition-colors">
-                                    Menu
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/catering" className="text-sm hover:text-white transition-colors">
-                                    Catering
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/aboutus" className="text-sm hover:text-white transition-colors">
-                                    About Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contactus" className="text-sm hover:text-white transition-colors">
-                                    Contact Us
-                                </Link>
-                            </li>
+                    {/* quick links */}
+                    <div>
+                        <h3 className="text-lg font-bold text-white mb-6">Quick Links</h3>
+                        <ul className="space-y-3">
+                            {[
+                                { name: "Home", href: "/" },
+                                { name: "Menu", href: "/menu" },
+                                { name: "Catering", href: "/catering" },
+                                { name: "About Us", href: "/aboutus" },
+                                { name: "Contact Us", href: "/contactus" },
+                            ].map((link) => (
+                                <li key={link.name}>
+                                    <Link 
+                                        href={link.href} 
+                                        className="group flex items-center gap-2 text-text-light hover:text-primary transition-colors"
+                                    >
+                                        <FaArrowRight className="text-xs text-primary/50 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
-                    {/* Opening Hours */}
-                    <div className="flex flex-col space-y-4">
-                        <h3 className="text-lg font-bold text-white">Opening Hours</h3>
-                        <div className="h-1 w-12 bg-primary"></div>
-                        <ul className="flex flex-col space-y-2">
-                            <li className="flex justify-between text-sm">
-                                <span>Everyday</span>
-                                <span>11:00 AM - 2:00 AM</span>
-                            </li>
-                        </ul>
+                    {/* hours */}
+                    <div>
+                        <h3 className="text-lg font-bold text-white mb-6">Opening Hours</h3>
+                        <div className="bg-white/5 rounded-xl p-5 border border-white/5">
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <FaClock className="text-primary" />
+                                </div>
+                                <div>
+                                    <p className="text-white font-medium">Every Day</p>
+                                    <p className="text-text-light text-sm">11:00 AM - 2:00 AM</p>
+                                </div>
+                            </div>
+                            <p className="text-text-light text-sm">
+                                Open late for your convenience. Dine-in, takeout, and catering available.
+                            </p>
+                        </div>
                     </div>
 
-                    {/* Contact Info */}
-                    <div className="flex flex-col space-y-4">
-                        <h3 className="text-lg font-bold text-white">Contact Us</h3>
-                        <div className="h-1 w-12 bg-primary"></div>
-                        <ul className="flex flex-col space-y-2">
-                            <li className="text-sm">
+                    {/* contact */}
+                    <div>
+                        <h3 className="text-lg font-bold text-white mb-6">Contact Us</h3>
+                        <ul className="space-y-4">
+                            <li>
                                 <Link 
                                     href="https://www.google.com/maps/search/?api=1&query=pista house irving texas" 
-                                    className="hover:text-white transition-colors"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-3 text-text-light hover:text-primary transition-colors group"
                                 >
-                                    901 W Royal Ln, Irving, TX 75039
+                                    <span className="w-10 h-10 bg-white/5 group-hover:bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                                        <FaMapMarkerAlt className="text-primary" />
+                                    </span>
+                                    <span className="pt-2">901 W Royal Ln, Irving, TX 75039</span>
                                 </Link>
                             </li>
-                            <li className="text-sm">
+                            <li>
                                 <Link 
                                     href="tel:+1 (972) 635-5657" 
-                                    className="hover:text-white transition-colors"
+                                    className="flex items-center gap-3 text-text-light hover:text-primary transition-colors group"
                                 >
-                                    +1 (972) 635-5657
+                                    <span className="w-10 h-10 bg-white/5 group-hover:bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                                        <FaPhone className="text-primary" />
+                                    </span>
+                                    <span>+1 (972) 635-5657</span>
                                 </Link>
                             </li>
-                            <li className="text-sm">
+                            <li>
                                 <Link 
                                     href="mailto:info@pistahouseirving.com" 
-                                    className="hover:text-white transition-colors"
+                                    className="flex items-center gap-3 text-text-light hover:text-primary transition-colors group"
                                 >
-                                    info@pistahouseirving.com
+                                    <span className="w-10 h-10 bg-white/5 group-hover:bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                                        <FaEnvelope className="text-primary" />
+                                    </span>
+                                    <span>info@pistahouseirving.com</span>
                                 </Link>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="mt-12 border-t border-gray-800 pt-8">
-                    <div className="flex flex-col space-y-4 md:flex-row md:justify-between md:space-y-0">
-                        <p className="text-xs text-gray-400">
+                {/* bottom */}
+                <div className="mt-16 pt-8 border-t border-white/10">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                        <p className="text-sm text-text-light">
                             © {currentYear} Pista House Irving. All rights reserved.
                         </p>
-                        <p className="flex items-center text-xs text-gray-400">
-                            Built by
-                            <Link href="https://geeth.co" className="ml-1 hover:text-white transition-colors">
-                            
+                        <p className="text-sm text-text-light">
+                            Built by{" "}
+                            <Link 
+                                href="https://geeth.co" 
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:text-primary-light transition-colors"
+                            >
                                 Geeth
                             </Link>
                         </p>

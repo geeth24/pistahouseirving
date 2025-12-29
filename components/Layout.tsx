@@ -1,9 +1,10 @@
+"use client"
+
 import React from "react"
-import { useRouter } from "next/router"
+import { usePathname } from "next/navigation"
 import Footer from "@/components/Footer"
 import Navbar from "@/components/Navbar"
-import { useSelector } from "react-redux"
-import { FaWhatsapp } from "react-icons/fa"
+import { useOrder } from "@/contexts/order-context"
 import { Fragment, useState } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { XMarkIcon } from "@heroicons/react/24/outline"
@@ -14,8 +15,8 @@ type LayoutProps = {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-    const router = useRouter()
-    const { order } = useSelector((state: any) => state.order)
+    const pathname = usePathname()
+    const { order } = useOrder()
     const [open, setOpen] = useState(false)
     
     return (
@@ -27,27 +28,9 @@ const Layout = ({ children }: LayoutProps) => {
             </main>
             
             <Footer />
-            
-            {/* Floating WhatsApp Button */}
-            <motion.div
-                className="fixed bottom-20 right-20 z-50"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1 }}
-            >
-                <a
-                    href="https://api.whatsapp.com/send?phone=16823800209"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-transform hover:scale-110"
-                    aria-label="Contact us on WhatsApp"
-                >
-                    <FaWhatsapp className="h-7 w-7" />
-                </a>
-            </motion.div>
 
             {/* Order Dialog for Catering Page */}
-            {router.pathname.includes('/catering') && (
+            {pathname?.includes('/catering') && (
                 <Transition.Root show={open} as={Fragment}>
                     <Dialog as="div" className="relative z-50" onClose={setOpen}>
                         <Transition.Child
@@ -116,8 +99,8 @@ const Layout = ({ children }: LayoutProps) => {
                                                 onClick={() => {
                                                     // Redirect to WhatsApp with the order
                                                     const orderItems = order.split(", ")
-                                                        .filter(item => item && item !== "Your Selections:")
-                                                        .map((item, i) => `${i + 1}. ${item}`)
+                                                        .filter((item: string) => item && item !== "Your Selections:")
+                                                        .map((item: string, i: number) => `${i + 1}. ${item}`)
                                                         .join("%0A");
                                                     
                                                     if (orderItems) {
