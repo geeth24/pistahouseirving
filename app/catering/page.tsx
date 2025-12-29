@@ -14,12 +14,11 @@ import {
     Chat,
 } from "@/components/cmenu"
 import CaterCard from "@/components/CaterCard"
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect } from "react"
 import { animateScroll, Link as ReactScrollLink } from "react-scroll"
 import type { ReactNode } from "react"
 import { logEvent } from "firebase/analytics"
 import { analytics } from "@/components/Firebase"
-import { useSearchParams } from "next/navigation"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { FaPhone, FaEnvelope, FaUsers, FaUtensils, FaCalendarAlt, FaArrowRight, FaCheck } from "react-icons/fa"
@@ -81,23 +80,6 @@ const cateringFeatures = [
     }
 ]
 
-function OrderHandler() {
-    const searchParams = useSearchParams()
-    const order = searchParams.get('order')
-
-    useEffect(() => {
-        if (order === "true") {
-            if (window.innerWidth <= 600) {
-                animateScroll.scrollTo(900)
-            } else {
-                animateScroll.scrollTo(1200)
-            }
-        }
-    }, [order])
-
-    return null
-}
-
 export default function Catering() {
     const [logged, setLogged] = useState(false)
     const [activeCategory, setActiveCategory] = useState(menuCategories[0].id)
@@ -143,9 +125,6 @@ export default function Catering() {
 
     return (
         <>
-            <Suspense fallback={null}>
-                <OrderHandler />
-            </Suspense>
             {/* hero */}
             <section className="relative min-h-[80vh] w-full overflow-hidden flex items-center">
                 <div className="absolute inset-0 z-0">

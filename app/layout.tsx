@@ -26,7 +26,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en">
+        <html lang="en" className="overflow-x-hidden">
             <head>
                 <meta charSet="utf-8" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +36,7 @@ export default function RootLayout({
                     rel="stylesheet"
                 />
             </head>
-            <body>
+            <body className="overflow-x-hidden">
                 <OrderProvider>
                     <Layout>{children}</Layout>
                 </OrderProvider>

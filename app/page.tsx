@@ -111,7 +111,7 @@ export default function Home() {
     return (
         <>
             {/* hero */}
-            <section className="relative h-screen overflow-hidden">
+            <section className="relative h-screen overflow-x-hidden overflow-y-auto">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide}
@@ -201,9 +201,9 @@ export default function Home() {
 
             {/* features */}
             <section className="py-20 bg-background-dark relative overflow-hidden">
-                <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+                <div className="absolute inset-0 opacity-5 overflow-hidden">
+                    <div className="absolute top-0 left-0 w-64 h-64 md:w-96 md:h-96 bg-primary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute bottom-0 right-0 w-64 h-64 md:w-96 md:h-96 bg-primary rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
                 </div>
                 
                 <div className="container-padding mx-auto relative">
@@ -365,7 +365,7 @@ export default function Home() {
 
             {/* testimonials */}
             <section className="py-20 bg-background relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-primary/5 rounded-full blur-3xl" />
                 
                 <div className="container-padding mx-auto relative">
                     <motion.div 
