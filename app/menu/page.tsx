@@ -214,28 +214,28 @@ export default function Menu() {
                     <div className="overflow-x-auto pb-2 -mb-2">
                         <div className="flex space-x-4">
                             {filteredCategories.map((category) => (
-                                <ScrollLink
-                                    key={category.id}
-                                    to={category.id}
-                                    smooth={true}
-                                    duration={500}
-                                    spy={true}
+                            <ScrollLink
+                                key={category.id}
+                                to={category.id}
+                                smooth={true}
+                                duration={500}
+                                spy={true}
                                     offset={-250}
                                     className={`whitespace-nowrap cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                        activeCategory === category.id 
+                                    activeCategory === category.id 
                                             ? "bg-primary/20 text-primary border border-primary/30" 
                                             : "text-text-light hover:text-white hover:bg-white/5"
-                                    }`}
-                                >
+                                }`}
+                            >
                                     {category.name}
                                     <span className="ml-2 text-xs opacity-60">({category.items.length})</span>
-                                </ScrollLink>
-                            ))}
+                            </ScrollLink>
+                        ))}
                         </div>
                     </div>
                 </div>
             </div>
-
+            
             {/* results info */}
             {hasActiveFilters && (
                 <div className="container-padding mx-auto pt-6">
@@ -281,7 +281,7 @@ export default function Menu() {
                             <div className="flex items-center gap-4 mb-8">
                                 <h2 className="text-3xl font-bold text-white">
                                     {category.name}
-                                </h2>
+                        </h2>
                                 <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
                                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
                                     category.isVeg 
@@ -292,18 +292,18 @@ export default function Menu() {
                                 </span>
                             </div>
                             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-                                {category.items.map((item, index) => (
-                                    <MenuCard
-                                        key={index}
-                                        title={item.title}
-                                        description={item.description}
-                                        price={item.price}
+                            {category.items.map((item, index) => (
+                                <MenuCard
+                                    key={index}
+                                    title={item.title}
+                                    description={item.description}
+                                    price={item.price}
                                         isVeg={category.isVeg}
                                         searchQuery={searchQuery}
-                                    />
-                                ))}
-                            </div>
+                                />
+                            ))}
                         </div>
+                    </div>
                     ))
                 )}
             </section>
