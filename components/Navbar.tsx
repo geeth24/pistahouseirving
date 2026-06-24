@@ -1,146 +1,107 @@
-import React, { useState, useEffect } from "react"
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
-import { FaUtensilSpoon, FaBuilding, FaHome, FaBookOpen, FaPhone } from "react-icons/fa"
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
+import { FaPhone } from "react-icons/fa"
+
+const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Menu", href: "/menu" },
+    { name: "Catering", href: "/catering" },
+    { name: "About Us", href: "/aboutus" },
+]
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
-    const [scrollNav, setScrollNav] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
+    const { scrollY } = useScroll()
 
-    const changeNav = () => {
-        if (window.scrollY >= 80) {
-            setScrollNav(true)
-        } else {
-            setScrollNav(false)
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener("scroll", changeNav)
-        return () => {
-            window.removeEventListener("scroll", changeNav)
-        }
-    }, [])
-
-    const navLinks = [
-        { name: "Home", href: "/", icon: <FaHome /> },
-        { name: "Menu", href: "/menu", icon: <FaUtensilSpoon /> },
-        { name: "Catering", href: "/catering", icon: <FaBookOpen /> },
-        { name: "About Us", href: "/aboutus", icon: <FaBuilding /> },
-    ]
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        setScrolled(latest > 24)
+    })
 
     return (
         <nav
-            className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 border-b ${
-                scrollNav || isOpen
-                    ? "bg-background-dark/95 backdrop-blur-xl shadow-xl border-white/5"
-                    : "bg-gradient-to-b from-black/50 to-transparent border-transparent"
+            className={`fixed left-0 right-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
+                scrolled || isOpen
+                    ? "border-b border-ink/10 bg-background/90 shadow-[0_8px_30px_rgba(29,27,22,0.06)] backdrop-blur-md"
+                    : "border-b border-transparent bg-background/40 backdrop-blur-sm"
             }`}
         >
-            <div className="container-padding mx-auto flex h-20 items-center justify-between">
-                <Link href="/" className="flex items-center group">
+            <div className="container-padding mx-auto flex h-[72px] items-center justify-between">
+                <Link href="/" className="flex items-center" aria-label="Pista House home">
                     <Image
                         src="/pistahouselogo.png"
-                        alt="Pista House Logo"
-                        width={140}
-                        height={46}
-                        className="cursor-pointer transition-transform duration-300 group-hover:scale-105"
+                        alt="Pista House"
+                        width={132}
+                        height={44}
+                        priority
+                        className="h-9 w-auto transition-transform duration-300 hover:scale-[1.03]"
                     />
                 </Link>
 
-                {/* Desktop Menu */}
-                <div className="hidden items-center space-x-2 lg:flex">
+                {/* desktop */}
+                <div className="hidden items-center gap-1 lg:flex">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="relative px-4 py-2 text-white/80 hover:text-white transition-colors group"
+                            className="group relative px-4 py-2 text-[15px] font-medium text-ink/75 transition-colors hover:text-ink"
                         >
-                            <span className="flex items-center gap-2">
-                                <span className="text-primary/70 group-hover:text-primary transition-colors">{link.icon}</span>
-                                <span className="font-medium">{link.name}</span>
-                            </span>
-                            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-0 bg-primary rounded-full transition-all duration-300 group-hover:w-3/4"></span>
+                            {link.name}
+                            <span className="absolute bottom-1 left-4 right-4 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
                         </Link>
                     ))}
-                    <Link
-                        href="/contactus"
-                        className="ml-4 flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/25"
-                    >
-                        <FaPhone className="text-sm" />
-                        Contact Us
+                    <Link href="/contactus" className="primary-button ml-3 px-5 py-2 text-[15px]">
+                        <FaPhone className="text-xs" />
+                        Contact
                     </Link>
                 </div>
 
-                {/* Mobile Menu Toggle */}
+                {/* mobile toggle */}
                 <button
-                    className="relative w-10 h-10 flex flex-col items-center justify-center lg:hidden"
+                    className="relative flex h-10 w-10 flex-col items-center justify-center lg:hidden"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
+                    aria-expanded={isOpen}
                 >
-                    <span
-                        className={`block h-0.5 w-6 rounded-full bg-white transition-all duration-300 ${
-                            isOpen ? "translate-y-1.5 rotate-45" : ""
-                        }`}
-                    ></span>
-                    <span
-                        className={`block h-0.5 w-6 rounded-full bg-white transition-all duration-300 mt-1.5 ${
-                            isOpen ? "opacity-0 scale-0" : ""
-                        }`}
-                    ></span>
-                    <span
-                        className={`block h-0.5 w-6 rounded-full bg-white transition-all duration-300 mt-1.5 ${
-                            isOpen ? "-translate-y-3.5 -rotate-45" : ""
-                        }`}
-                    ></span>
+                    <span className={`block h-0.5 w-6 rounded-full bg-ink transition-all duration-300 ${isOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+                    <span className={`mt-1.5 block h-0.5 w-6 rounded-full bg-ink transition-all duration-300 ${isOpen ? "scale-0 opacity-0" : ""}`} />
+                    <span className={`mt-1.5 block h-0.5 w-6 rounded-full bg-ink transition-all duration-300 ${isOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* mobile sheet */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="lg:hidden overflow-hidden"
+                        className="overflow-hidden lg:hidden"
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.28, ease: [0.23, 1, 0.32, 1] }}
                     >
-                        <div className="container-padding flex flex-col py-6 border-t border-white/10">
-                            {navLinks.map((link, index) => (
-                                <motion.div
-                                    key={link.name}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1 }}
-                                >
-                                    <Link
-                                        href={link.href}
-                                        className="flex items-center gap-4 py-4 text-white/80 hover:text-white border-b border-white/5 transition-colors"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        <span className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
-                                            {link.icon}
-                                        </span>
-                                        <span className="text-lg font-medium">{link.name}</span>
-                                    </Link>
-                                </motion.div>
-                            ))}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.4 }}
-                            >
+                        <div className="container-padding flex flex-col gap-1 border-t border-ink/10 py-5">
+                            {navLinks.map((link) => (
                                 <Link
-                                    href="/contactus"
-                                    className="mt-6 flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-4 rounded-xl font-medium transition-colors"
+                                    key={link.name}
+                                    href={link.href}
+                                    className="rounded-xl px-3 py-3 text-lg font-medium text-ink/80 transition-colors hover:bg-primary/5 hover:text-ink"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    <FaPhone />
-                                    Contact Us
+                                    {link.name}
                                 </Link>
-                            </motion.div>
+                            ))}
+                            <Link
+                                href="/contactus"
+                                className="primary-button mt-3 w-full"
+                                onClick={() => setIsOpen(false)}
+                            >
+                                <FaPhone className="text-sm" />
+                                Contact Us
+                            </Link>
                         </div>
                     </motion.div>
                 )}

@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
         <>
             <Navbar />
             
-            <main className="min-h-screen pt-20 overflow-x-hidden">
+            <main className="min-h-screen overflow-x-hidden bg-background pt-[72px]">
                 {children}
             </main>
             
@@ -42,7 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <div className="fixed inset-0 bg-background-dark/75 backdrop-blur-sm transition-opacity" />
+                            <div className="fixed inset-0 bg-ink/60 backdrop-blur-sm transition-opacity" />
                         </Transition.Child>
 
                         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -56,11 +56,11 @@ const Layout = ({ children }: LayoutProps) => {
                                     leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                                     leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                                 >
-                                    <Dialog.Panel className="relative w-full max-w-lg transform overflow-hidden rounded-lg bg-background-card p-6 text-left shadow-xl transition-all">
+                                    <Dialog.Panel className="relative w-full max-w-lg transform overflow-hidden rounded-2xl border border-ink/10 bg-background-card p-6 text-left shadow-2xl transition-all">
                                         <div className="absolute top-0 right-0 block pt-4 pr-4">
                                             <button
                                                 type="button"
-                                                className="rounded-md bg-background-card text-text-light hover:text-text focus:outline-none"
+                                                className="rounded-md text-text-light hover:text-ink focus:outline-none"
                                                 onClick={() => setOpen(false)}
                                             >
                                                 <span className="sr-only">Close</span>
@@ -78,7 +78,7 @@ const Layout = ({ children }: LayoutProps) => {
                                                             {order.split(", ").map((title: string, index: number) => {
                                                                 if (title && title !== "Your Selections:") {
                                                                     return (
-                                                                        <div key={index} className="mb-2 flex items-center justify-between border-b border-gray-200 pb-2">
+                                                                        <div key={index} className="mb-2 flex items-center justify-between border-b border-ink/10 pb-2">
                                                                             <span>{title}</span>
                                                                         </div>
                                                                     )
