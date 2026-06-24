@@ -14,6 +14,7 @@ import {
     Chat,
 } from "@/components/cmenu"
 import CaterCard from "@/components/CaterCard"
+import CateringSelection from "@/components/CateringSelection"
 import { useState, useEffect } from "react"
 import { animateScroll, Link as ReactScrollLink } from "react-scroll"
 import type { ReactNode } from "react"
@@ -273,7 +274,7 @@ export default function Catering() {
                     >
                         <h2 className="mb-4 font-display text-4xl text-ink md:text-5xl">Build your catering menu</h2>
                         <p className="text-ink-soft">
-                            Tap any dish to add it to your selection, then request a quote over WhatsApp. Authentic Hyderabadi trays for any occasion.
+                            Tap any dish to add it to your selection, then send us the list by call or email for a quote. Authentic Hyderabadi trays for any occasion.
                         </p>
                     </motion.div>
 
@@ -323,7 +324,6 @@ export default function Catering() {
                                             key={index}
                                             title={item.title}
                                             description={item.description}
-                                            price={item.price}
                                             isVeg={category.isVeg}
                                         />
                                     ))}
@@ -379,6 +379,8 @@ export default function Catering() {
                     </div>
                 </motion.div>
             </section>
+
+            <CateringSelection />
         </>
     )
 }

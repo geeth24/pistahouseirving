@@ -7,7 +7,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import {
-    FaWhatsapp,
     FaPhone,
     FaEnvelope,
     FaMapMarkerAlt,
@@ -53,14 +52,6 @@ export default function ContactUs() {
             external: false
         },
         {
-            icon: <FaWhatsapp />,
-            title: "WhatsApp",
-            info: "+1 (972) 635-5657",
-            action: "Message Us",
-            href: "https://api.whatsapp.com/send?phone=19726355657",
-            external: true
-        },
-        {
             icon: <FaEnvelope />,
             title: "Email",
             info: "info@pistahouseirving.com",
@@ -103,7 +94,7 @@ export default function ContactUs() {
             {/* contact cards */}
             <section className="bg-background py-20">
                 <div className="container-padding mx-auto">
-                    <div className="mb-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+                    <div className="mb-16 grid gap-5 sm:grid-cols-3">
                         {contactMethods.map((method, index) => (
                             <motion.a
                                 key={index}
@@ -189,15 +180,6 @@ export default function ContactUs() {
                                     >
                                         <FaYelp className="text-xl" />
                                     </Link>
-                                    <a
-                                        href="https://api.whatsapp.com/send?phone=19726355657"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        aria-label="WhatsApp"
-                                        className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/8 text-ink-soft transition-colors duration-300 hover:bg-green-600 hover:text-white"
-                                    >
-                                        <FaWhatsapp className="text-xl" />
-                                    </a>
                                 </div>
                             </div>
                         </motion.div>
@@ -236,14 +218,14 @@ export default function ContactUs() {
                     <div className="mx-auto max-w-2xl">
                         <h2 className="font-display text-4xl text-text-inverse md:text-5xl">Quick contact</h2>
                         <p className="mx-auto mt-5 max-w-xl text-lg text-text-inverse/85">
-                            For the fastest response, message us on WhatsApp or give us a call.
+                            For the fastest response, give us a call or send an email.
                         </p>
                         <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-                            <a href="https://api.whatsapp.com/send?phone=19726355657" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-background px-7 py-3 font-medium text-primary-dark transition-transform duration-200 hover:bg-background-card active:scale-[0.97]">
-                                <FaWhatsapp className="text-lg" /> WhatsApp
-                            </a>
-                            <a href="tel:9726355657" className="inline-flex items-center justify-center gap-2 rounded-full border border-text-inverse/40 px-7 py-3 font-medium text-text-inverse transition-colors hover:bg-white/10">
+                            <a href="tel:9726355657" className="inline-flex items-center justify-center gap-2 rounded-full bg-background px-7 py-3 font-medium text-primary-dark transition-transform duration-200 hover:bg-background-card active:scale-[0.97]">
                                 <FaPhone className="text-sm" /> Call now
+                            </a>
+                            <a href="mailto:info@pistahouseirving.com" className="inline-flex items-center justify-center gap-2 rounded-full border border-text-inverse/40 px-7 py-3 font-medium text-text-inverse transition-colors hover:bg-white/10">
+                                <FaEnvelope className="text-sm" /> Email us
                             </a>
                         </div>
                     </div>
