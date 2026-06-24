@@ -126,74 +126,55 @@ export default function Catering() {
     return (
         <>
             {/* hero */}
-            <section className="relative min-h-[80vh] w-full overflow-hidden flex items-center">
+            <section className="relative flex min-h-[82vh] w-full items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <Image 
-                        src="/slides/1.jpg" 
-                        alt="Catering Service" 
-                        fill 
-                        className="object-cover" 
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+                    <Image src="/slides/1.jpg" alt="Catering service" fill className="object-cover" priority />
+                    <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
                 </div>
-                
+
                 <div className="container-padding relative z-10 py-20">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                    <div className="grid items-center gap-12 lg:grid-cols-2">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6 }}
+                            initial={{ opacity: 0, y: 24 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                         >
-                            <span className="inline-block mb-4 px-4 py-2 bg-primary/20 border border-primary/40 rounded-full text-primary text-sm font-medium">
-                                Professional Catering
+                            <span className="inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-medium text-background backdrop-blur-sm">
+                                Professional catering
                             </span>
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                                Unforgettable <span className="text-primary">Events</span> Start Here
+                            <h1 className="mb-6 mt-6 font-display text-5xl leading-[1.02] text-background md:text-6xl lg:text-7xl">
+                                Unforgettable events start here
                             </h1>
-                            <p className="text-lg text-white/80 mb-8 max-w-xl leading-relaxed">
-                                From weddings to corporate gatherings, our authentic Hyderabadi cuisine transforms any event into a culinary celebration. Let us bring the flavors of India to your special occasion.
+                            <p className="mb-8 max-w-xl text-lg leading-relaxed text-background/80">
+                                From weddings to corporate gatherings, our authentic Hyderabadi cuisine turns any occasion into a celebration.
                             </p>
-                            
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <button 
-                                    onClick={scrollToMenuSection}
-                                    className="group inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105"
-                                >
-                                    View Catering Menu
-                                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+
+                            <div className="flex flex-col gap-3 sm:flex-row">
+                                <button onClick={scrollToMenuSection} className="primary-button group">
+                                    View catering menu
+                                    <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
                                 </button>
-                                <a 
-                                    href="tel:9726355657"
-                                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold backdrop-blur-sm border border-white/20 transition-all duration-300"
-                                >
-                                    <FaPhone />
-                                    Get a Quote
+                                <a href="tel:9726355657" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-7 py-3 font-medium text-background backdrop-blur-sm transition-colors hover:bg-white/10">
+                                    <FaPhone className="text-sm" />
+                                    Get a quote
                                 </a>
                             </div>
                         </motion.div>
 
                         <motion.div
-                            className="hidden lg:grid grid-cols-2 gap-4"
+                            className="hidden grid-cols-2 gap-4 lg:grid"
                             initial={{ opacity: 0, x: 30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             <div className="space-y-4">
-                                <div className="relative h-48 rounded-2xl overflow-hidden">
-                                    <Image src="/slides/3.jpg" alt="Biryani" fill className="object-cover" />
-                                </div>
-                                <div className="relative h-64 rounded-2xl overflow-hidden">
-                                    <Image src="/slides/5.jpg" alt="Kebabs" fill className="object-cover" />
-                                </div>
+                                <div className="relative h-48 overflow-hidden rounded-2xl"><Image src="/slides/3.jpg" alt="Biryani" fill className="object-cover" sizes="25vw" /></div>
+                                <div className="relative h-64 overflow-hidden rounded-2xl"><Image src="/slides/5.jpg" alt="Kebabs" fill className="object-cover" sizes="25vw" /></div>
                             </div>
                             <div className="space-y-4 pt-8">
-                                <div className="relative h-64 rounded-2xl overflow-hidden">
-                                    <Image src="/slides/8.jpg" alt="Event Setup" fill className="object-cover" />
-                                </div>
-                                <div className="relative h-48 rounded-2xl overflow-hidden">
-                                    <Image src="/slides/6.jpg" alt="Desserts" fill className="object-cover" />
-                                </div>
+                                <div className="relative h-64 overflow-hidden rounded-2xl"><Image src="/slides/8.jpg" alt="Event setup" fill className="object-cover" sizes="25vw" /></div>
+                                <div className="relative h-48 overflow-hidden rounded-2xl"><Image src="/slides/6.jpg" alt="Desserts" fill className="object-cover" sizes="25vw" /></div>
                             </div>
                         </motion.div>
                     </div>
@@ -201,27 +182,23 @@ export default function Catering() {
             </section>
 
             {/* features */}
-            <section className="py-16 bg-background-dark relative overflow-hidden">
-                <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-0 left-0 w-96 h-96 bg-primary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-                </div>
-                
-                <div className="container-padding mx-auto relative">
-                    <div className="grid md:grid-cols-3 gap-6">
+            <section className="bg-background py-16">
+                <div className="container-padding mx-auto">
+                    <div className="grid gap-5 md:grid-cols-3">
                         {cateringFeatures.map((feature, index) => (
                             <motion.div
                                 key={index}
-                                className="bg-background-card p-6 rounded-2xl border border-white/5 hover:border-primary/20 transition-all duration-300"
+                                className="rounded-2xl border border-ink/10 bg-background-card p-7 transition-colors duration-300 hover:border-primary/25"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.1 }}
+                                transition={{ delay: index * 0.08, ease: [0.23, 1, 0.32, 1] }}
                                 viewport={{ once: true }}
                             >
-                                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary text-xl mb-4">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-xl text-primary-dark">
                                     {feature.icon}
                                 </div>
-                                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                                <p className="text-text-light">{feature.description}</p>
+                                <h3 className="mt-5 font-display text-2xl text-ink">{feature.title}</h3>
+                                <p className="mt-2 text-ink-soft">{feature.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -229,37 +206,30 @@ export default function Catering() {
             </section>
 
             {/* gallery */}
-            <section className="py-20 bg-background">
+            <section className="bg-background-dark py-20">
                 <div className="container-padding mx-auto">
-                    <motion.div 
-                        className="text-center mb-12"
+                    <motion.h2
+                        className="mb-12 font-display text-4xl text-ink md:text-5xl"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-primary font-medium mb-2 block">Our Work</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Catering Gallery</h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
-                    </motion.div>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        Recent celebrations
+                    </motion.h2>
+
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                         {images.map((image, i) => (
-                            <motion.div 
-                                key={i} 
-                                className="group relative aspect-square overflow-hidden rounded-2xl"
-                                initial={{ opacity: 0, scale: 0.95 }}
+                            <motion.div
+                                key={i}
+                                className="group relative aspect-square overflow-hidden rounded-2xl border border-ink/10"
+                                initial={{ opacity: 0, scale: 0.96 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.4, delay: i * 0.05 }}
                                 viewport={{ once: true }}
                             >
-                                <Image
-                                    src={image.src}
-                                    alt={image.alt}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                                    <p className="text-white font-semibold">{image.alt}</p>
+                                <Image src={image.src} alt={image.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 33vw" />
+                                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/80 via-transparent to-transparent p-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                                    <p className="font-medium text-background">{image.alt}</p>
                                 </div>
                             </motion.div>
                         ))}
@@ -268,9 +238,9 @@ export default function Catering() {
             </section>
 
             {/* menu nav */}
-            <div className="sticky top-20 z-30 w-full bg-background-dark/95 shadow-lg backdrop-blur-md border-b border-white/5">
-                <div className="container-padding mx-auto py-4 overflow-x-auto">
-                    <div className="flex space-x-4">
+            <div className="sticky top-[72px] z-30 w-full border-b border-ink/10 bg-background/90 shadow-[0_8px_30px_rgba(29,27,22,0.05)] backdrop-blur-md">
+                <div className="container-padding mx-auto overflow-x-auto py-4">
+                    <div className="flex space-x-2">
                         {menuCategories.map((category) => (
                             <ScrollLink
                                 key={category.id}
@@ -279,10 +249,10 @@ export default function Catering() {
                                 duration={500}
                                 spy={true}
                                 offset={-180}
-                                className={`whitespace-nowrap cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                    activeCategory === category.id 
-                                        ? "bg-primary/20 text-primary border border-primary/30" 
-                                        : "text-text-light hover:text-white hover:bg-white/5"
+                                className={`cursor-pointer whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                                    activeCategory === category.id
+                                        ? "border border-primary/30 bg-primary/12 text-primary-dark"
+                                        : "text-ink-soft hover:bg-primary/5 hover:text-ink"
                                 }`}
                             >
                                 {category.name}
@@ -293,18 +263,17 @@ export default function Catering() {
             </div>
 
             {/* menu */}
-            <section id="menu" className="py-20 bg-background">
+            <section id="menu" className="bg-background py-20">
                 <div className="container-padding mx-auto">
-                    <motion.div 
-                        className="text-center mb-16"
+                    <motion.div
+                        className="mb-16 max-w-2xl"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-primary font-medium mb-2 block">Our Offerings</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Catering Menu</h2>
-                        <p className="mx-auto max-w-2xl text-text-light">
-                            Browse our extensive catering menu featuring authentic Hyderabadi dishes perfect for any occasion
+                        <h2 className="mb-4 font-display text-4xl text-ink md:text-5xl">Build your catering menu</h2>
+                        <p className="text-ink-soft">
+                            Tap any dish to add it to your selection, then request a quote over WhatsApp. Authentic Hyderabadi trays for any occasion.
                         </p>
                     </motion.div>
 
@@ -337,13 +306,13 @@ export default function Catering() {
                                 transition={{ duration: 0.5 }}
                                 viewport={{ once: true, margin: "-100px" }}
                             >
-                                <div className="flex items-center gap-4 mb-8">
-                                    <h3 className="text-3xl font-bold text-white">{category.name}</h3>
-                                    <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
-                                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                        category.isVeg 
-                                            ? "bg-green-600/20 text-green-400 border border-green-600/30" 
-                                            : "bg-red-600/20 text-red-400 border border-red-600/30"
+                                <div className="mb-8 flex items-center gap-4">
+                                    <h3 className="font-display text-3xl text-ink md:text-4xl">{category.name}</h3>
+                                    <div className="h-px flex-1 bg-ink/10" />
+                                    <span className={`rounded-full px-3 py-1 text-xs font-medium ${
+                                        category.isVeg
+                                            ? "border border-green-700/30 bg-green-700/10 text-green-800"
+                                            : "border border-red-700/30 bg-red-700/10 text-red-800"
                                     }`}>
                                         {category.isVeg ? "Vegetarian" : "Non-Vegetarian"}
                                     </span>
@@ -366,63 +335,49 @@ export default function Catering() {
             </section>
 
             {/* cta */}
-            <section className="py-20 relative overflow-hidden">
-                <div className="absolute inset-0">
-                    <Image src="/cater.jpeg" alt="Catering" fill className="object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary-dark/90" />
-                </div>
-                
-                <div className="container-padding mx-auto relative">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                                Ready to Plan Your Event?
-                            </h2>
-                            <p className="text-white/90 text-lg mb-8">
-                                Contact us today to discuss your catering needs. Our team will work with you to create a customized menu that fits your event perfectly.
-                            </p>
-                            
-                            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
-                                <div className="grid md:grid-cols-2 gap-6 mb-8">
-                                    {[
-                                        "Customized menu planning",
-                                        "Professional setup & service",
-                                        "Flexible pricing options",
-                                        "Delivery & pickup available"
-                                    ].map((item, i) => (
-                                        <div key={i} className="flex items-center gap-3 text-white">
-                                            <span className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
-                                                <FaCheck className="text-xs" />
-                                            </span>
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                                
-                                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <a 
-                                        href="tel:9726355657" 
-                                        className="inline-flex items-center justify-center gap-2 bg-white text-primary px-8 py-4 rounded-full font-semibold hover:bg-white/90 transition-all duration-300 hover:scale-105"
-                                    >
-                                        <FaPhone />
-                                        (972) 635-5657
-                                    </a>
-                                    <a 
-                                        href="mailto:info@pistahouseirving.com" 
-                                        className="inline-flex items-center justify-center gap-2 bg-transparent text-white px-8 py-4 rounded-full font-semibold border-2 border-white hover:bg-white/10 transition-all duration-300"
-                                    >
-                                        <FaEnvelope />
-                                        Email Us
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
+            <section className="container-padding mx-auto pb-24 pt-4">
+                <motion.div
+                    className="relative overflow-hidden rounded-[2rem] bg-primary-dark px-6 py-16 md:px-12 md:py-20"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="absolute inset-0 opacity-20">
+                        <Image src="/cater.jpeg" alt="" fill className="object-cover" sizes="100vw" />
+                        <div className="absolute inset-0 bg-primary-dark/70" />
                     </div>
-                </div>
+                    <div className="relative mx-auto max-w-3xl text-center">
+                        <h2 className="font-display text-4xl text-text-inverse md:text-5xl">Ready to plan your event?</h2>
+                        <p className="mx-auto mt-5 max-w-xl text-lg text-text-inverse/85">
+                            Tell us about your occasion and we&rsquo;ll build a menu that fits it perfectly.
+                        </p>
+
+                        <div className="mx-auto mt-9 grid max-w-xl gap-4 text-left sm:grid-cols-2">
+                            {[
+                                "Customized menu planning",
+                                "Professional setup & service",
+                                "Flexible pricing options",
+                                "Delivery & pickup available",
+                            ].map((item, i) => (
+                                <div key={i} className="flex items-center gap-3 text-text-inverse/90">
+                                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/15">
+                                        <FaCheck className="text-xs" />
+                                    </span>
+                                    {item}
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+                            <a href="tel:9726355657" className="inline-flex items-center justify-center gap-2 rounded-full bg-background px-7 py-3 font-medium text-primary-dark transition-transform duration-200 hover:bg-background-card active:scale-[0.97]">
+                                <FaPhone className="text-sm" /> (972) 635-5657
+                            </a>
+                            <a href="mailto:info@pistahouseirving.com" className="inline-flex items-center justify-center gap-2 rounded-full border border-text-inverse/40 px-7 py-3 font-medium text-text-inverse transition-colors hover:bg-white/10">
+                                <FaEnvelope className="text-sm" /> Email us
+                            </a>
+                        </div>
+                    </div>
+                </motion.div>
             </section>
         </>
     )
