@@ -5,7 +5,6 @@ import { FaLeaf } from "react-icons/fa"
 interface MenuCardProps {
     title: string
     description: string
-    price: string
     isVeg?: boolean
     searchQuery?: string
 }
@@ -21,7 +20,7 @@ function highlightText(text: string, query: string) {
     )
 }
 
-function MenuCard({ title, description, price, isVeg = false, searchQuery = "" }: MenuCardProps) {
+function MenuCard({ title, description, isVeg = false, searchQuery = "" }: MenuCardProps) {
     return (
         <motion.div 
             className="group relative rounded-xl bg-background-card p-5 border border-white/5 hover:border-primary/20 transition-all duration-300"
@@ -49,7 +48,6 @@ function MenuCard({ title, description, price, isVeg = false, searchQuery = "" }
                             {highlightText(title, searchQuery)}
                         </h3>
                     </div>
-                    <span className="flex-shrink-0 text-lg font-bold text-primary">{price}</span>
                 </div>
                 
                 {description && (

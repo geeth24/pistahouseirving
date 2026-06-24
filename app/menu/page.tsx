@@ -297,7 +297,6 @@ export default function Menu() {
                                     key={index}
                                     title={item.title}
                                     description={item.description}
-                                    price={item.price}
                                         isVeg={category.isVeg}
                                         searchQuery={searchQuery}
                                 />
