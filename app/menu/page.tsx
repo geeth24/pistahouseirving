@@ -205,9 +205,9 @@ export default function Menu() {
                         </div>
                     </div>
 
-                    {/* category nav */}
-                    <div className="-mb-2 overflow-x-auto pb-2">
-                        <div className="flex space-x-2">
+                    {/* category rail (mobile only) */}
+                    <div className="relative -mb-1 lg:hidden">
+                        <div className="no-scrollbar flex gap-2 overflow-x-auto">
                             {filteredCategories.map((category) => (
                             <ScrollLink
                                 key={category.id}
@@ -216,17 +216,17 @@ export default function Menu() {
                                 duration={500}
                                 spy={true}
                                     offset={-250}
-                                    className={`cursor-pointer whitespace-nowrap rounded-lg px-4 py-2 text-sm font-medium transition-all ${
+                                    className={`cursor-pointer whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                                     activeCategory === category.id
-                                            ? "border border-primary/30 bg-primary/12 text-primary-dark"
-                                            : "text-ink-soft hover:bg-primary/5 hover:text-ink"
+                                            ? "bg-primary text-text-inverse"
+                                            : "bg-background-card text-ink-soft"
                                 }`}
                             >
                                     {category.name}
-                                    <span className="ml-2 text-xs opacity-60">({category.items.length})</span>
                             </ScrollLink>
                         ))}
                         </div>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent" />
                     </div>
                 </div>
             </div>
@@ -266,8 +266,35 @@ export default function Menu() {
                         <button onClick={clearFilters} className="primary-button">Clear all filters</button>
                     </motion.div>
                 ) : (
-                    filteredCategories.map((category) => (
-                        <div id={category.id} key={category.id} className="mb-20 scroll-mt-64">
+                  <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-14">
+                    {/* desktop category index */}
+                    <aside className="hidden lg:block">
+                        <nav className="sticky top-[168px] space-y-0.5">
+                            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink-soft">Categories</p>
+                            {filteredCategories.map((category) => (
+                                <ScrollLink
+                                    key={category.id}
+                                    to={category.id}
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    offset={-180}
+                                    className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors ${
+                                        activeCategory === category.id
+                                            ? "bg-primary/10 font-semibold text-primary-dark"
+                                            : "text-ink-soft hover:bg-primary/5 hover:text-ink"
+                                    }`}
+                                >
+                                    <span>{category.name}</span>
+                                    <span className="text-xs opacity-60">{category.items.length}</span>
+                                </ScrollLink>
+                            ))}
+                        </nav>
+                    </aside>
+
+                    <div>
+                    {filteredCategories.map((category) => (
+                        <div id={category.id} key={category.id} className="mb-20 scroll-mt-40 last:mb-0">
                             <div className="mb-6 flex items-baseline gap-4">
                                 <h2 className="font-display text-3xl text-ink md:text-4xl">
                                     {category.name}
@@ -289,7 +316,9 @@ export default function Menu() {
                             ))}
                         </div>
                     </div>
-                    ))
+                    ))}
+                    </div>
+                  </div>
                 )}
             </section>
         </>

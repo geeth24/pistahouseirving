@@ -30,6 +30,12 @@
   transition-timing-function: var(--ease-out);
 }
 
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
 :root {
   /* Brand green (single accent) */
   --color-primary: #1f9d3a;
