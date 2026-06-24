@@ -10,7 +10,7 @@ import { FaArrowRight, FaUtensils, FaCalendarAlt, FaUserFriends, FaMoon, FaStar,
 
 const heroSlides = [
     { image: "/food/ChickenBiryaniHandi.webp", alt: "Hyderabadi dum biryani" },
-    { image: "/food/KebabSkewerStandSmoke.webp", alt: "Fresh grilled kebabs" },
+    { image: "/food/MixedKebabSkewersGrill.webp", alt: "Fresh grilled kebabs" },
     { image: "/food/AssortedChickenTikkaPlatter.webp", alt: "Assorted chicken tikka platter" },
 ]
 
