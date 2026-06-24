@@ -46,32 +46,27 @@ export default function AboutUs() {
     return (
         <>
             {/* hero */}
-            <section className="relative min-h-[70vh] w-full overflow-hidden flex items-center">
+            <section className="relative flex min-h-[68vh] w-full items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <Image 
-                        src="/building.jpg" 
-                        alt="Pista House Irving Building" 
-                        fill 
-                        className="object-cover" 
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/50" />
+                    <Image src="/building.jpg" alt="Pista House Irving building" fill className="object-cover" priority />
+                    <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/45" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
                 </div>
-                
+
                 <div className="container-padding relative z-10 py-20">
                     <motion.div
                         className="max-w-2xl"
-                        initial={{ opacity: 0, y: 30 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                     >
-                        <span className="inline-block mb-4 px-4 py-2 bg-primary/20 border border-primary/40 rounded-full text-primary text-sm font-medium">
+                        <span className="inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-medium text-background backdrop-blur-sm">
                             Est. in Irving, TX
                         </span>
-                        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-                            Our <span className="text-primary">Story</span>
+                        <h1 className="mb-6 mt-6 font-display text-5xl leading-[1.02] text-background md:text-6xl lg:text-7xl">
+                            Our story
                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 leading-relaxed">
+                        <p className="text-lg leading-relaxed text-background/85 md:text-xl">
                             Bringing the authentic taste of Hyderabad to Texas, one dish at a time.
                         </p>
                     </motion.div>
@@ -79,61 +74,51 @@ export default function AboutUs() {
             </section>
 
             {/* philosophy */}
-            <section className="py-20 bg-background">
+            <section className="bg-background py-20 md:py-28">
                 <div className="container-padding mx-auto">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid items-center gap-16 lg:grid-cols-2">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: -24 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6 }}
+                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                             viewport={{ once: true }}
                         >
-                            <span className="text-primary font-medium mb-2 block">Who We Are</span>
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Philosophy</h2>
-                            <div className="space-y-4 text-text-light text-lg leading-relaxed">
+                            <h2 className="mb-6 font-display text-4xl text-ink md:text-5xl">Our philosophy</h2>
+                            <div className="space-y-4 text-lg leading-relaxed text-ink-soft">
                                 <p>
-                                    Pista House Irving is a celebration of Indian culture, flavors and hospitality. 
-                                    Immerse yourself in a sensory spice experience and awaken your tastebuds with our 
+                                    Pista House Irving is a celebration of Indian culture, flavors and hospitality.
+                                    Immerse yourself in a sensory spice experience and awaken your tastebuds with our
                                     modern Indian menu, showcasing the very best of India&apos;s exotic flavors.
                                 </p>
                                 <p>
-                                    Our food is inspired by traditional Indian dishes, served with a modern twist, 
+                                    Our food is inspired by traditional Indian dishes, served with a modern twist,
                                     and we pride ourselves on using the freshest, most seasonal produce.
                                 </p>
                                 <p>
-                                    We believe that the best form of hospitality is that found in the home, 
-                                    and it is our aim to bring that welcoming, relaxed environment to our 
-                                    guests at Pista House Irving.
+                                    We believe the best hospitality is the kind you find in a home, and it is our aim
+                                    to bring that welcoming, relaxed environment to our guests.
                                 </p>
                             </div>
-                            
-                            <Link 
-                                href="/menu" 
-                                className="mt-8 inline-flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all group"
-                            >
-                                Explore Our Menu
-                                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+
+                            <Link href="/menu" className="group mt-8 inline-flex items-center gap-2 font-medium text-primary-dark transition-colors hover:text-primary">
+                                Explore our menu
+                                <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
                             </Link>
                         </motion.div>
-                        
+
                         <motion.div
                             className="relative"
-                            initial={{ opacity: 0, x: 30 }}
+                            initial={{ opacity: 0, x: 24 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6 }}
+                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                             viewport={{ once: true }}
                         >
-                            <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                                <Image
-                                    src="/slides/3.jpg"
-                                    alt="Authentic Indian Food"
-                                    fill
-                                    className="object-cover"
-                                />
+                            <div className="relative h-[500px] overflow-hidden rounded-2xl border border-ink/10">
+                                <Image src="/food/MixedKebabSkewersGrill.webp" alt="Authentic Indian food" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                             </div>
-                            <div className="absolute -bottom-6 -left-6 bg-primary p-6 rounded-2xl shadow-xl">
-                                <p className="text-white text-4xl font-bold">10+</p>
-                                <p className="text-white/80 text-sm">Years of Excellence</p>
+                            <div className="absolute -bottom-6 -left-6 rounded-2xl bg-primary-dark p-6 shadow-xl">
+                                <p className="font-display text-4xl text-text-inverse">10+</p>
+                                <p className="text-sm text-text-inverse/80">Years of excellence</p>
                             </div>
                         </motion.div>
                     </div>
@@ -141,38 +126,32 @@ export default function AboutUs() {
             </section>
 
             {/* values */}
-            <section className="py-20 bg-background-dark relative overflow-hidden">
-                <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-primary rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-                </div>
-                
-                <div className="container-padding mx-auto relative">
-                    <motion.div 
-                        className="text-center mb-16"
+            <section className="bg-background-dark py-20 md:py-28">
+                <div className="container-padding mx-auto">
+                    <motion.h2
+                        className="mb-12 max-w-xl font-display text-4xl text-ink md:text-5xl"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-primary font-medium mb-2 block">What Drives Us</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">Our Values</h2>
-                        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
-                    </motion.div>
-                    
-                    <div className="grid md:grid-cols-3 gap-8">
+                        What drives us
+                    </motion.h2>
+
+                    <div className="grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 md:grid-cols-3">
                         {values.map((value, index) => (
-                            <motion.div 
+                            <motion.div
                                 key={index}
-                                className="group bg-background-card p-8 rounded-2xl border border-white/5 hover:border-primary/20 transition-all duration-300 text-center"
-                                initial={{ opacity: 0, y: 30 }}
+                                className="bg-background-card p-8"
+                                initial={{ opacity: 0, y: 24 }}
                                 whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
                                 viewport={{ once: true }}
                             >
-                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-primary text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary-dark">
                                     {value.icon}
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-3">{value.title}</h3>
-                                <p className="text-text-light leading-relaxed">{value.description}</p>
+                                <h3 className="mt-6 font-display text-2xl text-ink">{value.title}</h3>
+                                <p className="mt-2 leading-relaxed text-ink-soft">{value.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -180,29 +159,28 @@ export default function AboutUs() {
             </section>
 
             {/* gallery */}
-            <section className="py-20 bg-background">
+            <section className="bg-background py-20">
                 <div className="container-padding mx-auto">
-                    <motion.div 
-                        className="text-center mb-12"
+                    <motion.h2
+                        className="mb-10 font-display text-4xl text-ink md:text-5xl"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                     >
-                        <span className="text-primary font-medium mb-2 block">Inside Pista House</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white">Our Space</h2>
-                    </motion.div>
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {["/slides/6.jpg", "/slides/8.jpg", "/slides/10.jpg", "/slides/12.jpg"].map((src, i) => (
+                        Inside the room
+                    </motion.h2>
+
+                    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                        {["/food/LiveKebabGrillStation.webp", "/food/DessertStationWithCake.webp", "/food/BuffetServingGuests.webp", "/food/RoseGoldChaferOutdoorSetup.webp"].map((src, i) => (
                             <motion.div
                                 key={i}
-                                className="relative aspect-square rounded-2xl overflow-hidden group"
-                                initial={{ opacity: 0, scale: 0.95 }}
+                                className="group relative aspect-square overflow-hidden rounded-2xl border border-ink/10"
+                                initial={{ opacity: 0, scale: 0.96 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
+                                transition={{ delay: i * 0.08 }}
                                 viewport={{ once: true }}
                             >
-                                <Image src={src} alt="Restaurant" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                                <Image src={src} alt="Pista House interior" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 25vw" />
                             </motion.div>
                         ))}
                     </div>
@@ -210,42 +188,26 @@ export default function AboutUs() {
             </section>
 
             {/* cta */}
-            <section className="py-20 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-background-dark" />
-                
-                <div className="container-padding mx-auto relative">
-                    <div className="max-w-3xl mx-auto text-center">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                                Visit Us Today
-                            </h2>
-                            <p className="text-text-light text-lg mb-8 max-w-xl mx-auto">
-                                Experience the authentic taste of India at our restaurant in Irving, Texas. 
-                                We look forward to serving you and your family.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a 
-                                    href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105"
-                                >
-                                    Find Us on Map
-                                </a>
-                                <Link 
-                                    href="/contactus" 
-                                    className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full font-semibold backdrop-blur-sm border border-white/20 transition-all duration-300"
-                                >
-                                    Contact Us
-                                </Link>
-                            </div>
-                        </motion.div>
+            <section className="container-padding mx-auto pb-24 pt-4">
+                <motion.div
+                    className="rounded-[2rem] border border-ink/10 bg-background-card px-6 py-16 text-center md:px-12 md:py-20"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    <div className="mx-auto max-w-2xl">
+                        <h2 className="font-display text-4xl text-ink md:text-5xl">Visit us today</h2>
+                        <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
+                            Experience the authentic taste of India at our restaurant in Irving, Texas. We look forward to serving you and your family.
+                        </p>
+                        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+                            <a href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving" target="_blank" rel="noopener noreferrer" className="primary-button">
+                                Find us on the map
+                            </a>
+                            <Link href="/contactus" className="outline-button">Contact us</Link>
+                        </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
         </>
     )

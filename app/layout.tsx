@@ -1,7 +1,21 @@
 import Layout from "@/components/Layout"
 import "@/styles/globals.css"
 import type { Metadata } from "next"
+import { Bricolage_Grotesque, Geist } from "next/font/google"
 import { OrderProvider } from "@/contexts/order-context"
+
+const display = Bricolage_Grotesque({
+    subsets: ["latin"],
+    weight: ["500", "600", "700", "800"],
+    variable: "--font-display",
+    display: "swap",
+})
+
+const body = Geist({
+    subsets: ["latin"],
+    variable: "--font-body",
+    display: "swap",
+})
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://pistahouseirving.com"),
@@ -118,19 +132,13 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className="overflow-x-hidden">
+        <html lang="en" className={`overflow-x-hidden ${display.variable} ${body.variable}`}>
             <head>
                 <meta charSet="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="theme-color" content="#c4a052" />
+                <meta name="theme-color" content="#f6f2e9" />
                 <meta name="geo.region" content="US-TX" />
                 <meta name="geo.placename" content="Irving" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap"
-                    rel="stylesheet"
-                />
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

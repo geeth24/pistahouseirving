@@ -4,6 +4,7 @@ module.exports = {
     content: [
         "./node_modules/flowbite-react/**/*.js",
         "./node_modules/tailwind-datepicker-react/dist/**/*.js",
+        "./app/**/*.{js,ts,jsx,tsx}",
         "./pages/**/*.{js,ts,jsx,tsx}",
         "./components/**/*.{js,ts,jsx,tsx}",
     ],
@@ -17,11 +18,16 @@ module.exports = {
                     DEFAULT: "var(--color-primary)",
                     light: "var(--color-primary-light)",
                     dark: "var(--color-primary-dark)",
+                    bright: "var(--color-pista-bright)",
                 },
                 background: {
                     DEFAULT: "var(--color-background)",
                     dark: "var(--color-background-dark)",
                     card: "var(--color-background-card)",
+                },
+                ink: {
+                    DEFAULT: "var(--color-ink)",
+                    soft: "var(--color-text-light)",
                 },
                 text: {
                     DEFAULT: "var(--color-text)",
@@ -35,15 +41,10 @@ module.exports = {
                 },
                 success: "var(--color-success)",
                 error: "var(--color-error)",
-                // Legacy colors for backward compatibility
-                pistaGreen: "var(--color-primary)",
-                pistaMidGreen: "var(--color-primary-dark)",
-                pistaLightGreen: "var(--color-primary-light)",
-                pistaGray: "#000000",
-                pistaLightGray: "#0E0E0E",
             },
             fontFamily: {
-                sans: ["Philosopher", "sans-serif"],
+                sans: ["var(--font-body)", "system-ui", "sans-serif"],
+                display: ["var(--font-display)", "system-ui", "sans-serif"],
             },
             container: {
                 center: true,

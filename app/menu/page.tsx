@@ -143,76 +143,71 @@ export default function Menu() {
 
     return (
         <>
-            <PageHeader 
-                title="Our Menu" 
-                subtitle="Explore our authentic Hyderabadi cuisine" 
-                backgroundImage="/slides/3.jpg"
+            <PageHeader
+                title="Our Menu"
+                subtitle="Explore our authentic Hyderabadi cuisine"
+                backgroundImage="/food/MuttonBiryaniCloseup.webp"
             />
             
             {/* search and filters */}
-            <div className="sticky top-20 z-30 w-full bg-background-dark/95 shadow-lg backdrop-blur-md border-b border-white/5">
+            <div className="sticky top-[72px] z-30 w-full border-b border-ink/10 bg-background/90 shadow-[0_8px_30px_rgba(29,27,22,0.05)] backdrop-blur-md">
                 <div className="container-padding mx-auto py-4">
                     {/* search bar */}
-                    <div className="flex flex-col md:flex-row gap-4 mb-4">
+                    <div className="mb-4 flex flex-col gap-3 md:flex-row">
                         <div className="relative flex-1">
-                            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-text-light" />
+                            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-soft" />
                             <input
                                 type="text"
                                 placeholder="Search for dishes..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-12 pr-4 py-3 bg-background-card border border-white/10 rounded-xl text-white placeholder:text-text-light focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-all"
+                                className="w-full rounded-xl border border-ink/15 bg-background-card py-3 pl-12 pr-4 text-ink transition-all placeholder:text-ink-soft focus:border-primary/50 focus:outline-none focus:ring-1 focus:ring-primary/30"
                             />
                             {searchQuery && (
                                 <button
                                     onClick={() => setSearchQuery("")}
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-text-light hover:text-white transition-colors"
+                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-ink-soft transition-colors hover:text-ink"
+                                    aria-label="Clear search"
                                 >
                                     <FaTimes />
                                 </button>
                             )}
                         </div>
-                        
-                        {/* diet filters */}
-                        <div className="flex gap-2">
+
+                        {/* diet filters (segmented) */}
+                        <div className="flex shrink-0 rounded-full border border-ink/15 bg-background-card p-1">
                             <button
                                 onClick={() => setDietFilter("all")}
-                                className={`px-5 py-3 rounded-xl font-medium transition-all ${
-                                    dietFilter === "all"
-                                        ? "bg-primary text-white"
-                                        : "bg-background-card text-text-light hover:text-white border border-white/10"
+                                className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                                    dietFilter === "all" ? "bg-primary text-text-inverse" : "text-ink-soft hover:text-ink"
                                 }`}
                             >
                                 All
                             </button>
                             <button
                                 onClick={() => setDietFilter("veg")}
-                                className={`px-5 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
-                                    dietFilter === "veg"
-                                        ? "bg-green-600 text-white"
-                                        : "bg-background-card text-text-light hover:text-white border border-white/10"
+                                className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                                    dietFilter === "veg" ? "bg-primary text-text-inverse" : "text-ink-soft hover:text-ink"
                                 }`}
                             >
-                                <FaLeaf className="text-sm" />
+                                <FaLeaf className="text-xs" />
                                 Veg
                             </button>
                             <button
                                 onClick={() => setDietFilter("nonveg")}
-                                className={`px-5 py-3 rounded-xl font-medium transition-all flex items-center gap-2 ${
-                                    dietFilter === "nonveg"
-                                        ? "bg-red-600 text-white"
-                                        : "bg-background-card text-text-light hover:text-white border border-white/10"
+                                className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                                    dietFilter === "nonveg" ? "bg-primary text-text-inverse" : "text-ink-soft hover:text-ink"
                                 }`}
                             >
-                                <FaDrumstickBite className="text-sm" />
+                                <FaDrumstickBite className="text-xs" />
                                 Non-Veg
                             </button>
                         </div>
                     </div>
 
-                    {/* category nav */}
-                    <div className="overflow-x-auto pb-2 -mb-2">
-                        <div className="flex space-x-4">
+                    {/* category rail (mobile only) */}
+                    <div className="relative -mb-1 lg:hidden">
+                        <div className="no-scrollbar flex gap-2 overflow-x-auto">
                             {filteredCategories.map((category) => (
                             <ScrollLink
                                 key={category.id}
@@ -221,33 +216,33 @@ export default function Menu() {
                                 duration={500}
                                 spy={true}
                                     offset={-250}
-                                    className={`whitespace-nowrap cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                                    activeCategory === category.id 
-                                            ? "bg-primary/20 text-primary border border-primary/30" 
-                                            : "text-text-light hover:text-white hover:bg-white/5"
+                                    className={`cursor-pointer whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                                    activeCategory === category.id
+                                            ? "bg-primary text-text-inverse"
+                                            : "bg-background-card text-ink-soft"
                                 }`}
                             >
                                     {category.name}
-                                    <span className="ml-2 text-xs opacity-60">({category.items.length})</span>
                             </ScrollLink>
                         ))}
                         </div>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent" />
                     </div>
                 </div>
             </div>
-            
+
             {/* results info */}
             {hasActiveFilters && (
                 <div className="container-padding mx-auto pt-6">
-                    <div className="flex items-center justify-between bg-background-card/50 px-4 py-3 rounded-xl border border-white/5">
-                        <p className="text-text-light">
-                            Found <span className="text-primary font-semibold">{totalResults}</span> items
-                            {searchQuery && <span> matching "{searchQuery}"</span>}
+                    <div className="flex items-center justify-between rounded-xl border border-ink/10 bg-background-card px-4 py-3">
+                        <p className="text-ink-soft">
+                            Found <span className="font-semibold text-primary-dark">{totalResults}</span> items
+                            {searchQuery && <span> matching &ldquo;{searchQuery}&rdquo;</span>}
                             {dietFilter !== "all" && <span> in {dietFilter === "veg" ? "vegetarian" : "non-vegetarian"} category</span>}
                         </p>
                         <button
                             onClick={clearFilters}
-                            className="text-primary hover:text-primary-light font-medium text-sm flex items-center gap-2 transition-colors"
+                            className="flex items-center gap-2 text-sm font-medium text-primary-dark transition-colors hover:text-primary"
                         >
                             <FaTimes className="text-xs" />
                             Clear filters
@@ -255,43 +250,61 @@ export default function Menu() {
                     </div>
                 </div>
             )}
-            
-            <section className="container-padding mx-auto py-12">
+
+            <section className="container-padding mx-auto py-14">
                 {filteredCategories.length === 0 ? (
-                    <motion.div 
-                        className="text-center py-20"
+                    <motion.div
+                        className="py-20 text-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
-                        <div className="w-20 h-20 bg-background-card rounded-full flex items-center justify-center mx-auto mb-6">
-                            <FaSearch className="text-3xl text-text-light" />
+                        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-background-card">
+                            <FaSearch className="text-3xl text-ink-soft" />
                         </div>
-                        <h3 className="text-2xl font-bold text-white mb-2">No dishes found</h3>
-                        <p className="text-text-light mb-6">Try adjusting your search or filters</p>
-                        <button
-                            onClick={clearFilters}
-                            className="px-6 py-3 bg-primary hover:bg-primary-dark text-white rounded-xl font-medium transition-colors"
-                        >
-                            Clear all filters
-                        </button>
+                        <h3 className="mb-2 font-display text-2xl text-ink">No dishes found</h3>
+                        <p className="mb-6 text-ink-soft">Try adjusting your search or filters</p>
+                        <button onClick={clearFilters} className="primary-button">Clear all filters</button>
                     </motion.div>
                 ) : (
-                    filteredCategories.map((category) => (
-                        <div id={category.id} key={category.id} className="mb-16 scroll-mt-64">
-                            <div className="flex items-center gap-4 mb-8">
-                                <h2 className="text-3xl font-bold text-white">
+                  <div className="lg:grid lg:grid-cols-[220px_1fr] lg:gap-14">
+                    {/* desktop category index */}
+                    <aside className="hidden lg:block">
+                        <nav className="sticky top-[168px] space-y-0.5">
+                            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-ink-soft">Categories</p>
+                            {filteredCategories.map((category) => (
+                                <ScrollLink
+                                    key={category.id}
+                                    to={category.id}
+                                    smooth={true}
+                                    duration={500}
+                                    spy={true}
+                                    offset={-180}
+                                    className={`flex cursor-pointer items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors ${
+                                        activeCategory === category.id
+                                            ? "bg-primary/10 font-semibold text-primary-dark"
+                                            : "text-ink-soft hover:bg-primary/5 hover:text-ink"
+                                    }`}
+                                >
+                                    <span>{category.name}</span>
+                                    <span className="text-xs opacity-60">{category.items.length}</span>
+                                </ScrollLink>
+                            ))}
+                        </nav>
+                    </aside>
+
+                    <div>
+                    {filteredCategories.map((category) => (
+                        <div id={category.id} key={category.id} className="mb-20 scroll-mt-40 last:mb-0">
+                            <div className="mb-6 flex items-baseline gap-4">
+                                <h2 className="font-display text-3xl text-ink md:text-4xl">
                                     {category.name}
-                        </h2>
-                                <div className="flex-1 h-px bg-gradient-to-r from-primary/50 to-transparent" />
-                                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                    category.isVeg 
-                                        ? "bg-green-600/20 text-green-400 border border-green-600/30" 
-                                        : "bg-red-600/20 text-red-400 border border-red-600/30"
-                                }`}>
-                                    {category.isVeg ? "Vegetarian" : "Non-Vegetarian"}
+                                </h2>
+                                <div className="h-px flex-1 translate-y-[-4px] bg-ink/10" />
+                                <span className="shrink-0 text-sm text-ink-soft">
+                                    {category.items.length} {category.items.length === 1 ? "dish" : "dishes"}
                                 </span>
                             </div>
-                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid grid-cols-1 border-t border-ink/8 md:grid-cols-2 md:gap-x-12">
                             {category.items.map((item, index) => (
                                 <MenuCard
                                     key={index}
@@ -303,7 +316,9 @@ export default function Menu() {
                             ))}
                         </div>
                     </div>
-                    ))
+                    ))}
+                    </div>
+                  </div>
                 )}
             </section>
         </>

@@ -3,39 +3,33 @@
 import React, { createContext, useContext, useState, useCallback, ReactNode } from "react"
 
 interface OrderContextType {
-    order: string
-    addToOrder: (item: string) => void
-    removeFromOrder: (item: string) => void
+    items: string[]
+    toggleItem: (title: string) => void
+    removeItem: (title: string) => void
     clearOrder: () => void
+    hasItem: (title: string) => boolean
 }
 
 const OrderContext = createContext<OrderContextType | undefined>(undefined)
 
 export function OrderProvider({ children }: { children: ReactNode }) {
-    const [order, setOrder] = useState<string>("Your Selections:, ")
+    const [items, setItems] = useState<string[]>([])
 
-    const addToOrder = useCallback((item: string) => {
-        setOrder((prev) => {
-            const newOrder = prev + "\n" + item
-            console.log(newOrder)
-            return newOrder
-        })
+    const toggleItem = useCallback((title: string) => {
+        if (!title) return
+        setItems((prev) => (prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]))
     }, [])
 
-    const removeFromOrder = useCallback((item: string) => {
-        setOrder((prev) => {
-            const newOrder = prev.replace(item, "")
-            console.log(newOrder)
-            return newOrder
-        })
+    const removeItem = useCallback((title: string) => {
+        setItems((prev) => prev.filter((t) => t !== title))
     }, [])
 
-    const clearOrder = useCallback(() => {
-        setOrder("Your Selections:")
-    }, [])
+    const clearOrder = useCallback(() => setItems([]), [])
+
+    const hasItem = useCallback((title: string) => items.includes(title), [items])
 
     return (
-        <OrderContext.Provider value={{ order, addToOrder, removeFromOrder, clearOrder }}>
+        <OrderContext.Provider value={{ items, toggleItem, removeItem, clearOrder, hasItem }}>
             {children}
         </OrderContext.Provider>
     )

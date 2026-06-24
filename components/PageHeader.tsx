@@ -23,44 +23,29 @@ function PageHeader({ title, subtitle, backgroundImage = '/Biryani.jpeg' }: Page
             </div>
             
             {/* gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-background-dark/80 via-background-dark/60 to-background-dark" />
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent" />
-            
+            <div className="absolute inset-0 bg-gradient-to-b from-ink/75 via-ink/45 to-ink/80" />
+
             {/* content */}
             <div className="container-padding relative z-10 mx-auto text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                 >
-                    <motion.div
-                        className="inline-block mb-4"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2, type: "spring" }}
-                    >
-                        <span className="inline-block w-16 h-1 bg-primary rounded-full" />
-                    </motion.div>
-                    
-                    <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl lg:text-6xl">
+                    <h1 className="mb-4 text-5xl text-background md:text-6xl lg:text-7xl">
                         {title}
                     </h1>
-                    
+
                     {subtitle && (
-                        <motion.p 
-                            className="mx-auto max-w-2xl text-lg text-text-light md:text-xl"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
-                        >
+                        <p className="mx-auto max-w-2xl text-lg text-background/85 md:text-xl">
                             {subtitle}
-                        </motion.p>
+                        </p>
                     )}
                 </motion.div>
             </div>
 
-            {/* bottom fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent" />
+            {/* bottom fade into the page */}
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent" />
         </section>
     )
 }
