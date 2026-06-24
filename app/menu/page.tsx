@@ -174,38 +174,32 @@ export default function Menu() {
                             )}
                         </div>
 
-                        {/* diet filters */}
-                        <div className="flex gap-2">
+                        {/* diet filters (segmented) */}
+                        <div className="flex shrink-0 rounded-full border border-ink/15 bg-background-card p-1">
                             <button
                                 onClick={() => setDietFilter("all")}
-                                className={`rounded-xl px-5 py-3 font-medium transition-all ${
-                                    dietFilter === "all"
-                                        ? "bg-primary text-text-inverse"
-                                        : "border border-ink/10 bg-background-card text-ink-soft hover:text-ink"
+                                className={`rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                                    dietFilter === "all" ? "bg-primary text-text-inverse" : "text-ink-soft hover:text-ink"
                                 }`}
                             >
                                 All
                             </button>
                             <button
                                 onClick={() => setDietFilter("veg")}
-                                className={`flex items-center gap-2 rounded-xl px-5 py-3 font-medium transition-all ${
-                                    dietFilter === "veg"
-                                        ? "bg-green-700 text-white"
-                                        : "border border-ink/10 bg-background-card text-ink-soft hover:text-ink"
+                                className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                                    dietFilter === "veg" ? "bg-primary text-text-inverse" : "text-ink-soft hover:text-ink"
                                 }`}
                             >
-                                <FaLeaf className="text-sm" />
+                                <FaLeaf className="text-xs" />
                                 Veg
                             </button>
                             <button
                                 onClick={() => setDietFilter("nonveg")}
-                                className={`flex items-center gap-2 rounded-xl px-5 py-3 font-medium transition-all ${
-                                    dietFilter === "nonveg"
-                                        ? "bg-red-700 text-white"
-                                        : "border border-ink/10 bg-background-card text-ink-soft hover:text-ink"
+                                className={`flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                                    dietFilter === "nonveg" ? "bg-primary text-text-inverse" : "text-ink-soft hover:text-ink"
                                 }`}
                             >
-                                <FaDrumstickBite className="text-sm" />
+                                <FaDrumstickBite className="text-xs" />
                                 Non-Veg
                             </button>
                         </div>
@@ -273,21 +267,17 @@ export default function Menu() {
                     </motion.div>
                 ) : (
                     filteredCategories.map((category) => (
-                        <div id={category.id} key={category.id} className="mb-16 scroll-mt-64">
-                            <div className="mb-8 flex items-center gap-4">
+                        <div id={category.id} key={category.id} className="mb-20 scroll-mt-64">
+                            <div className="mb-6 flex items-baseline gap-4">
                                 <h2 className="font-display text-3xl text-ink md:text-4xl">
                                     {category.name}
                                 </h2>
-                                <div className="h-px flex-1 bg-ink/10" />
-                                <span className={`rounded-full px-3 py-1 text-xs font-medium ${
-                                    category.isVeg
-                                        ? "border border-green-700/30 bg-green-700/10 text-green-800"
-                                        : "border border-red-700/30 bg-red-700/10 text-red-800"
-                                }`}>
-                                    {category.isVeg ? "Vegetarian" : "Non-Vegetarian"}
+                                <div className="h-px flex-1 translate-y-[-4px] bg-ink/10" />
+                                <span className="shrink-0 text-sm text-ink-soft">
+                                    {category.items.length} {category.items.length === 1 ? "dish" : "dishes"}
                                 </span>
                             </div>
-                            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+                            <div className="grid grid-cols-1 border-t border-ink/8 md:grid-cols-2 md:gap-x-12">
                             {category.items.map((item, index) => (
                                 <MenuCard
                                     key={index}

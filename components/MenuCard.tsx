@@ -1,5 +1,4 @@
 import React from "react"
-import { motion } from "framer-motion"
 
 interface MenuCardProps {
     title: string
@@ -21,28 +20,21 @@ function highlightText(text: string, query: string) {
 
 function MenuCard({ title, description, isVeg = false, searchQuery = "" }: MenuCardProps) {
     return (
-        <motion.div
-            className="group rounded-2xl border border-ink/10 bg-background-card p-5 transition-colors duration-300 hover:border-primary/30"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            viewport={{ once: true, amount: 0.4 }}
-        >
-            <div className="flex items-start gap-2.5">
-                <span className={`mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded border ${isVeg ? "border-green-600" : "border-red-600"}`}>
-                    <span className={`h-2 w-2 rounded-full ${isVeg ? "bg-green-600" : "bg-red-600"}`} />
-                </span>
-                <h3 className="font-display text-xl leading-tight text-ink">
+        <div className="flex gap-3 border-b border-ink/8 py-5">
+            <span className={`mt-1.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-[3px] border ${isVeg ? "border-green-700" : "border-red-700"}`} aria-label={isVeg ? "Vegetarian" : "Non-vegetarian"}>
+                <span className={`h-1.5 w-1.5 rounded-full ${isVeg ? "bg-green-700" : "bg-red-700"}`} />
+            </span>
+            <div className="min-w-0">
+                <h3 className="font-display text-lg font-semibold leading-snug text-ink">
                     {highlightText(title, searchQuery)}
                 </h3>
+                {description && (
+                    <p className="mt-1 text-sm leading-relaxed text-ink-soft">
+                        {highlightText(description, searchQuery)}
+                    </p>
+                )}
             </div>
-
-            {description && (
-                <p className="mt-2 pl-[26px] text-sm leading-relaxed text-ink-soft">
-                    {highlightText(description, searchQuery)}
-                </p>
-            )}
-        </motion.div>
+        </div>
     )
 }
 

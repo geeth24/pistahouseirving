@@ -192,9 +192,9 @@ export default function Home() {
                         ))}
 
                         {/* green emphasis cell */}
-                        <motion.div className="rounded-2xl bg-primary-dark p-7 text-text-inverse" {...reveal}>
-                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 text-xl">{features[3].icon}</div>
-                            <h3 className="mt-5 font-display text-2xl">{features[3].title}</h3>
+                        <motion.div className="rounded-2xl bg-primary-dark p-7" {...reveal}>
+                            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/15 text-xl text-text-inverse">{features[3].icon}</div>
+                            <h3 className="mt-5 font-display text-2xl text-text-inverse">{features[3].title}</h3>
                             <p className="mt-2 text-text-inverse/80">{features[3].description}</p>
                         </motion.div>
 
