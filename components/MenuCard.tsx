@@ -1,6 +1,5 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { FaLeaf } from "react-icons/fa"
 
 interface MenuCardProps {
     title: string
@@ -11,51 +10,38 @@ interface MenuCardProps {
 
 function highlightText(text: string, query: string) {
     if (!query.trim()) return text
-    
-    const parts = text.split(new RegExp(`(${query})`, 'gi'))
-    return parts.map((part, i) => 
-        part.toLowerCase() === query.toLowerCase() 
-            ? <mark key={i} className="bg-primary/30 text-white rounded px-0.5">{part}</mark>
+
+    const parts = text.split(new RegExp(`(${query})`, "gi"))
+    return parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase()
+            ? <mark key={i} className="rounded bg-primary/20 px-0.5 text-primary-dark">{part}</mark>
             : part
     )
 }
 
 function MenuCard({ title, description, isVeg = false, searchQuery = "" }: MenuCardProps) {
     return (
-        <motion.div 
-            className="group relative rounded-xl bg-background-card p-5 border border-white/5 hover:border-primary/20 transition-all duration-300"
-            initial={{ opacity: 0, y: 20 }}
+        <motion.div
+            className="group rounded-2xl border border-ink/10 bg-background-card p-5 transition-colors duration-300 hover:border-primary/30"
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            viewport={{ once: true, amount: 0.4 }}
         >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300" />
-            
-            <div className="relative">
-                <div className="flex items-start justify-between gap-3 mb-3">
-                    <div className="flex items-start gap-2 flex-1 min-w-0">
-                        {isVeg && (
-                            <span className="mt-1 flex-shrink-0 w-4 h-4 rounded border border-green-500 flex items-center justify-center">
-                                <span className="w-2 h-2 rounded-full bg-green-500" />
-                            </span>
-                        )}
-                        {!isVeg && (
-                            <span className="mt-1 flex-shrink-0 w-4 h-4 rounded border border-red-500 flex items-center justify-center">
-                                <span className="w-2 h-2 rounded-full bg-red-500" />
-                            </span>
-                        )}
-                        <h3 className="text-lg font-semibold text-white leading-tight">
-                            {highlightText(title, searchQuery)}
-                        </h3>
-                    </div>
-                </div>
-                
-                {description && (
-                    <p className="text-text-light text-sm leading-relaxed pl-6">
-                        {highlightText(description, searchQuery)}
-                    </p>
-                )}
+            <div className="flex items-start gap-2.5">
+                <span className={`mt-1 flex h-4 w-4 shrink-0 items-center justify-center rounded border ${isVeg ? "border-green-600" : "border-red-600"}`}>
+                    <span className={`h-2 w-2 rounded-full ${isVeg ? "bg-green-600" : "bg-red-600"}`} />
+                </span>
+                <h3 className="font-display text-xl leading-tight text-ink">
+                    {highlightText(title, searchQuery)}
+                </h3>
             </div>
+
+            {description && (
+                <p className="mt-2 pl-[26px] text-sm leading-relaxed text-ink-soft">
+                    {highlightText(description, searchQuery)}
+                </p>
+            )}
         </motion.div>
     )
 }
