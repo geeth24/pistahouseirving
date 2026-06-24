@@ -1,12 +1,12 @@
 import Layout from "@/components/Layout"
 import "@/styles/globals.css"
 import type { Metadata } from "next"
-import { Cormorant_Garamond, Geist } from "next/font/google"
+import { Bricolage_Grotesque, Geist } from "next/font/google"
 import { OrderProvider } from "@/contexts/order-context"
 
-const display = Cormorant_Garamond({
+const display = Bricolage_Grotesque({
     subsets: ["latin"],
-    weight: ["500", "600", "700"],
+    weight: ["500", "600", "700", "800"],
     variable: "--font-display",
     display: "swap",
 })

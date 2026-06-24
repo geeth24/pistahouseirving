@@ -9,9 +9,9 @@ import { logEvent } from "firebase/analytics"
 import { FaArrowRight, FaUtensils, FaCalendarAlt, FaUserFriends, FaMoon, FaStar, FaQuoteLeft, FaYelp, FaPhone } from "react-icons/fa"
 
 const heroSlides = [
-    { image: "/slides/1.jpg", alt: "Hyderabadi dum biryani" },
-    { image: "/slides/3.jpg", alt: "Fresh grilled kebabs" },
-    { image: "/slides/5.jpg", alt: "Authentic Indian cuisine" },
+    { image: "/Biryani.jpeg", alt: "Hyderabadi dum biryani" },
+    { image: "/Kebabs.jpeg", alt: "Fresh grilled kebabs" },
+    { image: "/slides/3.jpg", alt: "Authentic Indian cuisine" },
 ]
 
 const signatureDishes = [
@@ -80,10 +80,10 @@ export default function Home() {
                     <span className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/8 px-4 py-1.5 text-sm font-medium text-primary-dark">
                         Authentic Hyderabadi kitchen
                     </span>
-                    <h1 className="mt-6 font-display text-[3.25rem] leading-[0.98] tracking-tight text-ink sm:text-6xl lg:text-7xl">
-                        Where every bite<br />tells a <span className="italic text-primary">story</span>
+                    <h1 className="mt-6 font-display text-[3.6rem] font-extrabold leading-[0.92] tracking-[-0.03em] text-ink sm:text-7xl lg:text-[5.6rem]">
+                        Where every bite tells a <span className="text-primary">story</span>
                     </h1>
-                    <p className="mt-6 max-w-md text-lg leading-relaxed text-ink-soft">
+                    <p className="mt-7 max-w-md text-lg leading-relaxed text-ink-soft">
                         Royal flavors of Hyderabad in Irving, Texas. Legendary dum biryani, sizzling kebabs, and late-night Irani chai.
                     </p>
                     <div className="mt-9 flex flex-col gap-3 sm:flex-row">
