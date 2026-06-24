@@ -143,10 +143,10 @@ export default function Menu() {
 
     return (
         <>
-            <PageHeader 
-                title="Our Menu" 
-                subtitle="Explore our authentic Hyderabadi cuisine" 
-                backgroundImage="/slides/3.jpg"
+            <PageHeader
+                title="Our Menu"
+                subtitle="Explore our authentic Hyderabadi cuisine"
+                backgroundImage="/food/MuttonBiryaniCloseup.webp"
             />
             
             {/* search and filters */}

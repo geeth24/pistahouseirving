@@ -55,12 +55,12 @@ const menuCategories = [
 ]
 
 const images = [
-    { src: "/slides/1.jpg", alt: "Food Table Setup" },
-    { src: "/slides/2.jpg", alt: "Fruit Table Setup" },
-    { src: "/slides/3.jpg", alt: "Biryani Display" },
-    { src: "/slides/5.jpg", alt: "Kebab Station" },
-    { src: "/slides/6.jpg", alt: "Dessert Table" },
-    { src: "/slides/8.jpg", alt: "Event Setup" },
+    { src: "/food/PistaHouseBuffetSetup.webp", alt: "Buffet setup" },
+    { src: "/food/CopperGoldChaferBuffetSetup.webp", alt: "Chafer service" },
+    { src: "/food/LiveTandooriKebabStation.webp", alt: "Live kebab station" },
+    { src: "/food/RoseGoldChaferOutdoorSetup.webp", alt: "Outdoor event setup" },
+    { src: "/food/BuffetServingGuests.webp", alt: "Serving guests" },
+    { src: "/food/DessertStationWithCake.webp", alt: "Dessert station" },
 ]
 
 const cateringFeatures = [
@@ -129,7 +129,7 @@ export default function Catering() {
             {/* hero */}
             <section className="relative flex min-h-[82vh] w-full items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <Image src="/slides/1.jpg" alt="Catering service" fill className="object-cover" priority />
+                    <Image src="/food/EliteOutdoorDinnerSetup.webp" alt="Catering service" fill className="object-cover" priority />
                     <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/40" />
                     <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
                 </div>
@@ -170,12 +170,12 @@ export default function Catering() {
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             <div className="space-y-4">
-                                <div className="relative h-48 overflow-hidden rounded-2xl"><Image src="/slides/3.jpg" alt="Biryani" fill className="object-cover" sizes="25vw" /></div>
-                                <div className="relative h-64 overflow-hidden rounded-2xl"><Image src="/slides/5.jpg" alt="Kebabs" fill className="object-cover" sizes="25vw" /></div>
+                                <div className="relative h-48 overflow-hidden rounded-2xl"><Image src="/food/ChickenBiryaniHandi.webp" alt="Biryani" fill className="object-cover" sizes="25vw" /></div>
+                                <div className="relative h-64 overflow-hidden rounded-2xl"><Image src="/food/MixedKebabSkewersGrill.webp" alt="Kebabs" fill className="object-cover" sizes="25vw" /></div>
                             </div>
                             <div className="space-y-4 pt-8">
-                                <div className="relative h-64 overflow-hidden rounded-2xl"><Image src="/slides/8.jpg" alt="Event setup" fill className="object-cover" sizes="25vw" /></div>
-                                <div className="relative h-48 overflow-hidden rounded-2xl"><Image src="/slides/6.jpg" alt="Desserts" fill className="object-cover" sizes="25vw" /></div>
+                                <div className="relative h-64 overflow-hidden rounded-2xl"><Image src="/food/GoldChaferBuffetSetup.webp" alt="Event setup" fill className="object-cover" sizes="25vw" /></div>
+                                <div className="relative h-48 overflow-hidden rounded-2xl"><Image src="/food/DessertStationWithCake.webp" alt="Desserts" fill className="object-cover" sizes="25vw" /></div>
                             </div>
                         </motion.div>
                     </div>
@@ -343,7 +343,7 @@ export default function Catering() {
                     viewport={{ once: true }}
                 >
                     <div className="absolute inset-0 opacity-20">
-                        <Image src="/cater.jpeg" alt="" fill className="object-cover" sizes="100vw" />
+                        <Image src="/food/CopperGoldChaferBuffetSetup.webp" alt="" fill className="object-cover" sizes="100vw" />
                         <div className="absolute inset-0 bg-primary-dark/70" />
                     </div>
                     <div className="relative mx-auto max-w-3xl text-center">

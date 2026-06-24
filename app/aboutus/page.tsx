@@ -114,7 +114,7 @@ export default function AboutUs() {
                             viewport={{ once: true }}
                         >
                             <div className="relative h-[500px] overflow-hidden rounded-2xl border border-ink/10">
-                                <Image src="/slides/3.jpg" alt="Authentic Indian food" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
+                                <Image src="/food/MixedKebabSkewersGrill.webp" alt="Authentic Indian food" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
                             </div>
                             <div className="absolute -bottom-6 -left-6 rounded-2xl bg-primary-dark p-6 shadow-xl">
                                 <p className="font-display text-4xl text-text-inverse">10+</p>
@@ -171,7 +171,7 @@ export default function AboutUs() {
                     </motion.h2>
 
                     <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                        {["/slides/6.jpg", "/slides/8.jpg", "/slides/10.jpg", "/slides/12.jpg"].map((src, i) => (
+                        {["/food/LiveKebabGrillStation.webp", "/food/DessertStationWithCake.webp", "/food/BuffetServingGuests.webp", "/food/RoseGoldChaferOutdoorSetup.webp"].map((src, i) => (
                             <motion.div
                                 key={i}
                                 className="group relative aspect-square overflow-hidden rounded-2xl border border-ink/10"

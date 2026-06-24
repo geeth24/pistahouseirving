@@ -9,15 +9,15 @@ import { logEvent } from "firebase/analytics"
 import { FaArrowRight, FaUtensils, FaCalendarAlt, FaUserFriends, FaMoon, FaStar, FaQuoteLeft, FaYelp, FaPhone } from "react-icons/fa"
 
 const heroSlides = [
-    { image: "/Biryani.jpeg", alt: "Hyderabadi dum biryani" },
-    { image: "/Kebabs.jpeg", alt: "Fresh grilled kebabs" },
-    { image: "/slides/3.jpg", alt: "Authentic Indian cuisine" },
+    { image: "/food/ChickenBiryaniHandi.webp", alt: "Hyderabadi dum biryani" },
+    { image: "/food/KebabSkewerStandSmoke.webp", alt: "Fresh grilled kebabs" },
+    { image: "/food/AssortedChickenTikkaPlatter.webp", alt: "Assorted chicken tikka platter" },
 ]
 
 const signatureDishes = [
-    { name: "Hyderabadi Dum Biryani", image: "/Biryani.jpeg", description: "Slow-cooked aromatic basmati layered with tender meat and a secret blend of spices.", tag: "Signature" },
-    { name: "Seekh Kebabs", image: "/Kebabs.jpeg", description: "Minced meat skewers, charred over open flame.", tag: "Popular" },
-    { name: "Haleem", image: "/haleem.png", description: "A rich, slow-cooked delicacy of wheat, lentils and meat.", tag: "Seasonal" },
+    { name: "Hyderabadi Dum Biryani", image: "/food/ChickenBiryaniBowl.webp", description: "Slow-cooked aromatic basmati layered with tender meat and a secret blend of spices.", tag: "Signature" },
+    { name: "Seekh Kebabs", image: "/food/GrilledChickenKebabs.webp", description: "Minced meat skewers, charred over open flame.", tag: "Popular" },
+    { name: "Haleem", image: "/food/HaleemServedBowl.webp", description: "A rich, slow-cooked delicacy of wheat, lentils and meat.", tag: "Seasonal" },
 ]
 
 const features = [
@@ -175,7 +175,7 @@ export default function Home() {
                     <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3 md:grid-rows-2">
                         {/* tall photo cell */}
                         <motion.div className="relative overflow-hidden rounded-2xl border border-ink/10 md:row-span-2 md:min-h-[420px]" {...reveal}>
-                            <Image src="/slides/5.jpg" alt="Kebabs on the grill" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                            <Image src="/food/LiveKebabGrillStation.webp" alt="Live kebab grill station" fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
                             <div className="absolute inset-0 bg-gradient-to-t from-ink/85 to-transparent" />
                             <div className="absolute inset-x-0 bottom-0 p-6">
                                 <p className="font-display text-2xl text-background">Cooked to order, the way it should be</p>
@@ -231,12 +231,12 @@ export default function Home() {
 
                     <motion.div className="grid grid-cols-2 gap-4" {...reveal}>
                         <div className="space-y-4">
-                            <div className="relative h-48 overflow-hidden rounded-2xl border border-ink/10"><Image src="/slides/6.jpg" alt="Restaurant interior" fill className="object-cover" sizes="25vw" /></div>
-                            <div className="relative h-60 overflow-hidden rounded-2xl border border-ink/10"><Image src="/slides/8.jpg" alt="Food preparation" fill className="object-cover" sizes="25vw" /></div>
+                            <div className="relative h-48 overflow-hidden rounded-2xl border border-ink/10"><Image src="/food/PistaHouseBuffetSetup.webp" alt="Pista House buffet setup" fill className="object-cover" sizes="25vw" /></div>
+                            <div className="relative h-60 overflow-hidden rounded-2xl border border-ink/10"><Image src="/food/LiveTandooriKebabStation.webp" alt="Live tandoori kebab station" fill className="object-cover" sizes="25vw" /></div>
                         </div>
                         <div className="space-y-4 pt-8">
                             <div className="relative h-60 overflow-hidden rounded-2xl border border-ink/10"><Image src="/building.jpg" alt="Pista House Irving building" fill className="object-cover" sizes="25vw" /></div>
-                            <div className="relative h-48 overflow-hidden rounded-2xl border border-ink/10"><Image src="/slides/10.jpg" alt="Dining experience" fill className="object-cover" sizes="25vw" /></div>
+                            <div className="relative h-48 overflow-hidden rounded-2xl border border-ink/10"><Image src="/food/GoldChaferBuffetSetup.webp" alt="Gold chafer buffet setup" fill className="object-cover" sizes="25vw" /></div>
                         </div>
                     </motion.div>
                 </div>
@@ -291,7 +291,7 @@ export default function Home() {
             <section className="container-padding mx-auto pb-24 pt-8 md:pb-32">
                 <motion.div className="relative overflow-hidden rounded-[2rem] bg-primary-dark px-6 py-16 text-center md:px-12 md:py-24" {...reveal}>
                     <div className="absolute inset-0 opacity-25">
-                        <Image src="/cater.jpeg" alt="" fill className="object-cover" sizes="100vw" />
+                        <Image src="/food/CopperGoldChaferBuffetSetup.webp" alt="" fill className="object-cover" sizes="100vw" />
                         <div className="absolute inset-0 bg-primary-dark/70" />
                     </div>
                     <div className="relative mx-auto max-w-2xl">
