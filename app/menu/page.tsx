@@ -1,3 +1,5 @@
+import { PageTitle } from "@/components/page-title"
+import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
@@ -33,7 +35,7 @@ export default function MenuPage() {
     <div className="wrap" id="dining-menu">
       <StructuredData data={menuSchema} />
       <BreadcrumbData path="/menu" />
-      <header className="intro menu-intro">
+      <header className="intro menu-intro page-opening">
         <span className="kicker">
           <i aria-hidden="true" />
           Irving dining room
@@ -51,7 +53,7 @@ export default function MenuPage() {
             sizes="(max-width:700px) 95px, 210px"
           />
         </Link>
-        <h1>The menu</h1>
+        <PageTitle lines={["The menu"]} />
         <p>
           Browse dum biryani, gongura pulavs, tandoori kebabs, and vegetarian
           dishes. Check{" "}
@@ -63,13 +65,13 @@ export default function MenuPage() {
       </header>
       <Catalog sections={menu} />
       <section className="menu-reader">
-        <div>
+        <SectionReveal>
           <span className="kicker">
             <i aria-hidden="true" />
             Ordering for the table
           </span>
           <h2>A few menu notes</h2>
-        </div>
+        </SectionReveal>
         <div>
           <h3>Biryani or pulav?</h3>
           <p>

@@ -9,6 +9,7 @@ export const restaurant = {
   tel: "tel:+19726355657",
   email: "info@pistahouseirving.com",
   hours: "11 AM – 2 AM daily",
+  map: "https://www.google.com/maps/search/?api=1&query=Pista+House+901+W+Royal+Ln+Irving+TX",
   directions:
     "https://www.google.com/maps/dir/?api=1&destination=Pista+House+901+W+Royal+Ln+Irving+TX+75039",
   instagram: "https://www.instagram.com/pistahousedallas/",
@@ -20,7 +21,7 @@ export const navigation = [
   { href: "/menu", name: "Menu" },
   { href: "/catering", name: "Catering" },
   { href: "/aboutus", name: "Our story" },
-  { href: "/contactus", name: "Visit us" },
+  { href: "/contactus", name: "Contact us" },
 ] as const
 
 export type PublicPath = "/" | (typeof navigation)[number]["href"]
@@ -67,7 +68,7 @@ export function pageMetadata(
   description: string,
 ): Metadata {
   const socialTitle = title + " | " + restaurant.name
-  const images = [pageImages[path]]
+  const images = [{ ...pageImages[path], type: "image/webp" }]
   return {
     title: { absolute: socialTitle },
     description,

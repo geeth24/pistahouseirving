@@ -1,3 +1,5 @@
+import { NavigationMotion } from "@/components/navigation-motion"
+import localFont from "next/font/local"
 import { StructuredData } from "@/components/structured-data"
 import type { Metadata } from "next"
 import { SiteHeader, AppearanceProvider } from "@/components/site-header"
@@ -8,6 +10,17 @@ import Link from "next/link"
 import { ArrowRight, MoonStar } from "lucide-react"
 import Script from "next/script"
 import "@/styles/globals.css"
+const displayFont = localFont({
+  src: "../node_modules/@fontsource/gloock/files/gloock-latin-400-normal.woff2",
+  variable: "--house-display",
+  adjustFontFallback: "Times New Roman",
+})
+const bodyFont = localFont({
+  src: "../node_modules/@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2",
+  weight: "100 1000",
+  variable: "--house-body",
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),
   title: { default: restaurant.name, template: "%s | Pista House Irving" },
@@ -29,7 +42,7 @@ const schema = {
   ],
   logo: restaurant.origin + "/apple-touch-icon.png",
   geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
-  hasMap: restaurant.directions,
+  hasMap: restaurant.map,
   servesCuisine: ["Hyderabadi", "Indian"],
   menu: restaurant.origin + "/menu",
   hasMenu: { "@id": restaurant.origin + "/menu#dining-menu" },
@@ -64,7 +77,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={displayFont.variable + " " + bodyFont.variable}
+      suppressHydrationWarning
+    >
       <body>
         <StructuredData data={schema} />
         <AppearanceProvider>
@@ -72,7 +89,10 @@ export default function RootLayout({
             <a className="skip" href="#main">
               Skip to content
             </a>
-            <aside className="announcement" aria-label="Restaurant announcement">
+            <aside
+              className="announcement"
+              aria-label="Restaurant announcement"
+            >
               <Link href="/contactus">
                 <MoonStar size={15} aria-hidden="true" />
                 <span>Late supper in Irving · Open until 2 AM</span>
@@ -82,6 +102,7 @@ export default function RootLayout({
             <SiteHeader />
             <main id="main">{children}</main>
             <SiteFooter />
+            <NavigationMotion />
           </OrderProvider>
         </AppearanceProvider>
         {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (

@@ -117,7 +117,13 @@ export function SiteHeader() {
                   </Dialog.Close>
                 </div>
                 <div className="menu-postcard">
-                  <Image src="/images/charminar-print.webp" alt="" fill sizes="(max-width: 480px) 92vw, 410px" />
+                  <Image
+                    src="/images/charminar-print.webp"
+                    alt="Illustration of Hyderabad’s Charminar"
+                    width={1536}
+                    height={1024}
+                    sizes="(max-height: 460px) 40vw, (max-width: 480px) 89vw, 370px"
+                  />
                 </div>
                 <nav aria-label="Mobile navigation">
                   {navigation.map(({ href, name }) => (

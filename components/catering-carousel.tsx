@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useRef, useState } from "react"
+import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 
 const slides = [
@@ -23,14 +24,19 @@ const slides = [
 ]
 
 export function CateringCarousel() {
+  const reduce = useReducedMotion()
   const track = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
 
   function advance(direction: number) {
     const element = track.current
     if (!element) return
-    const next = (active + direction + slides.length) % slides.length
-    element.scrollTo({ left: next * element.clientWidth, behavior: "instant" })
+    const current = Math.round(element.scrollLeft / element.clientWidth)
+    const next = (current + direction + slides.length) % slides.length
+    element.scrollTo({
+      left: next * element.clientWidth,
+      behavior: "instant",
+    })
   }
 
   return (
@@ -76,20 +82,26 @@ export function CateringCarousel() {
       </div>
       <div className="reel-controls">
         <span aria-live="polite">{slides[active].title}</span>
-        <button
-          type="button"
-          aria-label="Previous catering photo"
-          onClick={() => advance(-1)}
-        >
-          <ArrowLeft />
-        </button>
-        <button
-          type="button"
-          aria-label="Next catering photo"
-          onClick={() => advance(1)}
-        >
-          <ArrowRight />
-        </button>
+        {([-1, 1] as const).map((direction) => (
+          <motion.button
+            key={direction}
+            type="button"
+            aria-label={
+              direction < 0 ? "Previous catering photo" : "Next catering photo"
+            }
+            onClick={() => advance(direction)}
+            whileHover={reduce ? undefined : "hover"}
+            whileFocus={reduce ? undefined : "hover"}
+            whileTap={reduce ? undefined : "press"}
+          >
+            <motion.span
+              variants={{ hover: { x: direction * 3 }, press: { scale: 0.86 } }}
+              transition={{ duration: 0.15 }}
+            >
+              {direction < 0 ? <ArrowLeft /> : <ArrowRight />}
+            </motion.span>
+          </motion.button>
+        ))}
       </div>
     </div>
   )

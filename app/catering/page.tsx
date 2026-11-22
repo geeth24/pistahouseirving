@@ -1,3 +1,5 @@
+import { PageTitle } from "@/components/page-title"
+import { SectionReveal } from "@/components/section-reveal"
 import { PhotoFrame } from "@/components/photo-frame"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import { EventGallery } from "@/components/event-gallery"
@@ -77,12 +79,12 @@ export default function Catering() {
       />
       <section className="cater-hero">
         <div className="wrap feature-split">
-          <div>
+          <div className="page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Dallas–Fort Worth catering
             </span>
-            <h1>Gather around.</h1>
+            <PageTitle lines={["Gather around."]} />
             <p>
               Choose a live kebab station for a wedding, chaat for a reception,
               or a spread of biryani and curries for an office lunch. We’ll work
@@ -111,24 +113,24 @@ export default function Catering() {
         </div>
       </section>
       <section className="wrap event-album">
-        <div className="album-intro">
+        <SectionReveal className="album-intro">
           <h2>At our events</h2>
           <p>
             A look at the different ways our team sets the table, from an
             outdoor grill to a banquet hall.
           </p>
-        </div>
+        </SectionReveal>
         <EventGallery photos={eventPhotos} />
       </section>
       <section className="planning-band">
         <div className="wrap planning">
-          <div>
+          <SectionReveal>
             <span className="kicker">
               <i aria-hidden="true" />
               Planning an event
             </span>
             <h2>What will service look like?</h2>
-          </div>
+          </SectionReveal>
           <dl>
             <div>
               <dt>Buffet service</dt>
@@ -156,7 +158,7 @@ export default function Catering() {
         </div>
       </section>
       <section id="menu" className="wrap catering-catalog">
-        <h2>Build your catering menu</h2>
+        <SectionReveal as="h2">Build your catering menu</SectionReveal>
         <p>
           Choose dishes below and open your selection to request a quote.
           Include the event date, venue, guest count, and any dietary requests

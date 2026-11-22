@@ -1,3 +1,6 @@
+import { PageTitle } from "@/components/page-title"
+import { SectionReveal } from "@/components/section-reveal"
+import { GuestNotes } from "@/components/guest-notes"
 import { CateringCarousel } from "@/components/catering-carousel"
 import { StructuredData } from "@/components/structured-data"
 import Image from "next/image"
@@ -49,17 +52,14 @@ export default function Home() {
       />
       <section className="hero">
         <div className="wrap hero-inner">
-          <div className="hero-copy">
+          <div className="hero-copy page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Hyderabadi kitchen
             </span>
-            <h1>
-              A little <br />
-              Hyderabad
-              <br />
-              <em>in Irving.</em>
-            </h1>
+            <PageTitle
+              lines={["A little", "Hyderabad", { emphasis: "in Irving." }]}
+            />
             <p>
               Dum biryani, slow-cooked haleem, and kebabs from the tandoor,
               served on West Royal Lane.
@@ -113,7 +113,7 @@ export default function Home() {
         </div>
       </div>
       <section className="wrap kitchen-edition">
-        <div className="album-intro">
+        <SectionReveal className="album-intro">
           <div>
             <span className="kicker">
               <i aria-hidden="true" />
@@ -124,7 +124,7 @@ export default function Home() {
           <Link className="text-link" href="/menu">
             Browse the full menu <ArrowRight />
           </Link>
-        </div>
+        </SectionReveal>
         <div className="kitchen-spread">
           {specialties.map((item, index) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
@@ -151,7 +151,7 @@ export default function Home() {
         </div>
       </section>
       <section id="event-service" className="party-feature">
-        <div className="party-copy">
+        <SectionReveal className="party-copy">
           <span className="kicker">
             <i aria-hidden="true" />
             Pista House catering
@@ -167,67 +167,63 @@ export default function Home() {
               Plan your menu <ArrowRight />
             </Link>
           </Button>
-        </div>
+        </SectionReveal>
         <CateringCarousel />
       </section>
       <section id="after-dinner" className="dessert-story">
         <div className="wrap dessert-layout">
-          <div className="dessert-title">
-            <span className="kicker">
-              <i aria-hidden="true" />
-              After dinner
-            </span>
-            <h2>Leave room for something sweet.</h2>
-          </div>
-          <div className="dessert-center">
-            <Image
-              src="/images/gulab-jamun.webp"
-              alt="A white bowl of gulab jamun in syrup"
-              width={1664}
-              height={1248}
-              sizes="(max-width: 760px) 88vw, 39vw"
-              quality={90}
-            />
-          </div>
-          <div className="dessert-notes">
-            <p>
-              Gulab jamun comes soaked in syrup. Double ka meetha is Hyderabad’s
-              milk-rich bread pudding. Qubani ka meetha brings apricots to the
-              dessert table.
-            </p>
-            <Link className="text-link" href="/menu#desserts">
-              Explore desserts <ArrowRight />
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className="guest-notes">
-        <div className="wrap">
-          <div className="album-intro">
-            <h2>From our guests</h2>
-            <a
-              className="text-link"
-              href="https://us.sulekha.com/irving-tx/restaurants/pista-house-847210"
-            >
-              Read reviews on Sulekha <ArrowUpRight />
-            </a>
-          </div>
-          <div className="guest-quotes">
+          <SectionReveal className="dessert-heading">
+            <div className="dessert-title">
+              <span className="kicker">
+                <i aria-hidden="true" />
+                After dinner
+              </span>
+              <h2>At the dessert table.</h2>
+            </div>
+            <div className="dessert-notes">
+              <p>
+                For a party, dessert can be a table of its own. For dinner in
+                Irving, finish with gulab jamun in syrup or Hyderabad’s apricot
+                dessert, qubani ka meetha.
+              </p>
+              <Link className="text-link" href="/menu#desserts">
+                Explore desserts <ArrowRight />
+              </Link>
+            </div>
+          </SectionReveal>
+          <div className="dessert-spread">
             <figure>
-              <blockquote>“Taste is as good as Hyderabad Biryani.”</blockquote>
-              <figcaption>Irfan Shaikh</figcaption>
+              <div className="dessert-photo">
+                <Image
+                  src="/images/dessert-tasting-table.webp"
+                  alt="Strawberry layer cakes, chocolate squares, and fresh berries on a dessert tasting table"
+                  width={1800}
+                  height={1350}
+                  sizes="(max-width: 700px) 62vw, 60vw"
+                  quality={90}
+                />
+              </div>
+              <figcaption>Cakes and berries</figcaption>
             </figure>
             <figure>
-              <blockquote>
-                “I am glad I made good choice for my reception.”
-              </blockquote>
-              <figcaption>Chakradhar Rao Beerpur</figcaption>
+              <div className="dessert-photo">
+                <Image
+                  src="/images/dessert-cups.webp"
+                  alt="Individual dessert cups arranged in rows around a platter of sweet paan"
+                  width={1000}
+                  height={1333}
+                  sizes="(max-width: 700px) 34vw, 32vw"
+                  quality={90}
+                />
+              </div>
+              <figcaption>Individual sweets at a catered event</figcaption>
             </figure>
           </div>
         </div>
       </section>
+      <GuestNotes />
       <section className="wrap story-body home-visit">
-        <div>
+        <SectionReveal>
           <span className="kicker">
             <i aria-hidden="true" />
             Las Colinas
@@ -237,7 +233,7 @@ export default function Home() {
             <br />
             West Royal Lane.
           </h2>
-        </div>
+        </SectionReveal>
         <div>
           <p>
             Find us at {restaurant.street}. The dining room is open until 2 AM

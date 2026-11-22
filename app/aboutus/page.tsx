@@ -1,4 +1,6 @@
-import { BreadcrumbData } from "@/components/structured-data"
+import { PageTitle } from "@/components/page-title"
+import { SectionReveal } from "@/components/section-reveal"
+import { RestaurantPageData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
@@ -13,26 +15,22 @@ export const metadata = pageMetadata(
 export default function Story() {
   return (
     <article>
-      <BreadcrumbData path="/aboutus" />
+      <RestaurantPageData path="/aboutus" />
       <div className="story-cover">
         <div className="wrap story-opener">
-          <div>
+          <div className="page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Our story
             </span>
-            <h1>
-              Hyderabad
-              <br />
-              at heart.
-            </h1>
+            <PageTitle lines={["Hyderabad", "at heart."]} />
             <p>
               Look up from a booth in our Irving dining room and you’ll see the
               Charminar. The city on our wall is also the city behind our
               cooking.
             </p>
           </div>
-          <figure>
+          <figure className="opening-art">
             <Image
               src="/images/charminar-print.webp"
               alt="Illustration of Hyderabad’s Charminar rising above the old-city market"
@@ -46,11 +44,11 @@ export default function Story() {
         </div>
       </div>
       <section className="wrap story-body">
-        <h2>
+        <SectionReveal as="h2">
           From the old city
           <br />
           to West Royal Lane
-        </h2>
+        </SectionReveal>
         <div>
           <p>
             Built in 1591, the Charminar has four minarets and arched

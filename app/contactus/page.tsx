@@ -1,4 +1,6 @@
-import { BreadcrumbData } from "@/components/structured-data"
+import { PageTitle } from "@/components/page-title"
+import { SectionReveal } from "@/components/section-reveal"
+import { RestaurantPageData } from "@/components/structured-data"
 import Link from "next/link"
 import { NeighborhoodMap } from "@/components/neighborhood-map"
 import Image from "next/image"
@@ -13,19 +15,15 @@ export const metadata = pageMetadata(
 export default function Visit() {
   return (
     <>
-      <BreadcrumbData path="/contactus" />
+      <RestaurantPageData path="/contactus" />
       <section className="wrap visit-page">
         <div className="visit-detail">
-          <div className="intro">
+          <div className="intro page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
-              Visit us
+              Contact us
             </span>
-            <h1>
-              Find us on
-              <br />
-              West Royal Lane.
-            </h1>
+            <PageTitle lines={["Find us on", "West Royal Lane."]} />
           </div>
           <p>
             Look for the green Pista House sign above the black awning in Las
@@ -55,7 +53,7 @@ export default function Visit() {
                 <br />
                 <a
                   className="hours-map-link"
-                  href="https://www.google.com/maps/search/?api=1&query=Pista+House+901+W+Royal+Ln+Irving+TX"
+                  href={restaurant.map}
                 >
                   Check holiday hours on Google Maps
                 </a>
@@ -81,7 +79,7 @@ export default function Visit() {
             </div>
           </dl>
         </div>
-        <figure className="entrance-print">
+        <figure className="entrance-print opening-art">
           <Image
             src="/images/irving-entrance.webp"
             alt="Illustrated view of the Pista House sign above the black awning and entrance marked 160"
@@ -95,13 +93,13 @@ export default function Visit() {
       </section>
       <NeighborhoodMap />
       <section className="wrap planning visit-planning">
-        <div>
+        <SectionReveal>
           <span className="kicker">
             <i aria-hidden="true" />
             Before you visit
           </span>
           <h2>Dine in or pick up.</h2>
-        </div>
+        </SectionReveal>
         <dl>
           <div>
             <dt>Dining with us</dt>

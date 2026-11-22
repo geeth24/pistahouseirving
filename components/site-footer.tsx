@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/section-reveal"
 import Link from "next/link"
 import { ArrowUpRight, MapPin } from "lucide-react"
 import { Brand } from "./site-header"
@@ -9,7 +10,7 @@ export function SiteFooter() {
     <footer className="house-footer">
       <div className="wrap">
         <div className="footer-main">
-          <div className="footer-brand">
+          <SectionReveal className="footer-brand">
             <Brand />
             <p>Hyderabadi kitchen on West Royal Lane.</p>
             <Button asChild variant="light">
@@ -17,7 +18,7 @@ export function SiteFooter() {
                 Order online <ArrowUpRight />
               </a>
             </Button>
-          </div>
+          </SectionReveal>
           <div>
             <h2>Come by</h2>
             <address>

@@ -33,7 +33,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
                   sizes="(max-width:700px) 89vw, 44vw"
                   quality={90}
                 />
-                <span>
+                <span className="expand-photo-icon">
                   <Expand size={16} />
                 </span>
               </button>
