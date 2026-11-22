@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
@@ -16,7 +17,7 @@ export default function Story() {
       <BreadcrumbData path="/aboutus" />
       <div className="story-cover">
         <div className="wrap story-opener">
-          <div>
+          <SectionReveal>
             <span className="kicker">
               <i aria-hidden="true" />
               Our story
@@ -31,8 +32,8 @@ export default function Story() {
               Charminar. The city on our wall is also the city behind our
               cooking.
             </p>
-          </div>
-          <figure>
+          </SectionReveal>
+          <SectionReveal as="figure" delay={0.08}>
             <Image
               src="/images/charminar-print.webp"
               alt="Illustration of Hyderabad’s Charminar rising above the old-city market"
@@ -42,15 +43,15 @@ export default function Story() {
               preload
             />
             <figcaption>The Charminar, Hyderabad</figcaption>
-          </figure>
+          </SectionReveal>
         </div>
       </div>
       <section className="wrap story-body">
-        <h2>
+        <SectionReveal as="h2">
           From the old city
           <br />
           to West Royal Lane
-        </h2>
+        </SectionReveal>
         <div>
           <p>
             Built in 1591, the Charminar has four minarets and arched
@@ -72,7 +73,7 @@ export default function Story() {
       </section>
       <section className="pantry">
         <div className="wrap pantry-inner">
-          <figure>
+          <SectionReveal as="figure">
             <Image
               src="/images/biryani-spices.webp"
               width={700}
@@ -81,7 +82,7 @@ export default function Story() {
               quality={90}
               alt="A bowl of biryani with cinnamon, star anise, and fresh herbs on blue wood"
             />
-          </figure>
+          </SectionReveal>
           <div>
             <span className="kicker">
               <i aria-hidden="true" />
@@ -119,14 +120,14 @@ export default function Story() {
       </section>
       <section className="catering-band">
         <div className="wrap feature-split">
-          <div className="wide-photo">
+          <SectionReveal className="wide-photo">
             <Image
               src="/images/kebabs-on-the-grill.webp"
               alt="Rows of kebab skewers cooking at an outdoor Pista House grill"
               fill
               sizes="(max-width:700px) 90vw, 46vw"
             />
-          </div>
+          </SectionReveal>
           <div>
             <h2>Beyond the dining room</h2>
             <p>

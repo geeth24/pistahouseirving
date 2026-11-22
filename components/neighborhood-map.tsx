@@ -1,4 +1,5 @@
 "use client"
+import { SectionReveal } from "@/components/section-reveal"
 import { useState } from "react"
 import { Map, Navigation, Compass, ArrowUpRight } from "lucide-react"
 import { restaurant } from "@/lib/restaurant"
@@ -161,7 +162,7 @@ export function NeighborhoodMap() {
   return (
     <section className="neighborhood">
       <div className="wrap neighborhood-inner">
-        <div className="map-copy">
+        <SectionReveal className="map-copy">
           <span className="kicker">
             <Compass size={17} /> Around the restaurant
           </span>
@@ -173,7 +174,7 @@ export function NeighborhoodMap() {
           <a className="text-link" href={restaurant.directions}>
             Directions to the entrance <ArrowUpRight />
           </a>
-        </div>
+        </SectionReveal>
         <div className="map-board">
           <div className="map-toolbar">
             <span>

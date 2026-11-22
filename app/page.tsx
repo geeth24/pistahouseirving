@@ -51,7 +51,7 @@ export default function Home() {
       />
       <section className="hero">
         <div className="wrap hero-inner">
-          <div className="hero-copy">
+          <SectionReveal className="hero-copy">
             <span className="kicker">
               <i aria-hidden="true" />
               Hyderabadi kitchen
@@ -76,7 +76,7 @@ export default function Home() {
                 Visit the restaurant <ArrowUpRight size={16} />
               </Link>
             </div>
-          </div>
+          </SectionReveal>
           <figure className="hero-figure">
             <div className="arch-frame">
               <div className="arch-photo">
@@ -115,7 +115,7 @@ export default function Home() {
         </div>
       </div>
       <section className="wrap kitchen-edition">
-        <div className="album-intro">
+        <SectionReveal className="album-intro">
           <div>
             <span className="kicker">
               <i aria-hidden="true" />
@@ -126,11 +126,11 @@ export default function Home() {
           <Link className="text-link" href="/menu">
             Browse the full menu <ArrowRight />
           </Link>
-        </div>
+        </SectionReveal>
         <div className="kitchen-spread">
           {specialties.map((item, index) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
-              <div className="kitchen-plate">
+              <SectionReveal delay={index * 0.05} className="kitchen-plate">
                 <Image
                   src={"/images/" + item.image + ".webp"}
                   alt={item.alt}
@@ -142,7 +142,7 @@ export default function Home() {
                   }
                   quality={90}
                 />
-              </div>
+              </SectionReveal>
               <div className="plate-copy">
                 <h3>{item.name}</h3>
                 <p>{item.copy}</p>
@@ -153,7 +153,7 @@ export default function Home() {
         </div>
       </section>
       <section id="event-service" className="party-feature">
-        <div className="party-copy">
+        <SectionReveal className="party-copy">
           <span className="kicker">
             <i aria-hidden="true" />
             Pista House catering
@@ -169,12 +169,12 @@ export default function Home() {
               Plan your menu <ArrowRight />
             </Link>
           </Button>
-        </div>
+        </SectionReveal>
         <CateringCarousel />
       </section>
       <section id="after-dinner" className="dessert-story">
         <div className="wrap dessert-layout">
-          <div className="dessert-heading">
+          <SectionReveal className="dessert-heading">
             <div className="dessert-title">
               <span className="kicker">
                 <i aria-hidden="true" />
@@ -192,7 +192,7 @@ export default function Home() {
                 Explore desserts <ArrowRight />
               </Link>
             </div>
-          </div>
+          </SectionReveal>
           <div className="dessert-spread">
             <figure>
               <SectionReveal className="dessert-photo">
@@ -225,7 +225,7 @@ export default function Home() {
       </section>
       <GuestNotes />
       <section className="wrap story-body home-visit">
-        <div>
+        <SectionReveal>
           <span className="kicker">
             <i aria-hidden="true" />
             Las Colinas
@@ -235,7 +235,7 @@ export default function Home() {
             <br />
             West Royal Lane.
           </h2>
-        </div>
+        </SectionReveal>
         <div>
           <p>
             Find us at {restaurant.street}. The dining room is open until 2 AM

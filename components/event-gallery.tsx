@@ -1,4 +1,5 @@
 "use client"
+import { SectionReveal } from "@/components/section-reveal"
 import { useRef, useState } from "react"
 import { Dialog } from "radix-ui"
 import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react"
@@ -16,7 +17,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
     <Dialog.Root>
       <div className="album-grid">
         {photos.map((photo, i) => (
-          <figure key={photo.image}>
+          <SectionReveal as="figure" delay={(i % 2) * 0.06} key={photo.image}>
             <Dialog.Trigger asChild>
               <button
                 className="album-frame"
@@ -42,7 +43,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
               <h3>{photo.name}</h3>
               <p>{photo.detail}</p>
             </figcaption>
-          </figure>
+          </SectionReveal>
         ))}
       </div>
       <Dialog.Portal>

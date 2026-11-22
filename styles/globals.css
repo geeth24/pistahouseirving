@@ -856,15 +856,16 @@ address {
   color: var(--primary);
 }
 .menu-postcard {
-  position: relative;
-  height: clamp(84px, 17dvh, 150px);
   margin: 1rem 0;
   border: 1px solid var(--hairline);
   padding: 3px;
 }
 .menu-postcard img {
-  object-fit: cover;
-  object-position: 50% 38%;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
 }
 .menu-drawer-foot {
   border-top: 3px double var(--hairline);
@@ -1966,8 +1967,17 @@ address {
   .guest-quotes { grid-template-columns: 1fr; }
   .guest-note:first-child { grid-row: auto; }
 }
-@media (max-height: 460px) {
-  .menu-postcard { display: none; }
+@media (max-height: 460px) and (min-width: 520px) {
+  .mobile-panel {
+    width: min(100%, 700px);
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-content: start;
+    column-gap: 1.5rem;
+  }
+  .mobile-panel .panel-heading, .menu-drawer-foot { grid-column: 1 / -1; }
+  .mobile-panel .menu-postcard { align-self: center; }
+  .mobile-panel nav a { padding-block: 0.5rem; }
 }
 
 :root {

@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
@@ -33,7 +34,7 @@ export default function MenuPage() {
     <div className="wrap" id="dining-menu">
       <StructuredData data={menuSchema} />
       <BreadcrumbData path="/menu" />
-      <header className="intro menu-intro">
+      <SectionReveal as="header" className="intro menu-intro">
         <span className="kicker">
           <i aria-hidden="true" />
           Irving dining room
@@ -60,16 +61,16 @@ export default function MenuPage() {
           </a>{" "}
           for today’s prices and availability.
         </p>
-      </header>
+      </SectionReveal>
       <Catalog sections={menu} />
       <section className="menu-reader">
-        <div>
+        <SectionReveal>
           <span className="kicker">
             <i aria-hidden="true" />
             Ordering for the table
           </span>
           <h2>A few menu notes</h2>
-        </div>
+        </SectionReveal>
         <div>
           <h3>Biryani or pulav?</h3>
           <p>

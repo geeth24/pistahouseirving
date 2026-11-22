@@ -1,3 +1,4 @@
+import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData } from "@/components/structured-data"
 import Link from "next/link"
 import { NeighborhoodMap } from "@/components/neighborhood-map"
@@ -16,7 +17,7 @@ export default function Visit() {
       <BreadcrumbData path="/contactus" />
       <section className="wrap visit-page">
         <div className="visit-detail">
-          <div className="intro">
+          <SectionReveal className="intro">
             <span className="kicker">
               <i aria-hidden="true" />
               Visit us
@@ -26,7 +27,7 @@ export default function Visit() {
               <br />
               West Royal Lane.
             </h1>
-          </div>
+          </SectionReveal>
           <p>
             Look for the green Pista House sign above the black awning in Las
             Colinas. The glass entrance is marked 160.
@@ -81,7 +82,7 @@ export default function Visit() {
             </div>
           </dl>
         </div>
-        <figure className="entrance-print">
+        <SectionReveal as="figure" delay={0.08} className="entrance-print">
           <Image
             src="/images/irving-entrance.webp"
             alt="Illustrated view of the Pista House sign above the black awning and entrance marked 160"
@@ -91,17 +92,17 @@ export default function Visit() {
             preload
           />
           <figcaption>Our entrance in Las Colinas, Irving</figcaption>
-        </figure>
+        </SectionReveal>
       </section>
       <NeighborhoodMap />
       <section className="wrap planning visit-planning">
-        <div>
+        <SectionReveal>
           <span className="kicker">
             <i aria-hidden="true" />
             Before you visit
           </span>
           <h2>Dine in or pick up.</h2>
-        </div>
+        </SectionReveal>
         <dl>
           <div>
             <dt>Dining with us</dt>
