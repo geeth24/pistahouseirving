@@ -174,32 +174,52 @@ export default function Home() {
       </section>
       <section id="after-dinner" className="dessert-story">
         <div className="wrap dessert-layout">
-          <div className="dessert-title">
-            <span className="kicker">
-              <i aria-hidden="true" />
-              After dinner
-            </span>
-            <h2>Leave room for something sweet.</h2>
+          <div className="dessert-heading">
+            <div className="dessert-title">
+              <span className="kicker">
+                <i aria-hidden="true" />
+                After dinner
+              </span>
+              <h2>At the dessert table.</h2>
+            </div>
+            <div className="dessert-notes">
+              <p>
+                For a party, dessert can be a table of its own. For dinner in
+                Irving, finish with gulab jamun in syrup or Hyderabad’s apricot
+                dessert, qubani ka meetha.
+              </p>
+              <Link className="text-link" href="/menu#desserts">
+                Explore desserts <ArrowRight />
+              </Link>
+            </div>
           </div>
-          <SectionReveal className="dessert-center">
-            <Image
-              src="/images/gulab-jamun.webp"
-              alt="A white bowl of gulab jamun in syrup"
-              width={1664}
-              height={1248}
-              sizes="(max-width: 760px) 88vw, 39vw"
-              quality={90}
-            />
-          </SectionReveal>
-          <div className="dessert-notes">
-            <p>
-              Gulab jamun comes soaked in syrup. Double ka meetha is Hyderabad’s
-              milk-rich bread pudding. Qubani ka meetha brings apricots to the
-              dessert table.
-            </p>
-            <Link className="text-link" href="/menu#desserts">
-              Explore desserts <ArrowRight />
-            </Link>
+          <div className="dessert-spread">
+            <figure>
+              <SectionReveal className="dessert-photo">
+                <Image
+                  src="/images/dessert-tasting-table.webp"
+                  alt="Strawberry layer cakes, chocolate squares, and fresh berries on a dessert tasting table"
+                  width={1800}
+                  height={1350}
+                  sizes="(max-width: 700px) 62vw, 60vw"
+                  quality={90}
+                />
+              </SectionReveal>
+              <figcaption>Cakes and berries</figcaption>
+            </figure>
+            <figure>
+              <SectionReveal className="dessert-photo">
+                <Image
+                  src="/images/dessert-cups.webp"
+                  alt="Individual dessert cups arranged in rows around a platter of sweet paan"
+                  width={1000}
+                  height={1333}
+                  sizes="(max-width: 700px) 34vw, 32vw"
+                  quality={90}
+                />
+              </SectionReveal>
+              <figcaption>Individual sweets at a catered event</figcaption>
+            </figure>
           </div>
         </div>
       </section>

@@ -53,7 +53,7 @@ export function GuestNotes() {
                   <span>{name}</span>
                   <a
                     href={sources[source]}
-                    aria-label={`Read ${name}’s review on ${source}`}
+                    aria-label={`Read Pista House reviews on ${source}`}
                   >
                     {source} <ArrowUpRight size={14} aria-hidden="true" />
                   </a>
