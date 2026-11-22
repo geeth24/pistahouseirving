@@ -3,6 +3,8 @@ import { restaurant } from "@/lib/restaurant"
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: restaurant.origin + "/sitemap.xml",
+    sitemap: ["/sitemap.xml", "/video-sitemap.xml"].map(
+      (path) => restaurant.origin + path,
+    ),
   }
 }

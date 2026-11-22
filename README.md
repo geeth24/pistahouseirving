@@ -33,7 +33,7 @@ Open [localhost:3000](http://localhost:3000). To check a change before merging, 
 
 ## Local search after a release
 
-The [sitemap](https://pistahouseirving.com/sitemap.xml) lists the six public pages and their preview images. The catering watch page also includes a video sitemap entry. The [crawl rules](https://pistahouseirving.com/robots.txt) point search engines to it. Each page publishes a canonical URL and its own search description. The dining menu includes dishes in the page HTML and in structured data.
+The [sitemap](https://pistahouseirving.com/sitemap.xml) lists the six public pages and their preview images. The [video sitemap](https://pistahouseirving.com/video-sitemap.xml) lists the watch page, thumbnail, and MP4. The [crawl rules](https://pistahouseirving.com/robots.txt) point search engines to both sitemaps. Each page publishes a canonical URL and its own search description. The dining menu includes dishes in the page HTML and in structured data.
 
 Keep the [catering video details](lib/catering-video.ts) in sync with the MP4 and poster in [public/videos](public/videos). When publishing a replacement video, give it a stable file URL and use its actual first publication date.
 

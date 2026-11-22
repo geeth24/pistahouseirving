@@ -6,10 +6,10 @@ export const cateringVideo = {
   file: "/videos/pista-house-catering.mp4",
   poster: {
     url: "/videos/pista-house-catering.jpg",
-    width: 960,
-    height: 540,
+    width: 1280,
+    height: 720,
     alt: "A line of brass serving dishes beneath a floral arch at a Pista House catered event",
   },
   durationSeconds: 19,
-  published: "2026-11-21",
+  published: "2026-11-21T22:54:12-06:00",
 } as const
