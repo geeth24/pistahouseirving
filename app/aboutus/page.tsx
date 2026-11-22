@@ -1,7 +1,7 @@
 import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
-import { BreadcrumbData } from "@/components/structured-data"
-import { RestaurantPhoto } from "@/components/restaurant-photo"
+import { RestaurantPageData } from "@/components/structured-data"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -15,7 +15,7 @@ export const metadata = pageMetadata(
 export default function Story() {
   return (
     <article>
-      <BreadcrumbData path="/aboutus" />
+      <RestaurantPageData path="/aboutus" />
       <div className="story-cover">
         <div className="wrap story-opener">
           <div className="page-opening">
@@ -31,7 +31,7 @@ export default function Story() {
             </p>
           </div>
           <figure className="opening-art">
-            <RestaurantPhoto
+            <Image
               src="/images/charminar-print.webp"
               alt="Illustration of Hyderabad’s Charminar rising above the old-city market"
               width={1536}
@@ -70,8 +70,8 @@ export default function Story() {
       </section>
       <section className="pantry">
         <div className="wrap pantry-inner">
-          <SectionReveal as="figure" treatment="photo">
-            <RestaurantPhoto
+          <figure>
+            <Image
               src="/images/biryani-spices.webp"
               width={700}
               height={1050}
@@ -79,7 +79,7 @@ export default function Story() {
               quality={90}
               alt="A bowl of biryani with cinnamon, star anise, and fresh herbs on blue wood"
             />
-          </SectionReveal>
+          </figure>
           <div>
             <span className="kicker">
               <i aria-hidden="true" />
@@ -117,14 +117,14 @@ export default function Story() {
       </section>
       <section className="catering-band">
         <div className="wrap feature-split">
-          <SectionReveal treatment="photo" className="wide-photo">
-            <RestaurantPhoto
+          <div className="wide-photo">
+            <Image
               src="/images/kebabs-on-the-grill.webp"
               alt="Rows of kebab skewers cooking at an outdoor Pista House grill"
               fill
               sizes="(max-width:700px) 90vw, 46vw"
             />
-          </SectionReveal>
+          </div>
           <div>
             <h2>Beyond the dining room</h2>
             <p>

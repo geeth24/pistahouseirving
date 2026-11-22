@@ -30,7 +30,7 @@ const schema = {
   ],
   logo: restaurant.origin + "/apple-touch-icon.png",
   geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
-  hasMap: restaurant.directions,
+  hasMap: restaurant.map,
   servesCuisine: ["Hyderabadi", "Indian"],
   menu: restaurant.origin + "/menu",
   hasMenu: { "@id": restaurant.origin + "/menu#dining-menu" },
@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         <StructuredData data={schema} />
         <AppearanceProvider>

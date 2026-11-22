@@ -1,5 +1,4 @@
 "use client"
-import { SectionReveal } from "@/components/section-reveal"
 import { useRef, useState, type RefObject } from "react"
 import { Check, Plus, Leaf, Search, X, ArrowUpRight } from "lucide-react"
 import { Dialog } from "radix-ui"
@@ -187,7 +186,7 @@ export function Catalog({
                     aria-hidden="true"
                   />
                 ))}
-                <SectionReveal as="h2">{section.name}</SectionReveal>
+                <h2>{section.name}</h2>
                 {section.note && <p className="menu-note">{section.note}</p>}
                 <ul role="list" className="dish-list">
                   {section.items.map((dish) => {

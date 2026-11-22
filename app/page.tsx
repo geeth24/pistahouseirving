@@ -3,7 +3,7 @@ import { SectionReveal } from "@/components/section-reveal"
 import { GuestNotes } from "@/components/guest-notes"
 import { CateringCarousel } from "@/components/catering-carousel"
 import { StructuredData } from "@/components/structured-data"
-import { RestaurantPhoto } from "@/components/restaurant-photo"
+import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Clock3, MapPin, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -78,7 +78,7 @@ export default function Home() {
           <figure className="hero-figure">
             <div className="arch-frame">
               <div className="arch-photo">
-                <RestaurantPhoto
+                <Image
                   src="/images/dum-biryani.webp"
                   alt="Biryani in a metal bowl with lime, sliced onions, and whole spices on a wooden table"
                   fill
@@ -128,8 +128,8 @@ export default function Home() {
         <div className="kitchen-spread">
           {specialties.map((item, index) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
-              <SectionReveal treatment="photo" delay={index * 0.07} className="kitchen-plate">
-                <RestaurantPhoto
+              <div className="kitchen-plate">
+                <Image
                   src={"/images/" + item.image + ".webp"}
                   alt={item.alt}
                   fill
@@ -140,7 +140,7 @@ export default function Home() {
                   }
                   quality={90}
                 />
-              </SectionReveal>
+              </div>
               <div className="plate-copy">
                 <h3>{item.name}</h3>
                 <p>{item.copy}</p>
@@ -193,8 +193,8 @@ export default function Home() {
           </SectionReveal>
           <div className="dessert-spread">
             <figure>
-              <SectionReveal treatment="photo" className="dessert-photo">
-                <RestaurantPhoto
+              <div className="dessert-photo">
+                <Image
                   src="/images/dessert-tasting-table.webp"
                   alt="Strawberry layer cakes, chocolate squares, and fresh berries on a dessert tasting table"
                   width={1800}
@@ -202,12 +202,12 @@ export default function Home() {
                   sizes="(max-width: 700px) 62vw, 60vw"
                   quality={90}
                 />
-              </SectionReveal>
+              </div>
               <figcaption>Cakes and berries</figcaption>
             </figure>
             <figure>
-              <SectionReveal treatment="photo" className="dessert-photo">
-                <RestaurantPhoto
+              <div className="dessert-photo">
+                <Image
                   src="/images/dessert-cups.webp"
                   alt="Individual dessert cups arranged in rows around a platter of sweet paan"
                   width={1000}
@@ -215,7 +215,7 @@ export default function Home() {
                   sizes="(max-width: 700px) 34vw, 32vw"
                   quality={90}
                 />
-              </SectionReveal>
+              </div>
               <figcaption>Individual sweets at a catered event</figcaption>
             </figure>
           </div>

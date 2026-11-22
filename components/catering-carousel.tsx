@@ -1,6 +1,6 @@
 "use client"
 
-import { RestaurantPhoto } from "@/components/restaurant-photo"
+import Image from "next/image"
 import { useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
@@ -31,10 +31,11 @@ export function CateringCarousel() {
   function advance(direction: number) {
     const element = track.current
     if (!element) return
-    const next = (active + direction + slides.length) % slides.length
+    const current = Math.round(element.scrollLeft / element.clientWidth)
+    const next = (current + direction + slides.length) % slides.length
     element.scrollTo({
       left: next * element.clientWidth,
-      behavior: reduce || Math.abs(next - active) > 1 ? "instant" : "smooth",
+      behavior: "instant",
     })
   }
 
@@ -69,7 +70,7 @@ export function CateringCarousel() {
             className="event-slide"
             aria-hidden={active !== index}
           >
-            <RestaurantPhoto
+            <Image
               src={"/images/" + slide.image + ".webp"}
               alt={slide.alt}
               fill

@@ -1,10 +1,8 @@
 "use client"
-import { SectionReveal } from "@/components/section-reveal"
 import { useRef, useState } from "react"
 import { Dialog } from "radix-ui"
 import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react"
 import Image from "next/image"
-import { RestaurantPhoto } from "@/components/restaurant-photo"
 import { Button } from "./ui/button"
 
 type Photo = { image: string; name: string; detail: string; alt: string }
@@ -18,7 +16,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
     <Dialog.Root>
       <div className="album-grid">
         {photos.map((photo, i) => (
-          <SectionReveal as="figure" treatment="photo" delay={(i % 2) * 0.06} key={photo.image}>
+          <figure key={photo.image}>
             <Dialog.Trigger asChild>
               <button
                 className="album-frame"
@@ -28,7 +26,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
                   setIndex(i)
                 }}
               >
-                <RestaurantPhoto
+                <Image
                   src={"/images/" + photo.image + ".webp"}
                   alt={photo.alt}
                   fill
@@ -44,7 +42,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
               <h3>{photo.name}</h3>
               <p>{photo.detail}</p>
             </figcaption>
-          </SectionReveal>
+          </figure>
         ))}
       </div>
       <Dialog.Portal>

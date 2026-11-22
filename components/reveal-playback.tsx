@@ -11,8 +11,6 @@ export function RevealPlayback() {
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)")
     const visible = new Set<HTMLElement>()
     let timer: ReturnType<typeof setTimeout>
-    let disposed = false
-    let lastScroll = 0
     const settleTime = 150
 
     function show(element: HTMLElement) {
@@ -21,33 +19,13 @@ export function RevealPlayback() {
       visible.delete(element)
     }
 
-    async function reveal(element: HTMLElement) {
-      const image =
-        element.dataset.reveal === "photo" && element.querySelector("img")
-      if (image) {
-        try {
-          await image.decode()
-        } catch {
-          if (!disposed) show(element)
-          return
-        }
-      }
-      if (
-        !disposed &&
-        visible.has(element) &&
-        performance.now() - lastScroll >= settleTime
-      )
-        show(element)
-    }
-
     function schedule() {
       clearTimeout(timer)
       if (visible.size)
-        timer = setTimeout(() => visible.forEach(reveal), settleTime + 10)
+        timer = setTimeout(() => visible.forEach(show), settleTime + 10)
     }
 
     function onScroll() {
-      lastScroll = performance.now()
       if (visible.size) schedule()
     }
 
@@ -55,7 +33,8 @@ export function RevealPlayback() {
       (entries) => {
         for (const entry of entries) {
           const element = entry.target as HTMLElement
-          if (entry.isIntersecting && entry.intersectionRatio >= 0.08) visible.add(element)
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.08)
+            visible.add(element)
           else visible.delete(element)
         }
         schedule()
@@ -83,7 +62,6 @@ export function RevealPlayback() {
       passive: true,
     })
     return () => {
-      disposed = true
       clearTimeout(timer)
       observer.disconnect()
       preference.removeEventListener("change", configure)

@@ -1,9 +1,9 @@
 import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
-import { BreadcrumbData } from "@/components/structured-data"
+import { RestaurantPageData } from "@/components/structured-data"
 import Link from "next/link"
 import { NeighborhoodMap } from "@/components/neighborhood-map"
-import { RestaurantPhoto } from "@/components/restaurant-photo"
+import Image from "next/image"
 import { ArrowUpRight, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { pageMetadata, restaurant } from "@/lib/restaurant"
@@ -15,7 +15,7 @@ export const metadata = pageMetadata(
 export default function Visit() {
   return (
     <>
-      <BreadcrumbData path="/contactus" />
+      <RestaurantPageData path="/contactus" />
       <section className="wrap visit-page">
         <div className="visit-detail">
           <div className="intro page-opening">
@@ -53,7 +53,7 @@ export default function Visit() {
                 <br />
                 <a
                   className="hours-map-link"
-                  href="https://www.google.com/maps/search/?api=1&query=Pista+House+901+W+Royal+Ln+Irving+TX"
+                  href={restaurant.map}
                 >
                   Check holiday hours on Google Maps
                 </a>
@@ -80,7 +80,7 @@ export default function Visit() {
           </dl>
         </div>
         <figure className="entrance-print opening-art">
-          <RestaurantPhoto
+          <Image
             src="/images/irving-entrance.webp"
             alt="Illustrated view of the Pista House sign above the black awning and entrance marked 160"
             width={1536}

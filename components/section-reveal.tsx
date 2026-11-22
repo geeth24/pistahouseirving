@@ -5,18 +5,16 @@ export function SectionReveal({
   children,
   className,
   delay = 0,
-  treatment = "text",
 }: {
   as?: "div" | "header" | "figure" | "h2"
   children: ReactNode
   className?: string
   delay?: number
-  treatment?: "text" | "photo"
 }) {
   return (
     <Element
       className={className}
-      data-reveal={treatment === "text" ? "text" : undefined}
+      data-reveal="text"
       style={
         delay ? ({ "--reveal-delay": delay + "s" } as CSSProperties) : undefined
       }
