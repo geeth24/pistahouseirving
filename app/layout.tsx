@@ -1,146 +1,98 @@
-import Layout from "@/components/Layout"
-import "@/styles/globals.css"
+import { StructuredData } from "@/components/structured-data"
 import type { Metadata } from "next"
+import { SiteHeader, AppearanceProvider } from "@/components/site-header"
+import { SiteFooter } from "@/components/site-footer"
 import { OrderProvider } from "@/contexts/order-context"
-
+import { restaurant } from "@/lib/restaurant"
+import Link from "next/link"
+import { ArrowRight, MoonStar } from "lucide-react"
+import Script from "next/script"
+import "@/styles/globals.css"
 export const metadata: Metadata = {
-    metadataBase: new URL("https://pistahouseirving.com"),
-    title: {
-        default: "Pista House Irving | Authentic Hyderabadi Indian Restaurant in Irving, TX",
-        template: "%s | Pista House Irving"
-    },
-    description: "Experience authentic Hyderabadi cuisine at Pista House Irving, Texas. Famous for Dum Biryani, Haleem, Kebabs & Indian catering. Open late till 2AM. Order online or dine-in at 901 W Royal Ln, Irving TX.",
-    keywords: [
-        "Pista House Irving",
-        "Indian restaurant Irving TX",
-        "Hyderabadi biryani Irving",
-        "Haleem Irving Texas",
-        "Indian catering Dallas",
-        "Best biryani DFW",
-        "Authentic Indian food Irving",
-        "Late night Indian restaurant",
-        "Indian restaurant near me",
-        "Hyderabadi restaurant Texas",
-        "Dum biryani Dallas",
-        "Indian kebabs Irving",
-        "Irani chai Irving"
+  metadataBase: new URL(restaurant.origin),
+  title: { default: restaurant.name, template: "%s | Pista House Irving" },
+  manifest: "/manifest.json",
+  icons: { icon: "/favicon.ico?v=2", apple: "/apple-touch-icon.png" },
+}
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": restaurant.origin + "/#restaurant",
+  name: restaurant.name,
+  url: restaurant.origin,
+  telephone: restaurant.tel.slice("tel:".length),
+  email: restaurant.email,
+  image: [
+    restaurant.origin + "/images/dum-biryani.webp",
+    restaurant.origin + "/images/haleem-table.webp",
+    restaurant.origin + "/images/mixed-grill.webp",
+  ],
+  logo: restaurant.origin + "/apple-touch-icon.png",
+  geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
+  hasMap: restaurant.directions,
+  servesCuisine: ["Hyderabadi", "Indian"],
+  menu: restaurant.origin + "/menu",
+  hasMenu: { "@id": restaurant.origin + "/menu#dining-menu" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: restaurant.street,
+    addressLocality: "Irving",
+    addressRegion: "TX",
+    postalCode: "75039",
+    addressCountry: "US",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
     ],
-    icons: {
-        icon: "/PistaLogo.jpeg",
-        apple: "/PistaLogo.jpeg",
-    },
-    openGraph: {
-        type: "website",
-        locale: "en_US",
-        siteName: "Pista House Irving",
-        title: "Pista House Irving | Authentic Hyderabadi Indian Restaurant",
-        description: "Experience authentic Hyderabadi cuisine at Pista House Irving. Famous for Dum Biryani, Haleem, Kebabs & catering. Open late till 2AM.",
-        url: "https://pistahouseirving.com",
-        images: [
-            {
-                url: "/PistaLogo.jpeg",
-                width: 1200,
-                height: 630,
-                alt: "Pista House Irving - Authentic Hyderabadi Cuisine"
-            }
-        ],
-    },
-    twitter: {
-        card: "summary_large_image",
-        title: "Pista House Irving | Authentic Hyderabadi Indian Restaurant",
-        description: "Experience authentic Hyderabadi cuisine at Pista House Irving. Famous for Dum Biryani, Haleem, Kebabs & catering.",
-        images: ["/PistaLogo.jpeg"],
-    },
-    robots: {
-        index: true,
-        follow: true,
-        googleBot: {
-            index: true,
-            follow: true,
-            "max-video-preview": -1,
-            "max-image-preview": "large",
-            "max-snippet": -1,
-        },
-    },
-    alternates: {
-        canonical: "https://pistahouseirving.com",
-    },
-    authors: [{ name: "Pista House Irving" }],
-    creator: "Pista House Irving",
-    publisher: "Pista House Irving",
-    category: "Restaurant",
-    verification: {
-        google: "your-google-verification-code",
-    },
+    opens: "11:00",
+    closes: "02:00",
+  },
+  sameAs: [restaurant.instagram, restaurant.facebook],
 }
-
-const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    name: "Pista House Irving",
-    image: "https://pistahouseirving.com/PistaLogo.jpeg",
-    "@id": "https://pistahouseirving.com",
-    url: "https://pistahouseirving.com",
-    telephone: "+1-972-635-5657",
-    priceRange: "$$",
-    address: {
-        "@type": "PostalAddress",
-        streetAddress: "901 W Royal Ln",
-        addressLocality: "Irving",
-        addressRegion: "TX",
-        postalCode: "75039",
-        addressCountry: "US"
-    },
-    geo: {
-        "@type": "GeoCoordinates",
-        latitude: 32.9290,
-        longitude: -96.9489
-    },
-    openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        opens: "11:00",
-        closes: "02:00"
-    },
-    servesCuisine: ["Indian", "Hyderabadi", "South Asian"],
-    menu: "https://pistahouseirving.com/menu",
-    acceptsReservations: "True",
-    aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.5",
-        reviewCount: "500"
-    }
-}
-
+const measurementId = "G-9RX6PZQD91"
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode
+  children: React.ReactNode
 }) {
-    return (
-        <html lang="en" className="overflow-x-hidden">
-            <head>
-                <meta charSet="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <meta name="theme-color" content="#c4a052" />
-                <meta name="geo.region" content="US-TX" />
-                <meta name="geo.placename" content="Irving" />
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap"
-                    rel="stylesheet"
-                />
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-                />
-            </head>
-            <body className="overflow-x-hidden">
-                <OrderProvider>
-                    <Layout>{children}</Layout>
-                </OrderProvider>
-            </body>
-        </html>
-    )
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <StructuredData data={schema} />
+        <AppearanceProvider>
+          <OrderProvider>
+            <a className="skip" href="#main">
+              Skip to content
+            </a>
+            <aside className="announcement" aria-label="Restaurant announcement">
+              <Link href="/contactus">
+                <MoonStar size={15} aria-hidden="true" />
+                <span>Late supper in Irving · Open until 2 AM</span>
+                <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+            </aside>
+            <SiteHeader />
+            <main id="main">{children}</main>
+            <SiteFooter />
+          </OrderProvider>
+        </AppearanceProvider>
+        {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
+            />
+            <Script id="restaurant-analytics">{`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${measurementId}');`}</Script>
+          </>
+        )}
+      </body>
+    </html>
+  )
 }

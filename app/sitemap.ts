@@ -1,38 +1,15 @@
-import { MetadataRoute } from "next"
+import type { MetadataRoute } from "next"
+import {
+  restaurant,
+  navigation,
+  pageImages,
+  type PublicPath,
+} from "@/lib/restaurant"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://pistahouseirving.com"
-    
-    return [
-        {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/menu`,
-            lastModified: new Date(),
-            changeFrequency: "weekly",
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/catering`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.8,
-        },
-        {
-            url: `${baseUrl}/aboutus`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/contactus`,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 0.7,
-        },
-    ]
+  const paths: PublicPath[] = ["/", ...navigation.map((link) => link.href)]
+  return paths.map((path) => ({
+    url: new URL(path, restaurant.origin).href,
+    images: [new URL(pageImages[path].url, restaurant.origin).href],
+  }))
 }
