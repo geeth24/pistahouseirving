@@ -1,214 +1,99 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { logEvent } from "firebase/analytics"
-import { analytics } from "@/components/Firebase"
 import Image from "next/image"
-import { motion } from "framer-motion"
 import Link from "next/link"
-import { FaUtensils, FaHeart, FaAward, FaArrowRight } from "react-icons/fa"
+import { ArrowRight } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { pageMetadata } from "@/lib/restaurant"
 
-export default function AboutUs() {
-    const [logged, setLogged] = useState(false)
-
-    useEffect(() => {
-        if (process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && !logged) {
-            logEvent(analytics, "page_view", {
-                page_title: "About Us",
-                page_location: "https://www.pistahouseirving.com/aboutus",
-                page_path: "/aboutus",
-            })
-            setLogged(true)
-        } else if (!logged) {
-            console.log("development")
-            setLogged(true)
-        }
-    }, [logged])
-
-    const values = [
-        {
-            title: "Quality Ingredients",
-            description: "We source the freshest, highest quality ingredients to create authentic flavors in every dish.",
-            icon: <FaUtensils />
-        },
-        {
-            title: "Cultural Heritage",
-            description: "We honor traditional Indian cooking techniques while adding our own contemporary flair.",
-            icon: <FaAward />
-        },
-        {
-            title: "Warm Hospitality",
-            description: "We treat every customer like family, offering an inviting atmosphere and attentive service.",
-            icon: <FaHeart />
-        }
-    ]
-
-    return (
-        <>
-            {/* hero */}
-            <section className="relative flex min-h-[68vh] w-full items-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image src="/building.jpg" alt="Pista House Irving building" fill className="object-cover" priority />
-                    <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/45" />
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
-                </div>
-
-                <div className="container-padding relative z-10 py-20">
-                    <motion.div
-                        className="max-w-2xl"
-                        initial={{ opacity: 0, y: 24 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                    >
-                        <span className="inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-sm font-medium text-background backdrop-blur-sm">
-                            Est. in Irving, TX
-                        </span>
-                        <h1 className="mb-6 mt-6 font-display text-5xl leading-[1.02] text-background md:text-6xl lg:text-7xl">
-                            Our story
-                        </h1>
-                        <p className="text-lg leading-relaxed text-background/85 md:text-xl">
-                            Bringing the authentic taste of Hyderabad to Texas, one dish at a time.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* philosophy */}
-            <section className="bg-background py-20 md:py-28">
-                <div className="container-padding mx-auto">
-                    <div className="grid items-center gap-16 lg:grid-cols-2">
-                        <motion.div
-                            initial={{ opacity: 0, x: -24 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            viewport={{ once: true }}
-                        >
-                            <h2 className="mb-6 font-display text-4xl text-ink md:text-5xl">Our philosophy</h2>
-                            <div className="space-y-4 text-lg leading-relaxed text-ink-soft">
-                                <p>
-                                    Pista House Irving is a celebration of Indian culture, flavors and hospitality.
-                                    Immerse yourself in a sensory spice experience and awaken your tastebuds with our
-                                    modern Indian menu, showcasing the very best of India&apos;s exotic flavors.
-                                </p>
-                                <p>
-                                    Our food is inspired by traditional Indian dishes, served with a modern twist,
-                                    and we pride ourselves on using the freshest, most seasonal produce.
-                                </p>
-                                <p>
-                                    We believe the best hospitality is the kind you find in a home, and it is our aim
-                                    to bring that welcoming, relaxed environment to our guests.
-                                </p>
-                            </div>
-
-                            <Link href="/menu" className="group mt-8 inline-flex items-center gap-2 font-medium text-primary-dark transition-colors hover:text-primary">
-                                Explore our menu
-                                <FaArrowRight className="text-sm transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </motion.div>
-
-                        <motion.div
-                            className="relative"
-                            initial={{ opacity: 0, x: 24 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                            viewport={{ once: true }}
-                        >
-                            <div className="relative h-[500px] overflow-hidden rounded-2xl border border-ink/10">
-                                <Image src="/food/MixedKebabSkewersGrill.webp" alt="Authentic Indian food" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" />
-                            </div>
-                            <div className="absolute -bottom-6 -left-6 rounded-2xl bg-primary-dark p-6 shadow-xl">
-                                <p className="font-display text-4xl text-text-inverse">10+</p>
-                                <p className="text-sm text-text-inverse/80">Years of excellence</p>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* values */}
-            <section className="bg-background-dark py-20 md:py-28">
-                <div className="container-padding mx-auto">
-                    <motion.h2
-                        className="mb-12 max-w-xl font-display text-4xl text-ink md:text-5xl"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        What drives us
-                    </motion.h2>
-
-                    <div className="grid gap-px overflow-hidden rounded-2xl border border-ink/10 bg-ink/10 md:grid-cols-3">
-                        {values.map((value, index) => (
-                            <motion.div
-                                key={index}
-                                className="bg-background-card p-8"
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.5, delay: index * 0.08 }}
-                                viewport={{ once: true }}
-                            >
-                                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-2xl text-primary-dark">
-                                    {value.icon}
-                                </div>
-                                <h3 className="mt-6 font-display text-2xl text-ink">{value.title}</h3>
-                                <p className="mt-2 leading-relaxed text-ink-soft">{value.description}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* gallery */}
-            <section className="bg-background py-20">
-                <div className="container-padding mx-auto">
-                    <motion.h2
-                        className="mb-10 font-display text-4xl text-ink md:text-5xl"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                    >
-                        Inside the room
-                    </motion.h2>
-
-                    <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                        {["/food/LiveKebabGrillStation.webp", "/food/DessertStationWithCake.webp", "/food/BuffetServingGuests.webp", "/food/RoseGoldChaferOutdoorSetup.webp"].map((src, i) => (
-                            <motion.div
-                                key={i}
-                                className="group relative aspect-square overflow-hidden rounded-2xl border border-ink/10"
-                                initial={{ opacity: 0, scale: 0.96 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.08 }}
-                                viewport={{ once: true }}
-                            >
-                                <Image src={src} alt="Pista House interior" fill className="object-cover transition-transform duration-700 group-hover:scale-105" sizes="(max-width: 768px) 50vw, 25vw" />
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* cta */}
-            <section className="container-padding mx-auto pb-24 pt-4">
-                <motion.div
-                    className="rounded-[2rem] border border-ink/10 bg-background-card px-6 py-16 text-center md:px-12 md:py-20"
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                >
-                    <div className="mx-auto max-w-2xl">
-                        <h2 className="font-display text-4xl text-ink md:text-5xl">Visit us today</h2>
-                        <p className="mx-auto mt-5 max-w-xl text-lg text-ink-soft">
-                            Experience the authentic taste of India at our restaurant in Irving, Texas. We look forward to serving you and your family.
-                        </p>
-                        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-                            <a href="https://www.google.com/maps/search/?api=1&query=Pista+House+Irving" target="_blank" rel="noopener noreferrer" className="primary-button">
-                                Find us on the map
-                            </a>
-                            <Link href="/contactus" className="outline-button">Contact us</Link>
-                        </div>
-                    </div>
-                </motion.div>
-            </section>
-        </>
-    )
+export const metadata = pageMetadata(
+  "/aboutus",
+  "Our Hyderabadi kitchen in Las Colinas",
+  "Meet the food and city behind Pista House Irving, from Hyderabad’s Charminar to dum biryani, tandoori kebabs, and late dinners in Las Colinas.",
+)
+export default function Story() {
+  return (
+    <article>
+      <div className="story-cover">
+        <div className="wrap story-opener">
+          <div>
+            <span className="kicker">
+              <i aria-hidden="true" />
+              Our story
+            </span>
+            <h1>
+              Hyderabad
+              <br />
+              at heart.
+            </h1>
+            <p>
+              Look up from a booth in our Irving dining room and you’ll see the
+              Charminar. The city on our wall is also the city behind our
+              cooking.
+            </p>
+          </div>
+          <figure>
+            <Image
+              src="/images/charminar-print.webp"
+              alt="Illustration of Hyderabad’s Charminar rising above the old-city market"
+              width={1536}
+              height={1024}
+              sizes="(max-width:700px) 90vw, 55vw"
+              preload
+            />
+            <figcaption>The Charminar, Hyderabad</figcaption>
+          </figure>
+        </div>
+      </div>
+      <section className="wrap story-body">
+        <h2>
+          From the old city
+          <br />
+          to West Royal Lane
+        </h2>
+        <div>
+          <p>
+            Built in 1591, the Charminar has four minarets and arched
+            passageways that open onto the streets of Hyderabad. Here in Las
+            Colinas, a mural of that landmark runs along our dining room.
+            Outside, our green sign has another way of saying where we come
+            from. It reads “Biryani, Haleem &amp; Kabobs.”
+          </p>
+          <p>
+            Each takes a different kind of heat. Dum biryani steams under a lid,
+            so the rice absorbs the spices as it cooks. Haleem simmers until the
+            grains and meat come together. At the tandoor, the clay walls hold
+            enough heat to char a skewer of marinated chicken or paneer.
+          </p>
+          <Link className="text-link" href="/menu">
+            Discover the menu <ArrowRight />
+          </Link>
+        </div>
+      </section>
+      <section className="catering-band">
+        <div className="wrap feature-split">
+          <div className="wide-photo">
+            <Image
+              src="/images/live-grill.webp"
+              alt="Rows of kebab skewers cooking at an outdoor Pista House grill"
+              fill
+              sizes="(max-width:700px) 90vw, 46vw"
+            />
+          </div>
+          <div>
+            <h2>Beyond the dining room</h2>
+            <p>
+              A wedding buffet takes a different shape from a late dinner for
+              two. For catered gatherings, the team sets out chafing dishes,
+              prepares live stations, and helps hosts choose a menu for the
+              room.
+            </p>
+            <Button asChild>
+              <Link href="/catering">
+                See our catering setups <ArrowRight />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </article>
+  )
 }

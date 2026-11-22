@@ -1,44 +1,29 @@
 "use client"
-
-import React, { createContext, useContext, useState, useCallback, ReactNode } from "react"
-
-interface OrderContextType {
-    items: string[]
-    toggleItem: (title: string) => void
-    removeItem: (title: string) => void
-    clearOrder: () => void
-    hasItem: (title: string) => boolean
+import { createContext, useContext, useState, type ReactNode } from "react"
+export type Selection = { id: string; name: string; section: string }
+type Order = {
+  items: Selection[]
+  toggle: (item: Selection) => void
+  clear: () => void
 }
-
-const OrderContext = createContext<OrderContextType | undefined>(undefined)
-
+const OrderContext = createContext<Order | null>(null)
 export function OrderProvider({ children }: { children: ReactNode }) {
-    const [items, setItems] = useState<string[]>([])
-
-    const toggleItem = useCallback((title: string) => {
-        if (!title) return
-        setItems((prev) => (prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]))
-    }, [])
-
-    const removeItem = useCallback((title: string) => {
-        setItems((prev) => prev.filter((t) => t !== title))
-    }, [])
-
-    const clearOrder = useCallback(() => setItems([]), [])
-
-    const hasItem = useCallback((title: string) => items.includes(title), [items])
-
-    return (
-        <OrderContext.Provider value={{ items, toggleItem, removeItem, clearOrder, hasItem }}>
-            {children}
-        </OrderContext.Provider>
+  const [items, setItems] = useState<Selection[]>([])
+  function toggle(item: Selection) {
+    setItems((current) =>
+      current.some((it) => it.id === item.id)
+        ? current.filter((it) => it.id !== item.id)
+        : [...current, item],
     )
+  }
+  return (
+    <OrderContext.Provider value={{ items, toggle, clear: () => setItems([]) }}>
+      {children}
+    </OrderContext.Provider>
+  )
 }
-
 export function useOrder() {
-    const context = useContext(OrderContext)
-    if (context === undefined) {
-        throw new Error("useOrder must be used within an OrderProvider")
-    }
-    return context
+  const order = useContext(OrderContext)
+  if (!order) throw new Error("Missing OrderProvider")
+  return order
 }
