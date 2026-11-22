@@ -1,3 +1,5 @@
+import { SectionReveal } from "@/components/section-reveal"
+import { GuestNotes } from "@/components/guest-notes"
 import { CateringCarousel } from "@/components/catering-carousel"
 import { StructuredData } from "@/components/structured-data"
 import Image from "next/image"
@@ -179,7 +181,7 @@ export default function Home() {
             </span>
             <h2>Leave room for something sweet.</h2>
           </div>
-          <div className="dessert-center">
+          <SectionReveal className="dessert-center">
             <Image
               src="/images/gulab-jamun.webp"
               alt="A white bowl of gulab jamun in syrup"
@@ -188,7 +190,7 @@ export default function Home() {
               sizes="(max-width: 760px) 88vw, 39vw"
               quality={90}
             />
-          </div>
+          </SectionReveal>
           <div className="dessert-notes">
             <p>
               Gulab jamun comes soaked in syrup. Double ka meetha is Hyderabad’s
@@ -201,31 +203,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="guest-notes">
-        <div className="wrap">
-          <div className="album-intro">
-            <h2>From our guests</h2>
-            <a
-              className="text-link"
-              href="https://us.sulekha.com/irving-tx/restaurants/pista-house-847210"
-            >
-              Read reviews on Sulekha <ArrowUpRight />
-            </a>
-          </div>
-          <div className="guest-quotes">
-            <figure>
-              <blockquote>“Taste is as good as Hyderabad Biryani.”</blockquote>
-              <figcaption>Irfan Shaikh</figcaption>
-            </figure>
-            <figure>
-              <blockquote>
-                “I am glad I made good choice for my reception.”
-              </blockquote>
-              <figcaption>Chakradhar Rao Beerpur</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
+      <GuestNotes />
       <section className="wrap story-body home-visit">
         <div>
           <span className="kicker">

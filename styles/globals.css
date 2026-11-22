@@ -1925,20 +1925,23 @@ address {
   background: var(--secondary);
   border-block: 1px solid var(--section-edge);
 }
+#guest-notes { scroll-margin-top: 82px; }
+.guest-notes h2 { margin-bottom: clamp(1.6rem, 3vw, 3rem); }
 .guest-quotes {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: clamp(1.5rem, 5vw, 5rem);
+  grid-template-columns: 1.28fr 1fr 1fr;
+  gap: clamp(1.3rem, 3vw, 3.5rem);
 }
-.guest-quotes figure {
-  border-top: 1px solid var(--hairline);
-  padding-top: 1.25rem;
+.guest-note { min-width: 0; border-top: 1px solid var(--hairline); padding-top: 1.1rem; }
+.guest-note:first-child {
+  grid-row: span 2;
+  border-top: 3px double var(--hairline);
 }
-.guest-quotes blockquote {
-  font: 400 clamp(1.6rem, 3.2vw, 3.2rem)/1.16 var(--display);
-  text-wrap: balance;
-}
-.guest-quotes figcaption { margin-top: 1rem; color: var(--muted-foreground); }
+.guest-note blockquote { font: 400 clamp(1.25rem, 1.85vw, 1.85rem)/1.23 var(--display); text-wrap: pretty; }
+.guest-note:first-child blockquote { font-size: clamp(2.3rem, 4vw, 4.2rem); line-height: 1.08; }
+.guest-note figcaption { margin-top: 1.15rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: baseline; font-size: 0.88rem; }
+.guest-note figcaption > span { font-weight: 700; }
+.guest-note figcaption a { display: inline-flex; align-items: center; gap: 2px; color: var(--muted-foreground); text-decoration: underline; text-underline-offset: 3px; }
 .builder-credit {
   color: var(--footer-ink);
   font-weight: 750;
@@ -1961,6 +1964,7 @@ address {
 }
 @media (max-width: 640px) {
   .guest-quotes { grid-template-columns: 1fr; }
+  .guest-note:first-child { grid-row: auto; }
 }
 @media (max-height: 460px) {
   .menu-postcard { display: none; }
@@ -1968,7 +1972,12 @@ address {
 
 :root {
   --dessert-ground: #100f0e;
-  --party-line: color-mix(in srgb, var(--brass) 12%, transparent);
+  --dessert-halo: #ead8aa;
+  --dessert-accent: #78581e;
+}
+.dark {
+  --dessert-halo: #354938;
+  --dessert-accent: var(--brass);
 }
 .party-feature {
   display: grid;
@@ -1982,13 +1991,12 @@ address {
   justify-items: start;
   gap: 1.2rem;
   padding: clamp(2rem, 6vw, 7rem) clamp(1.5rem, 5vw, 6rem);
-  background-image: linear-gradient(90deg, var(--party-line) 1px, transparent 1px), linear-gradient(var(--party-line) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background: radial-gradient(ellipse at 5% 105%, color-mix(in srgb, var(--brass) 16%, transparent), transparent 68%), var(--hero);
 }
 .party-copy h2 { max-width: 9ch; }
 .party-copy p { max-width: 34ch; color: var(--hero-soft); }
-.party-copy .kicker, .dessert-story .kicker { color: var(--brass); }
-.party-copy .kicker i, .dessert-story .kicker i { background: var(--brass); }
+.party-copy .kicker { color: var(--brass); }
+.party-copy .kicker i { background: var(--brass); }
 .event-reel { position: relative; min-width: 0; }
 .event-track {
   display: flex;
@@ -2027,7 +2035,12 @@ address {
 }
 .reel-controls button:hover { background: var(--footer-green); }
 .reel-controls svg { width: 18px; }
-.dessert-story { background: var(--dessert-ground); color: var(--hero-ink); }
+.dessert-story {
+  background: radial-gradient(ellipse at center, var(--dessert-halo), transparent 67%), linear-gradient(var(--background), var(--secondary));
+  color: var(--foreground);
+}
+.dessert-story .kicker { color: var(--dessert-accent); }
+.dessert-story .kicker i { background: var(--dessert-accent); }
 .dessert-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.65fr) minmax(0, 1fr);
@@ -2040,11 +2053,11 @@ address {
   display: block;
   width: 100%;
   height: auto;
-  mask-image: radial-gradient(ellipse 67% 69% at center, black 52%, transparent 81%);
+  mask: url("/images/gulab-jamun-mask.svg") center / 100% 100% no-repeat;
 }
-.dessert-notes p { color: var(--hero-soft); }
-.dessert-notes .text-link { margin-top: 1.2rem; color: var(--hero-ink); }
-.dessert-notes .text-link svg { color: var(--brass); }
+.dessert-notes p { color: var(--muted-foreground); }
+.dessert-notes .text-link { margin-top: 1.2rem; color: var(--primary); }
+.dessert-notes .text-link svg { color: var(--dessert-accent); }
 @media (max-width: 760px) {
   .party-feature { grid-template-columns: 1fr; }
   .party-copy { padding: 2.4rem max(5.5vw, 18px); }
@@ -2058,4 +2071,11 @@ address {
 #after-dinner,
 #event-service {
   scroll-margin-top: 82px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.button, .text-link, .guest-note a, .mobile-panel nav a) svg { transition: transform 160ms ease-out; }
+  :is(.button, .text-link, .guest-note a, .mobile-panel nav a):is(:hover, :focus-visible) .lucide-arrow-up-right { transform: translate(2px, -2px); }
+  :is(.button, .text-link):is(:hover, :focus-visible) .lucide-arrow-right { transform: translateX(3px); }
+  :is(.button, .text-link, .guest-note a):active svg { transform: scale(0.9); }
 }
