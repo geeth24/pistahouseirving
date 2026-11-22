@@ -68,6 +68,53 @@ export default function Story() {
           </Link>
         </div>
       </section>
+      <section className="pantry">
+        <div className="wrap pantry-inner">
+          <figure>
+            <Image
+              src="/images/biryani-spices.webp"
+              width={700}
+              height={1050}
+              sizes="(max-width:700px) 89vw, 35vw"
+              quality={90}
+              alt="A bowl of biryani with cinnamon, star anise, and fresh herbs on blue wood"
+            />
+          </figure>
+          <div>
+            <span className="kicker">
+              <i aria-hidden="true" />
+              Kitchen notes
+            </span>
+            <h2>Flavors to look for</h2>
+            <dl>
+              <div>
+                <dt>Gongura</dt>
+                <dd>
+                  Look for the tartness of sorrel leaves in gongura chicken
+                  curry and paneer pulao.
+                </dd>
+              </div>
+              <div>
+                <dt>Methi</dt>
+                <dd>
+                  Fenugreek gives methi chicken its gently bitter, herbal
+                  flavor.
+                </dd>
+              </div>
+              <div>
+                <dt>Mirchi</dt>
+                <dd>
+                  Mirchi means chili. Try cut mirchi as a starter, or pachi
+                  mirchi paneer pulao for rice with green chili.
+                </dd>
+              </div>
+            </dl>
+            <Link href="/menu#curries" className="text-link">
+              Find them on the menu <ArrowRight />
+            </Link>
+          </div>
+        </div>
+      </section>
       <section className="catering-band">
         <div className="wrap feature-split">
           <div className="wide-photo">

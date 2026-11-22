@@ -8,7 +8,8 @@ import "@/styles/globals.css"
 export const metadata: Metadata = {
   metadataBase: new URL(restaurant.origin),
   title: { default: restaurant.name, template: "%s | Pista House Irving" },
-  icons: { icon: "/favicon.ico" },
+  manifest: "/manifest.json",
+  icons: { icon: "/favicon.ico?v=2", apple: "/apple-touch-icon.png" },
 }
 const schema = {
   "@context": "https://schema.org",

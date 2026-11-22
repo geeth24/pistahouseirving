@@ -1,3 +1,4 @@
+import { EventGallery } from "@/components/event-gallery"
 import Image from "next/image"
 import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -19,16 +20,16 @@ const eventPhotos = [
     alt: "Copper chafing dishes on a long buffet beneath leafy trees",
   },
   {
-    image: "chaat-station",
-    name: "Chaat, finished to order",
-    detail: "A final squeeze of chutney at the live station.",
-    alt: "A cook finishes a stacked chaat skewer in front of guests",
+    image: "skewer-service",
+    name: "At the live station",
+    detail: "Finishing a skewer just before service.",
+    alt: "A cook holding a skewer at a live station",
   },
   {
-    image: "fruit-display",
-    name: "A carved fruit display",
-    detail: "Cut melon and fresh fruit arranged around a tiered centerpiece.",
-    alt: "A tiered carved fruit centerpiece on a catering table",
+    image: "mixed-grill",
+    name: "Tandoori kebabs",
+    detail: "A platter of marinated kebabs fresh from the tandoor.",
+    alt: "A platter of tandoori kebabs in three marinades",
   },
   {
     image: "live-grill",
@@ -39,8 +40,21 @@ const eventPhotos = [
   {
     image: "buffet",
     name: "The banquet line",
-    detail: "A row of covered serving dishes ready for guests.",
+    detail:
+      "Brass serving dishes along the windows. Restored from an event photograph.",
     alt: "Covered brass buffet servers arranged along a wall of windows",
+  },
+  {
+    image: "event-table",
+    name: "Plated dinner outdoors",
+    detail: "Tables dressed for dinner on the lawn.",
+    alt: "Rows of set tables and chairs on a lawn for a catered dinner",
+  },
+  {
+    image: "banquet",
+    name: "An indoor reception",
+    detail: "Silver chafers in place before guests arrive.",
+    alt: "A banquet room with a long line of silver chafing dishes",
   },
 ]
 export default function Catering() {
@@ -72,8 +86,8 @@ export default function Catering() {
           </div>
           <div className="wide-photo">
             <Image
-              src="/images/banquet.webp"
-              alt="Silver chafing dishes set for a catered event"
+              src="/images/station-finish.webp"
+              alt="Marinated kebabs on skewers over the flames at a live grill"
               fill
               sizes="(max-width:700px) 95vw, 47vw"
               preload
@@ -89,23 +103,41 @@ export default function Catering() {
             outdoor grill to a banquet hall.
           </p>
         </div>
-        <div className="album-grid">
-          {eventPhotos.map((photo) => (
-            <figure key={photo.image}>
-              <div>
-                <Image
-                  src={"/images/" + photo.image + ".webp"}
-                  alt={photo.alt}
-                  fill
-                  sizes="(max-width:700px) 89vw, (max-width:1100px) 44vw, 540px"
-                />
-              </div>
-              <figcaption>
-                <h3>{photo.name}</h3>
-                <p>{photo.detail}</p>
-              </figcaption>
-            </figure>
-          ))}
+        <EventGallery photos={eventPhotos} />
+      </section>
+      <section className="planning-band">
+        <div className="wrap planning">
+          <div>
+            <span className="kicker">
+              <i aria-hidden="true" />
+              Planning an event
+            </span>
+            <h2>What will service look like?</h2>
+          </div>
+          <dl>
+            <div>
+              <dt>Buffet service</dt>
+              <dd>
+                Set out a selection of starters, rice, curries, and breads so
+                guests can choose their own plates.
+              </dd>
+            </div>
+            <div>
+              <dt>Live stations</dt>
+              <dd>
+                Ask about a grill or chaat station. Tell us which dishes you’d
+                like prepared in front of your guests and what space the venue
+                has available.
+              </dd>
+            </div>
+            <div>
+              <dt>Plated dinners</dt>
+              <dd>
+                For a seated gathering, share your guest count, serving time,
+                and course preferences with the catering team.
+              </dd>
+            </div>
+          </dl>
         </div>
       </section>
       <section id="menu" className="wrap catering-catalog">

@@ -65,6 +65,32 @@ export default function MenuPage() {
         </p>
       </header>
       <Catalog sections={menu} />
+      <section className="menu-reader">
+        <div>
+          <span className="kicker">
+            <i aria-hidden="true" />
+            Ordering for the table
+          </span>
+          <h2>A few menu notes</h2>
+        </div>
+        <div>
+          <h3>Biryani or pulav?</h3>
+          <p>
+            Choose dum biryani for layers of spiced rice and chicken, goat, or
+            vegetables. The pulavs offer combinations such as green chili paneer
+            and gongura chicken.
+          </p>
+          <h3>Ordering for a group?</h3>
+          <p>
+            Check pickup for available biryani portions. For a wedding, office
+            lunch, or larger gathering, use{" "}
+            <Link className="text-link" href="/catering">
+              the catering menu
+            </Link>{" "}
+            to put together a quote request.
+          </p>
+        </div>
+      </section>
     </div>
   )
 }

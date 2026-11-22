@@ -1283,3 +1283,341 @@ address {
 .home-visit .actions {
   margin-top: 0.5rem;
 }
+.kitchen-edition,
+.dessert-feature,
+.planning,
+.pantry-inner,
+.menu-reader,
+.neighborhood-inner {
+  padding-block: clamp(3.2rem, 6vw, 6.4rem);
+}
+.kitchen-edition .kicker + h2,
+.planning h2,
+.pantry h2,
+.map-copy h2,
+.menu-reader h2,
+.dessert-feature h2 {
+  margin: 0.85rem 0 1.15rem;
+}
+.kitchen-spread {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1.75rem 2rem;
+}
+.kitchen-spread > a {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+.kitchen-spread > a:first-child {
+  grid-row: span 2;
+}
+.kitchen-spread > a:not(:first-child) {
+  grid-template-columns: 1fr 1.05fr;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.kitchen-plate {
+  position: relative;
+  aspect-ratio: 1.85;
+  overflow: hidden;
+  background: var(--secondary);
+}
+.kitchen-spread > a:not(:first-child) .kitchen-plate {
+  aspect-ratio: 1.1;
+}
+.kitchen-plate img {
+  transition: transform 0.28s ease-out;
+}
+.kitchen-spread > a:hover img {
+  transform: scale(1.025);
+}
+.plate-copy {
+  position: relative;
+  padding-right: 1.5rem;
+}
+.plate-copy p {
+  margin: 0.5rem 0 0;
+  max-width: 53ch;
+}
+.plate-copy > svg {
+  position: absolute;
+  right: 0;
+  top: 0.4rem;
+}
+.dessert-feature,
+.pantry-inner,
+.planning,
+.menu-reader,
+.neighborhood-inner {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+.dessert-feature {
+  border-bottom: 1px solid var(--border);
+}
+.dessert-feature figure {
+  position: relative;
+  overflow: hidden;
+}
+.dessert-feature figure img {
+  width: 100%;
+  height: auto;
+}
+.dessert-feature p {
+  max-width: 45ch;
+}
+.dessert-feature .text-link,
+.map-copy .text-link {
+  margin-top: 1.25rem;
+}
+.pantry,
+.planning-band,
+.neighborhood {
+  background: var(--secondary);
+}
+.pantry-inner {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+.pantry figure {
+  height: clamp(360px, 40vw, 560px);
+  overflow: hidden;
+}
+.pantry img {
+  width: 100%;
+  height: 100%;
+  object-position: center 62%;
+}
+.planning,
+.menu-reader {
+  align-items: start;
+}
+.planning h2,
+.pantry h2 {
+  max-width: 15ch;
+}
+.planning dl > div,
+.pantry dl > div {
+  border-top: 1px solid var(--border);
+  padding: 0.9rem 0;
+}
+.planning dt,
+.pantry dt {
+  font-weight: 650;
+  font-size: 1.06rem;
+}
+.planning dd,
+.pantry dd {
+  margin: 0.35rem 0;
+  color: var(--muted-foreground);
+  line-height: 1.65;
+}
+.pantry .text-link {
+  margin-top: 1rem;
+}
+.menu-reader {
+  border-top: 1px solid var(--border);
+}
+.menu-reader h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.65rem;
+}
+.menu-reader p + h3 {
+  margin-top: 1.6rem;
+}
+.album-frame {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.45;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.album-frame img {
+  transition: transform 0.25s;
+}
+.album-frame:hover img {
+  transform: scale(1.02);
+}
+.album-frame > span {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background: var(--background);
+  color: var(--foreground);
+  padding: 0.55rem;
+  border-radius: 50%;
+}
+.album-grid figure:nth-child(2) .album-frame img {
+  object-position: 50% 50%;
+}
+.album-viewer {
+  position: fixed;
+  z-index: 22;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 960px);
+  max-height: 92dvh;
+  overflow: auto;
+  background: var(--card);
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+}
+.album-viewer .panel-heading h2 {
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+}
+.viewer-photo {
+  position: relative;
+  height: min(62vh, 650px);
+  margin: 0.7rem 0;
+  background: var(--secondary);
+}
+.viewer-photo img {
+  object-fit: contain;
+}
+.viewer-bottom,
+.viewer-bottom > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.viewer-bottom > div {
+  flex-shrink: 0;
+}
+.viewer-bottom p {
+  font-size: 0.95rem;
+}
+.neighborhood-inner {
+  grid-template-columns: 0.72fr 1.28fr;
+}
+.map-copy p {
+  max-width: 41ch;
+}
+:root {
+  --atlas-ground: #e8ead8;
+  --atlas-ink: #224537;
+  --atlas-block: #d9d6bc;
+  --atlas-outline: #aab29a;
+  --atlas-road: #fff9e7;
+  --atlas-leaf: #bbcc98;
+  --atlas-green: #97aa80;
+  --atlas-water: #a6c9c4;
+}
+.map-board {
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 0.5rem;
+  box-shadow: 3px 4px 0 var(--border);
+}
+.map-toolbar,
+.map-key,
+.map-toolbar span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.map-toolbar {
+  justify-content: space-between;
+  padding: 0.4rem 0.5rem 0.8rem;
+  flex-wrap: wrap;
+}
+.map-toolbar span {
+  font-weight: 650;
+}
+.map-toolbar button {
+  font-size: 0.84rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 0.35rem;
+}
+.area-drawing,
+.map-board .location-map {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 720/395;
+  display: block;
+  border: 0;
+}
+.map-key {
+  padding: 0.75rem 0.5rem 0.35rem;
+  font-size: 0.86rem;
+  color: var(--muted-foreground);
+}
+@media (max-width: 900px) {
+  .kitchen-spread > a:not(:first-child) {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .kitchen-spread h3 {
+    font-size: 1.5rem;
+  }
+  .kitchen-spread p {
+    font-size: 0.94rem;
+  }
+  .neighborhood-inner {
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 2rem;
+  }
+}
+@media (max-width: 700px) {
+  .kitchen-spread,
+  .dessert-feature,
+  .planning,
+  .pantry-inner,
+  .menu-reader,
+  .neighborhood-inner {
+    grid-template-columns: 1fr;
+  }
+  .kitchen-spread > a:first-child {
+    grid-row: auto;
+  }
+  .kitchen-spread > a:not(:first-child) {
+    grid-template-columns: 0.83fr 1.17fr;
+    padding-bottom: 1.1rem;
+    gap: 0.9rem;
+  }
+  .kitchen-spread p {
+    font-size: 0.9rem;
+  }
+  .kitchen-spread > a:first-child .kitchen-plate {
+    aspect-ratio: 1.55;
+  }
+  .plate-copy {
+    padding-right: 0.9rem;
+  }
+  .plate-copy > svg {
+    width: 0.8rem;
+  }
+  .pantry figure {
+    height: 320px;
+  }
+  .pantry img {
+    object-position: center 61%;
+  }
+  .album-frame {
+    aspect-ratio: 1.04;
+  }
+  .album-grid figure:first-child .album-frame {
+    aspect-ratio: 1.6;
+  }
+  .album-viewer {
+    padding: 0.8rem;
+  }
+  .viewer-photo {
+    height: min(52vh, 500px);
+  }
+  .viewer-bottom {
+    flex-wrap: wrap;
+  }
+  .map-toolbar span,
+  .map-toolbar button {
+    font-size: 0.8rem;
+  }
+  .map-key {
+    font-size: 0.75rem;
+  }
+}

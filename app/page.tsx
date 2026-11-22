@@ -13,16 +13,22 @@ const specialties = [
     name: "Dum biryani",
     copy: "Basmati rice takes on the spices of chicken, goat, or vegetables as the pot slowly steams.",
     anchor: "biryani",
+    image: "copper-handi",
+    alt: "Steaming biryani served in a copper handi with lime",
   },
   {
     name: "Hyderabadi haleem",
     copy: "Meat, wheat, and lentils cook down together into a thick, savory stew.",
     anchor: "haleem",
+    image: "haleem-table",
+    alt: "A bowl of haleem beside lentils, chilies, and ginger",
   },
   {
     name: "Tandoori kebabs",
     copy: "From paneer tikka to chicken hariyali, the heat of the clay oven gives each skewer its char.",
     anchor: "kebabs",
+    image: "mixed-grill",
+    alt: "Tandoori kebabs arranged on a platter with sliced onions",
   },
 ]
 export default function Home() {
@@ -64,6 +70,7 @@ export default function Home() {
                   alt="Biryani in a metal bowl with lime, sliced onions, and whole spices on a wooden table"
                   fill
                   sizes="(max-width:700px) 90vw, 46vw"
+                  quality={90}
                   preload
                 />
               </div>
@@ -92,25 +99,36 @@ export default function Home() {
           </a>
         </div>
       </div>
-      <section className="wrap menu-feature">
-        <div className="section-lead">
-          <span className="kicker">
-            <i aria-hidden="true" />
-            From the kitchen
-          </span>
-          <h2>House specialties</h2>
+      <section className="wrap kitchen-edition">
+        <div className="album-intro">
+          <div>
+            <span className="kicker">
+              <i aria-hidden="true" />
+              From the kitchen
+            </span>
+            <h2>House specialties</h2>
+          </div>
           <Link className="text-link" href="/menu">
             Browse the full menu <ArrowRight />
           </Link>
         </div>
-        <div className="special-list">
+        <div className="kitchen-spread">
           {specialties.map((item) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
-              <div>
+              <div className="kitchen-plate">
+                <Image
+                  src={"/images/" + item.image + ".webp"}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width:700px) 89vw, 47vw"
+                  quality={90}
+                />
+              </div>
+              <div className="plate-copy">
                 <h3>{item.name}</h3>
                 <p>{item.copy}</p>
+                <ArrowUpRight size={18} />
               </div>
-              <ArrowUpRight />
             </Link>
           ))}
         </div>
@@ -119,8 +137,8 @@ export default function Home() {
         <div className="wrap feature-split">
           <div className="wide-photo">
             <Image
-              src="/images/banquet.webp"
-              alt="A row of silver chafing dishes ready for a Pista House catering event"
+              src="/images/garden-buffet.webp"
+              alt="Copper buffet servers set out for a gathering beneath garden trees"
               fill
               sizes="(max-width:700px) 90vw, 48vw"
             />
@@ -146,6 +164,33 @@ export default function Home() {
               </Link>
             </Button>
           </div>
+        </div>
+      </section>
+      <section className="wrap dessert-feature">
+        <figure>
+          <Image
+            src="/images/sweet-table.webp"
+            alt="A bowl of syrup-soaked gulab jamun"
+            width={900}
+            height={600}
+            sizes="(max-width:700px) 89vw, 43vw"
+            quality={90}
+          />
+        </figure>
+        <div>
+          <span className="kicker">
+            <i aria-hidden="true" />
+            After dinner
+          </span>
+          <h2>Leave room for something sweet.</h2>
+          <p>
+            Gulab jamun comes soaked in syrup. Double ka meetha is Hyderabad’s
+            milk-rich bread pudding. Qubani ka meetha brings apricots to the
+            dessert table.
+          </p>
+          <Link className="text-link" href="/menu#desserts">
+            Explore desserts <ArrowRight />
+          </Link>
         </div>
       </section>
       <section className="wrap story-body home-visit">
