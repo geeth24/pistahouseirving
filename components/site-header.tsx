@@ -56,7 +56,11 @@ function ThemeMenu() {
 }
 export function Brand() {
   return (
-    <Link href="/" className="brand" aria-label="Pista House Irving home">
+    <Link
+      href="/"
+      className="brand"
+      aria-label="Pista House Irving, Texas home"
+    >
       <span className="wordmark" aria-hidden="true" />
       <span>Irving, Texas</span>
     </Link>

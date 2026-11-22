@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Dialog } from "radix-ui"
 import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react"
 import Image from "next/image"
@@ -8,6 +8,7 @@ import { Button } from "./ui/button"
 type Photo = { image: string; name: string; detail: string; alt: string }
 export function EventGallery({ photos }: { photos: Photo[] }) {
   const [index, setIndex] = useState(0)
+  const opener = useRef<HTMLButtonElement>(null)
   const current = photos[index]
   const move = (step: number) =>
     setIndex((value) => (value + step + photos.length) % photos.length)
@@ -20,7 +21,10 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
               <button
                 className="album-frame"
                 aria-label={"Enlarge photo: " + photo.name}
-                onClick={() => setIndex(i)}
+                onClick={(event) => {
+                  opener.current = event.currentTarget
+                  setIndex(i)
+                }}
               >
                 <Image
                   src={"/images/" + photo.image + ".webp"}
@@ -45,6 +49,12 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
         <Dialog.Overlay className="scrim" />
         <Dialog.Content
           className="album-viewer"
+          onCloseAutoFocus={(event) => {
+            if (opener.current) {
+              event.preventDefault()
+              opener.current.focus({ preventScroll: true })
+            }
+          }}
           onKeyDown={(event) => {
             if (event.key === "ArrowLeft") {
               event.preventDefault()
