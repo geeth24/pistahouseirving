@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { cateringVideo } from "@/lib/catering-video"
 export const restaurant = {
   name: "Pista House Irving",
   origin: "https://pistahouseirving.com",
@@ -24,7 +25,10 @@ export const navigation = [
   { href: "/contactus", name: "Contact us" },
 ] as const
 
-export type PublicPath = "/" | (typeof navigation)[number]["href"]
+export type PublicPath =
+  | "/"
+  | (typeof navigation)[number]["href"]
+  | typeof cateringVideo.path
 
 export const pageImages = {
   "/": {
@@ -45,6 +49,7 @@ export const pageImages = {
     height: 1602,
     alt: "Skewers at a Pista House live grilling station",
   },
+  [cateringVideo.path]: cateringVideo.poster,
   "/aboutus": {
     url: "/images/charminar-print.webp",
     width: 1536,
@@ -68,7 +73,12 @@ export function pageMetadata(
   description: string,
 ): Metadata {
   const socialTitle = title + " | " + restaurant.name
-  const images = [{ ...pageImages[path], type: "image/webp" }]
+  const images = [
+    {
+      ...pageImages[path],
+      type: path === cateringVideo.path ? "image/jpeg" : "image/webp",
+    },
+  ]
   return {
     title: { absolute: socialTitle },
     description,

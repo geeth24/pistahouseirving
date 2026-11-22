@@ -4,10 +4,12 @@ import { PhotoFrame } from "@/components/photo-frame"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import { EventGallery } from "@/components/event-gallery"
 import Image from "next/image"
-import { ArrowDown } from "lucide-react"
+import Link from "next/link"
+import { ArrowDown, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Catalog } from "@/components/catalog"
 import { cateringMenu } from "@/lib/catering-menu"
+import { cateringVideo } from "@/lib/catering-video"
 import { pageMetadata, restaurant } from "@/lib/restaurant"
 
 export const metadata = pageMetadata(
@@ -115,10 +117,15 @@ export default function Catering() {
       <section className="wrap event-album">
         <SectionReveal className="album-intro">
           <h2>At our events</h2>
-          <p>
-            A look at the different ways our team sets the table, from an
-            outdoor grill to a banquet hall.
-          </p>
+          <div className="album-description">
+            <p>
+              A look at the different ways our team sets the table, from an
+              outdoor grill to a banquet hall.
+            </p>
+            <Link className="text-link" href={cateringVideo.path}>
+              <Play aria-hidden="true" /> Watch the catering video
+            </Link>
+          </div>
         </SectionReveal>
         <EventGallery photos={eventPhotos} />
       </section>

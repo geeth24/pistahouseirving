@@ -1182,6 +1182,34 @@ address {
 .album-intro p {
   max-width: 47ch;
 }
+.album-description .text-link {
+  margin-top: 0.55rem;
+}
+.catering-watch {
+  width: min(900px, 89%);
+  padding-block: clamp(2rem, 4vw, 4rem) clamp(3.5rem, 6vw, 6rem);
+}
+.catering-watch h1 {
+  margin-block: 0.6rem;
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+}
+.catering-watch header p,
+.catering-watch-notes p {
+  max-width: 68ch;
+}
+.catering-watch-player {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-block: 1.25rem;
+  background: var(--hero);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+.catering-watch-notes .text-link {
+  margin-top: 1rem;
+}
 .album-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
