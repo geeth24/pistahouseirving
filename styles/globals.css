@@ -1999,6 +1999,7 @@ address {
   scrollbar-width: none;
   overscroll-behavior-x: contain;
 }
+.event-track:focus-visible { outline: 3px solid var(--brass); outline-offset: -4px; }
 .event-track::-webkit-scrollbar { display: none; }
 .event-slide { flex: 0 0 100%; position: relative; scroll-snap-align: center; }
 .event-slide img { object-fit: cover; }

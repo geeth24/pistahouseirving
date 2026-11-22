@@ -43,6 +43,15 @@ export function CateringCarousel() {
       <div
         className="event-track"
         ref={track}
+        tabIndex={0}
+        role="group"
+        aria-label="Event photos"
+        onKeyDown={(event) => {
+          if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+            event.preventDefault()
+            advance(event.key === "ArrowLeft" ? -1 : 1)
+          }
+        }}
         onScroll={(event) => {
           const element = event.currentTarget
           const index = Math.round(element.scrollLeft / element.clientWidth)
