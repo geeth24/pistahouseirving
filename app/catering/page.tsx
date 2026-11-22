@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
 import { PhotoFrame } from "@/components/photo-frame"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
@@ -78,12 +79,12 @@ export default function Catering() {
       />
       <section className="cater-hero">
         <div className="wrap feature-split">
-          <SectionReveal>
+          <div className="page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Dallas–Fort Worth catering
             </span>
-            <h1>Gather around.</h1>
+            <PageTitle lines={["Gather around."]} />
             <p>
               Choose a live kebab station for a wedding, chaat for a reception,
               or a spread of biryani and curries for an office lunch. We’ll work
@@ -99,7 +100,7 @@ export default function Catering() {
                 {restaurant.phone}
               </a>
             </div>
-          </SectionReveal>
+          </div>
           <PhotoFrame className="cater-cover-frame">
             <Image
               src="/images/station-finish.webp"

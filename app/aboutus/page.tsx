@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData } from "@/components/structured-data"
 import Image from "next/image"
@@ -17,23 +18,19 @@ export default function Story() {
       <BreadcrumbData path="/aboutus" />
       <div className="story-cover">
         <div className="wrap story-opener">
-          <SectionReveal>
+          <div className="page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Our story
             </span>
-            <h1>
-              Hyderabad
-              <br />
-              at heart.
-            </h1>
+            <PageTitle lines={["Hyderabad", "at heart."]} />
             <p>
               Look up from a booth in our Irving dining room and you’ll see the
               Charminar. The city on our wall is also the city behind our
               cooking.
             </p>
-          </SectionReveal>
-          <SectionReveal as="figure" delay={0.08}>
+          </div>
+          <figure className="opening-art">
             <Image
               src="/images/charminar-print.webp"
               alt="Illustration of Hyderabad’s Charminar rising above the old-city market"
@@ -43,7 +40,7 @@ export default function Story() {
               preload
             />
             <figcaption>The Charminar, Hyderabad</figcaption>
-          </SectionReveal>
+          </figure>
         </div>
       </div>
       <section className="wrap story-body">
@@ -73,7 +70,7 @@ export default function Story() {
       </section>
       <section className="pantry">
         <div className="wrap pantry-inner">
-          <SectionReveal as="figure">
+          <SectionReveal as="figure" treatment="photo">
             <Image
               src="/images/biryani-spices.webp"
               width={700}
@@ -120,7 +117,7 @@ export default function Story() {
       </section>
       <section className="catering-band">
         <div className="wrap feature-split">
-          <SectionReveal className="wide-photo">
+          <SectionReveal treatment="photo" className="wide-photo">
             <Image
               src="/images/kebabs-on-the-grill.webp"
               alt="Rows of kebab skewers cooking at an outdoor Pista House grill"

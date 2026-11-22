@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
 import { GuestNotes } from "@/components/guest-notes"
 import { CateringCarousel } from "@/components/catering-carousel"
@@ -51,17 +52,14 @@ export default function Home() {
       />
       <section className="hero">
         <div className="wrap hero-inner">
-          <SectionReveal className="hero-copy">
+          <div className="hero-copy page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Hyderabadi kitchen
             </span>
-            <h1>
-              A little <br />
-              Hyderabad
-              <br />
-              <em>in Irving.</em>
-            </h1>
+            <PageTitle
+              lines={["A little", "Hyderabad", { emphasis: "in Irving." }]}
+            />
             <p>
               Dum biryani, slow-cooked haleem, and kebabs from the tandoor,
               served on West Royal Lane.
@@ -76,7 +74,7 @@ export default function Home() {
                 Visit the restaurant <ArrowUpRight size={16} />
               </Link>
             </div>
-          </SectionReveal>
+          </div>
           <figure className="hero-figure">
             <div className="arch-frame">
               <div className="arch-photo">
@@ -130,7 +128,7 @@ export default function Home() {
         <div className="kitchen-spread">
           {specialties.map((item, index) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
-              <SectionReveal delay={index * 0.05} className="kitchen-plate">
+              <SectionReveal treatment="photo" delay={index * 0.07} className="kitchen-plate">
                 <Image
                   src={"/images/" + item.image + ".webp"}
                   alt={item.alt}
@@ -195,7 +193,7 @@ export default function Home() {
           </SectionReveal>
           <div className="dessert-spread">
             <figure>
-              <SectionReveal className="dessert-photo">
+              <SectionReveal treatment="photo" className="dessert-photo">
                 <Image
                   src="/images/dessert-tasting-table.webp"
                   alt="Strawberry layer cakes, chocolate squares, and fresh berries on a dessert tasting table"
@@ -208,7 +206,7 @@ export default function Home() {
               <figcaption>Cakes and berries</figcaption>
             </figure>
             <figure>
-              <SectionReveal className="dessert-photo">
+              <SectionReveal treatment="photo" className="dessert-photo">
                 <Image
                   src="/images/dessert-cups.webp"
                   alt="Individual dessert cups arranged in rows around a platter of sweet paan"

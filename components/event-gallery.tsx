@@ -17,7 +17,7 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
     <Dialog.Root>
       <div className="album-grid">
         {photos.map((photo, i) => (
-          <SectionReveal as="figure" delay={(i % 2) * 0.06} key={photo.image}>
+          <SectionReveal as="figure" treatment="photo" delay={(i % 2) * 0.06} key={photo.image}>
             <Dialog.Trigger asChild>
               <button
                 className="album-frame"

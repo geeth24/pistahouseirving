@@ -1,3 +1,4 @@
+import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData } from "@/components/structured-data"
 import Link from "next/link"
@@ -17,17 +18,13 @@ export default function Visit() {
       <BreadcrumbData path="/contactus" />
       <section className="wrap visit-page">
         <div className="visit-detail">
-          <SectionReveal className="intro">
+          <div className="intro page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
               Visit us
             </span>
-            <h1>
-              Find us on
-              <br />
-              West Royal Lane.
-            </h1>
-          </SectionReveal>
+            <PageTitle lines={["Find us on", "West Royal Lane."]} />
+          </div>
           <p>
             Look for the green Pista House sign above the black awning in Las
             Colinas. The glass entrance is marked 160.
@@ -82,7 +79,7 @@ export default function Visit() {
             </div>
           </dl>
         </div>
-        <SectionReveal as="figure" delay={0.08} className="entrance-print">
+        <figure className="entrance-print opening-art">
           <Image
             src="/images/irving-entrance.webp"
             alt="Illustrated view of the Pista House sign above the black awning and entrance marked 160"
@@ -92,7 +89,7 @@ export default function Visit() {
             preload
           />
           <figcaption>Our entrance in Las Colinas, Irving</figcaption>
-        </SectionReveal>
+        </figure>
       </section>
       <NeighborhoodMap />
       <section className="wrap planning visit-planning">

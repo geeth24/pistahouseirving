@@ -892,21 +892,6 @@ address {
   padding: 0.8rem 0;
   border-bottom: 1px solid var(--border);
 }
-@media (prefers-reduced-motion: no-preference) {
-  .hero-figure {
-    animation: arrive 0.55s ease-out both;
-  }
-  @keyframes arrive {
-    from {
-      transform: translateY(7px);
-      opacity: 0.85;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-}
 @media (max-width: 830px) {
   .desktop-nav {
     gap: 1rem;
@@ -978,12 +963,6 @@ address {
   .hero h1 {
     font-size: clamp(3.7rem, 12.5vw, 5.7rem);
     margin: 1rem 0;
-  }
-  .hero h1 br:first-child {
-    display: none;
-  }
-  .hero h1 br:first-child:after {
-    content: " ";
   }
   .hero h1 {
     max-width: 11ch;
@@ -2097,4 +2076,37 @@ address {
   :is(.button, .text-link, .guest-note a, .mobile-panel nav a):is(:hover, :focus-visible):not(:active) .lucide-arrow-up-right { transform: translate(2px, -2px); }
   :is(.button, .text-link):is(:hover, :focus-visible):not(:active) .lucide-arrow-right { transform: translateX(3px); }
   :is(.button, .text-link, .guest-note a):active svg { transform: scale(0.9); }
+}
+
+.title-window {
+  display: block;
+  overflow: clip;
+  padding-block: 0.13em;
+  margin-block: -0.13em;
+}
+.title-line { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .title-line { animation: title-enter 720ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .title-window:nth-child(2) .title-line { animation-delay: 100ms; }
+  .title-window:nth-child(3) .title-line { animation-delay: 180ms; }
+  .page-opening > p, .page-opening > .actions {
+    animation: opening-copy 620ms ease-out 180ms backwards;
+  }
+  .page-opening > .actions { animation-delay: 260ms; }
+  .arch-photo img, .opening-art img, .cater-cover-frame .mounted-photo img,
+  .menu-print img {
+    animation: opening-photo 900ms cubic-bezier(0.22, 1, 0.36, 1) 100ms backwards;
+  }
+  @keyframes title-enter {
+    from { transform: translateY(105%); }
+    to { transform: translateY(0); }
+  }
+  @keyframes opening-copy {
+    from { opacity: 0.28; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes opening-photo {
+    from { clip-path: inset(0 0 96% 0); }
+    to { clip-path: inset(0 0 0% 0); }
+  }
 }

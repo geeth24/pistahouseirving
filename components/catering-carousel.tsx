@@ -32,7 +32,10 @@ export function CateringCarousel() {
     const element = track.current
     if (!element) return
     const next = (active + direction + slides.length) % slides.length
-    element.scrollTo({ left: next * element.clientWidth, behavior: "instant" })
+    element.scrollTo({
+      left: next * element.clientWidth,
+      behavior: reduce || Math.abs(next - active) > 1 ? "instant" : "smooth",
+    })
   }
 
   return (
