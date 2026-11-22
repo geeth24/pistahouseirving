@@ -1,7 +1,7 @@
 import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData } from "@/components/structured-data"
-import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -31,7 +31,7 @@ export default function Story() {
             </p>
           </div>
           <figure className="opening-art">
-            <Image
+            <RestaurantPhoto
               src="/images/charminar-print.webp"
               alt="Illustration of Hyderabad’s Charminar rising above the old-city market"
               width={1536}
@@ -71,7 +71,7 @@ export default function Story() {
       <section className="pantry">
         <div className="wrap pantry-inner">
           <SectionReveal as="figure" treatment="photo">
-            <Image
+            <RestaurantPhoto
               src="/images/biryani-spices.webp"
               width={700}
               height={1050}
@@ -118,7 +118,7 @@ export default function Story() {
       <section className="catering-band">
         <div className="wrap feature-split">
           <SectionReveal treatment="photo" className="wide-photo">
-            <Image
+            <RestaurantPhoto
               src="/images/kebabs-on-the-grill.webp"
               alt="Rows of kebab skewers cooking at an outdoor Pista House grill"
               fill

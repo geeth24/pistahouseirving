@@ -1440,7 +1440,7 @@ address {
 .album-frame:hover img {
   transform: scale(1.02);
 }
-.album-frame > span {
+.album-frame .expand-photo-icon {
   position: absolute;
   bottom: 0.6rem;
   right: 0.6rem;
@@ -2093,10 +2093,6 @@ address {
     animation: opening-copy 620ms ease-out 180ms backwards;
   }
   .page-opening > .actions { animation-delay: 260ms; }
-  .arch-photo img, .opening-art img, .cater-cover-frame .mounted-photo img,
-  .menu-print img {
-    animation: opening-photo 900ms cubic-bezier(0.22, 1, 0.36, 1) 100ms backwards;
-  }
   @keyframes title-enter {
     from { transform: translateY(105%); }
     to { transform: translateY(0); }
@@ -2105,8 +2101,35 @@ address {
     from { opacity: 0.28; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  @keyframes opening-photo {
-    from { clip-path: inset(0 0 96% 0); }
-    to { clip-path: inset(0 0 0% 0); }
+
+}
+
+.photo-focus {
+  position: relative;
+  display: block;
+  isolation: isolate;
+}
+.photo-focus-fill {
+  position: absolute;
+  inset: 0;
+}
+.photo-focus::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: var(--photo-preview) center / cover no-repeat;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .photo-focus[data-phase="waiting"]::after { opacity: 1; }
+  .photo-focus[data-phase="shown"]::after { transition: opacity 650ms cubic-bezier(0.3, 0, 0.2, 1); }
+  [data-reveal="text"][data-phase="waiting"] { opacity: 0.82; }
+  [data-reveal="text"][data-phase="shown"] {
+    animation: section-arrive 480ms ease-out var(--reveal-delay, 0s) backwards;
+  }
+  @keyframes section-arrive {
+    from { opacity: 0.82; transform: translateY(9px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }

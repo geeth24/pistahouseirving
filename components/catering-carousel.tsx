@@ -1,6 +1,6 @@
 "use client"
 
-import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import { useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
@@ -69,7 +69,7 @@ export function CateringCarousel() {
             className="event-slide"
             aria-hidden={active !== index}
           >
-            <Image
+            <RestaurantPhoto
               src={"/images/" + slide.image + ".webp"}
               alt={slide.alt}
               fill

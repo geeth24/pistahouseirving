@@ -3,7 +3,7 @@ import { SectionReveal } from "@/components/section-reveal"
 import { GuestNotes } from "@/components/guest-notes"
 import { CateringCarousel } from "@/components/catering-carousel"
 import { StructuredData } from "@/components/structured-data"
-import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Clock3, MapPin, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -78,7 +78,7 @@ export default function Home() {
           <figure className="hero-figure">
             <div className="arch-frame">
               <div className="arch-photo">
-                <Image
+                <RestaurantPhoto
                   src="/images/dum-biryani.webp"
                   alt="Biryani in a metal bowl with lime, sliced onions, and whole spices on a wooden table"
                   fill
@@ -129,7 +129,7 @@ export default function Home() {
           {specialties.map((item, index) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
               <SectionReveal treatment="photo" delay={index * 0.07} className="kitchen-plate">
-                <Image
+                <RestaurantPhoto
                   src={"/images/" + item.image + ".webp"}
                   alt={item.alt}
                   fill
@@ -194,7 +194,7 @@ export default function Home() {
           <div className="dessert-spread">
             <figure>
               <SectionReveal treatment="photo" className="dessert-photo">
-                <Image
+                <RestaurantPhoto
                   src="/images/dessert-tasting-table.webp"
                   alt="Strawberry layer cakes, chocolate squares, and fresh berries on a dessert tasting table"
                   width={1800}
@@ -207,7 +207,7 @@ export default function Home() {
             </figure>
             <figure>
               <SectionReveal treatment="photo" className="dessert-photo">
-                <Image
+                <RestaurantPhoto
                   src="/images/dessert-cups.webp"
                   alt="Individual dessert cups arranged in rows around a platter of sweet paan"
                   width={1000}

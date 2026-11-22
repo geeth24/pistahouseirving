@@ -1,7 +1,7 @@
 import { PageTitle } from "@/components/page-title"
 import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
-import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import Link from "next/link"
 import { Catalog } from "@/components/catalog"
 import { menu } from "@/lib/dining-menu"
@@ -45,7 +45,7 @@ export default function MenuPage() {
           href="/aboutus"
           aria-label="Read the story behind the Charminar"
         >
-          <Image
+          <RestaurantPhoto
             src="/images/charminar-print.webp"
             alt=""
             width={260}

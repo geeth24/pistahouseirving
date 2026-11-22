@@ -3,7 +3,7 @@ import { SectionReveal } from "@/components/section-reveal"
 import { PhotoFrame } from "@/components/photo-frame"
 import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import { EventGallery } from "@/components/event-gallery"
-import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import { ArrowDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Catalog } from "@/components/catalog"
@@ -102,7 +102,7 @@ export default function Catering() {
             </div>
           </div>
           <PhotoFrame className="cater-cover-frame">
-            <Image
+            <RestaurantPhoto
               src="/images/station-finish.webp"
               alt="Marinated kebabs on skewers over the flames at a live grill"
               fill

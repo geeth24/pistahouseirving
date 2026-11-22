@@ -20,7 +20,7 @@ export const navigation = [
   { href: "/menu", name: "Menu" },
   { href: "/catering", name: "Catering" },
   { href: "/aboutus", name: "Our story" },
-  { href: "/contactus", name: "Visit us" },
+  { href: "/contactus", name: "Contact us" },
 ] as const
 
 export type PublicPath = "/" | (typeof navigation)[number]["href"]

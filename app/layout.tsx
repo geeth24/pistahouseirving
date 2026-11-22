@@ -1,3 +1,4 @@
+import { RevealPlayback } from "@/components/reveal-playback"
 import { StructuredData } from "@/components/structured-data"
 import type { Metadata } from "next"
 import { SiteHeader, AppearanceProvider } from "@/components/site-header"
@@ -82,6 +83,7 @@ export default function RootLayout({
             <SiteHeader />
             <main id="main">{children}</main>
             <SiteFooter />
+            <RevealPlayback />
           </OrderProvider>
         </AppearanceProvider>
         {process.env.NEXT_PUBLIC_ENVIRONMENT === "production" && (

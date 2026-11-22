@@ -4,6 +4,7 @@ import { useRef, useState } from "react"
 import { Dialog } from "radix-ui"
 import { ArrowLeft, ArrowRight, Expand, X } from "lucide-react"
 import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import { Button } from "./ui/button"
 
 type Photo = { image: string; name: string; detail: string; alt: string }
@@ -27,14 +28,14 @@ export function EventGallery({ photos }: { photos: Photo[] }) {
                   setIndex(i)
                 }}
               >
-                <Image
+                <RestaurantPhoto
                   src={"/images/" + photo.image + ".webp"}
                   alt={photo.alt}
                   fill
                   sizes="(max-width:700px) 89vw, 44vw"
                   quality={90}
                 />
-                <span>
+                <span className="expand-photo-icon">
                   <Expand size={16} />
                 </span>
               </button>

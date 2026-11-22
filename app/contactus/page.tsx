@@ -3,7 +3,7 @@ import { SectionReveal } from "@/components/section-reveal"
 import { BreadcrumbData } from "@/components/structured-data"
 import Link from "next/link"
 import { NeighborhoodMap } from "@/components/neighborhood-map"
-import Image from "next/image"
+import { RestaurantPhoto } from "@/components/restaurant-photo"
 import { ArrowUpRight, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { pageMetadata, restaurant } from "@/lib/restaurant"
@@ -21,7 +21,7 @@ export default function Visit() {
           <div className="intro page-opening">
             <span className="kicker">
               <i aria-hidden="true" />
-              Visit us
+              Contact us
             </span>
             <PageTitle lines={["Find us on", "West Royal Lane."]} />
           </div>
@@ -80,7 +80,7 @@ export default function Visit() {
           </dl>
         </div>
         <figure className="entrance-print opening-art">
-          <Image
+          <RestaurantPhoto
             src="/images/irving-entrance.webp"
             alt="Illustrated view of the Pista House sign above the black awning and entrance marked 160"
             width={1536}
