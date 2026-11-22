@@ -1,3 +1,4 @@
+import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
 import { Catalog } from "@/components/catalog"
@@ -5,7 +6,7 @@ import { menu } from "@/lib/dining-menu"
 import { pageMetadata, restaurant } from "@/lib/restaurant"
 export const metadata = pageMetadata(
   "/menu",
-  "Irving restaurant menu",
+  "Biryani, haleem, and kebab menu",
   "Explore Hyderabadi biryani, haleem, tandoori kebabs, vegetarian curries, naan, and desserts at Pista House Irving.",
 )
 const menuSchema = {
@@ -30,12 +31,8 @@ const menuSchema = {
 export default function MenuPage() {
   return (
     <div className="wrap" id="dining-menu">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(menuSchema).replace(/</g, "\\u003c"),
-        }}
-      />
+      <StructuredData data={menuSchema} />
+      <BreadcrumbData path="/menu" />
       <header className="intro menu-intro">
         <span className="kicker">
           <i aria-hidden="true" />

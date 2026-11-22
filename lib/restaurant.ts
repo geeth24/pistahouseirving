@@ -21,25 +21,58 @@ export const navigation = [
   { href: "/catering", name: "Catering" },
   { href: "/aboutus", name: "Our story" },
   { href: "/contactus", name: "Visit us" },
-]
+] as const
+
+export type PublicPath = "/" | (typeof navigation)[number]["href"]
+
+export const pageImages = {
+  "/": {
+    url: "/images/dum-biryani.webp",
+    width: 2400,
+    height: 1600,
+    alt: "Hyderabadi dum biryani at Pista House Irving",
+  },
+  "/menu": {
+    url: "/images/charminar-print.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Charminar illustration from the Irving menu",
+  },
+  "/catering": {
+    url: "/images/station-finish.webp",
+    width: 2400,
+    height: 1602,
+    alt: "Skewers at a Pista House live grilling station",
+  },
+  "/aboutus": {
+    url: "/images/charminar-print.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Illustration of Hyderabad’s Charminar",
+  },
+  "/contactus": {
+    url: "/images/irving-entrance.webp",
+    width: 1536,
+    height: 1024,
+    alt: "Illustrated entrance to Pista House on West Royal Lane",
+  },
+} satisfies Record<
+  PublicPath,
+  { url: string; width: number; height: number; alt: string }
+>
+
 export function pageMetadata(
-  path: string,
+  path: PublicPath,
   title: string,
   description: string,
 ): Metadata {
   const socialTitle = title + " | " + restaurant.name
-  const images = [
-    {
-      url: "/images/pista-house-irving.jpg",
-      width: 1200,
-      height: 630,
-      alt: "Pista House Irving dining room",
-    },
-  ]
+  const images = [pageImages[path]]
   return {
     title: { absolute: socialTitle },
     description,
     alternates: { canonical: path },
+    robots: { "max-image-preview": "large" },
     openGraph: {
       type: "website",
       siteName: restaurant.name,

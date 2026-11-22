@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useRef, useState, type RefObject } from "react"
 import { Check, Plus, Leaf, Search, X, ArrowUpRight } from "lucide-react"
 import { Dialog } from "radix-ui"
 import { Input } from "./ui/input"
@@ -8,7 +8,11 @@ import type { MenuSection } from "@/lib/catalog"
 import { useOrder } from "@/contexts/order-context"
 import { restaurant } from "@/lib/restaurant"
 
-function QuoteReview() {
+function QuoteReview({
+  searchRef,
+}: {
+  searchRef: RefObject<HTMLInputElement | null>
+}) {
   const { items, toggle, clear } = useOrder()
   const lines = items
     .map((item) => item.name + " (" + item.section + ")")
@@ -31,7 +35,15 @@ function QuoteReview() {
       </div>
       <Dialog.Portal>
         <Dialog.Overlay className="scrim" />
-        <Dialog.Content className="quote-panel">
+        <Dialog.Content
+          className="quote-panel"
+          onCloseAutoFocus={(event) => {
+            if (!items.length && searchRef.current) {
+              event.preventDefault()
+              searchRef.current.focus()
+            }
+          }}
+        >
           <div className="panel-heading">
             <Dialog.Title>Your catering menu</Dialog.Title>
             <Dialog.Close asChild>
@@ -45,7 +57,7 @@ function QuoteReview() {
           </Dialog.Description>
           {items.length > 0 ? (
             <>
-              <ul>
+              <ul role="list">
                 {items.map((item) => (
                   <li key={item.id}>
                     <span>
@@ -102,6 +114,7 @@ export function Catalog({
   const [search, setSearch] = useState("")
   const [filter, setFilter] = useState<(typeof filters)[number]>("All dishes")
   const { items, toggle } = useOrder()
+  const searchRef = useRef<HTMLInputElement>(null)
   const query = search.trim().toLowerCase()
   const visible = sections
     .map((section) => ({
@@ -126,6 +139,7 @@ export function Catalog({
         <label className="searchbox">
           <Search size={18} />
           <Input
+            ref={searchRef}
             aria-label="Search dishes"
             type="search"
             placeholder="Search dishes or ingredients"
@@ -174,7 +188,7 @@ export function Catalog({
                 ))}
                 <h2>{section.name}</h2>
                 {section.note && <p className="menu-note">{section.note}</p>}
-                <ul className="dish-list">
+                <ul role="list" className="dish-list">
                   {section.items.map((dish) => {
                     const item = {
                       id: section.id + "/" + dish.name,
@@ -233,7 +247,7 @@ export function Catalog({
           </Button>
         </div>
       )}
-      {catering && <QuoteReview />}
+      {catering && <QuoteReview searchRef={searchRef} />}
     </div>
   )
 }

@@ -1,3 +1,5 @@
+import { PhotoFrame } from "@/components/photo-frame"
+import { StructuredData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, ArrowUpRight, Clock3, MapPin, Phone } from "lucide-react"
@@ -5,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { pageMetadata, restaurant } from "@/lib/restaurant"
 export const metadata = pageMetadata(
   "/",
-  "Hyderabadi restaurant in Irving, TX",
+  "Hyderabadi Indian restaurant in Irving, TX",
   "Visit Pista House on West Royal Lane for Hyderabadi dum biryani, haleem, and kebabs. Browse the menu, order pickup, or plan an event.",
 )
 const specialties = [
@@ -34,6 +36,17 @@ const specialties = [
 export default function Home() {
   return (
     <>
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": restaurant.origin + "/#website",
+          name: restaurant.name,
+          alternateName: "Pista House",
+          url: restaurant.origin + "/",
+          publisher: { "@id": restaurant.origin + "/#restaurant" },
+        }}
+      />
       <section className="hero">
         <div className="wrap hero-inner">
           <div className="hero-copy">
@@ -113,14 +126,18 @@ export default function Home() {
           </Link>
         </div>
         <div className="kitchen-spread">
-          {specialties.map((item) => (
+          {specialties.map((item, index) => (
             <Link href={"/menu#" + item.anchor} key={item.anchor}>
               <div className="kitchen-plate">
                 <Image
                   src={"/images/" + item.image + ".webp"}
                   alt={item.alt}
                   fill
-                  sizes="(max-width:700px) 89vw, 47vw"
+                  sizes={
+                    index === 0
+                      ? "(max-width:700px) 89vw, 48vw"
+                      : "(max-width:700px) 38vw, (max-width:1440px) 20vw, 280px"
+                  }
                   quality={90}
                 />
               </div>
@@ -135,14 +152,14 @@ export default function Home() {
       </section>
       <section className="catering-band">
         <div className="wrap feature-split">
-          <div className="wide-photo">
+          <PhotoFrame className="gather-photo">
             <Image
-              src="/images/garden-buffet.webp"
-              alt="Copper buffet servers set out for a gathering beneath garden trees"
+              src="/images/plated-service.webp"
+              alt="A Pista House cook finishing rows of individually plated dishes for an event"
               fill
               sizes="(max-width:700px) 90vw, 48vw"
             />
-          </div>
+          </PhotoFrame>
           <div>
             <span className="kicker">
               <i aria-hidden="true" />
@@ -167,16 +184,15 @@ export default function Home() {
         </div>
       </section>
       <section className="wrap dessert-feature">
-        <figure>
+        <PhotoFrame className="dessert-crop">
           <Image
             src="/images/sweet-table.webp"
             alt="A bowl of syrup-soaked gulab jamun"
-            width={900}
-            height={600}
+            fill
             sizes="(max-width:700px) 89vw, 43vw"
             quality={90}
           />
-        </figure>
+        </PhotoFrame>
         <div>
           <span className="kicker">
             <i aria-hidden="true" />
@@ -191,6 +207,26 @@ export default function Home() {
           <Link className="text-link" href="/menu#desserts">
             Explore desserts <ArrowRight />
           </Link>
+        </div>
+      </section>
+      <section className="guest-notes">
+        <div className="wrap">
+          <div className="album-intro">
+            <h2>From our guests</h2>
+            <a className="text-link" href="https://us.sulekha.com/irving-tx/restaurants/pista-house-847210">
+              Read reviews on Sulekha <ArrowUpRight />
+            </a>
+          </div>
+          <div className="guest-quotes">
+            <figure>
+              <blockquote>“Taste is as good as Hyderabad Biryani.”</blockquote>
+              <figcaption>Irfan Shaikh</figcaption>
+            </figure>
+            <figure>
+              <blockquote>“I am glad I made good choice for my reception.”</blockquote>
+              <figcaption>Chakradhar Rao Beerpur</figcaption>
+            </figure>
+          </div>
         </div>
       </section>
       <section className="wrap story-body home-visit">

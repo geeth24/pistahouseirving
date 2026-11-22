@@ -1,3 +1,4 @@
+import { BreadcrumbData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
@@ -12,6 +13,7 @@ export const metadata = pageMetadata(
 export default function Story() {
   return (
     <article>
+      <BreadcrumbData path="/aboutus" />
       <div className="story-cover">
         <div className="wrap story-opener">
           <div>

@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ThemeProvider, useTheme } from "next-themes"
@@ -108,12 +109,15 @@ export function SiteHeader() {
                 aria-describedby={undefined}
               >
                 <div className="panel-heading">
-                  <Dialog.Title>Explore Pista House</Dialog.Title>
+                  <Dialog.Title><span className="wordmark" aria-hidden="true" /><span className="sr-only">Explore Pista House</span></Dialog.Title>
                   <Dialog.Close asChild>
                     <Button variant="icon" aria-label="Close navigation">
                       <X />
                     </Button>
                   </Dialog.Close>
+                </div>
+                <div className="menu-postcard">
+                  <Image src="/images/charminar-print.webp" alt="" fill sizes="(max-width: 480px) 92vw, 410px" />
                 </div>
                 <nav aria-label="Mobile navigation">
                   {navigation.map(({ href, name }) => (
@@ -128,9 +132,10 @@ export function SiteHeader() {
                     </Dialog.Close>
                   ))}
                 </nav>
-                <a className="text-link" href={restaurant.tel}>
-                  {restaurant.phone}
-                </a>
+                <div className="menu-drawer-foot">
+                  <Button asChild><a href={restaurant.order}>Order online <ArrowUpRight /></a></Button>
+                  <a href={restaurant.tel}>{restaurant.phone}</a>
+                </div>
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>

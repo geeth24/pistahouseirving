@@ -257,7 +257,8 @@ export const menu: MenuSection[] = [
       {
         name: "Malai Kofta",
         vegetarian: true,
-        description: "Vegetable dumplings in a creamy curry.",
+        description:
+          "Potato and cheese dumplings in cream sauce with raisins and cashews.",
       },
       {
         name: "Palak Paneer",
@@ -272,7 +273,7 @@ export const menu: MenuSection[] = [
       {
         name: "Paneer Butter Masala",
         vegetarian: true,
-        description: "Paneer simmered in a buttery tomato sauce.",
+        description: "Paneer in a buttery cashew sauce.",
       },
       {
         name: "Kadai Paneer",
@@ -287,17 +288,19 @@ export const menu: MenuSection[] = [
       {
         name: "Bagara Baigan",
         vegetarian: true,
-        description: "Eggplant in a nutty Hyderabadi gravy.",
+        description:
+          "Eggplant in a thick gravy made with peanuts and sesame seeds.",
       },
       {
         name: "Dal Tadka",
         vegetarian: true,
-        description: "Lentils finished with tempered spices.",
+        description:
+          "Split pigeon peas with curry leaves, cumin, chilies, and clarified butter.",
       },
       {
         name: "Dum Ka Chicken Curry",
         vegetarian: false,
-        description: "Chicken slow-cooked with spices.",
+        description: "Chicken slow-cooked with spices and cashews.",
       },
       {
         name: "Butter Chicken",
@@ -347,7 +350,7 @@ export const menu: MenuSection[] = [
       {
         name: "Kheema Masala",
         vegetarian: false,
-        description: "Minced meat simmered with masala.",
+        description: "Minced goat simmered with onions, tomatoes, and spices.",
       },
     ],
   },
@@ -358,22 +361,28 @@ export const menu: MenuSection[] = [
     items: [
       {
         name: "Butter Naan",
+        description: "Wheat-flour flatbread brushed with butter.",
         vegetarian: true,
       },
       {
         name: "Bullet Naan",
+        description: "Wheat-flour naan with garlic, chili, and cilantro.",
         vegetarian: true,
       },
       {
         name: "Garlic Naan",
+        description: "Wheat-flour naan topped with garlic and cilantro.",
         vegetarian: true,
       },
       {
         name: "Plain Naan",
+        description:
+          "Hand-tossed wheat-flour flatbread baked in the clay oven.",
         vegetarian: true,
       },
       {
         name: "Tandoori Roti",
+        description: "Whole-wheat flatbread baked in the clay oven.",
         vegetarian: true,
       },
       {
@@ -456,7 +465,8 @@ export const menu: MenuSection[] = [
       {
         name: "Falooda",
         vegetarian: true,
-        description: "Rose milk with vermicelli, basil seeds, and ice cream.",
+        description:
+          "Rose milk with vermicelli, jelly, basil seeds, and ice cream.",
       },
       {
         name: "Salt Lassi",
@@ -494,7 +504,8 @@ export const menu: MenuSection[] = [
       {
         name: "Carrot Halwa",
         vegetarian: true,
-        description: "Grated carrots cooked with milk and butter.",
+        description:
+          "Grated carrots cooked with milk and butter, finished with raisins.",
       },
       {
         name: "Lychee Malai",

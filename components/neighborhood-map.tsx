@@ -190,7 +190,7 @@ export function NeighborhoodMap() {
             <iframe
               className="location-map"
               title="Google Maps location of Pista House Irving"
-              referrerPolicy="no-referrer-when-downgrade"
+              referrerPolicy="strict-origin-when-cross-origin"
               src="https://maps.google.com/maps?q=Pista%20House%20901%20W%20Royal%20Ln%20Irving%20TX%2075039&z=16&output=embed"
             />
           ) : (

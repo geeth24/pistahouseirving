@@ -1,3 +1,4 @@
+import { BreadcrumbData } from "@/components/structured-data"
 import Link from "next/link"
 import { NeighborhoodMap } from "@/components/neighborhood-map"
 import Image from "next/image"
@@ -7,11 +8,12 @@ import { pageMetadata, restaurant } from "@/lib/restaurant"
 export const metadata = pageMetadata(
   "/contactus",
   "Hours and directions",
-  "Find Pista House Irving at 901 W Royal Ln. Get directions, check dining room hours, or call the restaurant about pickup and catering.",
+  "Find Pista House at 901 W Royal Ln, Suite 160, in Las Colinas, Irving. Get directions, check dining room hours, or call about pickup and catering.",
 )
 export default function Visit() {
   return (
     <>
+      <BreadcrumbData path="/contactus" />
       <section className="wrap visit-page">
         <div className="visit-detail">
           <div className="intro">
@@ -48,7 +50,16 @@ export default function Visit() {
           <dl>
             <div>
               <dt>Dining hours</dt>
-              <dd>{restaurant.hours}</dd>
+              <dd>
+                {restaurant.hours}
+                <br />
+                <a
+                  className="hours-map-link"
+                  href="https://www.google.com/maps/search/?api=1&query=Pista+House+901+W+Royal+Ln+Irving+TX"
+                >
+                  Check holiday hours on Google Maps
+                </a>
+              </dd>
             </div>
             <div>
               <dt>Call the restaurant</dt>

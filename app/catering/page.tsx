@@ -1,3 +1,5 @@
+import { PhotoFrame } from "@/components/photo-frame"
+import { BreadcrumbData, StructuredData } from "@/components/structured-data"
 import { EventGallery } from "@/components/event-gallery"
 import Image from "next/image"
 import { ArrowDown } from "lucide-react"
@@ -16,7 +18,7 @@ const eventPhotos = [
     image: "garden-buffet",
     name: "An outdoor buffet",
     detail:
-      "Copper chafing dishes under the trees, with serving space on both sides.",
+      "Copper and silver chafing dishes set beneath the trees. Restored from an event photograph.",
     alt: "Copper chafing dishes on a long buffet beneath leafy trees",
   },
   {
@@ -45,21 +47,34 @@ const eventPhotos = [
     alt: "Covered brass buffet servers arranged along a wall of windows",
   },
   {
-    image: "event-table",
-    name: "Plated dinner outdoors",
-    detail: "Tables dressed for dinner on the lawn.",
-    alt: "Rows of set tables and chairs on a lawn for a catered dinner",
+    image: "plated-service",
+    name: "Plated dinner service",
+    detail:
+      "A cook adds the finishing touches to individual plates before service.",
+    alt: "A cook attending to rows of white plates on a long table",
   },
   {
-    image: "banquet",
-    name: "An indoor reception",
-    detail: "Silver chafers in place before guests arrive.",
-    alt: "A banquet room with a long line of silver chafing dishes",
+    image: "silver-handi",
+    name: "Silver handi service",
+    detail: "Silver handis set along a window for buffet service. Restored from an event photograph.",
+    alt: "Silver serving vessels lined up on a banquet table",
   },
 ]
 export default function Catering() {
   return (
     <>
+      <BreadcrumbData path="/catering" />
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FoodService",
+          name: "Pista House catering",
+          url: restaurant.origin + "/catering",
+          serviceType: "Indian catering",
+          areaServed: "Dallas–Fort Worth, Texas",
+          provider: { "@id": restaurant.origin + "/#restaurant" },
+        }}
+      />
       <section className="cater-hero">
         <div className="wrap feature-split">
           <div>
@@ -84,7 +99,7 @@ export default function Catering() {
               </a>
             </div>
           </div>
-          <div className="wide-photo">
+          <PhotoFrame className="cater-cover-frame">
             <Image
               src="/images/station-finish.webp"
               alt="Marinated kebabs on skewers over the flames at a live grill"
@@ -92,7 +107,7 @@ export default function Catering() {
               sizes="(max-width:700px) 95vw, 47vw"
               preload
             />
-          </div>
+          </PhotoFrame>
         </div>
       </section>
       <section className="wrap event-album">

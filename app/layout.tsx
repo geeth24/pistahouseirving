@@ -1,8 +1,11 @@
+import { StructuredData } from "@/components/structured-data"
 import type { Metadata } from "next"
 import { SiteHeader, AppearanceProvider } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { OrderProvider } from "@/contexts/order-context"
 import { restaurant } from "@/lib/restaurant"
+import Link from "next/link"
+import { ArrowRight, MoonStar } from "lucide-react"
 import Script from "next/script"
 import "@/styles/globals.css"
 export const metadata: Metadata = {
@@ -17,12 +20,18 @@ const schema = {
   "@id": restaurant.origin + "/#restaurant",
   name: restaurant.name,
   url: restaurant.origin,
-  telephone: restaurant.phone,
+  telephone: restaurant.tel.slice("tel:".length),
   email: restaurant.email,
-  image: restaurant.origin + "/images/dining-room.webp",
+  image: [
+    restaurant.origin + "/images/dum-biryani.webp",
+    restaurant.origin + "/images/haleem-table.webp",
+    restaurant.origin + "/images/mixed-grill.webp",
+  ],
+  logo: restaurant.origin + "/apple-touch-icon.png",
   geo: { "@type": "GeoCoordinates", ...restaurant.coordinates },
   hasMap: restaurant.directions,
   servesCuisine: ["Hyderabadi", "Indian"],
+  menu: restaurant.origin + "/menu",
   hasMenu: { "@id": restaurant.origin + "/menu#dining-menu" },
   address: {
     "@type": "PostalAddress",
@@ -57,15 +66,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        <StructuredData data={schema} />
         <AppearanceProvider>
           <OrderProvider>
             <a className="skip" href="#main">
               Skip to content
             </a>
+            <aside className="announcement" aria-label="Restaurant announcement">
+              <Link href="/contactus">
+                <MoonStar size={15} aria-hidden="true" />
+                <span>Late supper in Irving · Open until 2 AM</span>
+                <ArrowRight size={14} aria-hidden="true" />
+              </Link>
+            </aside>
             <SiteHeader />
             <main id="main">{children}</main>
             <SiteFooter />
