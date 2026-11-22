@@ -15,7 +15,7 @@ export const metadata = pageMetadata(
 )
 const eventPhotos = [
   {
-    image: "garden-buffet",
+    image: "outdoor-buffet",
     name: "An outdoor buffet",
     detail:
       "Copper and silver chafing dishes set beneath the trees. Restored from an event photograph.",
@@ -34,7 +34,7 @@ const eventPhotos = [
     alt: "A platter of tandoori kebabs in three marinades",
   },
   {
-    image: "live-grill",
+    image: "kebabs-on-the-grill",
     name: "Kebabs on the grill",
     detail: "Rows of skewers cook over the coals at an outdoor event.",
     alt: "Smoke rising from skewers cooking on a long grill",
@@ -47,14 +47,14 @@ const eventPhotos = [
     alt: "Covered brass buffet servers arranged along a wall of windows",
   },
   {
-    image: "plated-service",
+    image: "plated-dinner-service",
     name: "Plated dinner service",
     detail:
       "A cook adds the finishing touches to individual plates before service.",
     alt: "A cook attending to rows of white plates on a long table",
   },
   {
-    image: "silver-handi",
+    image: "silver-handi-buffet",
     name: "Silver handi service",
     detail: "Silver handis set along a window for buffet service. Restored from an event photograph.",
     alt: "Silver serving vessels lined up on a banquet table",

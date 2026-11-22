@@ -121,7 +121,7 @@ export default function Story() {
         <div className="wrap feature-split">
           <div className="wide-photo">
             <Image
-              src="/images/live-grill.webp"
+              src="/images/kebabs-on-the-grill.webp"
               alt="Rows of kebab skewers cooking at an outdoor Pista House grill"
               fill
               sizes="(max-width:700px) 90vw, 46vw"

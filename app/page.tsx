@@ -1,4 +1,4 @@
-import { PhotoFrame } from "@/components/photo-frame"
+import { CateringCarousel } from "@/components/catering-carousel"
 import { StructuredData } from "@/components/structured-data"
 import Image from "next/image"
 import Link from "next/link"
@@ -150,70 +150,65 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <section className="catering-band">
-        <div className="wrap feature-split">
-          <PhotoFrame className="gather-photo">
-            <Image
-              src="/images/plated-service.webp"
-              alt="A Pista House cook finishing rows of individually plated dishes for an event"
-              fill
-              sizes="(max-width:700px) 90vw, 48vw"
-            />
-          </PhotoFrame>
-          <div>
-            <span className="kicker">
-              <i aria-hidden="true" />
-              Pista House catering
-            </span>
-            <h2>
-              A table for
-              <br />
-              the whole party.
-            </h2>
-            <p>
-              Plan a wedding spread, an office lunch, or a family gathering.
-              Pick the dishes you have in mind and share your list with our
-              team.
-            </p>
-            <Button asChild>
-              <Link href="/catering">
-                Plan your menu <ArrowRight />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-      <section className="wrap dessert-feature">
-        <PhotoFrame className="dessert-crop">
-          <Image
-            src="/images/sweet-table.webp"
-            alt="A bowl of syrup-soaked gulab jamun"
-            fill
-            sizes="(max-width:700px) 89vw, 43vw"
-            quality={90}
-          />
-        </PhotoFrame>
-        <div>
+      <section id="event-service" className="party-feature">
+        <div className="party-copy">
           <span className="kicker">
             <i aria-hidden="true" />
-            After dinner
+            Pista House catering
           </span>
-          <h2>Leave room for something sweet.</h2>
+          <h2>A table for the whole party.</h2>
           <p>
-            Gulab jamun comes soaked in syrup. Double ka meetha is Hyderabad’s
-            milk-rich bread pudding. Qubani ka meetha brings apricots to the
-            dessert table.
+            Plan a wedding spread, an office lunch, or a family gathering.
+            Choose the dishes you have in mind and share your list with our
+            team.
           </p>
-          <Link className="text-link" href="/menu#desserts">
-            Explore desserts <ArrowRight />
-          </Link>
+          <Button asChild variant="light">
+            <Link href="/catering">
+              Plan your menu <ArrowRight />
+            </Link>
+          </Button>
+        </div>
+        <CateringCarousel />
+      </section>
+      <section id="after-dinner" className="dessert-story">
+        <div className="wrap dessert-layout">
+          <div className="dessert-title">
+            <span className="kicker">
+              <i aria-hidden="true" />
+              After dinner
+            </span>
+            <h2>Leave room for something sweet.</h2>
+          </div>
+          <div className="dessert-center">
+            <Image
+              src="/images/gulab-jamun.webp"
+              alt="A white bowl of gulab jamun in syrup"
+              width={1664}
+              height={1248}
+              sizes="(max-width: 760px) 88vw, 39vw"
+              quality={90}
+            />
+          </div>
+          <div className="dessert-notes">
+            <p>
+              Gulab jamun comes soaked in syrup. Double ka meetha is Hyderabad’s
+              milk-rich bread pudding. Qubani ka meetha brings apricots to the
+              dessert table.
+            </p>
+            <Link className="text-link" href="/menu#desserts">
+              Explore desserts <ArrowRight />
+            </Link>
+          </div>
         </div>
       </section>
       <section className="guest-notes">
         <div className="wrap">
           <div className="album-intro">
             <h2>From our guests</h2>
-            <a className="text-link" href="https://us.sulekha.com/irving-tx/restaurants/pista-house-847210">
+            <a
+              className="text-link"
+              href="https://us.sulekha.com/irving-tx/restaurants/pista-house-847210"
+            >
               Read reviews on Sulekha <ArrowUpRight />
             </a>
           </div>
@@ -223,7 +218,9 @@ export default function Home() {
               <figcaption>Irfan Shaikh</figcaption>
             </figure>
             <figure>
-              <blockquote>“I am glad I made good choice for my reception.”</blockquote>
+              <blockquote>
+                “I am glad I made good choice for my reception.”
+              </blockquote>
               <figcaption>Chakradhar Rao Beerpur</figcaption>
             </figure>
           </div>
