@@ -8,13 +8,8 @@ export function NavigationMotion() {
   const destination = useRef<string | null>(null)
 
   useEffect(() => {
-    const root = document.documentElement
-    let timeout: ReturnType<typeof setTimeout>
-
     function reset() {
-      delete root.dataset.anchorScroll
       destination.current = null
-      clearTimeout(timeout)
     }
 
     function followLink(event: MouseEvent) {
@@ -40,8 +35,26 @@ export function NavigationMotion() {
         url.search === location.search &&
         event.detail > 0
       ) {
-        root.dataset.anchorScroll = ""
-        timeout = setTimeout(reset, 1400)
+        const target = document.getElementById(url.hash.slice(1))
+        if (!target) return
+        event.preventDefault()
+        if (url.href !== location.href)
+          window.history.pushState(null, "", url.href)
+        if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
+          target.tabIndex = -1
+          target.addEventListener(
+            "blur",
+            () => target.removeAttribute("tabindex"),
+            { once: true },
+          )
+        }
+        target.focus({ preventScroll: true })
+        target.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "instant"
+            : "smooth",
+        })
       }
     }
 

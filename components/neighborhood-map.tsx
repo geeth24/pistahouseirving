@@ -5,162 +5,190 @@ import { Map, Navigation, Compass, ArrowUpRight } from "lucide-react"
 import { restaurant } from "@/lib/restaurant"
 
 function AreaDrawing() {
+  const plazaBuildings = [
+    "M24 20h51v20H47v24H24z",
+    "M96 25h67v19H96z",
+    "M192 25h57v14h-17v13h-40z",
+    "M261 55h34v23h-34z",
+    "M60 177h72v24h-17v11H60z",
+    "M142 179h73v24h-22v9h-51z",
+    "M230 161h49v18h-49z",
+    "M242 202h39v22h-39z",
+    "M365 54h28v38h-28z",
+    "M418 90h44v15h-44z",
+    "M365 171h30v39h-30z",
+    "M411 171h48v17h-48z",
+    "M415 200h33v20h-33z",
+    "M348 288h46v15h-31v21h-15z",
+    "M414 300h40v24h-40z",
+    "M361 345h60v13h-60z",
+  ]
+
   return (
     <svg
       className="area-drawing"
-      viewBox="0 0 720 395"
+      viewBox="0 0 480 370"
       role="img"
-      aria-label="Illustrated neighborhood map. Pista House is north of West Royal Lane and west of North MacArthur Boulevard in Las Colinas."
+      aria-label="Illustrated neighborhood map. Pista House Irving, Suite 160, is on the north side of West Royal Lane, west of North MacArthur Boulevard."
     >
       <defs>
-        <pattern
-          id="map-paper"
-          width="9"
-          height="9"
-          patternUnits="userSpaceOnUse"
-        >
-          <circle cx="2" cy="2" r=".55" fill="var(--atlas-ink)" opacity=".19" />
-        </pattern>
-        <g id="grove" stroke="var(--atlas-green)" strokeWidth="1.4">
-          <path d="M0 10V-2m-5 5 5 3 5-4" fill="none" />
+        <g id="plaza-oak">
+          <path d="M-2.6 0h5.2l.6 11.5h-6.4z" fill="var(--atlas-trunk)" />
           <path
-            d="M-1 3c-9 2-12-5-7-10-2-4 1-9 5-8 5-7 12-2 11 3 7 2 8 9 3 12z"
+            d="M-15-2c-3-3-2-8 2-10 0-4 4-7 8-6 4-5 12-4 15 2 5 0 9 5 7 10 3 5-1 10-6 10H-9c-4 0-7-2-6-6Z"
             fill="var(--atlas-leaf)"
+            stroke="var(--atlas-green)"
+            strokeWidth="1.3"
           />
         </g>
       </defs>
-      <rect width="720" height="395" fill="var(--atlas-ground)" />
-      <rect width="720" height="395" fill="url(#map-paper)" />
+      <rect width="480" height="370" fill="var(--atlas-ground)" />
       <g
-        fill="var(--atlas-block)"
+        fill="var(--atlas-parcel)"
         stroke="var(--atlas-outline)"
         strokeWidth="1"
       >
-        {[
-          [26, 38, 48, 39],
-          [20, 93, 43, 66],
-          [20, 172, 48, 31],
-          [130, 34, 70, 30],
-          [212, 34, 49, 29],
-          [298, 27, 95, 57],
-          [150, 105, 74, 32],
-          [246, 109, 44, 22],
-          [315, 136, 74, 43],
-          [518, 35, 60, 36],
-          [611, 29, 73, 46],
-          [523, 156, 65, 24],
-          [605, 139, 49, 63],
-          [544, 303, 56, 28],
-          [618, 298, 54, 65],
-          [341, 305, 55, 21],
-          [140, 298, 59, 26],
-          [239, 297, 52, 44],
-        ].map(([x, y, w, h]) => (
-          <rect key={x + "-" + y} x={x} y={y} width={w} height={h} rx="3" />
+        <path d="M-5-3h311v90H66l-8 36H-5z" />
+        <path d="M49 97h255v138H32c4-52 8-93 17-138z" />
+        <path d="M349-3h137v120H349zM351 146h135v89H351z" />
+        <path d="M346 279h139v101H296c26-38 37-69 50-101z" />
+      </g>
+      <g fill="none" stroke="var(--atlas-path)" strokeWidth="5">
+        <path d="M-8 78h64l20-17h200M35 242c-1-33 4-68 13-101M79 221h137M223 238V147h66M398 104v-66h46M363 223h109M350 331h120" />
+      </g>
+      <g
+        fill="var(--atlas-block)"
+        stroke="var(--atlas-roof)"
+        strokeWidth="1.15"
+        strokeLinejoin="round"
+      >
+        {plazaBuildings.map((d) => (
+          <path d={d} key={d} />
         ))}
       </g>
       <path
-        d="M-10 316c70-17 103 14 162 41s151 27 206 51H-10z"
-        fill="var(--atlas-water)"
+        fill="var(--atlas-meadow)"
+        d="M0 279c56 1 104 20 146 39 38 18 72 26 113 30l-14 22H0z"
       />
-      <g fill="none" strokeLinecap="round" strokeLinejoin="round">
-        {[
-          ["M-10 251 Q125 246 237 251H735", 24],
-          ["M484 -8V231Q488 270 466 311L417 409", 26],
-          ["M98 -8Q112 69 98 113T98 251", 13],
-          ["M485 101Q565 106 733 95", 12],
-        ].map(([d, w]) => (
-          <g key={d}>
-            <path
-              d={String(d)}
-              stroke="var(--atlas-outline)"
-              strokeWidth={Number(w) + 3}
-            />
-            <path
-              d={String(d)}
-              stroke="var(--atlas-road)"
-              strokeWidth={Number(w)}
-            />
-          </g>
-        ))}
-      </g>
+      <path
+        fill="var(--atlas-water)"
+        d="M0 305c45 0 83 17 123 35 32 15 61 22 100 30H0z"
+      />
+      <path
+        d="M0 314c43 3 77 17 108 31m-82-8c17 4 28 9 40 14m80 5 36 10"
+        fill="none"
+        stroke="var(--atlas-water-line)"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
       <g>
-        {[
-          [43, 291],
-          [61, 306],
-          [306, 354],
-          [320, 365],
-          [396, 291],
-          [555, 206],
-          [570, 213],
-          [138, 183],
-          [116, 50],
-          [681, 157],
-          [662, 330],
-          [571, 346],
-          [584, 351],
-        ].map(([x, y]) => (
-          <use href="#grove" key={x + "-" + y} x={x} y={y} />
-        ))}
+        <use href="#plaza-oak" transform="translate(106 64) scale(.94)" />
+        <use href="#plaza-oak" transform="translate(390 31) scale(.86)" />
+        <use href="#plaza-oak" transform="translate(161 306)" />
+        <use href="#plaza-oak" transform="translate(209 321) scale(.90)" />
+        <use href="#plaza-oak" transform="translate(449 345) scale(.92)" />
+      </g>
+      <g fill="none" strokeLinecap="round">
+        <path
+          d="M333 134h155"
+          stroke="var(--atlas-road-edge)"
+          strokeWidth="22"
+        />
+        <path d="M333 134h155" stroke="var(--atlas-road)" strokeWidth="20" />
+        <g stroke="var(--atlas-road-edge)" strokeWidth="36">
+          <path d="M329-15v263c0 40-30 85-57 134M-10 257h502" />
+        </g>
+        <g stroke="var(--atlas-road)" strokeWidth="32">
+          <path d="M329-15v263c0 40-30 85-57 134M-10 257h502" />
+        </g>
+        <g stroke="var(--atlas-road-edge)" strokeWidth="1.2">
+          <path d="M3 257h20m212 0h63m62 0h112M329 187v42m-4 53c-6 19-18 42-30 63" />
+        </g>
       </g>
       <g
+        className="area-road-label"
+        textAnchor="middle"
         fill="var(--atlas-ink)"
-        fontFamily="var(--body)"
-        fontSize="15"
-        fontWeight="650"
       >
-        <text x="173" y="256">
+        <text x="136" y="264">
           W Royal Ln
         </text>
-        <text transform="translate(490 209) rotate(-90)">N MacArthur Blvd</text>
-        <text x="563" y="104" fontSize="12">
+        <text transform="translate(335 108) rotate(-90)">N MacArthur Blvd</text>
+        <text x="412" y="139" fontSize="16">
           Tuscan Dr
         </text>
-        <text transform="translate(101 166) rotate(-87)" fontSize="12">
-          Sierra Dr
-        </text>
       </g>
-      <g transform="translate(258,202)">
-        <ellipse cy="5" rx="12" ry="3" fill="var(--atlas-outline)" />
-        <path
-          d="M0 3S-17-14-17-25a17 17 0 0 1 34 0C17-14 0 3 0 3Z"
-          fill="var(--hero)"
+      <g transform="translate(438 39)" textAnchor="middle">
+        <circle
+          r="25"
+          fill="var(--atlas-road)"
+          stroke="var(--atlas-road-edge)"
         />
-        <circle cy="-25" r="5" fill="var(--hero-ink)" />
-      </g>
-      <g transform="translate(180 149)">
-        <rect width="155" height="38" rx="3" fill="var(--hero)" />
-        <text
-          x="77.5"
-          y="25"
-          textAnchor="middle"
-          fill="var(--hero-ink)"
-          fontFamily="var(--display)"
-          fontSize="21"
-        >
-          Pista House
-        </text>
-      </g>
-      <g transform="translate(671 39)" stroke="var(--atlas-ink)" fill="none">
-        <path d="M0 18V-4m0 0-5 13 5-3 5 3z" />
-        <text
-          x="0"
-          y="-9"
-          stroke="none"
-          textAnchor="middle"
-          fill="var(--atlas-ink)"
-          fontSize="12"
-        >
+        <text y="-8" fill="var(--atlas-ink)" fontSize="13" fontWeight="800">
           N
+        </text>
+        <path
+          d="M0-4 6 7 0 19-6 7Z"
+          fill="var(--atlas-road)"
+          stroke="var(--atlas-ink)"
+          strokeWidth="1.4"
+        />
+        <path d="M0-4 6 7H-6Z" fill="var(--atlas-ink)" />
+      </g>
+      <g>
+        <ellipse
+          cx="165"
+          cy="208"
+          rx="11"
+          ry="3.5"
+          fill="var(--atlas-road-edge)"
+        />
+        <path
+          d="M165 208s-18-20-18-31a18 18 0 0 1 36 0c0 11-18 31-18 31Z"
+          fill="var(--atlas-pin)"
+          stroke="var(--atlas-label-ink)"
+          strokeWidth="2"
+        />
+        <circle cx="165" cy="177" r="5.3" fill="var(--atlas-label-ink)" />
+        <rect
+          x="46"
+          y="81"
+          width="222"
+          height="71"
+          rx="4"
+          fill="var(--atlas-label)"
+          stroke="var(--atlas-label-ink)"
+          strokeWidth="1.7"
+        />
+        <text
+          x="157"
+          y="111"
+          textAnchor="middle"
+          fontFamily="var(--display)"
+          fontSize="24"
+          fill="var(--atlas-label-ink)"
+        >
+          Pista House Irving
+        </text>
+        <text
+          x="157"
+          y="137"
+          textAnchor="middle"
+          fontSize="18"
+          fontWeight="600"
+          fill="var(--atlas-label-ink)"
+        >
+          Suite 160
         </text>
       </g>
     </svg>
   )
 }
+
 export function NeighborhoodMap() {
   const [interactive, setInteractive] = useState(false)
   return (
-    <section className="neighborhood">
+    <section id="neighborhood-map" className="neighborhood">
       <div className="wrap neighborhood-inner">
         <SectionReveal className="map-copy">
           <span className="kicker">

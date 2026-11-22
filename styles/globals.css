@@ -1470,16 +1470,6 @@ address {
 .map-copy p {
   max-width: 41ch;
 }
-:root {
-  --atlas-ground: #e8ead8;
-  --atlas-ink: #224537;
-  --atlas-block: #d9d6bc;
-  --atlas-outline: #aab29a;
-  --atlas-road: #fff9e7;
-  --atlas-leaf: #bbcc98;
-  --atlas-green: #97aa80;
-  --atlas-water: #a6c9c4;
-}
 .map-board {
   border: 1px solid var(--border);
   background: var(--card);
@@ -2039,6 +2029,7 @@ address {
   .dessert-heading .dessert-notes { margin-top: 1rem; }
 }
 #after-dinner,
+#neighborhood-map,
 #event-service {
   scroll-margin-top: 82px;
 }
@@ -2075,7 +2066,6 @@ address {
   pointer-events: none;
 }
 @media (prefers-reduced-motion: no-preference) {
-  html[data-anchor-scroll] { scroll-behavior: smooth; }
   @supports (animation-timeline: view()) {
     [data-reveal] .kicker i {
       animation: accent-appear linear both;
@@ -2098,4 +2088,55 @@ address {
     @keyframes arch-scroll { to { transform: translateY(16px); } }
     @keyframes footer-scroll { from { transform: translateY(16px); } }
   }
+}
+
+
+.map-board {
+  --atlas-ground: #e8ead9;
+  --atlas-parcel: #f2eedf;
+  --atlas-outline: #c9cdb8;
+  --atlas-path: #faf7ec;
+  --atlas-block: #ded4bd;
+  --atlas-roof: #b9ae95;
+  --atlas-meadow: #cbdab6;
+  --atlas-water: #a8c9c4;
+  --atlas-water-line: #77a7a1;
+  --atlas-leaf: #a6bc89;
+  --atlas-green: #63804e;
+  --atlas-trunk: #71533a;
+  --atlas-road: #fffaf0;
+  --atlas-road-edge: #adb19c;
+  --atlas-ink: #314b3d;
+  --atlas-label: #214b3b;
+  --atlas-label-ink: #fff9e7;
+  --atlas-pin: #974527;
+}
+.dark .map-board {
+  --atlas-ground: #2a4037;
+  --atlas-parcel: #344b3f;
+  --atlas-outline: #4a5c4f;
+  --atlas-path: #42584b;
+  --atlas-block: #526151;
+  --atlas-roof: #64715f;
+  --atlas-meadow: #3a5541;
+  --atlas-water: #32595a;
+  --atlas-water-line: #517879;
+  --atlas-leaf: #5c7754;
+  --atlas-green: #a0b18e;
+  --atlas-trunk: #c7ac87;
+  --atlas-road: #42564b;
+  --atlas-road-edge: #7a8a73;
+  --atlas-ink: #f6f1db;
+  --atlas-label: #183e30;
+  --atlas-label-ink: #fff3d5;
+  --atlas-pin: #a95c36;
+}
+.map-board .area-drawing,
+.map-board .location-map {
+  aspect-ratio: 480 / 370;
+}
+.area-road-label {
+  font-family: var(--body);
+  font-size: 20px;
+  font-weight: 700;
 }
