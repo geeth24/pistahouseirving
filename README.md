@@ -26,7 +26,7 @@ Open [localhost:3000](http://localhost:3000). To check a change before merging, 
 | Change | Where to edit |
 | --- | --- |
 | Dining dishes and catering selections | [Dining menu](lib/dining-menu.ts) and [catering menu](lib/catering-menu.ts). Keep dish listings text-based and leave prices to the ordering partner. |
-| Address, phone, ordering, and social links | [Restaurant details](lib/restaurant.ts). Check the contact page and the map when the entrance or address changes. |
+| Address, phone, ordering, and social links | [Restaurant details](lib/restaurant.ts). For an address change, also update the postal fields in the [restaurant structured data](app/layout.tsx), the [contact page description](app/contactus/page.tsx), and the [neighborhood map](components/neighborhood-map.tsx). |
 | Hours | Update the [restaurant details](lib/restaurant.ts), the announcement and structured hours in the [layout](app/layout.tsx), and time references on the [home](app/page.tsx) and [contact](app/contactus/page.tsx) pages. Update the Google Business Profile separately, including holiday hours. |
 | Visual identity and photography | [Theme, typography, and motion styles](styles/globals.css) and [restaurant images](public/images). |
 
