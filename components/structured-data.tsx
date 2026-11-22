@@ -1,4 +1,4 @@
-import { navigation, restaurant } from "@/lib/restaurant"
+import { navigation, pageImages, restaurant } from "@/lib/restaurant"
 
 export function StructuredData({ data }: { data: Record<string, unknown> }) {
   return (
@@ -24,6 +24,7 @@ export function BreadcrumbData({
       data={{
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
+        "@id": restaurant.origin + path + "#breadcrumb",
         itemListElement: [
           {
             "@type": "ListItem",
@@ -40,5 +41,40 @@ export function BreadcrumbData({
         ],
       }}
     />
+  )
+}
+
+export function RestaurantPageData({
+  path,
+}: {
+  path: "/aboutus" | "/contactus"
+}) {
+  const url = restaurant.origin + path
+  const image = pageImages[path]
+  const page = navigation.find((link) => link.href === path)
+  if (!page) return null
+
+  return (
+    <>
+      <BreadcrumbData path={path} />
+      <StructuredData
+        data={{
+          "@context": "https://schema.org",
+          "@type": path === "/aboutus" ? "AboutPage" : "ContactPage",
+          "@id": url + "#webpage",
+          url,
+          name: page.name + " | " + restaurant.name,
+          mainEntity: { "@id": restaurant.origin + "/#restaurant" },
+          isPartOf: { "@id": restaurant.origin + "/#website" },
+          breadcrumb: { "@id": url + "#breadcrumb" },
+          primaryImageOfPage: {
+            "@type": "ImageObject",
+            contentUrl: new URL(image.url, restaurant.origin).href,
+            width: image.width,
+            height: image.height,
+          },
+        }}
+      />
+    </>
   )
 }
